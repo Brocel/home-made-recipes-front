@@ -1,0 +1,24 @@
+@use 'tokens' as t; // tokens SCSS globaux (couleurs, spacing)
+
+/* Styles simples pour la page d'auth */
+.auth-page {
+  padding: t.$space-lg 0;
+
+  h1 {
+    color: t.$color-primary;
+    margin-bottom: t.$space-sm;
+  }
+
+  .or-sep {
+    margin: t.$space-md 0;
+    color: t.$muted;
+    text-align: center;
+  }
+
+  .local-login {
+    margin-top: t.$space-md;
+    display: flex;
+    flex-direction: column;
+    gap: t.$space-sm;
+  }
+}

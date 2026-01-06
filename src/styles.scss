@@ -1,0 +1,36 @@
+/* You can add global styles to this file, and also import other style files */
+@use 'tokens' as t;
+
+html, body {
+  height: 100%;
+  background: t.$color-bg;
+  color: t.$text;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+  max-width: t.$max-width;
+  margin: 0 auto;
+  padding: 0 t.$space-md;
+}
+
+/* boutons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: t.$radius;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+.btn-primary { background: t.$color-primary; color: white; }
+.btn-outline { background: transparent; border: 1px solid rgba(0,0,0,0.08); color: t.$text; }
+
+/* responsive utilities */
+@media (max-width: 768px) {
+  .container { padding: 0 t.$space-sm; }
+}

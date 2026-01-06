@@ -1,0 +1,15 @@
+<!-- Vue simple pour la page de connexion -->
+<div class="auth-page container">
+  <h1>Connexion</h1>
+  <p>Connecte-toi avec Google pour accéder à tes recettes</p>
+
+  <!-- Google rendra son bouton ici via google.accounts.id.renderButton -->
+  <div id="google-button" class="mt-16"></div>
+
+  <div class="or-sep">ou</div>
+
+  <!-- Formulaire local optionnel (ex: email / mot de passe) -->
+  <form class="local-login" (submit)="$event.preventDefault()">
+    <!-- Champs à implémenter si tu veux un login classique -->
+  </form>
+</div>

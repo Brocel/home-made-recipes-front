@@ -1,0 +1,29 @@
+// variables SCSS
+$color-primary: #E76F51;
+$color-accent: #2A9D8F;
+$color-bg: #FFF8F0;
+$color-surface: #FFFFFF;
+$text: #2B2B2B;
+$muted: #7A7A7A;
+$radius: 12px;
+$space-xs: 4px;
+$space-sm: 8px;
+$space-md: 16px;
+$space-lg: 24px;
+$max-width: 1200px;
+
+// expose aussi des CSS variables pour runtime (utile pour thèmes dynamiques)
+:root {
+  --color-primary: #{$color-primary};
+  --color-accent: #{$color-accent};
+  --color-bg: #{$color-bg};
+  --color-surface: #{$color-surface};
+  --text: #{$text};
+  --muted: #{$muted};
+  --radius: #{$radius};
+  --space-xs: #{$space-xs};
+  --space-sm: #{$space-sm};
+  --space-md: #{$space-md};
+  --space-lg: #{$space-lg};
+  --max-width: #{$max-width};
+}
