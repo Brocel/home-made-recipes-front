@@ -1,30 +1,51 @@
 <nav class="navbar container">
   <div class="left">
-    <button class="menu-btn" aria-label="Menu">☰</button>
+    <button class="menu-btn"
+            aria-label="{{ 'navbar.menuLabel' | translate }}">☰
+    </button>
   </div>
 
   <div class="center">
     <div class="search-inline">
-      <input type="search" placeholder="Rechercher une recette..." aria-label="Recherche rapide" />
+      <input type="search"
+             placeholder="{{ 'navbar.searchPlaceholder' | translate }}"
+             aria-label="{{ 'navbar.searchPlaceholder' | translate }}"
+      />
       <app-button variant="ghost">OK</app-button>
     </div>
   </div>
 
   <div class="right">
-    <button class="lang-btn" (click)="changeLang.emit('fr')" aria-label="Changer la langue">FR/PT</button>
+    <button class="lang-btn"
+            type="button"
+            (click)="toggleLang()"
+            [attr.aria-label]="'navbar.langLabel' | translate"
+            [attr.aria-pressed]="lang.current() === 'pt-BR'"> {{ lang.current() === 'fr' ? 'FR' : 'PT' }}
+    </button>
 
     @if (isAuthenticated) {
       <ng-container>
-        <app-button variant="outline" (pressed)="addRecipe.emit()">Ajouter une recette</app-button>
-        <button class="profile-btn" (click)="onProfileClick()" aria-label="Profil">
+        <app-button variant="outline"
+                    (pressed)="addRecipe.emit()">
+          {{ 'recipe.addRecipe' | translate }}
+        </app-button>
+        <button class="profile-btn"
+                (click)="onProfileClick()"
+                aria-label="{{ 'navbar.profile' | translate }}">
           @if (user?.picture) {
-            <img [src]="user.picture" alt="avatar" class="avatar" />
+            <img [src]="user.picture"
+                 alt="avatar"
+                 class="avatar"/>
           }
         </button>
       </ng-container>
     } @else {
       <ng-template>
-        <button class="profile-btn" (click)="openLogin.emit()" aria-label="Profil">👤</button>
+        <button class="profile-btn"
+                (click)="openLogin.emit()"
+                aria-label="{{ 'navbar.profile' | translate }}">
+          👤
+        </button>
       </ng-template>
     }
   </div>

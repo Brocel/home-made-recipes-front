@@ -1,0 +1,28 @@
+{
+  "navbar": {
+    "menuLabel": "Menu",
+    "searchPlaceholder": "Pesquisa rápida",
+    "login": "Entrar",
+    "register": "Registrar",
+    "langLabel": "Idioma",
+    "profile": "Perfil"
+  },
+  "home": {
+    "title": "Home Made Recipes",
+    "lead": "Receitas caseiras simples e saborosas."
+  },
+  "search": {
+    "placeholder": "Pesquisar por palavra-chave..."
+  },
+  "recipe": {
+    "ingredients": "Ingredientes",
+    "instructions": "Instruções",
+    "addRecipe": "Adicionar receita",
+    "author": "Autor"
+  },
+  "common": {
+    "cancel": "Cancelar",
+    "save": "Salvar",
+    "ok": "OK"
+  }
+}
