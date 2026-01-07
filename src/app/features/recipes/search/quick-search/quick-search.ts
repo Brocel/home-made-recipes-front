@@ -10,7 +10,7 @@ import { Button } from '@shared/ui/button/button';
   templateUrl: './quick-search.html',
   styleUrls: ['./quick-search.scss']
 })
-export class SearchQuick {
+export class QuickSearch {
   query = '';
   @Output() search = new EventEmitter<string>();
 

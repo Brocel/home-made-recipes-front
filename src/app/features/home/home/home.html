@@ -9,8 +9,8 @@
   ></app-navbar>
 
   <div class="home-layout container">
-    <aside class="left-col">
-      <search-quick (search)="onSearch($event)"></search-quick>
+    <aside class="left-col" aria-label="Recherche rapide">
+      <quick-search (search)="onSearch($event)"></quick-search>
     </aside>
 
     <main class="main-col">
@@ -18,43 +18,56 @@
         <h1>Home Made Recipes</h1>
         <p class="lead">Recettes maison simples et savoureuses.</p>
 
-        <ng-container *ngIf="auth(); else visitorSearch">
-          <search-advanced (submitAdvanced)="onAdvancedSearch($event)"></search-advanced>
-        </ng-container>
-
-        <ng-template #visitorSearch>
-          <search-quick (search)="onSearch($event)"></search-quick>
-        </ng-template>
+        @if (auth()) {
+          <ng-container>
+            <advanced-search (submitAdvanced)="onAdvancedSearch($event)"></advanced-search>
+          </ng-container>
+        } @else {
+          <ng-template>
+            <quick-search (search)="onSearch($event)"></quick-search>
+          </ng-template>
+        }
       </section>
 
       <section class="recent">
         <h2>Recettes récentes</h2>
-        <div *ngIf="loading()" class="loading">Chargement...</div>
-        <div *ngIf="error()" class="error">{{ error() }}</div>
+        @if (loading()) {
+          <div class="loading">
+            <span class="spinner" aria-hidden="true"></span>
+          </div>
+        } @else if (recipes().length) {
+          <ul class="grid">
+            @for (r of recipes(); track r.id) {
+              <li>
+                <article class="card">
+                  <h3>{{ r.title }}</h3>
+                  <p class="muted">{{ r.description }}</p>
+                  <a [routerLink]="['/recipes', r.id]">Voir</a>
+                </article>
+              </li>
+            }
+          </ul>
+        }
 
-        <ul class="grid" *ngIf="!loading() && recipes().length">
-          <li *ngFor="let r of recipes()">
-            <article class="card">
-              <h3>{{ r.title }}</h3>
-              <p class="muted">{{ r.description }}</p>
-              <a [routerLink]="['/recipes', r.id]">Voir</a>
-            </article>
-          </li>
-        </ul>
+        @if (error()) {
+          <div class="error">{{ error() }}</div>
+        }
       </section>
     </main>
 
-    <aside class="right-col">
-      <ng-container *ngIf="auth(); else cta">
-        <add-recipe-mini (openCreateFull)="onOpenCreateFull($event)"></add-recipe-mini>
-      </ng-container>
-
-      <ng-template #cta>
-        <auth-call-to-action
-          (openLogin)="console.log('open login')"
-          (openRegister)="console.log('open register')"
-        ></auth-call-to-action>
-      </ng-template>
+    <aside class="right-col" aria-label="Ajouter une recette">
+      @if (auth()) {
+        <ng-container>
+          <add-recipe-mini (openCreateFull)="onOpenCreateFull($event)"></add-recipe-mini>
+        </ng-container>
+      } @else {
+        <ng-template>
+          <auth-cta
+            (openLogin)="console.log('open login')"
+            (openRegister)="console.log('open register')"
+          ></auth-cta>
+        </ng-template>
+      }
     </aside>
   </div>
 

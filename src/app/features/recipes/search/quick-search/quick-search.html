@@ -1,5 +1,5 @@
 <div class="quick-search">
-  <label class="sr-only">Recherche</label>
-  <input [(ngModel)]="query" type="text" placeholder="Rechercher par mot‑clé..." />
+  <label class="sr-only" for="search-query">Recherche</label>
+  <input id="search-query" [(ngModel)]="query" type="text" placeholder="Rechercher par mot‑clé..." />
   <app-button variant="primary" (pressed)="submit()">Rechercher</app-button>
 </div>

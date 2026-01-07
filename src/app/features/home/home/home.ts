@@ -1,15 +1,15 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { RecipesApi } from '@core/api/hmr.api';
-import { Recipe } from '@shared/models/recipes';
+import { RecipesApi } from '@core/api/recipes.api';
+import { Recipe } from '@shared/models/recipes/recipe';
 import { currentUser, isAuthenticated } from '@core/auth/auth.signals';
-import { Navbar } from '@shared/ui/navbar';
-import { SearchQuick } from './components/search-quick';
-import { SearchAdvanced } from './components/search-advanced';
-import { AuthCallToAction } from './components/auth-cta';
-import { AddRecipeMini } from './components/add-recipe-mini';
-import { ButtonComponent } from '@shared/ui/button';
+import { Navbar } from '@shared/ui/navbar/navbar';
+import { QuickSearch } from '@features/recipes/search/quick-search/quick-search';
+import { AdvancedSearch } from '@features/recipes/search/advanced-search/advanced-search';
+import { AuthCallToAction } from '../auth-call-to-action/auth-call-to-action';
+import { AddRecipeMini } from '@features/recipes/add/add-recipe-mini/add-recipe-mini';
+import { Button } from '@shared/ui/button/button';
 
 @Component({
   selector: 'app-home',
@@ -18,11 +18,11 @@ import { ButtonComponent } from '@shared/ui/button';
     CommonModule,
     RouterModule,
     Navbar,
-    SearchQuick,
-    SearchAdvanced,
+    QuickSearch,
+    AdvancedSearch,
     AuthCallToAction,
     AddRecipeMini,
-    ButtonComponent
+    Button
   ],
   templateUrl: './home.html',
   styleUrls: ['./home.scss']
@@ -35,7 +35,8 @@ export class Home implements OnInit {
   user = currentUser;
   auth = isAuthenticated;
 
-  constructor(private api: RecipesApi) {}
+  constructor(private api: RecipesApi) {
+  }
 
   ngOnInit(): void {
     this.fetchRecent();
@@ -44,7 +45,7 @@ export class Home implements OnInit {
   fetchRecent(): void {
     this.loading.set(true);
     this.error.set(null);
-    this.api.list({ page: 1, pageSize: 6 }).subscribe({
+    this.api.list({page: 1, pageSize: 6}).subscribe({
       next: (paged) => {
         this.recipes.set(paged.items ?? []);
         this.loading.set(false);
