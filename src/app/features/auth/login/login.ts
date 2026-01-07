@@ -1,4 +1,3 @@
-// Composant Login minimal (fichiers séparés login.ts / login.html / login.scss)
 // Ce composant initialise GSI après le rendu de la vue (ngAfterViewInit)
 // et affiche l'élément dans lequel Google rendra son bouton.
 
@@ -13,7 +12,7 @@ import { AuthService } from '@core/auth/auth.service';
   templateUrl: './login.html',
   styleUrls: ['./login.scss']
 })
-export class LoginComponent implements AfterViewInit {
+export class Login implements AfterViewInit {
   constructor(private auth: AuthService) {
   }
 

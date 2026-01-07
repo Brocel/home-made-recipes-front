@@ -1,0 +1,27 @@
+<nav class="navbar container">
+  <div class="left">
+    <button class="menu-btn" aria-label="Menu">☰</button>
+  </div>
+
+  <div class="center">
+    <div class="search-inline">
+      <input type="search" placeholder="Rechercher une recette..." aria-label="Recherche rapide" />
+      <app-button variant="ghost">OK</app-button>
+    </div>
+  </div>
+
+  <div class="right">
+    <button class="lang-btn" (click)="changeLang.emit('fr')" aria-label="Changer la langue">FR/PT</button>
+
+    <ng-container *ngIf="isAuthenticated; else guest">
+      <app-button variant="outline" (pressed)="addRecipe.emit()">Ajouter une recette</app-button>
+      <button class="profile-btn" (click)="onProfileClick()" aria-label="Profil">
+        <img *ngIf="user?.picture" [src]="user.picture" alt="avatar" class="avatar" />
+      </button>
+    </ng-container>
+
+    <ng-template #guest>
+      <button class="profile-btn" (click)="openLogin.emit()" aria-label="Profil">👤</button>
+    </ng-template>
+  </div>
+</nav>

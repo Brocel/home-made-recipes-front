@@ -1,0 +1,109 @@
+@use 'tokens' as t;
+
+/* Base */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: t.$radius;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 120ms ease, box-shadow 120ms ease, opacity 120ms ease;
+  border: none;
+  min-height: 40px;
+  background: t.$color-surface;
+  color: t.$text;
+  text-decoration: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+}
+
+/* Full width helper */
+.full-width { width: 100%; }
+
+/* Size small */
+.btn-small {
+  padding: 6px 10px;
+  min-height: 32px;
+  font-size: 14px;
+}
+
+/* Variantes */
+.btn-primary {
+  background: t.$color-primary;
+  color: white;
+  box-shadow: 0 6px 18px rgba(231,111,81,0.08);
+  &:hover { transform: translateY(-1px); }
+  &:active { transform: translateY(0); }
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid rgba(0,0,0,0.08);
+  color: t.$text;
+  &:hover { background: rgba(0,0,0,0.02); }
+}
+
+.btn-ghost {
+  background: transparent;
+  color: t.$text;
+  &:hover { background: rgba(0,0,0,0.03); }
+}
+
+.btn-danger {
+  background: #d9534f;
+  color: white;
+  &:hover { transform: translateY(-1px); }
+}
+
+/* Disabled / aria-disabled */
+.btn[disabled], .btn[aria-disabled='true'] {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Content layout */
+.content {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Spinner simple CSS */
+.spinner {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.25);
+  border-top-color: rgba(255,255,255,0.9);
+  animation: spin 0.8s linear infinite;
+}
+
+/* Spinner color adaptation pour variantes non-primary */
+.btn-outline .spinner {
+  border: 2px solid rgba(0,0,0,0.12);
+  border-top-color: rgba(0,0,0,0.6);
+}
+.btn-ghost .spinner {
+  border: 2px solid rgba(0,0,0,0.12);
+  border-top-color: rgba(0,0,0,0.6);
+}
+.btn-danger .spinner {
+  border: 2px solid rgba(255,255,255,0.25);
+  border-top-color: rgba(255,255,255,0.9);
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Focus visible pour accessibilité */
+.btn:focus-visible {
+  box-shadow: 0 0 0 4px rgba(42,157,143,0.12);
+  outline: none;
+}

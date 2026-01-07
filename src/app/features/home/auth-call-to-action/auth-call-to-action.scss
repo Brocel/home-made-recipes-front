@@ -1,0 +1,10 @@
+@use 'tokens' as t;
+
+.auth-cta {
+  background: t.$color-surface;
+  padding: t.$space-md;
+  border-radius: t.$radius;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+
+  .actions { display: flex; gap: t.$space-sm; margin-top: t.$space-sm; }
+}

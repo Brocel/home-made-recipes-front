@@ -1,0 +1,27 @@
+@use 'tokens' as t;
+
+.auth-page {
+  padding: t.$space-lg 0;
+  max-width: 560px;
+
+  h1 { color: t.$color-primary; margin-bottom: t.$space-sm; }
+  .lead { color: t.$muted; margin-bottom: t.$space-md; }
+
+  #google-register-button {
+    display: flex;
+    justify-content: center;
+  }
+
+  .or-note {
+    margin-top: t.$space-md;
+    display: flex;
+    gap: t.$space-sm;
+    align-items: center;
+  }
+
+  .privacy-note {
+    margin-top: t.$space-sm;
+    color: t.$muted;
+    font-size: 13px;
+  }
+}

@@ -1,0 +1,26 @@
+@use 'tokens' as t;
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: t.$space-md;
+  padding: t.$space-sm 0;
+
+  .left { display: flex; align-items: center; }
+  .center { flex: 1; display: flex; justify-content: center; }
+  .right { display: flex; gap: t.$space-sm; align-items: center; }
+
+  .search-inline {
+    display: flex;
+    gap: t.$space-sm;
+    input {
+      padding: 8px 12px;
+      border-radius: 8px;
+      border: 1px solid rgba(0,0,0,0.08);
+      min-width: 320px;
+    }
+  }
+
+  .avatar { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; }
+}
