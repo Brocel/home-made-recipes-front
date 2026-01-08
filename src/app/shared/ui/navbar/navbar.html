@@ -1,52 +1,65 @@
 <nav class="navbar container">
-  <div class="left">
-    <button class="menu-btn"
-            aria-label="{{ 'navbar.menuLabel' | translate }}">☰
-    </button>
-  </div>
-
-  <div class="center">
-    <div class="search-inline">
-      <input type="search"
-             placeholder="{{ 'navbar.searchPlaceholder' | translate }}"
-             aria-label="{{ 'navbar.searchPlaceholder' | translate }}"
-      />
-      <app-button variant="ghost">OK</app-button>
-    </div>
-  </div>
+  <!-- left / center omitted for concision -->
 
   <div class="right">
-    <button class="lang-btn"
-            type="button"
-            (click)="toggleLang()"
-            [attr.aria-label]="'navbar.langLabel' | translate"
-            [attr.aria-pressed]="lang.current() === 'pt-BR'"> {{ lang.current() === 'fr' ? 'FR' : 'PT' }}
+    <button
+      class="lang-btn"
+      type="button"
+      (click)="toggleLang()"
+      [attr.aria-label]="'navbar.langLabel' | translate"
+      [attr.aria-pressed]="lang.current() === 'pt-BR'">
+      {{ lang.current() === 'fr' ? 'FR' : 'PT' }}
     </button>
 
-    @if (isAuthenticated) {
-      <ng-container>
-        <app-button variant="outline"
-                    (pressed)="addRecipe.emit()">
-          {{ 'recipe.addRecipe' | translate }}
-        </app-button>
-        <button class="profile-btn"
-                (click)="onProfileClick()"
-                aria-label="{{ 'navbar.profile' | translate }}">
-          @if (user?.picture) {
-            <img [src]="user.picture"
-                 alt="avatar"
-                 class="avatar"/>
+    <div class="profile-wrapper"
+         style="position:relative;">
+      <button
+        class="profile-btn"
+        type="button"
+        (click)="onProfileClick()"
+        [attr.aria-expanded]="profileMenuOpen"
+        [attr.aria-haspopup]="true"
+        [attr.aria-label]="'navbar.profile' | translate">
+        @if (user?.picture) {
+          <img [src]="user.picture"
+               [alt]="'navbar.profileAlt' | translate"
+               class="avatar"/>
+        } @else {
+          <span aria-hidden="true">👤</span>
+        }
+      </button>
+
+      @if (profileMenuOpen) {
+        <div
+          class="profile-menu"
+          role="menu"
+          aria-label="{{ isAuthenticated ? ('navbar.profileMenu' | translate) : 'navbar.guestMenu' | translate }}"
+          tabindex="-1">
+          <!-- Authenticated menu -->
+          @if (isAuthenticated) {
+            <ng-container>
+              <!-- Lazy loadable advanced menu component -->
+              <profile-menu (close)="closeProfileMenu()"
+                                [user]="user">
+              </profile-menu>
+            </ng-container>
+          } @else {
+            <!-- Guest menu -->
+            <ng-template #guestMenu>
+              <button role="menuitem"
+                      type="button"
+                      (click)="onLoginClick()">
+                {{ 'navbar.login' | translate }}
+              </button>
+              <button role="menuitem"
+                      type="button"
+                      (click)="onRegisterClick()">
+                {{ 'navbar.register' | translate }}
+              </button>
+            </ng-template>
           }
-        </button>
-      </ng-container>
-    } @else {
-      <ng-template>
-        <button class="profile-btn"
-                (click)="openLogin.emit()"
-                aria-label="{{ 'navbar.profile' | translate }}">
-          👤
-        </button>
-      </ng-template>
-    }
+        </div>
+      }
+    </div>
   </div>
 </nav>

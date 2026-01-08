@@ -7,12 +7,13 @@ import { CommonModule } from '@angular/common';
 import { AuthService } from '@core/auth/auth.service';
 import { Router } from '@angular/router';
 import { Button } from '@ui/button/button';
+import { TranslatePipe } from "@ngx-translate/core";
 
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [CommonModule, Button],
+    imports: [CommonModule, Button, TranslatePipe],
   templateUrl: './register.html',
   styleUrls: ['./register.scss']
 })

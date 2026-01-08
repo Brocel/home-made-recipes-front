@@ -1,24 +1,47 @@
 {
+  "home": {
+    "title": "Home Made Recipes",
+    "lead": "Recettes maison simples et savoureuses."
+  },
   "navbar": {
     "menuLabel": "Menu",
     "searchPlaceholder": "Recherche rapide",
     "login": "Se connecter",
     "register": "S'inscrire",
     "langLabel": "Langue",
-    "profile": "Profil"
+    "profile": "Profil",
+    "profileAlt": "Avatar",
+    "profileMenu": "Menu du profil",
+    "guestMenu": "Menu invité"
   },
-  "home": {
-    "title": "Home Made Recipes",
-    "lead": "Recettes maison simples et savoureuses."
+  "login": {
+    "title": "Connexion",
+    "description": "Connectes-toi avec Google pour accéder à tes recettes"
+  },
+  "register": {
+    "title": "Inscription",
+    "description": "Inscris-toi rapidement avec ton compte Google pour commencer à ajouter tes recettes",
+    "googleButton": "S'inscrire' avec Google",
+    "existingAccount": "Si tu as déjà un compte",
+    "googlePrivacyNote": "En te connectant avec Google, nous utilisons uniquement les informations nécessaires pour créer ton compte."
   },
   "search": {
-    "placeholder": "Rechercher par mot‑clé..."
+    "placeholder": "Rechercher par mot‑clé...",
+    "advancedSearchPlaceHolder": "Recherche avancée...",
+    "search": "Rechercher"
+  },
+  "authCta": {
+    "title": "Rejoins la communauté",
+    "description": "Connecte‑toi pour ajouter et sauvegarder tes recettes."
   },
   "recipe": {
     "ingredients": "Ingrédients",
     "instructions": "Instructions",
     "addRecipe": "Ajouter une recette",
-    "author": "Auteur"
+    "author": "Auteur",
+    "title": "Nom de la recette",
+    "type": "Type de recette",
+    "create": "Créer une recette"
   },
   "common": {
     "cancel": "Annuler",

@@ -1,16 +1,16 @@
 <div class="auth-page container">
-  <h1>Inscription</h1>
-  <p class="lead">Inscris-toi rapidement avec ton compte Google pour commencer à sauvegarder tes recettes.</p>
+  <h1>{{ 'register.title' | translate }}</h1>
+  <p class="lead">{{ 'register.description' | translate }}</p>
 
   <!-- Zone où Google rendra son bouton via google.accounts.id.renderButton -->
-  <div id="google-register-button" class="mt-16" aria-label="Se connecter avec Google"></div>
+  <div id="google-register-button" class="mt-16" aria-label="{{ 'register.googleButton' | translate }}"></div>
 
   <div class="or-note">
-    <span>Si tu as déjà un compte</span>
-    <a (click)="goToLogin()"><app-button variant="outline">Se connecter</app-button></a>
+    <span>{{ 'register.existingAccount' | translate }}</span>
+    <a (click)="goToLogin()"><app-button variant="outline">{{ 'navbar.login' | translate }}</app-button></a>
   </div>
 
   <p class="privacy-note">
-    En te connectant avec Google, nous utilisons uniquement les informations nécessaires pour créer ton compte.
+    {{ 'register.googlePrivacyNote' | translate }}
   </p>
 </div>

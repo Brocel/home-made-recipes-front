@@ -1,24 +1,47 @@
 {
-  "navbar": {
-    "menuLabel": "Menu",
-    "searchPlaceholder": "Pesquisa rápida",
-    "login": "Entrar",
-    "register": "Registrar",
-    "langLabel": "Idioma",
-    "profile": "Perfil"
-  },
   "home": {
     "title": "Home Made Recipes",
     "lead": "Receitas caseiras simples e saborosas."
   },
+  "navbar": {
+    "menuLabel": "Menu",
+    "searchPlaceholder": "Pesquisa rápida",
+    "login": "Conectar-se",
+    "register": "Registrar-se",
+    "langLabel": "Idioma",
+    "profile": "Perfil",
+    "profileAlt": "Avatar",
+    "profileMenu": "Menu do perfil",
+    "guestMenu": "Menu do visitante"
+  },
+  "login": {
+    "title": "Conneção",
+    "description": "Conecte-se com o Google para acessar suas receitas"
+  },
+  "register": {
+    "title": "Inscrição",
+    "description": "Registre-se rapidamente com sua conta do Google para começar a adicionar suas receitas",
+    "googleButton": "Registrar-se com o Google",
+    "existingAccount": "Você já tem uma conta?",
+    "googlePrivacyNote": "Ao se conectar com o Google, usamos apenas as informações necessárias para criar sua conta."
+  },
   "search": {
-    "placeholder": "Pesquisar por palavra-chave..."
+    "placeholder": "Pesquisar por palavra-chave...",
+    "advancedSearchPlaceHolder": "Pesquisa avançada...",
+    "search": "Pesquisar"
+  },
+  "authCta": {
+    "title": "Junte-se à comunidade",
+    "description": "Conecte-se para adicionar e salvar suas receitas."
   },
   "recipe": {
     "ingredients": "Ingredientes",
     "instructions": "Instruções",
-    "addRecipe": "Adicionar receita",
-    "author": "Autor"
+    "addRecipe": "Adicionar uma receita",
+    "author": "Autor",
+    "title": "Nome da receita",
+    "type": "Tipo de receita",
+    "create": "Criar uma receita"
   },
   "common": {
     "cancel": "Cancelar",

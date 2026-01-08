@@ -1,5 +1,5 @@
 <form class="advanced-search" (ngSubmit)="submit()" [formGroup]="form">
-  <input formControlName="q" type="text" placeholder="Recherche avancée..." />
+  <input formControlName="q" type="text" placeholder="{{ 'search.advancedSearchPlaceHolder' | translate }}" />
   <!-- champs additionnels à ajouter plus tard -->
-  <app-button variant="primary" type="submit">Rechercher</app-button>
+  <app-button variant="primary" type="submit">{{ 'search.search' | translate }}</app-button>
 </form>

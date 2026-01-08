@@ -2,21 +2,20 @@
   <app-navbar
     [user]="user()"
     [isAuthenticated]="auth()"
-    (changeLang)="console.log('lang', $event)"
     (openLogin)="console.log('open login')"
     (openRegister)="console.log('open register')"
     (addRecipe)="console.log('add recipe')"
   ></app-navbar>
 
   <div class="home-layout container">
-    <aside class="left-col" aria-label="Recherche rapide">
+    <aside class="left-col" aria-label="{{ 'navbar.searchPlaceholder' | translate }}">
       <quick-search (search)="onSearch($event)"></quick-search>
     </aside>
 
     <main class="main-col">
       <section class="hero">
-        <h1>Home Made Recipes</h1>
-        <p class="lead">Recettes maison simples et savoureuses.</p>
+        <h1>{{ 'home.title' | translate }}</h1>
+        <p class="lead">{{ 'home.lead' | translate }}</p>
 
         @if (auth()) {
           <ng-container>
@@ -29,7 +28,8 @@
         }
       </section>
 
-      <section class="recent">
+      <section class="daily">
+<!--  TODO: remplacer par recette du jour ? + component recette à faire     -->
         <h2>Recettes récentes</h2>
         @if (loading()) {
           <div class="loading">
@@ -55,7 +55,7 @@
       </section>
     </main>
 
-    <aside class="right-col" aria-label="Ajouter une recette">
+    <aside class="right-col" aria-label="{{ 'recipe.addRecipe' | translate }}">
       @if (auth()) {
         <ng-container>
           <add-recipe-mini (openCreateFull)="onOpenCreateFull($event)"></add-recipe-mini>

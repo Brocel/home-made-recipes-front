@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Button } from '@shared/ui/button/button';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'add-recipe-mini',
   standalone: true,
-  imports: [CommonModule, FormsModule, Button],
+  imports: [CommonModule, FormsModule, Button, TranslatePipe],
   templateUrl: './add-recipe-mini.html',
   styleUrls: ['./add-recipe-mini.scss']
 })

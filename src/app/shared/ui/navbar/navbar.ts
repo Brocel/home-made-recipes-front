@@ -1,14 +1,14 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostListener, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Button } from '@ui/button/button';
 import { RouterModule } from '@angular/router';
 import { TranslatePipe } from '@ngx-translate/core';
-import { LanguageService } from '@core/i18n/language.service';
+import { LanguageService } from '@app/core/i18n/language.service';
+import { ProfileMenu } from '@ui/menu/profile-menu/profile-menu';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule, RouterModule, Button, TranslatePipe],
+  imports: [CommonModule, RouterModule, TranslatePipe, ProfileMenu],
   templateUrl: './navbar.html',
   styleUrls: ['./navbar.scss']
 })
@@ -20,19 +20,65 @@ export class Navbar {
   @Output() openRegister = new EventEmitter<void>();
   @Output() addRecipe = new EventEmitter<void>();
 
-  constructor(public lang: LanguageService) {
-  } // bascule cyclique FR <-> PT-BR
+  // état du menu profil
+  profileMenuOpen = false;
+
+  constructor(public lang: LanguageService, private host: ElementRef<HTMLElement>) {}
 
   toggleLang(): void {
     const next = this.lang.current() === 'fr' ? 'pt-BR' : 'fr';
     this.lang.use(next);
   }
 
-  onProfileClick() {
+  onProfileClick(): void {
     if (this.isAuthenticated) {
-      // open profile menu (to implement)
+      this.openProfileMenu();
     } else {
-      this.openLogin.emit();
+      // ouvre le menu invité si on veut un petit menu, ou directement la modale login
+      this.openGuestMenu();
     }
+  }
+
+  openProfileMenu(): void {
+    this.profileMenuOpen = true;
+    // focus management peut être ajouté ici
+  }
+
+  openGuestMenu(): void {
+    this.profileMenuOpen = true;
+  }
+
+  closeProfileMenu(): void {
+    this.profileMenuOpen = false;
+  }
+
+  // fermer sur Échap
+  @HostListener('document:keydown.escape', ['$event'])
+  onEscape(event: KeyboardEvent) {
+    if (this.profileMenuOpen) {
+      this.closeProfileMenu();
+      event.stopPropagation();
+    }
+  }
+
+  // fermer sur clic hors menu
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent) {
+    if (!this.profileMenuOpen) return;
+    const target = event.target as Node;
+    if (!this.host.nativeElement.contains(target)) {
+      this.closeProfileMenu();
+    }
+  }
+
+  // actions invité
+  onLoginClick(): void {
+    this.closeProfileMenu();
+    this.openLogin.emit();
+  }
+
+  onRegisterClick(): void {
+    this.closeProfileMenu();
+    this.openRegister.emit();
   }
 }

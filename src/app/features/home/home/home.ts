@@ -9,7 +9,7 @@ import { QuickSearch } from '@features/recipes/search/quick-search/quick-search'
 import { AdvancedSearch } from '@features/recipes/search/advanced-search/advanced-search';
 import { AuthCallToAction } from '../auth-call-to-action/auth-call-to-action';
 import { AddRecipeMini } from '@features/recipes/add/add-recipe-mini/add-recipe-mini';
-import { Button } from '@shared/ui/button/button';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-home',
@@ -22,13 +22,13 @@ import { Button } from '@shared/ui/button/button';
     AdvancedSearch,
     AuthCallToAction,
     AddRecipeMini,
-    Button
+    TranslatePipe,
   ],
   templateUrl: './home.html',
   styleUrls: ['./home.scss']
 })
 export class Home implements OnInit {
-  recipes = signal<Recipe[]>([]);
+  recipes = signal<Recipe[]>([]); // TODO: remplacer par la recette du jour
   loading = signal(false);
   error = signal<string | null>(null);
 
