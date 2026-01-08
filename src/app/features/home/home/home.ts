@@ -3,8 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { RecipesApi } from '@core/api/recipes.api';
 import { Recipe } from '@shared/models/recipes/recipe';
-import { currentUser, isAuthenticated } from '@core/auth/auth.signals';
-import { Navbar } from '@shared/ui/navbar/navbar';
+import { isAuthenticated } from '@core/auth/auth.signals';
 import { QuickSearch } from '@features/recipes/search/quick-search/quick-search';
 import { AdvancedSearch } from '@features/recipes/search/advanced-search/advanced-search';
 import { AuthCallToAction } from '../auth-call-to-action/auth-call-to-action';
@@ -17,7 +16,6 @@ import { TranslatePipe } from '@ngx-translate/core';
   imports: [
     CommonModule,
     RouterModule,
-    Navbar,
     QuickSearch,
     AdvancedSearch,
     AuthCallToAction,
@@ -32,7 +30,6 @@ export class Home implements OnInit {
   loading = signal(false);
   error = signal<string | null>(null);
 
-  user = currentUser;
   auth = isAuthenticated;
 
   constructor(private api: RecipesApi) {

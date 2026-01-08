@@ -4,11 +4,12 @@ import { RouterModule } from '@angular/router';
 import { TranslatePipe } from '@ngx-translate/core';
 import { LanguageService } from '@app/core/i18n/language.service';
 import { ProfileMenu } from '@ui/menu/profile-menu/profile-menu';
+import { Button } from '@ui/button/button';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule, RouterModule, TranslatePipe, ProfileMenu],
+  imports: [CommonModule, RouterModule, TranslatePipe, ProfileMenu, Button],
   templateUrl: './navbar.html',
   styleUrls: ['./navbar.scss']
 })
@@ -23,7 +24,8 @@ export class Navbar {
   // état du menu profil
   profileMenuOpen = false;
 
-  constructor(public lang: LanguageService, private host: ElementRef<HTMLElement>) {}
+  constructor(public lang: LanguageService, private host: ElementRef<HTMLElement>) {
+  }
 
   toggleLang(): void {
     const next = this.lang.current() === 'fr' ? 'pt-BR' : 'fr';
@@ -53,11 +55,11 @@ export class Navbar {
   }
 
   // fermer sur Échap
-  @HostListener('document:keydown.escape', ['$event'])
-  onEscape(event: KeyboardEvent) {
-    if (this.profileMenuOpen) {
+  @HostListener('document:keydown.escape', ['$event']) onEscape(event: KeyboardEvent | Event) {
+    const ke = event as KeyboardEvent;
+    if (ke.key === 'Escape' && this.profileMenuOpen) {
       this.closeProfileMenu();
-      event.stopPropagation();
+      ke.stopPropagation();
     }
   }
 

@@ -1,9 +1,9 @@
-import { ApplicationConfig, Injectable, provideBrowserGlobalErrorListeners } from '@angular/core';
+import { ApplicationConfig, importProvidersFrom, Injectable, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
 import { HttpClient, provideHttpClient } from '@angular/common/http';
-import { provideTranslateLoader, TranslateLoader } from '@ngx-translate/core';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
 
 @Injectable()
@@ -21,6 +21,10 @@ export const appConfig: ApplicationConfig = {
     provideBrowserGlobalErrorListeners(),
     provideRouter(routes),
     provideHttpClient(),
-    provideTranslateLoader(HttpTranslateLoader)
+    importProvidersFrom(
+      TranslateModule.forRoot({
+        loader: { provide: TranslateLoader, useClass: HttpTranslateLoader }
+      })
+    )
   ]
 };

@@ -1,12 +1,4 @@
 <div class="home-page">
-  <app-navbar
-    [user]="user()"
-    [isAuthenticated]="auth()"
-    (openLogin)="console.log('open login')"
-    (openRegister)="console.log('open register')"
-    (addRecipe)="console.log('add recipe')"
-  ></app-navbar>
-
   <div class="home-layout container">
     <aside class="left-col" aria-label="{{ 'navbar.searchPlaceholder' | translate }}">
       <quick-search (search)="onSearch($event)"></quick-search>
@@ -70,8 +62,4 @@
       }
     </aside>
   </div>
-
-  <footer class="site-footer">
-    <!-- footer placeholder -->
-  </footer>
 </div>

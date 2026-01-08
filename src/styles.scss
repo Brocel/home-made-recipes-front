@@ -1,7 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
-@use 'tokens' as t;
+@use 'styles/tokens' as t;
 
 html, body {
+  margin: 0;
+  padding: 0;
   height: 100%;
   background: t.$color-bg;
   color: t.$text;
