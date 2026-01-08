@@ -4,6 +4,7 @@
     "lead": "Receitas caseiras simples e saborosas."
   },
   "navbar": {
+    "home": "Início",
     "menuLabel": "Menu",
     "searchPlaceholder": "Pesquisa rápida",
     "login": "Conectar-se",
@@ -28,6 +29,7 @@
   "search": {
     "placeholder": "Pesquisar por palavra-chave...",
     "advancedSearchPlaceHolder": "Pesquisa avançada...",
+    "advancedSearch": "Pesquisa avançada",
     "search": "Pesquisar"
   },
   "authCta": {

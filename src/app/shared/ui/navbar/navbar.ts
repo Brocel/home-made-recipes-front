@@ -4,12 +4,13 @@ import { RouterModule } from '@angular/router';
 import { TranslatePipe } from '@ngx-translate/core';
 import { LanguageService } from '@app/core/i18n/language.service';
 import { ProfileMenu } from '@ui/menu/profile-menu/profile-menu';
-import { Button } from '@ui/button/button';
+import { NavigationService } from '@core/navigation/navigation.service';
+import { QuickSearch } from '@features/recipes/search/quick-search/quick-search';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule, RouterModule, TranslatePipe, ProfileMenu, Button],
+  imports: [CommonModule, RouterModule, TranslatePipe, ProfileMenu, QuickSearch],
   templateUrl: './navbar.html',
   styleUrls: ['./navbar.scss']
 })
@@ -19,68 +20,130 @@ export class Navbar {
 
   @Output() openLogin = new EventEmitter<void>();
   @Output() openRegister = new EventEmitter<void>();
-  @Output() addRecipe = new EventEmitter<void>();
 
-  // état du menu profil
+  // Navbar menus states
+  menuOpen = false;
   profileMenuOpen = false;
 
-  constructor(public lang: LanguageService, private host: ElementRef<HTMLElement>) {
+  constructor(public lang: LanguageService, private host: ElementRef<HTMLElement>, private nav: NavigationService) {
   }
 
+  // Left Menu
+  toggleMenu() {
+    this.menuOpen = !this.menuOpen;
+  }
+
+  closeMenu() {
+    this.menuOpen = false;
+  }
+
+  goHome() {
+    this.nav.goHome();
+  }
+
+  goToAdvancedSearch(prefill?: any) {
+    this.closeMenu();
+    this.nav.goToAdvancedSearch(prefill);
+  }
+
+  goToAddRecipe() {
+    this.closeMenu();
+    this.nav.goToAddRecipeFull();
+  }
+
+  // Language toggle
   toggleLang(): void {
     const next = this.lang.current() === 'fr' ? 'pt-BR' : 'fr';
     this.lang.use(next);
   }
 
-  onProfileClick(): void {
-    if (this.isAuthenticated) {
-      this.openProfileMenu();
-    } else {
-      // ouvre le menu invité si on veut un petit menu, ou directement la modale login
-      this.openGuestMenu();
-    }
-  }
-
-  openProfileMenu(): void {
-    this.profileMenuOpen = true;
-    // focus management peut être ajouté ici
-  }
-
-  openGuestMenu(): void {
-    this.profileMenuOpen = true;
+  // Profile Menu
+  toggleProfileMenu(): void {
+    this.profileMenuOpen = !this.profileMenuOpen;
   }
 
   closeProfileMenu(): void {
     this.profileMenuOpen = false;
   }
 
-  // fermer sur Échap
-  @HostListener('document:keydown.escape', ['$event']) onEscape(event: KeyboardEvent | Event) {
-    const ke = event as KeyboardEvent;
-    if (ke.key === 'Escape' && this.profileMenuOpen) {
-      this.closeProfileMenu();
-      ke.stopPropagation();
-    }
-  }
-
-  // fermer sur clic hors menu
-  @HostListener('document:click', ['$event'])
-  onDocumentClick(event: MouseEvent) {
-    if (!this.profileMenuOpen) return;
-    const target = event.target as Node;
-    if (!this.host.nativeElement.contains(target)) {
-      this.closeProfileMenu();
-    }
-  }
-
-  // actions invité
-  onLoginClick(): void {
+  // Auth actions
+  onLogin(): void {
     this.closeProfileMenu();
     this.openLogin.emit();
   }
 
-  onRegisterClick(): void {
+  onRegister(): void {
     this.closeProfileMenu();
+    this.openRegister.emit();
+  }
+
+  onProfileClick(): void {
+    if (this.isAuthenticated
+    ) {
+      this.openProfileMenu();
+    } else {
+      this.openGuestMenu();
+    }
+  }
+
+  // TODO: remplacer par un toggle
+  openProfileMenu()
+    :
+    void {
+    this.profileMenuOpen = true;
+  }
+
+  openGuestMenu()
+    :
+    void {
+    this.profileMenuOpen = true;
+  }
+
+  // Close on Escape key
+  @HostListener('document:keydown.escape', ['$event'])
+  onEscape(event
+           :
+             KeyboardEvent | Event
+  ) {
+    const ke = event as KeyboardEvent;
+    if (ke.key === 'Escape') {
+      if (this.menuOpen) {
+        this.menuOpen = false;
+      }
+      if (this.profileMenuOpen) {
+        this.profileMenuOpen = false;
+      }
+      ke.stopPropagation();
+    }
+  }
+
+  // Close on click outside
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event
+                  :
+                  MouseEvent
+  ) {
+    if (!this.profileMenuOpen && !this.menuOpen) return;
+
+    const target = event.target as Node;
+    if (!this.host.nativeElement.contains(target)) {
+      this.menuOpen = false;
+      this.profileMenuOpen = false;
+    }
+  }
+
+  // actions invité
+  onLoginClick()
+    :
+    void {
+    this.profileMenuOpen = false;
+    this.openLogin.emit();
+  }
+
+  onRegisterClick()
+    :
+    void {
+    this.profileMenuOpen = false;
     this.openRegister.emit();
   }
 }

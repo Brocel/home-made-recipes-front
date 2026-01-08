@@ -1,17 +1,36 @@
 <nav class="navbar container">
   <!-- LEFT -->
   <div class="left">
-    <button class="menu-btn" aria-label="{{ 'navbar.menuLabel' | translate }}">☰</button>
+    <button class="menu-btn"
+            aria-label="{{ 'navbar.menuLabel' | translate }}"
+            (click)="toggleMenu()"
+    >
+      ☰
+    </button>
+    <ul class="menu"
+        [class.open]="menuOpen">
+      <li>
+        <a role="menuitem"
+           (click)="goHome()"> {{ 'navbar.home' | translate }}
+        </a>
+      </li>
+      <li>
+        <a role="menuitem"
+           (click)="goToAdvancedSearch()"> {{ 'search.advancedSearch' | translate }}
+        </a>
+      </li>
+      <li>
+        <a role="menuitem"
+           (click)="goToAddRecipe()"> {{ 'recipe.addRecipe' | translate }}
+        </a>
+      </li>
+    </ul>
   </div>
 
   <!-- CENTER -->
   <div class="center">
     <div class="search-inline">
-      <input
-        type="search"
-        placeholder="{{ 'navbar.searchPlaceholder' | translate }}"
-        aria-label="{{ 'navbar.searchPlaceholder' | translate }}" />
-      <app-button variant="ghost">OK</app-button>
+      <quick-search></quick-search>
     </div>
   </div>
 
@@ -24,55 +43,56 @@
       (click)="toggleLang()"
       [attr.aria-label]="'navbar.langLabel' | translate"
       [attr.aria-pressed]="lang.current() === 'pt-BR'">
-      {{ lang.current() === 'fr' ? 'FR' : 'PT' }}
+      {{ lang.current() === 'fr' ? 'FR' : 'pt-BR' }}
     </button>
 
     <!-- état authentifié -->
     @if (isAuthenticated) {
-      <ng-container>
-        <!-- bouton profil / avatar -->
-        <button
-          class="profile-btn"
-          (click)="onProfileClick()"
-          aria-label="{{ 'navbar.profile' | translate }}">
+      <ng-container> <!-- bouton profil / avatar -->
+        <button class="profile-btn"
+                (click)="onProfileClick()"
+                aria-label="{{ 'navbar.profile' | translate }}">
           @if (user?.picture) {
-            <img [src]="user.picture" alt="avatar" class="avatar" />
+            <img [src]="user.picture"
+                 alt="{{ user?.name || 'User' }}"
+                 class="avatar"/>
           } @else {
-            <span aria-hidden="true">👤</span>
-          }
-        </button>
+            <span aria-hidden="true"
+                  class="avatar-fallback">P</span>
+          } </button>
       </ng-container>
     } @else {
       <!-- invité -->
       <ng-template>
-        <button class="profile-btn" (click)="openLogin.emit()" aria-label="{{ 'navbar.profile' | translate }}">
-          👤
+        <button class="profile-btn"
+                (click)="onLoginClick()"
+                aria-label="{{ 'navbar.profile' | translate }}"> P
         </button>
       </ng-template>
     }
+    <!-- PROFILE MENU (rendered conditionally, géré par le component TS) -->
+    @if (profileMenuOpen) {
+      <div class="profile-menu"
+           role="menu"
+           tabindex="-1"
+           aria-label="{{ isAuthenticated ? ('navbar.profileMenu' | translate) : ('navbar.guestMenu' | translate) }}">
+        @if (isAuthenticated) {
+          <ng-container> <!-- placeholder pour le futur composant profile-menu -->
+            <profile-menu (close)="closeProfileMenu()"
+                          [user]="user"></profile-menu>
+          </ng-container>
+        } @else {
+          <ng-template>
+            <button role="menuitem"
+                    type="button"
+                    (click)="onLoginClick()"> {{ 'navbar.login' | translate }}
+            </button>
+            <button role="menuitem"
+                    type="button"
+                    (click)="onRegisterClick()"> {{ 'navbar.register' | translate }}
+            </button>
+          </ng-template>
+        } </div>
+    }
   </div>
-
-  <!-- PROFILE MENU (rendered conditionally, géré par le component TS) -->
-  @if (profileMenuOpen) {
-    <div
-      class="profile-menu"
-      role="menu"
-      tabindex="-1"
-      aria-label="{{ isAuthenticated ? ('navbar.profileMenu' | translate) : ('navbar.guestMenu' | translate) }}">
-      @if (isAuthenticated) {
-        <ng-container>
-          <profile-menu (close)="closeProfileMenu()" [user]="user"></profile-menu>
-        </ng-container>
-      } @else {
-        <ng-template #guestMenu>
-          <button role="menuitem" type="button" (click)="onLoginClick()">
-            {{ 'navbar.login' | translate }}
-          </button>
-          <button role="menuitem" type="button" (click)="onRegisterClick()">
-            {{ 'navbar.register' | translate }}
-          </button>
-        </ng-template>
-      }
-    </div>
-  }
 </nav>

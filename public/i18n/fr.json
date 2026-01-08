@@ -4,6 +4,7 @@
     "lead": "Recettes maison simples et savoureuses."
   },
   "navbar": {
+    "home": "Accueil",
     "menuLabel": "Menu",
     "searchPlaceholder": "Recherche rapide",
     "login": "Se connecter",
@@ -28,6 +29,7 @@
   "search": {
     "placeholder": "Rechercher par mot‑clé...",
     "advancedSearchPlaceHolder": "Recherche avancée...",
+    "advancedSearch": "Recherche avancée",
     "search": "Rechercher"
   },
   "authCta": {
