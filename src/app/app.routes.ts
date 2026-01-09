@@ -10,6 +10,6 @@ export const routes: Routes = [
   { path: 'recipes', component: RecipeList, title: 'Recipes' },
   { path: 'recipes/create', component: AddRecipeFull, title: 'Add Recipe' },
   { path: 'recipes/see', component: RecipeFull, title: 'Recipe' },
-  { path: 'recipes/search', component: AdvancedSearch, title: 'Recipe' },
+  { path: 'recipes/search', component: AdvancedSearch, title: 'Search Recipe' },
   { path: '**', redirectTo: '' }
 ];

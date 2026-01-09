@@ -25,7 +25,6 @@
       "user": {
         "label": "Mon profil",
         "dashboard": "Tableau de bord",
-        "myRecipes": "Mes recettes",
         "logout": "Se déconnecter"
       }
     },

@@ -1,58 +1,67 @@
-// src/app/ui/profile-menu/profile-menu.component.ts
-import { AfterViewInit, Component, ElementRef, EventEmitter, Input, Output, Renderer2, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, Output, viewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
+
+// Angular ARIA menu primitives
+import { Menu, MenuContent, MenuItem, MenuTrigger } from '@angular/aria/menu';
+import { OverlayModule, CdkConnectedOverlay } from '@angular/cdk/overlay';
 
 @Component({
-  selector: 'profile-menu',
+  selector: 'app-profile-menu',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TranslateModule, Menu, MenuContent, MenuItem, MenuTrigger, OverlayModule],
   templateUrl: './profile-menu.html',
   styleUrls: ['./profile-menu.scss']
 })
-export class ProfileMenu implements AfterViewInit {
-  @Input() user: any | null = null;
+export class ProfileMenu {
+  /** Inputs */
+  @Input() user: any = null;
+  @Input() isAuthenticated = false;
+
+  /** Outputs — keep navigation in Navbar (Option 1) */
+  @Output() openLogin = new EventEmitter<void>();
+  @Output() openRegister = new EventEmitter<void>();
+  @Output() openProfile = new EventEmitter<void>();
+  @Output() signOut = new EventEmitter<void>();
   @Output() close = new EventEmitter<void>();
-  @Output() logout = new EventEmitter<void>();
-  @Output() goToProfile = new EventEmitter<void>();
-  @Output() goToSettings = new EventEmitter<void>();
 
-  @ViewChild('menu') menuEl!: ElementRef<HTMLElement>;
-  private firstFocusable?: HTMLElement;
+  menuOpen = false;
+  profileMenu = viewChild<Menu<string>>('profileMenu');
 
-  constructor(private host: ElementRef<HTMLElement>, private renderer: Renderer2) {}
-
-  ngAfterViewInit(): void {
-    // focus the first focusable element in the menu for accessibility
-    const el = this.menuEl?.nativeElement;
-    if (!el) return;
-    this.firstFocusable = el.querySelector<HTMLElement>('button, [href], input, [tabindex]:not([tabindex="-1"])') ?? undefined;
-    this.firstFocusable?.focus();
+  // Toggle the menu open state. ARIA Menu will manage focus and keyboard navigation.
+  toggleMenu(): void {
+    this.menuOpen = !this.menuOpen;
   }
 
-  onClose(): void {
+  // Close the menu and emit close event so parent can react if needed
+  closeMenu(): void {
+    this.menuOpen = false;
     this.close.emit();
   }
 
-  onLogout(): void {
-    this.logout.emit();
-    this.onClose();
+  // Emit-only handlers — Navbar will handle navigation
+  openDashboardClick(): void {
+    this.closeMenu();
+    // emit an event here if you want to handle dashboard navigation centrally
   }
 
-  onProfile(): void {
-    this.goToProfile.emit();
-    this.onClose();
+  openLoginClick(): void {
+    this.closeMenu();
+    this.openLogin.emit();
   }
 
-  onSettings(): void {
-    this.goToSettings.emit();
-    this.onClose();
+  openRegisterClick(): void {
+    this.closeMenu();
+    this.openRegister.emit();
   }
 
-  // called by parent if needed to trap focus or close on outside click
-  handleKeydown(event: KeyboardEvent): void {
-    if (event.key === 'Escape') {
-      this.onClose();
-      event.stopPropagation();
-    }
+  openProfileClick(): void {
+    this.closeMenu();
+    this.openProfile.emit();
+  }
+
+  signOutClick(): void {
+    this.closeMenu();
+    this.signOut.emit();
   }
 }

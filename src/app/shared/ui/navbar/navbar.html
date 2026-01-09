@@ -26,53 +26,13 @@
       {{ lang.current() === 'fr' ? 'FR' : 'pt-BR' }}
     </button>
 
-    <!-- état authentifié -->
-    @if (isAuthenticated) {
-      <ng-container> <!-- bouton profil / avatar -->
-        <button class="profile-btn"
-                (click)="onProfileClick()"
-                aria-label="{{ 'navbar.profile' | translate }}">
-          @if (user?.picture) {
-            <img [src]="user.picture"
-                 alt="{{ user?.name || 'User' }}"
-                 class="avatar"/>
-          } @else {
-            <span aria-hidden="true"
-                  class="avatar-fallback">P</span>
-          } </button>
-      </ng-container>
-    } @else {
-      <!-- invité -->
-      <ng-template>
-        <button class="profile-btn"
-                (click)="onLoginClick()"
-                aria-label="{{ 'navbar.profile' | translate }}"> P
-        </button>
-      </ng-template>
-    }
-    <!-- PROFILE MENU (rendered conditionally, géré par le component TS) -->
-    @if (profileMenuOpen) {
-      <div class="profile-menu"
-           role="menu"
-           tabindex="-1"
-           aria-label="{{ isAuthenticated ? ('navbar.profileMenu' | translate) : ('navbar.guestMenu' | translate) }}">
-        @if (isAuthenticated) {
-          <ng-container> <!-- placeholder pour le futur composant profile-menu -->
-            <profile-menu (close)="closeProfileMenu()"
-                          [user]="user"></profile-menu>
-          </ng-container>
-        } @else {
-          <ng-template>
-            <button role="menuitem"
-                    type="button"
-                    (click)="onLoginClick()"> {{ 'navbar.login' | translate }}
-            </button>
-            <button role="menuitem"
-                    type="button"
-                    (click)="onRegisterClick()"> {{ 'navbar.register' | translate }}
-            </button>
-          </ng-template>
-        } </div>
-    }
+    <!-- PROFILE MENU -->
+    <app-profile-menu [user]="user"
+                      [isAuthenticated]="isAuthenticated"
+                      (openLogin)="goLogin()"
+                      (openRegister)="goRegister()"
+                      (openProfile)="goProfile()"
+                      (signOut)="signOut()">
+    </app-profile-menu>
   </div>
 </nav>

@@ -1,6 +1,5 @@
-import { Component, Output, EventEmitter, ElementRef, HostListener } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NavigationService } from '@app/core/navigation/navigation.service';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
@@ -17,7 +16,7 @@ export class LeftMenu {
 
   menuOpen = false;
 
-  constructor(private host: ElementRef<HTMLElement>, private nav: NavigationService) {}
+  constructor() {}
 
   toggleMenu(): void {
     this.menuOpen = !this.menuOpen;
@@ -31,38 +30,16 @@ export class LeftMenu {
   goHome(): void {
     this.closeMenu();
     this.openHome.emit();
-    this.nav.goHome();
   }
 
-  goAdvancedSearch(prefill?: any): void {
+  goAdvancedSearch(): void {
     this.closeMenu();
     this.openAdvancedSearch.emit();
-    this.nav.goToAdvancedSearch(prefill);
   }
 
-  goAddRecipe(prefill?: any): void {
+  goAddRecipe(): void {
     this.closeMenu();
     this.openAddRecipe.emit();
-    this.nav.goToAddRecipeFull(prefill);
   }
 
-  // fermeture au clic hors composant
-  @HostListener('document:click', ['$event'])
-  onDocumentClick(event: MouseEvent): void {
-    if (!this.host.nativeElement.contains(event.target as Node)) {
-      this.menuOpen = false;
-    }
-  }
-
-  // Close on Escape key
-  @HostListener('document:keydown.escape', ['$event'])
-  onEscape(event: KeyboardEvent | Event) {
-    const ke = event as KeyboardEvent;
-    if (ke.key === 'Escape') {
-      if (this.menuOpen) {
-        this.menuOpen = false;
-      }
-      ke.stopPropagation();
-    }
-  }
 }

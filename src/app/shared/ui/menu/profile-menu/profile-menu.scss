@@ -1,0 +1,66 @@
+@use 'tokens' as t;
+
+.profile-menu-root {
+  position: relative;
+  display: inline-block;
+
+  .profile-btn {
+    background: transparent;
+    border: none;
+    padding: t.$space-sm;
+    border-radius: 999px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .avatar-fallback {
+    width: 36px;
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--color-surface);
+    color: var(--color-text);
+    font-weight: 600;
+  }
+
+  .profile-menu-panel {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 8px);
+    background: t.$color-panel-bg;
+    box-shadow: t.$shadow-md;
+    border-radius: t.$radius-md;
+    padding: t.$space-sm;
+    min-width: 220px;
+    z-index: 70;
+    transition: transform 140ms ease, opacity 140ms ease;
+    transform-origin: top right;
+  }
+
+  /* liste */
+  .profile-menu-panel span {
+    display: block;
+    padding: 0.5rem 0.75rem;
+    color: t.$color-text-strong;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: t.$radius-sm;
+  }
+
+  .profile-menu-panel span:hover,
+  .profile-menu-panel span:focus {
+    background: t.$color-hover-surface;
+    outline: none;
+  }
+}

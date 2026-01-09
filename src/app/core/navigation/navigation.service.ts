@@ -36,6 +36,10 @@ export class NavigationService {
     return this.safeNavigate([{ outlets: { modal: ['login'] } }]);
   }
 
+  openRegisterModal(): Promise<boolean> {
+    return this.safeNavigate([{ outlets: { modal: ['register'] } }]);
+  }
+
   closeModal(): Promise<boolean> {
     return this.safeNavigate([{ outlets: { modal: null } }]);
   }
@@ -58,5 +62,9 @@ export class NavigationService {
       console.warn('Navigation failed', err);
       return false;
     }
+  }
+
+  gotToProfile() {
+    // TODO
   }
 }
