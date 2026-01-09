@@ -1,0 +1,27 @@
+<!-- src/app/shared/left-menu/left-menu.html -->
+<div class="left-menu">
+  <button
+    class="menu-btn"
+    (click)="toggleMenu()"
+    [attr.aria-expanded]="menuOpen"
+    aria-haspopup="true"
+    aria-label="{{ 'menu.label' | translate }}">
+    ☰
+  </button>
+
+  @if (menuOpen) {
+    <div class="menu-panel" role="menu">
+      <ul>
+        <li>
+          <a role="menuitem" (click)="goHome()">{{ 'menu.left.home' | translate }}</a>
+        </li>
+        <li>
+          <a role="menuitem" (click)="goAdvancedSearch()">{{ 'menu.left.search' | translate }}</a>
+        </li>
+        <li>
+          <a role="menuitem" (click)="goAddRecipe()">{{ 'menu.left.addRecipe' | translate }}</a>
+        </li>
+      </ul>
+    </div>
+  }
+</div>

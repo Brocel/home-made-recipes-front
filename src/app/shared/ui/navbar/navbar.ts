@@ -6,11 +6,12 @@ import { LanguageService } from '@app/core/i18n/language.service';
 import { ProfileMenu } from '@ui/menu/profile-menu/profile-menu';
 import { NavigationService } from '@core/navigation/navigation.service';
 import { QuickSearch } from '@features/recipes/search/quick-search/quick-search';
+import { LeftMenu } from '@ui/menu/left-menu/left-menu';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule, RouterModule, TranslatePipe, ProfileMenu, QuickSearch],
+  imports: [CommonModule, RouterModule, TranslatePipe, ProfileMenu, QuickSearch, LeftMenu],
   templateUrl: './navbar.html',
   styleUrls: ['./navbar.scss']
 })
@@ -101,10 +102,7 @@ export class Navbar {
 
   // Close on Escape key
   @HostListener('document:keydown.escape', ['$event'])
-  onEscape(event
-           :
-             KeyboardEvent | Event
-  ) {
+  onEscape(event: KeyboardEvent | Event) {
     const ke = event as KeyboardEvent;
     if (ke.key === 'Escape') {
       if (this.menuOpen) {

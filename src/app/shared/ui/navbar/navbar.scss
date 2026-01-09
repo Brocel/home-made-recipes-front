@@ -1,11 +1,14 @@
 @use 'tokens' as t;
 
 .navbar {
+  background-color: t.$color-primary;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: t.$space-md;
-  padding: t.$space-sm 0;
+  padding: t.$space-sm t.$space-sm;
+  max-width: t.$max-width;
+  margin: 0 auto;
 
   .left {
     display: flex;
@@ -13,9 +16,10 @@
   }
 
   .center {
-    flex: 1;
+    flex: 1 1 auto;
     display: flex;
     justify-content: center;
+    min-width: 0;
   }
 
   .right {
@@ -25,26 +29,17 @@
   }
 
   .search-inline {
-    display: flex;
-    gap: t.$space-sm;
     flex: 1 1 auto;
     min-width: 0;
+    max-width: t.$search-max-width;
+  }
 
-    input {
-      padding: 8px 12px;
-      border-radius: 8px;
-      border: 1px solid rgba(0, 0, 0, 0.08);
-      min-width: 0;
-      width: 100%;
-      max-width: 520px;
-      transition: box-shadow .12s ease;
-    }
-
-    input:focus {
-      outline: none;
-      box-shadow: 0 0 0 4px rgba(255, 107, 53, 0.08);
-      border-color: t.$color-primary;
-    }
+  .profile-btn {
+    background: transparent;
+    border: none;
+    padding: 4px;
+    border-radius: 999px;
+    cursor: pointer;
   }
 
   .avatar {
@@ -53,11 +48,39 @@
     border-radius: 50%;
     object-fit: cover;
   }
-}
 
-/* mobile : réduire max-width si besoin */
-@media (max-width: 720px) {
-  .search-inline input {
-    max-width: 260px;
+  .avatar-fallback {
+    width: 36px;
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--color-surface);
+  }
+
+  .profile-menu {
+    position: absolute;
+    right: 1rem;
+    top: calc(100% + 8px);
+    background: t.$color-panel-bg;
+    box-shadow: t.$shadow-md;
+    border-radius: t.$radius-md;
+    padding: t.$space-sm;
+    min-width: 200px;
+    z-index: 60;
+
+    button {
+      width: 100%;
+      text-align: left;
+      background: transparent;
+      border: none;
+      padding: 0.5rem 0.75rem;
+      border-radius: t.$radius-sm;
+    }
+
+    button:hover {
+      background: t.$color-hover-surface;
+    }
   }
 }

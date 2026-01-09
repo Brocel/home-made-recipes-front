@@ -7,7 +7,7 @@
   justify-content: center;
   gap: 8px;
   padding: 10px 16px;
-  border-radius: t.$radius;
+  border-radius: t.$radius-md;
   font-weight: 600;
   cursor: pointer;
   transition: transform 120ms ease, box-shadow 120ms ease, opacity 120ms ease;
@@ -33,7 +33,7 @@
 
 /* Variantes */
 .btn-primary {
-  background: t.$color-primary;
+  background: t.$color-primary-100;
   color: white;
   box-shadow: 0 6px 18px rgba(231,111,81,0.08);
   &:hover { transform: translateY(-1px); }

@@ -4,16 +4,34 @@
     "lead": "Recettes maison simples et savoureuses."
   },
   "navbar": {
-    "home": "Accueil",
-    "menuLabel": "Menu",
     "searchPlaceholder": "Recherche rapide",
-    "login": "Se connecter",
-    "register": "S'inscrire",
-    "langLabel": "Langue",
-    "profile": "Profil",
-    "profileAlt": "Avatar",
-    "profileMenu": "Menu du profil",
-    "guestMenu": "Menu invité"
+    "langLabel": "Langue"
+  },
+  "menu": {
+    "label": "Menu",
+    "left": {
+      "home": "Accueil",
+      "addRecipe": "Ajouter une recette",
+      "search": "Recherche avancée"
+    },
+    "profile": {
+      "label": "Profil",
+      "profileAlt": "Avatar",
+      "guest": {
+        "label": "Menu invité",
+        "login": "Se connecter",
+        "register": "S'inscrire"
+      },
+      "user": {
+        "label": "Mon profil",
+        "dashboard": "Tableau de bord",
+        "myRecipes": "Mes recettes",
+        "logout": "Se déconnecter"
+      }
+    },
+    "home": "Accueil",
+    "searchPlaceholder": "Recherche rapide",
+    "langLabel": "Langue"
   },
   "login": {
     "title": "Connexion",

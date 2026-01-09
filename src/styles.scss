@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-@use 'styles/tokens' as t;
+@use 'tokens' as t;
 
 html, body {
   margin: 0;
@@ -24,7 +24,7 @@ html, body {
   align-items: center;
   gap: 8px;
   padding: 10px 16px;
-  border-radius: t.$radius;
+  border-radius: t.$radius-md;
   border: none;
   cursor: pointer;
   font-weight: 600;
