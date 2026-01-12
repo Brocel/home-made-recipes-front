@@ -29,8 +29,7 @@
       }
     },
     "home": "Accueil",
-    "searchPlaceholder": "Recherche rapide",
-    "langLabel": "Langue"
+    "searchPlaceholder": "Recherche rapide"
   },
   "login": {
     "title": "Connexion",

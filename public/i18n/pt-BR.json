@@ -4,16 +4,32 @@
     "lead": "Receitas caseiras simples e saborosas."
   },
   "navbar": {
-    "home": "Início",
-    "menuLabel": "Menu",
     "searchPlaceholder": "Pesquisa rápida",
-    "login": "Conectar-se",
-    "register": "Registrar-se",
-    "langLabel": "Idioma",
-    "profile": "Perfil",
-    "profileAlt": "Avatar",
-    "profileMenu": "Menu do perfil",
-    "guestMenu": "Menu do visitante"
+    "langLabel": "Idioma"
+  },
+  "menu": {
+    "label": "Menu",
+    "left": {
+      "home": "Início",
+      "addRecipe": "Adicionar uma receita",
+      "search": "Pesquisa avançada"
+    },
+    "profile": {
+      "label": "Perfil",
+      "profileAlt": "Avatar",
+      "guest": {
+        "label": "Menu de convidado",
+        "login": "Conectar-se",
+        "register": "Inscrever-se"
+      },
+      "user": {
+        "label": "Meu perfil",
+        "dashboard": "Dashboard",
+        "logout": "Desconectar-se"
+      }
+    },
+    "home": "Início",
+    "searchPlaceholder": "Pesquisa rápida"
   },
   "login": {
     "title": "Conneção",
