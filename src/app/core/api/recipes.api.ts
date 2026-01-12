@@ -6,13 +6,14 @@ import { environment } from '@env/environment';
 import { Recipe } from '@shared/models/recipes/recipe';
 import { ListParams } from '@models/request/list-params';
 import { PagedResponse } from '@models/response/paged-response';
+import { LanguageService } from '@core/i18n/language.service';
 
 @Injectable({ providedIn: 'root' })
 export class RecipesApi {
   private readonly apiBase = environment.apiBase ?? '/api';
   private readonly base = `${this.apiBase}/recipes`;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private lang: LanguageService) {}
 
   list(params?: ListParams): Observable<PagedResponse<Recipe>> {
     let httpParams = new HttpParams();
@@ -59,11 +60,19 @@ export class RecipesApi {
   }
 
   private handleError(error: HttpErrorResponse) {
+    // todo: fix
     console.error('RecipesApi error', { status: error.status, url: error.url, error: error.error });
-    let message = 'Une erreur est survenue lors de la communication avec le serveur.';
-    if (error.status === 0) message = 'Impossible de contacter le serveur. Vérifie ta connexion.';
-    else if (error.status >= 400 && error.status < 500) message = error.error?.message ?? 'Requête invalide ou non autorisée.';
-    else if (error.status >= 500) message = 'Erreur serveur. Réessaie plus tard.';
+    this.lang.setMsg('errors.default');
+    if (error.status === 0) {
+      this.lang.setMsg('errors.000');
+    }
+    else if (error.status >= 400 && error.status < 500) {
+      this.lang.setMsg('errors.400');
+    }
+    else if (error.status >= 500) {
+      this.lang.setMsg('errors.500');
+    }
+    let message = this.lang.getMessageSignal();
     return throwError(() => ({ status: error.status, message, raw: error.error }));
   }
 }

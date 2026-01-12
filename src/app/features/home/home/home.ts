@@ -1,4 +1,5 @@
 import { Component, OnInit, signal } from '@angular/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { RecipesApi } from '@core/api/recipes.api';
@@ -8,10 +9,11 @@ import { QuickSearch } from '@features/recipes/search/quick-search/quick-search'
 import { AdvancedSearch } from '@features/recipes/search/advanced-search/advanced-search';
 import { AuthCallToAction } from '../auth-call-to-action/auth-call-to-action';
 import { AddRecipeMini } from '@features/recipes/add/add-recipe-mini/add-recipe-mini';
-import { TranslatePipe } from '@ngx-translate/core';
 import { finalize, of, take, tap } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { RecipeMini } from '@features/recipes/recipe-mini/recipe-mini';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { LanguageService } from '@core/i18n/language.service';
 
 @Component({
   selector: 'app-home',
@@ -25,6 +27,7 @@ import { RecipeMini } from '@features/recipes/recipe-mini/recipe-mini';
     AddRecipeMini,
     TranslatePipe,
     RecipeMini,
+    MatProgressSpinnerModule,
   ],
   templateUrl: './home.html',
   styleUrls: ['./home.scss']
@@ -38,14 +41,16 @@ export class Home implements OnInit {
     type: 'Dessert',
     preparationTime: 30,
   };
+
+  // Signals
   dailyRecipe = signal<Recipe | null>(null);
   loading = signal(false);
-  error = signal<string | null>(null);
-
   auth = isAuthenticated;
+  errorMessage = signal<string | null>(null);
 
-  constructor(private api: RecipesApi) {
+  constructor(private api: RecipesApi, private lang: LanguageService) {
   }
+
 
   ngOnInit(): void {
     this.fetchDailyRecipe();
@@ -56,15 +61,14 @@ export class Home implements OnInit {
 
   fetchDailyRecipe(): void {
     this.loading.set(true);
-    this.error.set(null);
     this.api.dailyRecipe().pipe(
       take(1),
       tap((recipe: Recipe) => {
         this.dailyRecipe.set(recipe);
       }),
       catchError((err) => {
-        console.error('Error fetching daily recipe', err);
-        // this.error.set('Impossible de charger la recette du jour.'); // TODO: remove comment later
+        this.lang.setMsg('errors.recipe.fetchingDaily', {reason: err?.message ?? 'unknown'});
+        this.errorMessage = this.lang.getMessageSignal();
         return of(null);
       }),
       finalize(() => {
@@ -74,7 +78,6 @@ export class Home implements OnInit {
   }
 
   onSearch(query: string) {
-    // placeholder : appeler l'API de recherche plus tard
     console.log('search', query);
   }
 
@@ -83,8 +86,6 @@ export class Home implements OnInit {
   }
 
   onOpenCreateFull(payload: { title?: string; type?: string }) {
-    // navigation vers la page de création complète (à implémenter)
-    // router navigation example: this.router.navigate(['/recipes/create'], { state: payload });
     console.log('open create full', payload);
   }
 

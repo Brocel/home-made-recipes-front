@@ -1,6 +1,7 @@
 <div class="home-page">
   <div class="home-layout container">
-    <aside class="left-col" aria-label="{{ 'navbar.searchPlaceholder' | translate }}">
+    <aside class="left-col"
+           aria-label="{{ 'navbar.searchPlaceholder' | translate }}">
       <quick-search (search)="onSearch($event)"></quick-search>
     </aside>
 
@@ -23,22 +24,23 @@
       <section class="daily">
         <h2>{{ 'home.dailyRecipe' | translate }}</h2>
         @if (loading()) {
-          <div class="loading">
-            <span class="spinner"></span>
-          </div>
+          <mat-spinner
+            aria-label="{{ 'common.loading' | translate }}">
+          </mat-spinner>
         } @else {
           <app-recipe-mini
-          [recipe]="dailyRecipe()">
+            [recipe]="dailyRecipe()">
           </app-recipe-mini>
         }
 
-        @if (error()) {
-          <div class="error">{{ error() }}</div>
+        @if (errorMessage()) {
+          <div class="error">{{ errorMessage() }}</div>
         }
       </section>
     </main>
 
-    <aside class="right-col" aria-label="{{ 'recipe.addRecipe' | translate }}">
+    <aside class="right-col"
+           aria-label="{{ 'recipe.addRecipe' | translate }}">
       @if (auth()) {
         <ng-container>
           <add-recipe-mini (openCreateFull)="onOpenCreateFull($event)"></add-recipe-mini>
