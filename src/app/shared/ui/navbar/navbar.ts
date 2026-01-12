@@ -45,10 +45,6 @@ export class Navbar {
     void this.nav.openLoginModal();
   }
 
-  goRegister() {
-    void this.nav.openRegisterModal();
-  }
-
   goProfile() {
     void this.nav.gotToProfile();
   }

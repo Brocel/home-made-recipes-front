@@ -1,12 +1,12 @@
 // src/app/core/navigation/navigation.service.ts
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { LanguageService } from '@app/core/i18n/language.service';
-import { AdvancedSearch } from '@features/recipes/search/advanced-search/advanced-search';
+import { MatDialog } from '@angular/material/dialog';
+import { Login } from '@features/auth/login/login';
 
 @Injectable({ providedIn: 'root' })
 export class NavigationService {
-  constructor(private router: Router, private lang: LanguageService) {}
+  constructor(private router: Router, private dialog: MatDialog) {}
 
   // navigation simple
   goHome(): Promise<boolean> {
@@ -31,13 +31,13 @@ export class NavigationService {
     return this.safeNavigate(['/recipes/search'], { state: prefill });
   }
 
-  // ouvrir modal via outlet auxiliaire nommé "modal"
-  openLoginModal(): Promise<boolean> {
-    return this.safeNavigate([{ outlets: { modal: ['login'] } }]);
-  }
-
-  openRegisterModal(): Promise<boolean> {
-    return this.safeNavigate([{ outlets: { modal: ['register'] } }]);
+  openLoginModal(): void {
+    this.dialog.open(Login, {
+      width: '30%',
+      panelClass: 'app-modal-panel',
+      autoFocus: true,
+      restoreFocus: true
+    });
   }
 
   closeModal(): Promise<boolean> {

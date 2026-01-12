@@ -19,7 +19,6 @@ export class ProfileMenu {
 
   /** Outputs */
   @Output() openLogin = new EventEmitter<void>();
-  @Output() openRegister = new EventEmitter<void>();
   @Output() openProfile = new EventEmitter<void>();
   @Output() signOut = new EventEmitter<void>();
   @Output() close = new EventEmitter<void>();
@@ -42,11 +41,6 @@ export class ProfileMenu {
   openLoginClick(): void {
     this.closeMenu();
     this.openLogin.emit();
-  }
-
-  openRegisterClick(): void {
-    this.closeMenu();
-    this.openRegister.emit();
   }
 
   openProfileClick(): void {
