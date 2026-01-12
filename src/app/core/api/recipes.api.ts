@@ -33,6 +33,11 @@ export class RecipesApi {
       );
   }
 
+  dailyRecipe(): Observable<Recipe> {
+    return this.http.get<Recipe>(`${this.base}/dailyRecipe`)
+      .pipe(catchError(this.handleError));
+  }
+
   get(id: string): Observable<Recipe> {
     return this.http.get<Recipe>(`${this.base}/${encodeURIComponent(id)}`)
       .pipe(catchError(this.handleError));

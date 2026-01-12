@@ -1,7 +1,8 @@
 {
   "home": {
     "title": "Home Made Recipes",
-    "lead": "Recettes maison simples et savoureuses."
+    "lead": "Recettes maison simples et savoureuses.",
+    "dailyRecipe": "Recette du jour"
   },
   "navbar": {
     "searchPlaceholder": "Recherche rapide",
@@ -53,13 +54,16 @@
     "description": "Connecte‑toi pour ajouter et sauvegarder tes recettes."
   },
   "recipe": {
+    "description": "Description",
     "ingredients": "Ingrédients",
     "instructions": "Instructions",
     "addRecipe": "Ajouter une recette",
+    "prepTime": "Temps de préparation",
     "author": "Auteur",
     "title": "Nom de la recette",
     "type": "Type de recette",
-    "create": "Créer une recette"
+    "create": "Créer une recette",
+    "show": "Voir la recette"
   },
   "common": {
     "cancel": "Annuler",

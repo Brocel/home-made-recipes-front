@@ -5,7 +5,7 @@
     </aside>
 
     <main class="main-col">
-      <section class="hero">
+      <section class="title">
         <h1>{{ 'home.title' | translate }}</h1>
         <p class="lead">{{ 'home.lead' | translate }}</p>
 
@@ -21,24 +21,15 @@
       </section>
 
       <section class="daily">
-<!--  TODO: remplacer par recette du jour ? + component recette à faire     -->
-        <h2>Recettes récentes</h2>
+        <h2>{{ 'home.dailyRecipe' | translate }}</h2>
         @if (loading()) {
           <div class="loading">
-            <span class="spinner" aria-hidden="true"></span>
+            <span class="spinner"></span>
           </div>
-        } @else if (recipes().length) {
-          <ul class="grid">
-            @for (r of recipes(); track r.id) {
-              <li>
-                <article class="card">
-                  <h3>{{ r.title }}</h3>
-                  <p class="muted">{{ r.description }}</p>
-                  <a [routerLink]="['/recipes', r.id]">Voir</a>
-                </article>
-              </li>
-            }
-          </ul>
+        } @else {
+          <app-recipe-mini
+          [recipe]="dailyRecipe()">
+          </app-recipe-mini>
         }
 
         @if (error()) {

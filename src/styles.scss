@@ -32,6 +32,17 @@ html, body {
 .btn-primary { background: t.$color-primary; color: white; }
 .btn-outline { background: transparent; border: 1px solid rgba(0,0,0,0.08); color: t.$text; }
 
+
+/* Spinner simple CSS */
+.spinner {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.25);
+  border-top-color: rgba(255,255,255,0.9);
+  animation: spin 0.8s linear infinite;
+}
+
 /* responsive utilities */
 @media (max-width: 768px) {
   .container { padding: 0 t.$space-sm; }

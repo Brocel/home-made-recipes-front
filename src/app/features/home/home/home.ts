@@ -9,6 +9,9 @@ import { AdvancedSearch } from '@features/recipes/search/advanced-search/advance
 import { AuthCallToAction } from '../auth-call-to-action/auth-call-to-action';
 import { AddRecipeMini } from '@features/recipes/add/add-recipe-mini/add-recipe-mini';
 import { TranslatePipe } from '@ngx-translate/core';
+import { finalize, of, take, tap } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { RecipeMini } from '@features/recipes/recipe-mini/recipe-mini';
 
 @Component({
   selector: 'app-home',
@@ -21,12 +24,21 @@ import { TranslatePipe } from '@ngx-translate/core';
     AuthCallToAction,
     AddRecipeMini,
     TranslatePipe,
+    RecipeMini,
   ],
   templateUrl: './home.html',
   styleUrls: ['./home.scss']
 })
 export class Home implements OnInit {
-  recipes = signal<Recipe[]>([]); // TODO: remplacer par la recette du jour
+  fakeDailyRecipe: Recipe = { // TODO: delete later
+    id: 0,
+    title: 'Recette du jour',
+    description: 'Une délicieuse recette à essayer aujourd\'hui.',
+    author: 'Chef Exemple',
+    type: 'Dessert',
+    preparationTime: 30,
+  };
+  dailyRecipe = signal<Recipe | null>(null);
   loading = signal(false);
   error = signal<string | null>(null);
 
@@ -36,22 +48,29 @@ export class Home implements OnInit {
   }
 
   ngOnInit(): void {
-    this.fetchRecent();
+    this.fetchDailyRecipe();
+    if (!this.dailyRecipe()) {
+      this.dailyRecipe.set(this.fakeDailyRecipe);
+    }
   }
 
-  fetchRecent(): void {
+  fetchDailyRecipe(): void {
     this.loading.set(true);
     this.error.set(null);
-    this.api.list({page: 1, pageSize: 6}).subscribe({
-      next: (paged) => {
-        this.recipes.set(paged.items ?? []);
+    this.api.dailyRecipe().pipe(
+      take(1),
+      tap((recipe: Recipe) => {
+        this.dailyRecipe.set(recipe);
+      }),
+      catchError((err) => {
+        console.error('Error fetching daily recipe', err);
+        // this.error.set('Impossible de charger la recette du jour.'); // TODO: remove comment later
+        return of(null);
+      }),
+      finalize(() => {
         this.loading.set(false);
-      },
-      error: (err) => {
-        this.error.set(err?.message ?? 'Erreur lors du chargement des recettes');
-        this.loading.set(false);
-      }
-    });
+      })
+    ).subscribe();
   }
 
   onSearch(query: string) {

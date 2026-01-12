@@ -1,1 +1,16 @@
-<p>recipe-mini works!</p>
+<div class="container">
+  <section>
+    <article class="recipe-mini-card">
+      <div>
+        <h3>{{ recipe?.title }}</h3>
+        <span class="author">{{ 'recipe.author' | translate }} {{ recipe?.author }}</span>
+      </div>
+      <div>
+        <p class="muted">{{ 'recipe.description' | translate }}: {{ recipe?.description }}</p>
+        <span>{{ 'recipe.type' | translate }}: {{ recipe?.type }}</span>
+        <span>{{ 'recipe.prepTime' | translate }}: {{ recipe?.preparationTime }}min</span>
+      </div>
+      <button>{{ 'recipe.show' | translate }}</button>
+    </article>
+  </section>
+</div>
