@@ -2,9 +2,8 @@ import { Component, EventEmitter, Input, Output, viewChild } from '@angular/core
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 
-// Angular ARIA menu primitives
 import { Menu, MenuContent, MenuItem, MenuTrigger } from '@angular/aria/menu';
-import { OverlayModule, CdkConnectedOverlay } from '@angular/cdk/overlay';
+import { OverlayModule } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-profile-menu',
@@ -18,7 +17,7 @@ export class ProfileMenu {
   @Input() user: any = null;
   @Input() isAuthenticated = false;
 
-  /** Outputs — keep navigation in Navbar (Option 1) */
+  /** Outputs */
   @Output() openLogin = new EventEmitter<void>();
   @Output() openRegister = new EventEmitter<void>();
   @Output() openProfile = new EventEmitter<void>();
@@ -27,11 +26,6 @@ export class ProfileMenu {
 
   menuOpen = false;
   profileMenu = viewChild<Menu<string>>('profileMenu');
-
-  // Toggle the menu open state. ARIA Menu will manage focus and keyboard navigation.
-  toggleMenu(): void {
-    this.menuOpen = !this.menuOpen;
-  }
 
   // Close the menu and emit close event so parent can react if needed
   closeMenu(): void {

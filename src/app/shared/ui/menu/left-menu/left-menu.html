@@ -1,27 +1,59 @@
 <!-- src/app/shared/left-menu/left-menu.html -->
-<div class="left-menu">
+<div class="left-menu-root">
+  <!-- Trigger button:  -->
   <button
     class="menu-btn"
-    (click)="toggleMenu()"
-    [attr.aria-expanded]="menuOpen"
-    aria-haspopup="true"
+    ngMenuTrigger
+    #origin
+    #trigger="ngMenuTrigger"
+    [menu]="mainMenu()"
     aria-label="{{ 'menu.label' | translate }}">
     ☰
   </button>
 
-  @if (menuOpen) {
-    <div class="menu-panel" role="menu">
-      <ul>
-        <li>
-          <a role="menuitem" (click)="goHome()">{{ 'menu.left.home' | translate }}</a>
-        </li>
-        <li>
-          <a role="menuitem" (click)="goAdvancedSearch()">{{ 'menu.left.search' | translate }}</a>
-        </li>
-        <li>
-          <a role="menuitem" (click)="goAddRecipe()">{{ 'menu.left.addRecipe' | translate }}</a>
-        </li>
-      </ul>
+  <!-- Menu content -->
+  <ng-template
+    [cdkConnectedOverlayOpen]="trigger.expanded()"
+    [cdkConnectedOverlay]="{origin, usePopover: 'inline'}"
+    cdkAttachPopoverAsChild>
+
+    <div ngMenu
+         class="menu-panel"
+         #mainMenu="ngMenu">
+      <ng-template ngMenuContent>
+        <div ngMenuItem
+             role="menuitem"
+             tabindex="0"
+             (click)="goHome()"
+             onKeyDown="goHome()"
+             value="{{ 'menu.left.home' | translate }}">
+          <span class="label">
+            {{ 'menu.left.home' | translate }}
+          </span>
+        </div>
+
+        <div ngMenuItem
+             role="menuitem"
+             tabindex="0"
+             (click)="goAdvancedSearch()"
+             onKeyDown="goAdvancedSearch()"
+             value="{{ 'menu.left.search' | translate }}">
+          <span class="label">
+            {{ 'menu.left.search' | translate }}
+          </span>
+        </div>
+
+        <div ngMenuItem
+             role="menuitem"
+             tabindex="0"
+             (click)="goAddRecipe()"
+             onKeyDown="goAddRecipe()"
+             value="{{ 'menu.left.addRecipe' | translate }}">
+          <span class="label">
+            {{ 'menu.left.addRecipe' | translate }}
+          </span>
+        </div>
+      </ng-template>
     </div>
-  }
+  </ng-template>
 </div>

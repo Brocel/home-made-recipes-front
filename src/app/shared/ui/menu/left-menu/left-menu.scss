@@ -1,55 +1,51 @@
 @use 'tokens' as t;
 
-.left-menu {
+.left-menu-root {
   position: relative;
   display: inline-block;
-}
 
-.menu-btn {
-  background: transparent;
-  border: none;
-  font-size: 1.2rem;
-  padding: t.$space-sm;
-  cursor: pointer;
-  border-radius: t.$radius-sm;
-}
+  .menu-btn {
+    background: transparent;
+    border: none;
+    padding: t.$space-sm;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: t.$radius-sm;
+  }
 
-.menu-btn:focus {
-  outline: 2px solid rgba(t.$color-primary, t.$focus-alpha);
-  outline-offset: 2px;
-}
+  .menu-btn:focus {
+    outline: 2px solid rgba(t.$color-panel-bg, t.$focus-alpha);
+    outline-offset: 2px;
+  }
 
-/* panneau du menu */
-.menu-panel {
-  position: absolute;
-  top: 44px;
-  left: 0;
-  background: t.$color-panel-bg;
-  box-shadow: t.$shadow-md;
-  border-radius: t.$radius-md;
-  padding: t.$space-sm;
-  min-width: 200px;
-  z-index: 60;
-}
+  /* panneau du menu */
+  .menu-panel {
+    position: absolute;
+    left: 0;
+    top: calc(100% + 13px);
+    background: t.$color-panel-bg;
+    box-shadow: t.$shadow-md;
+    border-radius: t.$radius-md;
+    padding: t.$space-sm;
+    min-width: 200px;
+    z-index: 60;
+  }
 
-/* liste */
-.menu-panel ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
+  .menu-panel span {
+    display: block;
+    padding: 0.5rem 0.75rem;
+    color: t.$color-text-strong;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: t.$radius-sm;
+  }
 
-.menu-panel a {
-  display: block;
-  padding: 0.5rem 0.75rem;
-  color: t.$color-text-strong;
-  text-decoration: none;
-  cursor: pointer;
-  border-radius: t.$radius-sm;
-}
-
-.menu-panel a:hover,
-.menu-panel a:focus {
-  background: t.$color-hover-surface;
-  outline: none;
+  .menu-panel span:hover,
+  .menu-panel span:focus {
+    background: t.$color-hover-surface;
+    outline: none;
+  }
 }

@@ -15,6 +15,11 @@
     justify-content: center;
   }
 
+  .profile-btn:focus {
+    outline: 2px solid rgba(t.$color-primary, t.$focus-alpha);
+    outline-offset: 2px;
+  }
+
   .avatar {
     width: 36px;
     height: 36px;
@@ -48,7 +53,6 @@
     transform-origin: top right;
   }
 
-  /* liste */
   .profile-menu-panel span {
     display: block;
     padding: 0.5rem 0.75rem;
