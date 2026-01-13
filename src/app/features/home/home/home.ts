@@ -66,8 +66,8 @@ export class Home implements OnInit {
       tap((recipe: Recipe) => {
         this.dailyRecipe.set(recipe);
       }),
-      catchError((err) => {
-        this.lang.setMsg('errors.recipe.fetchingDaily', {reason: err?.message ?? 'unknown'});
+      catchError(() => {
+        this.lang.setMsg('errors.recipe.fetchingDaily', undefined);
         this.errorMessage = this.lang.getMessageSignal();
         return of(null);
       }),

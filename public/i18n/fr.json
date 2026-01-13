@@ -72,12 +72,8 @@
     "loading": "Chargement..."
   },
   "errors": {
-    "default": "Une erreur est survenue lors de la communication avec le serveur.",
-    "000": "Impossible de se connecter au serveur. Vérifie ta connexion internet.",
-    "400": "Requête invalide ou non autorisée.",
-    "500": "Erreur interne du serveur. Réessaie plus tard.",
     "recipe": {
-      "fetchingDaily": "Impossible de charger la recette du jour: {{reason}}"
+      "fetchingDaily": "Impossible de charger la recette du jour"
     }
   }
 }

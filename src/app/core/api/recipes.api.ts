@@ -60,19 +60,15 @@ export class RecipesApi {
   }
 
   private handleError(error: HttpErrorResponse) {
-    // todo: fix
     console.error('RecipesApi error', { status: error.status, url: error.url, error: error.error });
-    this.lang.setMsg('errors.default');
-    if (error.status === 0) {
-      this.lang.setMsg('errors.000');
-    }
-    else if (error.status >= 400 && error.status < 500) {
-      this.lang.setMsg('errors.400');
-    }
-    else if (error.status >= 500) {
-      this.lang.setMsg('errors.500');
-    }
-    let message = this.lang.getMessageSignal();
-    return throwError(() => ({ status: error.status, message, raw: error.error }));
+
+    const apiMessage = error.error?.message ?? error.message ?? 'unknown';
+
+    return throwError(() => ({
+      status: error.status,
+      message: apiMessage,
+      raw: error.error
+    }));
   }
+
 }
