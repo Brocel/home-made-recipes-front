@@ -1,14 +1,20 @@
 <nav class="navbar container">
   <!-- LEFT -->
   <div class="left">
-    <app-left-menu (openHome)="goHome()"
-                   (openAdvancedSearch)="goToAdvancedSearch($event)"
-                   (openAddRecipe)="goToAddRecipe()">
+    <app-left-menu
+      (openHome)="goHome()"
+      (openAdvancedSearch)="goToAdvancedSearch($event)"
+      (openAddRecipe)="goToAddRecipe()"
+    >
     </app-left-menu>
   </div>
 
   <!-- CENTER -->
   <div class="center">
+    <section class="title">
+      <h1>{{ 'home.title' | translate }}</h1>
+      <p class="lead">{{ 'home.lead' | translate }}</p>
+    </section>
     <div class="search-inline">
       <quick-search></quick-search>
     </div>
@@ -22,16 +28,19 @@
       type="button"
       (click)="toggleLang()"
       [attr.aria-label]="'navbar.langLabel' | translate"
-      [attr.aria-pressed]="lang.current() === 'pt-BR'">
+      [attr.aria-pressed]="lang.current() === 'pt-BR'"
+    >
       {{ lang.current() === 'fr' ? 'FR' : 'pt-BR' }}
     </button>
 
     <!-- PROFILE MENU -->
-    <app-profile-menu [user]="user"
-                      [isAuthenticated]="isAuthenticated"
-                      (openLogin)="goLogin()"
-                      (openProfile)="goProfile()"
-                      (signOut)="signOut()">
+    <app-profile-menu
+      [user]="user"
+      [isAuthenticated]="isAuthenticated"
+      (openLogin)="goLogin()"
+      (openProfile)="goProfile()"
+      (signOut)="signOut()"
+    >
     </app-profile-menu>
   </div>
 </nav>

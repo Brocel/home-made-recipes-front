@@ -1,57 +1,34 @@
 <div class="home-page">
   <div class="home-layout container">
-    <aside class="left-col"
-           aria-label="{{ 'navbar.searchPlaceholder' | translate }}">
+    <aside class="left-col" aria-label="{{ 'navbar.searchPlaceholder' | translate }}">
       <quick-search (search)="onSearch($event)"></quick-search>
     </aside>
 
     <main class="main-col">
-      <section class="title">
-        <h1>{{ 'home.title' | translate }}</h1>
-        <p class="lead">{{ 'home.lead' | translate }}</p>
-
-        @if (auth()) {
-          <ng-container>
-            <advanced-search (submitAdvanced)="onAdvancedSearch($event)"></advanced-search>
-          </ng-container>
-        } @else {
-          <ng-template>
-            <quick-search (search)="onSearch($event)"></quick-search>
-          </ng-template>
-        }
-      </section>
-
       <section class="daily">
         <h2>{{ 'home.dailyRecipe' | translate }}</h2>
         @if (loading()) {
-          <mat-spinner
-            aria-label="{{ 'common.loading' | translate }}">
-          </mat-spinner>
+        <mat-spinner aria-label="{{ 'common.loading' | translate }}"> </mat-spinner>
         } @else {
-          <app-recipe-mini
-            [recipe]="dailyRecipe()">
-          </app-recipe-mini>
-        }
-
-        @if (errorMessage()) {
-          <div class="error">{{ errorMessage() }}</div>
+        <app-recipe-mini [recipe]="dailyRecipe()"> </app-recipe-mini>
+        } @if (errorMessage()) {
+        <div class="error">{{ errorMessage() }}</div>
         }
       </section>
     </main>
 
-    <aside class="right-col"
-           aria-label="{{ 'recipe.addRecipe' | translate }}">
+    <aside class="right-col" aria-label="{{ 'recipe.addRecipe' | translate }}">
       @if (auth()) {
-        <ng-container>
-          <add-recipe-mini (openCreateFull)="onOpenCreateFull($event)"></add-recipe-mini>
-        </ng-container>
+      <ng-container>
+        <add-recipe-mini (openCreateFull)="onOpenCreateFull($event)"></add-recipe-mini>
+      </ng-container>
       } @else {
-        <ng-template>
-          <auth-cta
-            (openLogin)="console.log('open login')"
-            (openRegister)="console.log('open register')"
-          ></auth-cta>
-        </ng-template>
+      <ng-template>
+        <auth-cta
+          (openLogin)="console.log('open login')"
+          (openRegister)="console.log('open register')"
+        ></auth-cta>
+      </ng-template>
       }
     </aside>
   </div>

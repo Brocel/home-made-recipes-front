@@ -6,40 +6,58 @@
   align-items: center;
   justify-content: space-between;
   gap: t.$space-md;
-  padding: t.$space-sm t.$space-sm;
+  padding: t.$space-xs t.$space-sm;
   max-width: t.$max-width;
   margin: 0 auto;
+  box-shadow: 0 1px 2px t.$text;
 
-  .left {
-    display: flex;
+  .left,
+  .right {
     align-items: center;
+    display: flex;
+    gap: t.$space-xs;
+    flex: 0 0 auto;
   }
 
   .center {
-    flex: 1 1 auto;
     display: flex;
-    justify-content: center;
+    align-items: center;
+    flex: 1 1 auto;
+    gap: t.$space-md;
     min-width: 0;
   }
 
-  .right {
+  .title {
     display: flex;
-    gap: t.$space-sm;
-    align-items: center;
+    align-items: baseline;
+    gap: t.$space-xs; // plus fin que space-sm
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    h1 {
+      margin: 0;
+      font-size: 1.25rem;
+      font-weight: 600;
+      letter-spacing: -0.5px;
+    }
+
+    .lead {
+      margin: 0;
+      font-size: 0.95rem;
+      opacity: 0.75;
+      font-weight: 400;
+    }
   }
 
   .search-inline {
     flex: 1 1 auto;
-    min-width: 0;
+    min-width: 200px;
     max-width: t.$search-max-width;
-  }
-
-  .profile-btn {
-    background: transparent;
-    border: none;
-    padding: 4px;
-    border-radius: 999px;
-    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    padding: 0 t.$space-sm;
+    transition: max-width 0.2s ease;
   }
 
   .avatar {
@@ -81,6 +99,52 @@
 
     button:hover {
       background: t.$color-hover-surface;
+    }
+  }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: stretch;
+    gap: t.$space-sm;
+
+    .navbar {
+      gap: t.$space-sm;
+    }
+
+    .left,
+    .center,
+    .right {
+      width: 100%;
+      justify-content: flex-start;
+    }
+
+    .center {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: t.$space-xs;
+    }
+
+    .title {
+      white-space: normal;
+      flex-wrap: wrap;
+    }
+
+    .title h1 {
+      font-size: 1.2rem;
+    }
+
+    .lead {
+      font-size: 0.9rem;
+    }
+
+    .search-inline {
+      width: 100%;
+      justify-content: flex-start;
+    }
+
+    .right {
+      justify-content: flex-start;
     }
   }
 }

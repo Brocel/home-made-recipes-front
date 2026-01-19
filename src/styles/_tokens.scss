@@ -3,19 +3,19 @@
 // -----------------------------
 // Palette de base (SCSS)
 // -----------------------------
-$color-primary: #E76F51;
+$color-primary: #e76f51;
 $color-primary-600: #d85b3f;
-$color-primary-100: #F5B8A6FF;
+$color-primary-100: #f5b8a6ff;
 
-$color-accent: #2A9D8F;
+$color-accent: #2a9d8f;
 $color-accent-600: #238a78;
 
-$color-bg: #FFF8F0;
-$color-surface: #FFFFFF;
+$color-bg: #fff8f0;
+$color-surface: #ffffff;
 $color-surface-100: #fbf7f4;
 
-$text: #2B2B2B;
-$text-muted: #7A7A7A;
+$text: #2b2b2b;
+$text-muted: #7a7a7a;
 $text-inverse: #ffffff;
 
 $color-panel-bg: $color-primary-100;
@@ -100,7 +100,7 @@ $card-shadow: $shadow-md;
 }
 
 /* Thème sombre (override runtime) */
-[data-theme="dark"] {
+[data-theme='dark'] {
   --color-bg: #071025;
   --color-surface: #0b1220;
   --color-surface-100: #071827;
