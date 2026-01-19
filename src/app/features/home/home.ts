@@ -12,7 +12,6 @@ import { TranslatePipe } from '@ngx-translate/core';
 import { Recipe } from '@shared/models/recipes/recipe';
 import { finalize, of, take, tap } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { AuthCallToAction } from '../auth-call-to-action/auth-call-to-action';
 
 @Component({
   selector: 'app-home',
@@ -21,7 +20,6 @@ import { AuthCallToAction } from '../auth-call-to-action/auth-call-to-action';
     CommonModule,
     RouterModule,
     QuickSearch,
-    AuthCallToAction,
     AddRecipeMini,
     TranslatePipe,
     RecipeMini,
