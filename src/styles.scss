@@ -1,11 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
 @use 'tokens' as t;
 
+router-outlet {
+  display: block;
+  height: 100%;
+  min-height: 0;
+}
+
+app-root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 html,
 body {
   margin: 0;
   padding: 0;
-  height: 100%;
+  // height: 100%;
   background: t.$color-bg;
   color: t.$text;
   font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
@@ -16,24 +28,50 @@ body {
 body {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  // min-height: 100vh;
 }
 
 main {
   flex: 1;
-  display: block;
-}
-
-app-root {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: 0;
+}
+
+main > * {
+  margin: 0;
+  padding: 0;
+  min-height: 0;
+}
+
+footer {
+  flex-shrink: 0;
+}
+
+.card {
+  background: t.$color-panel-bg;
+  padding: t.$space-lg;
+  border-radius: t.$radius-lg;
+  box-shadow: t.$shadow-md;
+  width: 90%;
+  max-width: 600px;
 }
 
 .container {
   max-width: t.$max-width;
   margin: 0 auto;
   padding: 0 t.$space-md;
+}
+
+.error {
+  width: 90%;
+  max-width: 600px;
+  padding: t.$space-lg;
+  border-radius: t.$radius-lg;
+  box-shadow: t.$shadow-md;
+  text-align: center;
+  color: t.$color-primary-600;
+  background-color: t.$color-primary-100;
 }
 
 /* boutons */

@@ -47,13 +47,7 @@
     "placeholder": "Pesquisar por palavra-chave...",
     "advancedSearchPlaceHolder": "Pesquisa avançada...",
     "advancedSearch": "Pesquisa avançada",
-    "search": "Pesquisar",
-    "quick": {
-      "title": "...",
-      "recipeType": "...",
-      "prepTime": "...",
-      "ingregientType": "..."
-    }
+    "search": "Pesquisar"
   },
   "authCta": {
     "title": "Junte-se à comunidade",
@@ -65,9 +59,11 @@
     "instructions": "Instruções",
     "addRecipe": "Adicionar uma receita",
     "prepTime": "Tempo de preparo",
+    "prepTimeMin": "Tempo de preparo (min)",
     "author": "Autor",
     "title": "Nome da receita",
     "type": "Tipo de receita",
+    "ingredientType": "Tipo de ingrediente",
     "create": "Criar uma receita",
     "show": "Ver a receita"
   },

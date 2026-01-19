@@ -1,48 +1,90 @@
 @use 'tokens' as t;
 
-.home-page {
-  height: 100%;
+:host {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
 
+.home-page {
   .home-layout {
-    display: grid;
-    grid-template-columns: 280px 1fr 320px;
-    gap: t.$space-lg;
-    align-items: start;
-    margin-top: t.$space-lg;
-    height: 100%;
+    display: flex;
+    gap: t.$space-xs;
+    padding: t.$space-xs 0;
+    max-width: t.$max-width;
+    margin: 0 auto;
+    // min-height: calc(100vh - 80px);
   }
 
   .left-col {
-    position: sticky;
-    top: 80px;
+    display: flex;
+    flex-direction: column;
+    gap: t.$space-md;
+    flex: 0 0 260px;
+    padding-left: 1%;
+  }
+
+  .main-col {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    min-width: 0;
+    align-items: center;
   }
 
   .right-col {
-    position: sticky;
-    top: 80px;
+    flex: 0 0 300px;
+    display: flex;
+    flex-direction: column;
+    gap: t.$space-md;
+    padding-right: 1%;
+  }
+
+  .title {
+    text-align: center;
   }
 
   .daily {
-    margin-top: t.$space-md;
+    margin-top: t.$space-xs;
   }
 
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: t.$space-md;
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  .home-layout > * {
+    margin-top: 0;
+    margin-bottom: 0;
   }
 
-  .card {
-    background: t.$color-surface;
-    border-radius: t.$radius-md;
-    padding: t.$space-md;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+  @media (max-width: 1024px) {
+    .home-layout {
+      gap: t.$space-md;
+    }
+
+    .right-col {
+      flex: 0 0 240px;
+    }
   }
 
-  .site-footer {
-    margin-top: t.$space-lg;
+  @media (max-width: 768px) {
+    .home-layout {
+      flex-direction: column;
+    }
+
+    .left-col,
+    .right-col,
+    .main-col {
+      width: 100%;
+    }
+
+    .main-col {
+      order: 2;
+    }
+
+    .left-col {
+      order: 1;
+    }
+
+    .right-col {
+      order: 3;
+    }
   }
 }

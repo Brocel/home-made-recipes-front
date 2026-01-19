@@ -3,29 +3,31 @@
     <aside class="left-col" aria-label="{{ 'navbar.searchPlaceholder' | translate }}">
       <quick-search
         (search)="onSearch($event)"
-        placeholder="{{ 'search.quick.title' | translate }}"
+        placeholder="{{ 'recipe.title' | translate }}"
       ></quick-search>
       <quick-search
         (search)="onSearch($event)"
-        placeholder="{{ 'search.quick.recipeType' | translate }}"
+        placeholder="{{ 'recipe.type' | translate }}"
       ></quick-search>
       <quick-search
         (search)="onSearch($event)"
-        placeholder="{{ 'search.quick.prepTime' | translate }}"
+        placeholder="{{ 'recipe.prepTimeMin' | translate }}"
       ></quick-search>
       <quick-search
         (search)="onSearch($event)"
-        placeholder="{{ 'search.quick.ingregientType' | translate }}"
+        placeholder="{{ 'recipe.ingredientType' | translate }}"
       ></quick-search>
     </aside>
 
     <main class="main-col">
-      <section class="daily">
-        <h2>{{ 'home.dailyRecipe' | translate }}</h2>
+      <section>
+        <h2 class="title">{{ 'home.dailyRecipe' | translate }}</h2>
         @if (loading()) {
         <mat-spinner aria-label="{{ 'common.loading' | translate }}"> </mat-spinner>
         } @else {
-        <app-recipe-mini [recipe]="dailyRecipe()"> </app-recipe-mini>
+        <div class="daily">
+          <app-recipe-mini [recipe]="dailyRecipe()"> </app-recipe-mini>
+        </div>
         } @if (errorMessage()) {
         <div class="error">{{ errorMessage() }}</div>
         }
@@ -33,18 +35,7 @@
     </main>
 
     <aside class="right-col" aria-label="{{ 'recipe.addRecipe' | translate }}">
-      @if (auth()) {
-      <ng-container>
-        <add-recipe-mini (openCreateFull)="onOpenCreateFull($event)"></add-recipe-mini>
-      </ng-container>
-      } @else {
-      <ng-template>
-        <auth-cta
-          (openLogin)="console.log('open login')"
-          (openRegister)="console.log('open register')"
-        ></auth-cta>
-      </ng-template>
-      }
+      <add-recipe-mini (openCreateFull)="onOpenCreateFull($event)"></add-recipe-mini>
     </aside>
   </div>
 </div>
