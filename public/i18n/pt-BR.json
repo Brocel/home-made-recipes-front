@@ -47,7 +47,13 @@
     "placeholder": "Pesquisar por palavra-chave...",
     "advancedSearchPlaceHolder": "Pesquisa avançada...",
     "advancedSearch": "Pesquisa avançada",
-    "search": "Pesquisar"
+    "search": "Pesquisar",
+    "quick": {
+      "title": "...",
+      "recipeType": "...",
+      "prepTime": "...",
+      "ingregientType": "..."
+    }
   },
   "authCta": {
     "title": "Junte-se à comunidade",

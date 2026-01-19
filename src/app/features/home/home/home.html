@@ -1,7 +1,22 @@
 <div class="home-page">
   <div class="home-layout container">
     <aside class="left-col" aria-label="{{ 'navbar.searchPlaceholder' | translate }}">
-      <quick-search (search)="onSearch($event)"></quick-search>
+      <quick-search
+        (search)="onSearch($event)"
+        placeholder="{{ 'search.quick.title' | translate }}"
+      ></quick-search>
+      <quick-search
+        (search)="onSearch($event)"
+        placeholder="{{ 'search.quick.recipeType' | translate }}"
+      ></quick-search>
+      <quick-search
+        (search)="onSearch($event)"
+        placeholder="{{ 'search.quick.prepTime' | translate }}"
+      ></quick-search>
+      <quick-search
+        (search)="onSearch($event)"
+        placeholder="{{ 'search.quick.ingregientType' | translate }}"
+      ></quick-search>
     </aside>
 
     <main class="main-col">

@@ -14,14 +14,17 @@ import { AuthService } from '@core/auth/auth.service';
   standalone: true,
   imports: [CommonModule, RouterModule, TranslatePipe, ProfileMenu, QuickSearch, LeftMenu],
   templateUrl: './navbar.html',
-  styleUrls: ['./navbar.scss']
+  styleUrls: ['./navbar.scss'],
 })
 export class Navbar {
   @Input() user: any | null = null;
   @Input() isAuthenticated = false;
 
-  constructor(public lang: LanguageService, private auth: AuthService, private nav: NavigationService) {
-  }
+  constructor(
+    public lang: LanguageService,
+    private auth: AuthService,
+    private nav: NavigationService
+  ) {}
 
   // Language toggle
   toggleLang(): void {

@@ -47,7 +47,13 @@
     "placeholder": "Rechercher par mot‑clé...",
     "advancedSearchPlaceHolder": "Recherche avancée...",
     "advancedSearch": "Recherche avancée",
-    "search": "Rechercher"
+    "search": "Rechercher",
+    "quick": {
+      "title": "Nom de la recette",
+      "recipeType": "Type de la recette",
+      "prepTime": "Temps de préparation (min)",
+      "ingregientType": "Type d'ingrédient"
+    }
   },
   "authCta": {
     "title": "Rejoins la communauté",
