@@ -1,15 +1,33 @@
 /* You can add global styles to this file, and also import other style files */
 @use 'tokens' as t;
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   height: 100%;
   background: t.$color-bg;
   color: t.$text;
-  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+  display: block;
+}
+
+app-root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 .container {
@@ -29,21 +47,29 @@ html, body {
   cursor: pointer;
   font-weight: 600;
 }
-.btn-primary { background: t.$color-primary; color: white; }
-.btn-outline { background: transparent; border: 1px solid rgba(0,0,0,0.08); color: t.$text; }
-
+.btn-primary {
+  background: t.$color-primary;
+  color: white;
+}
+.btn-outline {
+  background: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  color: t.$text;
+}
 
 /* Spinner simple CSS */
 .spinner {
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  border: 2px solid rgba(255,255,255,0.25);
-  border-top-color: rgba(255,255,255,0.9);
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  border-top-color: rgba(255, 255, 255, 0.9);
   animation: spin 0.8s linear infinite;
 }
 
 /* responsive utilities */
 @media (max-width: 768px) {
-  .container { padding: 0 t.$space-sm; }
+  .container {
+    padding: 0 t.$space-sm;
+  }
 }
