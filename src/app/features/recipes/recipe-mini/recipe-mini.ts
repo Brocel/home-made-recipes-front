@@ -4,11 +4,9 @@ import { Recipe } from '@models/recipes/recipe';
 
 @Component({
   selector: 'app-recipe-mini',
-  imports: [
-    TranslatePipe
-  ],
+  imports: [TranslatePipe],
   templateUrl: './recipe-mini.html',
-  styleUrl: './recipe-mini.scss'
+  styleUrl: './recipe-mini.scss',
 })
 export class RecipeMini {
   @Input() recipe: Recipe | null = null;

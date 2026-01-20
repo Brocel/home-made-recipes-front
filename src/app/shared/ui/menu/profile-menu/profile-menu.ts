@@ -10,7 +10,7 @@ import { OverlayModule } from '@angular/cdk/overlay';
   standalone: true,
   imports: [CommonModule, TranslateModule, Menu, MenuContent, MenuItem, MenuTrigger, OverlayModule],
   templateUrl: './profile-menu.html',
-  styleUrls: ['./profile-menu.scss']
+  styleUrls: ['./profile-menu.scss'],
 })
 export class ProfileMenu {
   /** Inputs */

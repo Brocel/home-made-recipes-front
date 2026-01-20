@@ -7,48 +7,53 @@
     #origin
     #trigger="ngMenuTrigger"
     [menu]="mainMenu()"
-    aria-label="{{ 'menu.label' | translate }}">
+    aria-label="{{ 'menu.label' | translate }}"
+  >
     ☰
   </button>
 
   <!-- Menu content -->
   <ng-template
     [cdkConnectedOverlayOpen]="trigger.expanded()"
-    [cdkConnectedOverlay]="{origin, usePopover: 'inline'}"
-    cdkAttachPopoverAsChild>
-
-    <div ngMenu
-         class="menu-panel"
-         #mainMenu="ngMenu">
+    [cdkConnectedOverlay]="{ origin, usePopover: 'inline' }"
+    cdkAttachPopoverAsChild
+  >
+    <div ngMenu class="menu-panel" #mainMenu="ngMenu">
       <ng-template ngMenuContent>
-        <div ngMenuItem
-             role="menuitem"
-             tabindex="0"
-             (click)="goHome()"
-             onKeyDown="goHome()"
-             value="{{ 'menu.left.home' | translate }}">
+        <div
+          ngMenuItem
+          role="menuitem"
+          tabindex="0"
+          (click)="goHome()"
+          onKeyDown="goHome()"
+          value="{{ 'menu.left.home' | translate }}"
+        >
           <span class="label">
             {{ 'menu.left.home' | translate }}
           </span>
         </div>
 
-        <div ngMenuItem
-             role="menuitem"
-             tabindex="0"
-             (click)="goAdvancedSearch()"
-             onKeyDown="goAdvancedSearch()"
-             value="{{ 'menu.left.search' | translate }}">
+        <div
+          ngMenuItem
+          role="menuitem"
+          tabindex="0"
+          (click)="goAdvancedSearch()"
+          onKeyDown="goAdvancedSearch()"
+          value="{{ 'menu.left.search' | translate }}"
+        >
           <span class="label">
             {{ 'menu.left.search' | translate }}
           </span>
         </div>
 
-        <div ngMenuItem
-             role="menuitem"
-             tabindex="0"
-             (click)="goAddRecipe()"
-             onKeyDown="goAddRecipe()"
-             value="{{ 'menu.left.addRecipe' | translate }}">
+        <div
+          ngMenuItem
+          role="menuitem"
+          tabindex="0"
+          (click)="goAddRecipe()"
+          onKeyDown="goAddRecipe()"
+          value="{{ 'menu.left.addRecipe' | translate }}"
+        >
           <span class="label">
             {{ 'menu.left.addRecipe' | translate }}
           </span>

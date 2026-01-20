@@ -10,7 +10,7 @@ import { TranslatePipe } from '@ngx-translate/core';
   standalone: true,
   imports: [CommonModule, FormsModule, Button, TranslatePipe],
   templateUrl: './add-recipe-mini.html',
-  styleUrls: ['./add-recipe-mini.scss']
+  styleUrls: ['./add-recipe-mini.scss'],
 })
 export class AddRecipeMini {
   title = '';

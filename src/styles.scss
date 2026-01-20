@@ -20,7 +20,14 @@ body {
   // height: 100%;
   background: t.$color-bg;
   color: t.$text;
-  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    Roboto,
+    'Helvetica Neue',
+    Arial;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -28,7 +35,6 @@ body {
 body {
   display: flex;
   flex-direction: column;
-  // min-height: 100vh;
 }
 
 main {

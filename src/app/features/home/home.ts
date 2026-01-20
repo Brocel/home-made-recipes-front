@@ -14,13 +14,7 @@ import { catchError } from 'rxjs/operators';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [
-    CommonModule,
-    RouterModule,
-    TranslatePipe,
-    RecipeMini,
-    MatProgressSpinnerModule,
-  ],
+  imports: [CommonModule, RouterModule, TranslatePipe, RecipeMini, MatProgressSpinnerModule],
   templateUrl: './home.html',
   styleUrls: ['./home.scss'],
 })
@@ -41,7 +35,10 @@ export class Home implements OnInit {
   auth = isAuthenticated;
   errorMessage = signal<string | null>(null);
 
-  constructor(private api: RecipesApi, private lang: LanguageService) {}
+  constructor(
+    private api: RecipesApi,
+    private lang: LanguageService,
+  ) {}
 
   ngOnInit(): void {
     this.fetchDailyRecipe();
@@ -66,7 +63,7 @@ export class Home implements OnInit {
         }),
         finalize(() => {
           this.loading.set(false);
-        })
+        }),
       )
       .subscribe();
   }

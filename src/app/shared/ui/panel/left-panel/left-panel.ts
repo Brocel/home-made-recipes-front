@@ -8,13 +8,13 @@ import { AddRecipeMini } from '@app/features/recipes/add/add-recipe-mini/add-rec
   standalone: true,
   imports: [TranslatePipe, QuickSearch, AddRecipeMini],
   templateUrl: './left-panel.html',
-  styleUrls: ['./left-panel.scss']
+  styleUrls: ['./left-panel.scss'],
 })
 export class LeftPanel {
   isOpen = signal(false);
 
   toggle() {
-    this.isOpen.update(v => !v);
+    this.isOpen.update((v) => !v);
   }
 
   onSearch(query: string) {

@@ -1,24 +1,23 @@
 <div class="home-page">
   <div class="home-layout container">
-    <aside class="left-col" aria-label="{{ 'navbar.searchPlaceholder' | translate }}">
-    </aside>
+    <aside class="left-col" aria-label="{{ 'navbar.searchPlaceholder' | translate }}"></aside>
 
     <main class="main-col">
       <section>
         <h2 class="title">{{ 'home.dailyRecipe' | translate }}</h2>
         @if (loading()) {
-        <mat-spinner aria-label="{{ 'common.loading' | translate }}"> </mat-spinner>
+          <mat-spinner aria-label="{{ 'common.loading' | translate }}"> </mat-spinner>
         } @else {
-        <div class="daily">
-          <app-recipe-mini [recipe]="dailyRecipe()"> </app-recipe-mini>
-        </div>
-        } @if (errorMessage()) {
-        <div class="error">{{ errorMessage() }}</div>
+          <div class="daily">
+            <app-recipe-mini [recipe]="dailyRecipe()"> </app-recipe-mini>
+          </div>
+        }
+        @if (errorMessage()) {
+          <div class="error">{{ errorMessage() }}</div>
         }
       </section>
     </main>
 
-    <aside class="right-col" aria-label="{{ 'recipe.addRecipe' | translate }}">
-    </aside>
+    <aside class="right-col" aria-label="{{ 'recipe.addRecipe' | translate }}"></aside>
   </div>
 </div>

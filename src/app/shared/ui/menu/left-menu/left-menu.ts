@@ -9,7 +9,7 @@ import { OverlayModule } from '@angular/cdk/overlay';
   standalone: true,
   imports: [CommonModule, TranslateModule, Menu, MenuContent, MenuItem, MenuTrigger, OverlayModule],
   templateUrl: './left-menu.html',
-  styleUrls: ['./left-menu.scss']
+  styleUrls: ['./left-menu.scss'],
 })
 export class LeftMenu {
   @Output() openHome = new EventEmitter<void>();
@@ -40,5 +40,4 @@ export class LeftMenu {
     this.closeMenu();
     this.openAddRecipe.emit();
   }
-
 }

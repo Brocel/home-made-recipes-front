@@ -1,9 +1,3 @@
-// Composant bouton réutilisable, standalone.
-// - Variantes : primary | outline | ghost | danger
-// - Supporte : disabled, loading, type (button|submit|reset)
-// - Émet : pressed (Event) au clic (sauf si disabled ou loading)
-// - Accessible : aria-disabled, aria-busy, focus visible
-
 import { Component, Input, Output, EventEmitter, HostBinding } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -12,7 +6,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './button.html',
-  styleUrls: ['./button.scss']
+  styleUrls: ['./button.scss'],
 })
 export class Button {
   /**
@@ -43,7 +37,9 @@ export class Button {
   @Output() pressed = new EventEmitter<Event>();
 
   /** Ajoute une classe CSS utile pour le style via HostBinding */
-  @HostBinding('class.full-width') get isFullWidth() { return this.fullWidth; }
+  @HostBinding('class.full-width') get isFullWidth() {
+    return this.fullWidth;
+  }
 
   /**
    * onClick

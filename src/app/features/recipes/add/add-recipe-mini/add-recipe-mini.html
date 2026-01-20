@@ -1,12 +1,22 @@
 <form class="add-recipe-mini" (ngSubmit)="submit()">
   <label>
     {{ 'recipe.title' | translate }}
-    <input [(ngModel)]="title" name="title" type="text" placeholder="{{ 'recipe.title' | translate }}"/>
+    <input
+      [(ngModel)]="title"
+      name="title"
+      type="text"
+      placeholder="{{ 'recipe.title' | translate }}"
+    />
   </label>
 
   <label>
     {{ 'recipe.type' | translate }}
-    <input [(ngModel)]="type" name="type" type="text" placeholder="{{ 'recipe.type' | translate }}"/>
+    <input
+      [(ngModel)]="type"
+      name="type"
+      type="text"
+      placeholder="{{ 'recipe.type' | translate }}"
+    />
   </label>
 
   <app-button variant="primary" type="submit">{{ 'recipe.create' | translate }}</app-button>

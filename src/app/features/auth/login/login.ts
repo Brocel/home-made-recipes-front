@@ -1,6 +1,3 @@
-// Ce composant initialise GSI après le rendu de la vue (ngAfterViewInit)
-// et affiche l'élément dans lequel Google rendra son bouton.
-
 import { Component, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '@core/auth/auth.service';
@@ -11,11 +8,10 @@ import { TranslatePipe } from '@ngx-translate/core';
   standalone: true,
   imports: [CommonModule, TranslatePipe],
   templateUrl: './login.html',
-  styleUrls: ['./login.scss']
+  styleUrls: ['./login.scss'],
 })
 export class Login implements AfterViewInit {
-  constructor(private auth: AuthService) {
-  }
+  constructor(private auth: AuthService) {}
 
   // ngAfterViewInit est le bon hook pour manipuler le DOM et appeler initGsi
   ngAfterViewInit() {

@@ -6,46 +6,46 @@
     #origin
     #trigger="ngMenuTrigger"
     [menu]="profileMenu()"
-    aria-label="{{ 'menu.profile.label' | translate }}">
+    aria-label="{{ 'menu.profile.label' | translate }}"
+  >
     @if (user?.picture) {
-      <img [src]="user.picture"
-           alt="{{ user?.name || 'User' }}"
-           class="avatar"/>
+      <img [src]="user.picture" alt="{{ user?.name || 'User' }}" class="avatar" />
     } @else {
-      <span class="avatar-fallback"
-            aria-hidden="true">👤</span>
+      <span class="avatar-fallback" aria-hidden="true">👤</span>
     }
   </button>
 
   <!-- Menu content -->
   <ng-template
     [cdkConnectedOverlayOpen]="trigger.expanded()"
-    [cdkConnectedOverlay]="{origin, usePopover: 'inline'}"
+    [cdkConnectedOverlay]="{ origin, usePopover: 'inline' }"
     [cdkConnectedOverlayOffsetX]="50"
-    cdkAttachPopoverAsChild>
-
-    <div ngMenu
-         class="profile-menu-panel"
-         #profileMenu="ngMenu">
+    cdkAttachPopoverAsChild
+  >
+    <div ngMenu class="profile-menu-panel" #profileMenu="ngMenu">
       @if (isAuthenticated) {
         <ng-template ngMenuContent>
-          <div ngMenuItem
-               role="menuitem"
-               tabindex="0"
-               (click)="openProfileClick()"
-               onKeyDown="openProfileClick()"
-               value="{{ 'menu.profile.user.label' | translate }}">
+          <div
+            ngMenuItem
+            role="menuitem"
+            tabindex="0"
+            (click)="openProfileClick()"
+            onKeyDown="openProfileClick()"
+            value="{{ 'menu.profile.user.label' | translate }}"
+          >
             <span class="label">
               {{ 'menu.profile.user.label' | translate }}
             </span>
           </div>
 
-          <div ngMenuItem
-               role="menuitem"
-               tabindex="0"
-               (click)="openDashboardClick()"
-               onKeyDown="openDashboardClick()"
-               value="{{ 'menu.profile.user.dashboard' | translate }}">
+          <div
+            ngMenuItem
+            role="menuitem"
+            tabindex="0"
+            (click)="openDashboardClick()"
+            onKeyDown="openDashboardClick()"
+            value="{{ 'menu.profile.user.dashboard' | translate }}"
+          >
             <span class="label">
               {{ 'menu.profile.user.dashboard' | translate }}
             </span>
@@ -53,26 +53,29 @@
 
           <div class="divider"></div>
 
-          <div ngMenuItem
-               role="menuitem"
-               tabindex="0"
-               (click)="signOutClick()"
-               onKeyDown="signOutClick()"
-               value="{{ 'menu.profile.user.logout' | translate }}">
+          <div
+            ngMenuItem
+            role="menuitem"
+            tabindex="0"
+            (click)="signOutClick()"
+            onKeyDown="signOutClick()"
+            value="{{ 'menu.profile.user.logout' | translate }}"
+          >
             <span class="label">
               {{ 'menu.profile.user.logout' | translate }}
             </span>
           </div>
-
         </ng-template>
       } @else {
         <ng-template ngMenuContent>
-          <div ngMenuItem
-               role="menuitem"
-               tabindex="0"
-               (click)="openLoginClick()"
-               onKeyDown="openLoginClick()"
-               value="{{ 'menu.profile.guest.login' | translate }}">
+          <div
+            ngMenuItem
+            role="menuitem"
+            tabindex="0"
+            (click)="openLoginClick()"
+            onKeyDown="openLoginClick()"
+            value="{{ 'menu.profile.guest.login' | translate }}"
+          >
             <span class="label">
               {{ 'menu.profile.guest.login' | translate }}
             </span>

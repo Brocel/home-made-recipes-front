@@ -23,7 +23,7 @@ export class Navbar {
   constructor(
     public lang: LanguageService,
     private auth: AuthService,
-    private nav: NavigationService
+    private nav: NavigationService,
   ) {}
 
   // Language toggle

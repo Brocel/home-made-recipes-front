@@ -49,7 +49,9 @@
     padding: t.$space-sm;
     min-width: 220px;
     z-index: 70;
-    transition: transform 140ms ease, opacity 140ms ease;
+    transition:
+      transform 140ms ease,
+      opacity 140ms ease;
     transform-origin: top right;
   }
 
