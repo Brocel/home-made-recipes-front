@@ -5,9 +5,7 @@ import { RouterModule } from '@angular/router';
 import { RecipesApi } from '@core/api/recipes.api';
 import { isAuthenticated } from '@core/auth/auth.signals';
 import { LanguageService } from '@core/i18n/language.service';
-import { AddRecipeMini } from '@features/recipes/add/add-recipe-mini/add-recipe-mini';
 import { RecipeMini } from '@features/recipes/recipe-mini/recipe-mini';
-import { QuickSearch } from '@features/recipes/search/quick-search/quick-search';
 import { TranslatePipe } from '@ngx-translate/core';
 import { Recipe } from '@shared/models/recipes/recipe';
 import { finalize, of, take, tap } from 'rxjs';
@@ -19,8 +17,6 @@ import { catchError } from 'rxjs/operators';
   imports: [
     CommonModule,
     RouterModule,
-    QuickSearch,
-    AddRecipeMini,
     TranslatePipe,
     RecipeMini,
     MatProgressSpinnerModule,
@@ -75,16 +71,8 @@ export class Home implements OnInit {
       .subscribe();
   }
 
-  onSearch(query: string) {
-    console.log('search', query);
-  }
-
   onAdvancedSearch(payload: any) {
     console.log('advanced search', payload);
-  }
-
-  onOpenCreateFull(payload: { title?: string; type?: string }) {
-    console.log('open create full', payload);
   }
 
   protected readonly console = console;

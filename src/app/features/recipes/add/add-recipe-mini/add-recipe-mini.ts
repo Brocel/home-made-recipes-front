@@ -6,7 +6,7 @@ import { Button } from '@shared/ui/button/button';
 import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
-  selector: 'add-recipe-mini',
+  selector: 'app-add-recipe-mini',
   standalone: true,
   imports: [CommonModule, FormsModule, Button, TranslatePipe],
   templateUrl: './add-recipe-mini.html',

@@ -1,22 +1,6 @@
 <div class="home-page">
   <div class="home-layout container">
     <aside class="left-col" aria-label="{{ 'navbar.searchPlaceholder' | translate }}">
-      <quick-search
-        (search)="onSearch($event)"
-        placeholder="{{ 'recipe.title' | translate }}"
-      ></quick-search>
-      <quick-search
-        (search)="onSearch($event)"
-        placeholder="{{ 'recipe.type' | translate }}"
-      ></quick-search>
-      <quick-search
-        (search)="onSearch($event)"
-        placeholder="{{ 'recipe.prepTimeMin' | translate }}"
-      ></quick-search>
-      <quick-search
-        (search)="onSearch($event)"
-        placeholder="{{ 'recipe.ingredientType' | translate }}"
-      ></quick-search>
     </aside>
 
     <main class="main-col">
@@ -35,7 +19,6 @@
     </main>
 
     <aside class="right-col" aria-label="{{ 'recipe.addRecipe' | translate }}">
-      <add-recipe-mini (openCreateFull)="onOpenCreateFull($event)"></add-recipe-mini>
     </aside>
   </div>
 </div>

@@ -1,13 +1,12 @@
-import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Button } from '@shared/ui/button/button';
-import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
-  selector: 'quick-search',
+  selector: 'app-quick-search',
   standalone: true,
-  imports: [CommonModule, FormsModule, Button, TranslatePipe],
+  imports: [CommonModule, FormsModule, Button],
   templateUrl: './quick-search.html',
   styleUrls: ['./quick-search.scss'],
 })

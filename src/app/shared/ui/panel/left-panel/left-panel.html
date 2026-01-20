@@ -1,0 +1,28 @@
+<div class="panel" [class.open]="isOpen()">
+  <div class="panel-content">
+    <h3>Recherche par mot clé | todo translate pipe</h3>
+    <app-quick-search
+      (search)="onSearch($event)"
+      placeholder="{{ 'recipe.title' | translate }}"
+    ></app-quick-search>
+    <app-quick-search
+      (search)="onSearch($event)"
+      placeholder="{{ 'recipe.type' | translate }}"
+    ></app-quick-search>
+    <app-quick-search
+      (search)="onSearch($event)"
+      placeholder="{{ 'recipe.prepTimeMin' | translate }}"
+    ></app-quick-search>
+    <app-quick-search
+      (search)="onSearch($event)"
+      placeholder="{{ 'recipe.ingredientType' | translate }}"
+    ></app-quick-search>
+
+    <h3>Création rapide | todo translate pipe</h3>
+    <app-add-recipe-mini (openCreateFull)="onOpenCreateFull($event)"></app-add-recipe-mini>
+  </div>
+
+  <button class="handle" (click)="toggle()">
+    <span class="chevron" [class.open]="isOpen()">›</span>
+  </button>
+</div>

@@ -1,0 +1,64 @@
+@use 'tokens' as t;
+
+.panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 500px;
+  background: t.$color-panel-bg;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  z-index: 2000;
+
+  &.open {
+    transform: translateX(0);
+  }
+
+  // Mobile : 90% de la largeur
+  @media (max-width: 768px) {
+    width: 90vw;
+  }
+}
+
+.panel-content {
+  height: 100%;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+/* Handle demi-cercle */
+.handle {
+  position: absolute;
+  top: 50%;
+  right: -40px;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 80px;
+  border-radius: 0 40px 40px 0;
+  background: t.$color-panel-bg;
+  border: 1px solid #ddd;
+  border-left: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 2px 0 6px rgba(0, 0, 0, 0.15);
+  transition: background 0.2s;
+
+  &:hover {
+    background: #eee;
+  }
+}
+
+/* Chevron */
+.chevron {
+  font-size: 24px;
+  transition: transform 0.3s ease;
+  transform: rotate(0deg);
+
+  &.open {
+    transform: rotate(180deg);
+  }
+}

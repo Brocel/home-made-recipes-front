@@ -5,6 +5,7 @@ import { AuthService } from '@app/core/auth/auth.service';
 import { currentUser, isAuthenticated } from '@app/core/auth/auth.signals';
 import { Navbar } from '@ui/navbar/navbar';
 import { Footer } from '@ui/footer/footer';
+import { LeftPanel } from './shared/ui/panel/left-panel/left-panel';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,8 @@ import { Footer } from '@ui/footer/footer';
   imports: [
     Navbar,
     RouterOutlet,
-    Footer
+    Footer,
+    LeftPanel,
   ],
   templateUrl: './app.html'
 })
