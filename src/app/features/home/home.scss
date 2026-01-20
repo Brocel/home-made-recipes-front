@@ -1,90 +1,77 @@
 @use 'tokens' as t;
 
-:host {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  min-height: 0;
+.home-page {
+  background: t.$bg;
+  padding: t.$space-lg t.$space-md;
+  height: 75vh;
 }
 
-.home-page {
-  .home-layout {
-    display: flex;
-    gap: t.$space-xs;
-    padding: t.$space-xs 0;
-    max-width: t.$max-width;
-    margin: 0 auto;
-    // min-height: calc(100vh - 80px);
-  }
+.home-container {
+  display: flex;
+  max-width: t.$max-width;
+  width: 100%;
+  margin: 0 auto;
+  height: 100%;
+}
 
-  .left-col {
-    display: flex;
-    flex-direction: column;
+.main-content {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  width: 100%;
+  height: 95%;
+  align-items: center;
+  background: t.$surface;
+  border-radius: t.$radius-lg;
+  box-shadow: t.$shadow-md;
+  padding: t.$space-lg;
+}
+
+.daily-section {
+  display: flex;
+  flex-direction: column;
+  gap: t.$space-md;
+  width: 75%;
+}
+
+.daily-content {
+  display: flex;
+  flex-direction: column;
+  gap: t.$space-md;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.title {
+  color: t.$color-text-strong;
+  margin-bottom: t.$space-md;
+  font-size: 1.6rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.home-container > * {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+@media (max-width: 1024px) {
+  .home-container {
     gap: t.$space-md;
-    flex: 0 0 260px;
-    padding-left: 1%;
   }
+}
 
-  .main-col {
-    display: flex;
+@media (max-width: 768px) {
+  .home-container {
     flex-direction: column;
-    flex: 1 1 auto;
-    min-width: 0;
-    align-items: center;
   }
 
-  .right-col {
-    flex: 0 0 300px;
-    display: flex;
-    flex-direction: column;
-    gap: t.$space-md;
-    padding-right: 1%;
+  .main-content {
+    width: 100%;
   }
 
-  .title {
-    text-align: center;
-  }
-
-  .daily {
-    margin-top: t.$space-xs;
-  }
-
-  .home-layout > * {
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-
-  @media (max-width: 1024px) {
-    .home-layout {
-      gap: t.$space-md;
-    }
-
-    .right-col {
-      flex: 0 0 240px;
-    }
-  }
-
-  @media (max-width: 768px) {
-    .home-layout {
-      flex-direction: column;
-    }
-
-    .left-col,
-    .right-col,
-    .main-col {
-      width: 100%;
-    }
-
-    .main-col {
-      order: 2;
-    }
-
-    .left-col {
-      order: 1;
-    }
-
-    .right-col {
-      order: 3;
-    }
+  .main-content {
+    order: 1;
   }
 }

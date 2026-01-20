@@ -20,13 +20,16 @@ import { catchError } from 'rxjs/operators';
 })
 export class Home implements OnInit {
   fakeDailyRecipe: Recipe = {
-    // TODO: delete later
-    id: 0,
-    title: 'Recette du jour',
-    description: "Une délicieuse recette à essayer aujourd'hui.",
-    author: 'Chef Exemple',
-    type: 'Dessert',
-    preparationTime: 30,
+      // TODO: delete later
+      id: 0,
+      title: 'Recette du jour',
+      description: "Une délicieuse recette à essayer aujourd'hui.",
+      preparation_time: 30,
+      recipe_type: RecipeType.STARTER,
+      publication_date: '',
+      author: undefined,
+      ingredient_list: [],
+      step_list: []
   };
 
   // Signals
