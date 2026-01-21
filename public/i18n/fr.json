@@ -67,6 +67,57 @@
     "create": "Créer une recette",
     "show": "Voir la recette"
   },
+  "recipeType": {
+    "starter": "Entrée",
+    "mainCourse": "Plat principal",
+    "dessert": "Dessert",
+    "beverage": "Boisson",
+    "snack": "Snack",
+    "apetizer": "Apéritif",
+    "sideDish": "Accompagnement"
+  },
+  "ingredientType": {
+    "vegetable": "Légume",
+    "fruit": "Fruit",
+    "meat": "Viande",
+    "fish": "Poisson",
+    "seaFruit": "Fruit de mer",
+    "dairy": "Produit laitier",
+    "cheese": "Fromage",
+    "grain": "Céréales",
+    "spice": "Épice",
+    "condiment": "Condiment",
+    "nut": "Noix",
+    "herbs": "Herbe aromatique",
+    "fat": "Matière grasse",
+    "sugar": "Sucre",
+    "beverage": "Boisson",
+    "alcohol": "Alcool",
+    "starches": "Féculents",
+    "other": "Autres"
+  },
+  "unit": {
+    "short": {
+      "gram": "g",
+      "kilogram": "kg",
+      "liter": "L",
+      "milliliter": "mL",
+      "cup": "t",
+      "tablespoon": "c.a.s.",
+      "teaspoon": "c.a.c.",
+      "piece": "pc"
+    },
+    "full": {
+      "gram": "Gramme",
+      "kilogram": "Kilogramme",
+      "liter": "Litre",
+      "milliliter": "Millilitre",
+      "cup": "Tasse",
+      "tablespoon": "Cuillère à soupe",
+      "teaspoon": "Cuillère à café",
+      "piece": "Pièce"
+    }
+  },
   "common": {
     "cancel": "Annuler",
     "save": "Enregistrer",

@@ -5,33 +5,21 @@ import { RouterModule } from '@angular/router';
 import { RecipesApi } from '@core/api/recipes.api';
 import { isAuthenticated } from '@core/auth/auth.signals';
 import { LanguageService } from '@core/i18n/language.service';
-import { RecipeMini } from '@features/recipes/recipe-mini/recipe-mini';
 import { TranslatePipe } from '@ngx-translate/core';
 import { Recipe } from '@shared/models/recipes/recipe';
 import { finalize, of, take, tap } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { RecipeFull } from '../recipes/recipe-full/recipe-full';
+import { mockRecipe } from '@mocks/recipe.mock';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterModule, TranslatePipe, RecipeMini, MatProgressSpinnerModule],
+  imports: [CommonModule, RouterModule, TranslatePipe, RecipeFull, MatProgressSpinnerModule],
   templateUrl: './home.html',
   styleUrls: ['./home.scss'],
 })
 export class Home implements OnInit {
-  fakeDailyRecipe: Recipe = {
-      // TODO: delete later
-      id: 0,
-      title: 'Recette du jour',
-      description: "Une délicieuse recette à essayer aujourd'hui.",
-      preparation_time: 30,
-      recipe_type: RecipeType.STARTER,
-      publication_date: '',
-      author: undefined,
-      ingredient_list: [],
-      step_list: []
-  };
-
   // Signals
   dailyRecipe = signal<Recipe | null>(null);
   loading = signal(false);
@@ -46,7 +34,7 @@ export class Home implements OnInit {
   ngOnInit(): void {
     this.fetchDailyRecipe();
     if (!this.dailyRecipe()) {
-      this.dailyRecipe.set(this.fakeDailyRecipe);
+      this.dailyRecipe.set(mockRecipe);
     }
   }
 

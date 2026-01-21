@@ -8,7 +8,7 @@
           @if (loading()) {
             <mat-spinner aria-label="{{ 'common.loading' | translate }}"> </mat-spinner>
           } @else {
-            <app-recipe-mini [recipe]="dailyRecipe()"> </app-recipe-mini>
+            <app-recipe-full [recipe]="dailyRecipe()"> </app-recipe-full>
           }
 
           @if (errorMessage()) {

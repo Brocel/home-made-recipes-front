@@ -22,7 +22,8 @@
       "@shared/*": ["app/shared/*"],
       "@models/*": ["app/shared/models/*"],
       "@ui/*": ["app/shared/ui/*"],
-      "@env/*": ["environments/environment.ts"]
+      "@env/*": ["environments/environment.ts"],
+      "@mocks/*": ["public/mocks/*"]
     }
   },
   "angularCompilerOptions": {

@@ -9,11 +9,11 @@ export enum RecipeType {
 }
 
 export const RecipeTypeLabel: Record<RecipeType, string> = {
-  [RecipeType.STARTER]: 'Entrée', // TODO: translate pipe
-  [RecipeType.MAIN_COURSE]: 'Plat principal',
-  [RecipeType.DESSERT]: 'Dessert',
-  [RecipeType.BEVERAGE]: 'Boisson',
-  [RecipeType.SNACK]: 'Snack',
-  [RecipeType.APPETIZER]: 'Apéritif',
-  [RecipeType.SIDE_DISH]: 'Accompagnement',
+  [RecipeType.STARTER]: 'recipeType.starter',
+  [RecipeType.MAIN_COURSE]: 'recipeType.mainCourse',
+  [RecipeType.DESSERT]: 'recipeType.dessert',
+  [RecipeType.BEVERAGE]: 'recipeType.beverage',
+  [RecipeType.SNACK]: 'recipeType.snack',
+  [RecipeType.APPETIZER]: 'recipeType.apetizer',
+  [RecipeType.SIDE_DISH]: 'recipeType.sideDish',
 };

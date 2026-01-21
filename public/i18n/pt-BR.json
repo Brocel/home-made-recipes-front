@@ -67,6 +67,57 @@
     "create": "Criar uma receita",
     "show": "Ver a receita"
   },
+  "recipeType": {
+    "starter": "Entrada",
+    "mainCourse": "Prato principal",
+    "dessert": "Sobremesa",
+    "beverage": "Bebida",
+    "snack": "Lanche",
+    "apetizer": "Aperitivo",
+    "sideDish": "Acompanhamento"
+  },
+  "ingredientType": {
+    "vegetable": "Legume",
+    "fruit": "Fruta",
+    "meat": "Carne",
+    "fish": "Peixe",
+    "seaFruit": "Fruta do mar",
+    "dairy": "Leiteria",
+    "cheese": "Queijo",
+    "grain": "Cereais",
+    "spice": "Tempero",
+    "condiment": "Condimento",
+    "nut": "Nozes",
+    "herbs": "Erva aromática",
+    "fat": "Gordura",
+    "sugar": "Doce",
+    "beverage": "Bebida",
+    "alcohol": "Álcool",
+    "starches": "Feculentos",
+    "other": "Outros"
+  },
+  "unit": {
+    "short": {
+      "gram": "g",
+      "kilogram": "kg",
+      "liter": "L",
+      "milliliter": "mL",
+      "cup": "xc",
+      "tablespoon": "c.d.s.",
+      "teaspoon": "c.d.c.",
+      "piece": "pc"
+    },
+    "full": {
+      "gram": "Grama",
+      "kilogram": "Kilograma",
+      "liter": "Litro",
+      "milliliter": "Mililitro",
+      "cup": "Xícara",
+      "tablespoon": "Colher de sopa",
+      "teaspoon": "Colher de chá",
+      "piece": "Peça"
+    }
+  },
   "common": {
     "cancel": "Cancelar",
     "save": "Salvar",
