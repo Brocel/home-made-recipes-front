@@ -1,0 +1,73 @@
+npm verbose cli /Users/mayarabarriento/.nvm/versions/node/v20.19.6/bin/node /Users/mayarabarriento/.nvm/versions/node/v20.19.6/bin/npm
+npm info using npm@10.8.2
+npm info using node@v20.19.6
+npm verbose title npm install
+npm verbose argv "install" "--loglevel" "verbose"
+npm verbose logfile logs-max:10 dir:/Users/mayarabarriento/.npm/_logs/2026-01-21T14_43_00_091Z-
+npm verbose logfile /Users/mayarabarriento/.npm/_logs/2026-01-21T14_43_00_091Z-debug-0.log
+npm http fetch GET 200 https://registry.npmjs.org/@angular%2faria 19ms (cache hit)
+npm http fetch GET 200 https://registry.npmjs.org/@angular%2fcommon 13ms (cache hit)
+npm http fetch GET 200 https://registry.npmjs.org/@angular%2fcore 12ms (cache hit)
+npm http fetch GET 200 https://registry.npmjs.org/@angular%2fcompiler 23ms (cache hit)
+npm http fetch GET 200 https://registry.npmjs.org/rxjs 20ms (cache hit)
+npm http fetch GET 200 https://registry.npmjs.org/zone.js 7ms (cache hit)
+npm http fetch GET 200 https://registry.npmjs.org/@angular%2fforms 12ms (cache hit)
+npm http fetch GET 200 https://registry.npmjs.org/@angular%2fplatform-browser 38ms (cache hit)
+npm http fetch GET 200 https://registry.npmjs.org/@angular%2fanimations 12ms (cache hit)
+npm http fetch GET 200 https://registry.npmjs.org/@angular%2fmaterial 31ms (cache hit)
+npm http fetch GET 200 https://registry.npmjs.org/@angular%2fcdk 21ms (cache hit)
+npm http fetch GET 200 https://registry.npmjs.org/@angular%2frouter 28ms (cache hit)
+npm http fetch GET 200 https://registry.npmjs.org/@ngrx%2fcomponent-store 6ms (cache hit)
+npm http fetch GET 200 https://registry.npmjs.org/@ngx-translate%2fcore 4ms (cache hit)
+npm http fetch GET 200 https://registry.npmjs.org/@ngx-translate%2fhttp-loader 3ms (cache hit)
+npm http fetch GET 200 https://registry.npmjs.org/tslib 6ms (cache hit)
+npm http fetch GET 200 https://registry.npmjs.org/@angular%2fbuild 7ms (cache hit)
+npm http fetch GET 200 https://registry.npmjs.org/@angular%2fcompiler-cli 17ms (cache hit)
+npm http fetch GET 200 https://registry.npmjs.org/typescript 53ms (cache hit)
+npm http fetch GET 200 https://registry.npmjs.org/typescript 43ms (cache hit)
+npm http fetch GET 200 https://registry.npmjs.org/@angular%2flocalize 14ms (cache hit)
+npm http fetch GET 200 https://registry.npmjs.org/@angular%2fplatform-server 22ms (cache hit)
+npm http fetch GET 200 https://registry.npmjs.org/@angular%2fservice-worker 22ms (cache hit)
+npm http fetch GET 200 https://registry.npmjs.org/@angular%2fssr 7ms (cache hit)
+npm http fetch GET 200 https://registry.npmjs.org/karma 22ms (cache hit)
+npm http fetch GET 200 https://registry.npmjs.org/less 6ms (cache hit)
+npm http fetch GET 200 https://registry.npmjs.org/ng-packagr 10ms (cache hit)
+npm http fetch GET 200 https://registry.npmjs.org/tailwindcss 57ms (cache hit)
+npm http fetch GET 200 https://registry.npmjs.org/postcss 9ms (cache hit)
+npm verbose stack Error: unable to resolve dependency tree
+npm verbose stack     at #failPeerConflict (/Users/mayarabarriento/.nvm/versions/node/v20.19.6/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:1360:25)
+npm verbose stack     at #loadPeerSet (/Users/mayarabarriento/.nvm/versions/node/v20.19.6/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:1353:29)
+npm verbose stack     at async #buildDepStep (/Users/mayarabarriento/.nvm/versions/node/v20.19.6/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:901:11)
+npm verbose stack     at async Arborist.buildIdealTree (/Users/mayarabarriento/.nvm/versions/node/v20.19.6/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:181:7)
+npm verbose stack     at async Promise.all (index 1)
+npm verbose stack     at async Arborist.reify (/Users/mayarabarriento/.nvm/versions/node/v20.19.6/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/reify.js:131:5)
+npm verbose stack     at async Install.exec (/Users/mayarabarriento/.nvm/versions/node/v20.19.6/lib/node_modules/npm/lib/commands/install.js:150:5)
+npm verbose stack     at async Npm.exec (/Users/mayarabarriento/.nvm/versions/node/v20.19.6/lib/node_modules/npm/lib/npm.js:207:9)
+npm verbose stack     at async module.exports (/Users/mayarabarriento/.nvm/versions/node/v20.19.6/lib/node_modules/npm/lib/cli/entry.js:74:5)
+npm error code ERESOLVE
+npm error ERESOLVE unable to resolve dependency tree
+npm error
+npm error While resolving: home-made-recipes-front@0.0.0
+npm error Found: typescript@5.4.5
+npm error node_modules/typescript
+npm error   dev typescript@"~5.4.0" from the root project
+npm error
+npm error Could not resolve dependency:
+npm error peer typescript@">=5.8 <6.0" from @angular/build@20.3.14
+npm error node_modules/@angular/build
+npm error   dev @angular/build@"^20.0.0" from the root project
+npm error
+npm error Fix the upstream dependency conflict, or retry
+npm error this command with --force or --legacy-peer-deps
+npm error to accept an incorrect (and potentially broken) dependency resolution.
+npm error
+npm error
+npm error For a full report see:
+npm error /Users/mayarabarriento/.npm/_logs/2026-01-21T14_43_00_091Z-eresolve-report.txt
+npm verbose cwd /Users/mayarabarriento/Desktop/workspace/home-made-recipes-front
+npm verbose os Darwin 19.6.0
+npm verbose node v20.19.6
+npm verbose npm  v10.8.2
+npm verbose exit 1
+npm verbose code 1
+npm error A complete log of this run can be found in: /Users/mayarabarriento/.npm/_logs/2026-01-21T14_43_00_091Z-debug-0.log

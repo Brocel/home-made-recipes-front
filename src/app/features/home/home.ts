@@ -10,7 +10,7 @@ import { Recipe } from '@shared/models/recipes/recipe';
 import { finalize, of, take, tap } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { RecipeFull } from '../recipes/recipe-full/recipe-full';
-import { mockRecipe } from '@mocks/recipe.mock';
+import { mockRecipe } from '../../../../public/mocks/recipe-mock';
 
 @Component({
   selector: 'app-home',

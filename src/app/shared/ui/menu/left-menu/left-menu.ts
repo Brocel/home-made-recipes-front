@@ -1,13 +1,13 @@
-import { Component, EventEmitter, Output, viewChild } from '@angular/core';
+import { Component, EventEmitter, Output, ViewChild, viewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
-import { Menu, MenuContent, MenuItem, MenuTrigger } from '@angular/aria/menu';
-import { OverlayModule } from '@angular/cdk/overlay';
+import { MatMenuModule, MatMenuTrigger } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-left-menu',
   standalone: true,
-  imports: [CommonModule, TranslateModule, Menu, MenuContent, MenuItem, MenuTrigger, OverlayModule],
+  imports: [CommonModule, TranslateModule, MatIconModule, MatMenuModule],
   templateUrl: './left-menu.html',
   styleUrls: ['./left-menu.scss'],
 })
@@ -18,7 +18,6 @@ export class LeftMenu {
   @Output() close = new EventEmitter<void>();
 
   menuOpen = false;
-  mainMenu = viewChild<Menu<string>>('mainMenu');
 
   closeMenu(): void {
     this.menuOpen = false;

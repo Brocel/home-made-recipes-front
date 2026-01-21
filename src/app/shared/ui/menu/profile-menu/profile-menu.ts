@@ -1,14 +1,21 @@
 import { Component, EventEmitter, Input, Output, viewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
-
-import { Menu, MenuContent, MenuItem, MenuTrigger } from '@angular/aria/menu';
-import { OverlayModule } from '@angular/cdk/overlay';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule, MatMenuTrigger } from '@angular/material/menu';
+import { MatDividerModule } from '@angular/material/divider';
 
 @Component({
   selector: 'app-profile-menu',
   standalone: true,
-  imports: [CommonModule, TranslateModule, Menu, MenuContent, MenuItem, MenuTrigger, OverlayModule],
+  imports: [
+    CommonModule,
+    TranslateModule,
+    MatIconModule,
+    MatMenuModule,
+    MatMenuTrigger,
+    MatDividerModule,
+  ],
   templateUrl: './profile-menu.html',
   styleUrls: ['./profile-menu.scss'],
 })
@@ -24,7 +31,6 @@ export class ProfileMenu {
   @Output() close = new EventEmitter<void>();
 
   menuOpen = false;
-  profileMenu = viewChild<Menu<string>>('profileMenu');
 
   // Close the menu and emit close event so parent can react if needed
   closeMenu(): void {

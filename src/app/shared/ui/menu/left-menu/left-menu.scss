@@ -14,38 +14,15 @@
     align-items: center;
     justify-content: center;
     border-radius: t.$radius-sm;
-  }
+    transition: background 120ms ease;
 
-  .menu-btn:focus {
-    outline: 2px solid rgba(t.$color-panel-bg, t.$focus-alpha);
-    outline-offset: 2px;
-  }
+    &:hover {
+      background: t.$color-hover-surface;
+    }
 
-  /* panneau du menu */
-  .menu-panel {
-    position: absolute;
-    left: 0;
-    top: calc(100% + 13px);
-    background: t.$color-panel-bg;
-    box-shadow: t.$shadow-md;
-    border-radius: t.$radius-md;
-    padding: t.$space-sm;
-    min-width: 200px;
-    z-index: 60;
-  }
-
-  .menu-panel span {
-    display: block;
-    padding: 0.5rem 0.75rem;
-    color: t.$color-text-strong;
-    text-decoration: none;
-    cursor: pointer;
-    border-radius: t.$radius-sm;
-  }
-
-  .menu-panel span:hover,
-  .menu-panel span:focus {
-    background: t.$color-hover-surface;
-    outline: none;
+    &:focus {
+      outline: 2px solid rgba(t.$color-primary, t.$focus-alpha);
+      outline-offset: 2px;
+    }
   }
 }

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Recipe } from '@app/shared/models/recipes/recipe';
 
 @Component({
   selector: 'app-recipe-full',
@@ -7,5 +8,6 @@ import { Component } from '@angular/core';
   styleUrl: './recipe-full.scss'
 })
 export class RecipeFull {
+  @Input() recipe: Recipe | null | undefined = undefined;
 
 }

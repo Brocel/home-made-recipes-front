@@ -13,14 +13,20 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    transition: background 120ms ease;
+
+    &:hover {
+      background: t.$color-hover-surface;
+    }
+
+    &:focus {
+      outline: 2px solid rgba(t.$color-primary, t.$focus-alpha);
+      outline-offset: 2px;
+    }
   }
 
-  .profile-btn:focus {
-    outline: 2px solid rgba(t.$color-primary, t.$focus-alpha);
-    outline-offset: 2px;
-  }
-
-  .avatar {
+  .avatar,
+  .avatar-fallback {
     width: 36px;
     height: 36px;
     border-radius: 50%;
@@ -28,45 +34,11 @@
   }
 
   .avatar-fallback {
-    width: 36px;
-    height: 36px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50%;
     background: var(--color-surface);
     color: var(--color-text);
     font-weight: 600;
-  }
-
-  .profile-menu-panel {
-    position: absolute;
-    right: 0;
-    top: calc(100% + 8px);
-    background: t.$color-panel-bg;
-    box-shadow: t.$shadow-md;
-    border-radius: t.$radius-md;
-    padding: t.$space-sm;
-    min-width: 220px;
-    z-index: 70;
-    transition:
-      transform 140ms ease,
-      opacity 140ms ease;
-    transform-origin: top right;
-  }
-
-  .profile-menu-panel span {
-    display: block;
-    padding: 0.5rem 0.75rem;
-    color: t.$color-text-strong;
-    text-decoration: none;
-    cursor: pointer;
-    border-radius: t.$radius-sm;
-  }
-
-  .profile-menu-panel span:hover,
-  .profile-menu-panel span:focus {
-    background: t.$color-hover-surface;
-    outline: none;
   }
 }

@@ -9,5 +9,5 @@ import { Recipe } from '@models/recipes/recipe';
   styleUrl: './recipe-mini.scss',
 })
 export class RecipeMini {
-  @Input() recipe: Recipe | null = null;
+  @Input() recipe: Recipe | null | undefined = undefined;
 }

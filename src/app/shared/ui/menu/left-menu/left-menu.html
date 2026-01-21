@@ -1,64 +1,27 @@
-<!-- src/app/shared/left-menu/left-menu.html -->
 <div class="left-menu-root">
-  <!-- Trigger button:  -->
+  <!-- Trigger button -->
   <button
     class="menu-btn"
-    ngMenuTrigger
-    #origin
-    #trigger="ngMenuTrigger"
-    [menu]="mainMenu()"
+    mat-icon-button
+    [matMenuTriggerFor]="mainMenu"
     aria-label="{{ 'menu.label' | translate }}"
+    disableRipple
   >
     ☰
   </button>
 
-  <!-- Menu content -->
-  <ng-template
-    [cdkConnectedOverlayOpen]="trigger.expanded()"
-    [cdkConnectedOverlay]="{ origin, usePopover: 'inline' }"
-    cdkAttachPopoverAsChild
-  >
-    <div ngMenu class="menu-panel" #mainMenu="ngMenu">
-      <ng-template ngMenuContent>
-        <div
-          ngMenuItem
-          role="menuitem"
-          tabindex="0"
-          (click)="goHome()"
-          onKeyDown="goHome()"
-          value="{{ 'menu.left.home' | translate }}"
-        >
-          <span class="label">
-            {{ 'menu.left.home' | translate }}
-          </span>
-        </div>
+  <!-- Menu -->
+  <mat-menu #mainMenu="matMenu" class="menu-panel">
+    <button mat-menu-item #homeEl (mouseenter)="homeEl.focus()" (click)="goHome()">
+      <span class="label">{{ 'menu.left.home' | translate }}</span>
+    </button>
 
-        <div
-          ngMenuItem
-          role="menuitem"
-          tabindex="0"
-          (click)="goAdvancedSearch()"
-          onKeyDown="goAdvancedSearch()"
-          value="{{ 'menu.left.search' | translate }}"
-        >
-          <span class="label">
-            {{ 'menu.left.search' | translate }}
-          </span>
-        </div>
+    <button mat-menu-item #searchEl (mouseenter)="searchEl.focus()" (click)="goAdvancedSearch()">
+      <span class="label">{{ 'menu.left.search' | translate }}</span>
+    </button>
 
-        <div
-          ngMenuItem
-          role="menuitem"
-          tabindex="0"
-          (click)="goAddRecipe()"
-          onKeyDown="goAddRecipe()"
-          value="{{ 'menu.left.addRecipe' | translate }}"
-        >
-          <span class="label">
-            {{ 'menu.left.addRecipe' | translate }}
-          </span>
-        </div>
-      </ng-template>
-    </div>
-  </ng-template>
+    <button mat-menu-item #addEl (mouseenter)="addEl.focus()" (click)="goAddRecipe()">
+      <span class="label">{{ 'menu.left.addRecipe' | translate }}</span>
+    </button>
+  </mat-menu>
 </div>

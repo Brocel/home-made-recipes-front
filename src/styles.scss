@@ -113,6 +113,33 @@ footer {
   animation: spin 0.8s linear infinite;
 }
 
+/* Menus Material */
+.mat-mdc-menu-panel {
+  background: t.$color-panel-bg !important;
+  border-radius: t.$radius-md !important;
+  box-shadow: t.$shadow-md !important;
+  padding: t.$space-xs !important;
+  backdrop-filter: blur(6px);
+  opacity: 0.98;
+}
+
+/* Hover souris */
+.mat-mdc-menu-item:hover {
+  background: t.$color-hover-surface !important;
+}
+
+/* Focus clavier */
+.mat-mdc-menu-item.cdk-focused:not(:hover) {
+  background: t.$color-hover-surface !important;
+}
+
+/* Style général */
+.mat-mdc-menu-item {
+  border-radius: t.$radius-sm !important;
+  color: t.$color-text-strong !important;
+  font-size: 0.95rem;
+}
+
 /* responsive utilities */
 @media (max-width: 768px) {
   .container {
