@@ -140,6 +140,16 @@ footer {
   font-size: 0.95rem;
 }
 
+.mat-mdc-tooltip {
+  background: t.$color-primary !important; // fond opaque
+  color: t.$surface !important; // texte clair
+  font-size: 0.9rem !important;
+  padding: 6px 10px !important;
+  border-radius: t.$radius-sm !important;
+  box-shadow: t.$shadow-md !important;
+  opacity: 1 !important; // enlève la transparence
+}
+
 /* responsive utilities */
 @media (max-width: 768px) {
   .container {

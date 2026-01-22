@@ -1,1 +1,88 @@
-<p>recipe-full works!</p>
+<mat-card class="recipe-card">
+  <div class="scroll-wrapper">
+    <!-- HEADER -->
+    <header class="header">
+      <h1 class="title">{{ recipe.title }}</h1>
+
+      <div class="meta">
+        <span class="meta-item">
+          <mat-icon>restaurant_menu</mat-icon>
+          {{ recipeTypeLabel[recipe.recipe_type] | translate }}
+        </span>
+
+        <span class="meta-item">
+          <mat-icon>schedule</mat-icon>
+          {{ recipe.preparation_time }} min
+        </span>
+
+        <span class="meta-item">
+          <mat-icon>person</mat-icon>
+          {{ recipe.author.username }}
+        </span>
+      </div>
+    </header>
+
+    <mat-divider></mat-divider>
+
+    <section class="information-body">
+      <div class="description">
+        {{ recipe.description }}
+      </div>
+
+      <div class="ingredients">
+        <h2>{{ 'recipe.ingredients' | translate }}</h2>
+
+        <ul>
+          @for (ing of recipe.ingredient_list; track ing.id) {
+            <li>
+              <span
+                class="product"
+                matTooltip="{{ ingredientTypeLabel[ing.product.ingredient_type] | translate }}"
+              >
+                {{ ing.product.name }}
+              </span>
+              <span class="quantity">
+                ({{ ing.quantity }}
+                <span class="unit" matTooltip="{{ unitLong[ing.unit] | translate }}">
+                  {{ unitShort[ing.unit] | translate }} </span
+                >)
+              </span>
+            </li>
+          }
+        </ul>
+      </div>
+    </section>
+
+    <mat-divider></mat-divider>
+
+    <!-- STEPS -->
+    <section class="steps">
+      <mat-expansion-panel
+        class="steps-panel"
+        [expanded]="globalExpanded()"
+        (opened)="toggleAll(true)"
+        (closed)="toggleAll(false)"
+      >
+        <mat-expansion-panel-header>
+          <mat-panel-title class="step-panel-title">
+            {{ 'recipe.steps' | translate }}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <div class="step-list">
+          @for (step of sortedSteps; track step.id) {
+            <mat-expansion-panel class="step-item" [expanded]="globalExpanded()">
+              <mat-expansion-panel-header>
+                <mat-panel-title class="step-title">
+                  {{ 'recipe.step' | translate }} {{ step.order }}
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+
+              <p class="step-description">{{ step.description }}</p>
+            </mat-expansion-panel>
+          }
+        </div>
+      </mat-expansion-panel>
+    </section>
+  </div>
+</mat-card>

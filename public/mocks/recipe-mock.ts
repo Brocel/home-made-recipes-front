@@ -1,4 +1,9 @@
-import { Recipe, RecipeType, IngredientType, Unit } from '../../src/app/shared/models/recipes/recipe';
+import {
+  Recipe,
+  RecipeType,
+  IngredientType,
+  Unit,
+} from '../../src/app/shared/models/recipes/recipe';
 
 export const mockRecipe: Recipe = {
   id: 1,
@@ -13,7 +18,7 @@ export const mockRecipe: Recipe = {
     id: 'u1',
     first_name: 'Maxime',
     last_name: 'Dupont',
-    username: 'maxime',
+    username: 'Brocel',
     email: 'maxime@example.com',
     birth_date: '1990-05-12',
     inscription_date: '2023-01-01',
@@ -33,7 +38,7 @@ export const mockRecipe: Recipe = {
       product: {
         id: 101,
         name: 'Pâtes',
-        ingredient_type: IngredientType.GRAIN,
+        ingredient_type: IngredientType.STARCHES,
       },
     },
     {
@@ -73,7 +78,7 @@ export const mockRecipe: Recipe = {
       product: {
         id: 105,
         name: 'Gousse d’ail',
-        ingredient_type: IngredientType.VEGETABLE,
+        ingredient_type: IngredientType.CONDIMENT,
       },
     },
     {
@@ -98,8 +103,7 @@ export const mockRecipe: Recipe = {
     {
       id: 2,
       order: 2,
-      description:
-        'Pendant ce temps, nettoyer et émincer les champignons.',
+      description: 'Pendant ce temps, nettoyer et émincer les champignons.',
     },
     {
       id: 3,
@@ -110,20 +114,17 @@ export const mockRecipe: Recipe = {
     {
       id: 4,
       order: 4,
-      description:
-        'Ajouter les champignons et les faire sauter jusqu’à ce qu’ils soient dorés.',
+      description: 'Ajouter les champignons et les faire sauter jusqu’à ce qu’ils soient dorés.',
     },
     {
       id: 5,
       order: 5,
-      description:
-        'Verser la crème liquide, saler légèrement et laisser mijoter 3 minutes.',
+      description: 'Verser la crème liquide, saler légèrement et laisser mijoter 3 minutes.',
     },
     {
       id: 6,
       order: 6,
-      description:
-        'Égoutter les pâtes et les mélanger à la sauce. Servir immédiatement.',
+      description: 'Égoutter les pâtes et les mélanger à la sauce. Servir immédiatement.',
     },
   ],
 };

@@ -1,0 +1,200 @@
+@use 'tokens' as t;
+
+.recipe-card {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  width: 100%;
+  max-width: 900px;
+  margin: 0;
+  min-height: 0;
+  height: 70vh;
+  padding: t.$space-lg;
+
+  background: t.$color-panel-bg;
+  border-radius: t.$radius-lg;
+  box-shadow: t.$shadow-lg;
+}
+
+.scroll-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  border-radius: t.$radius-lg;
+
+  overflow-y: auto;
+  scrollbar-width: none;
+
+  gap: t.$space-lg;
+}
+
+.scroll-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+/* HEADER */
+.header {
+  background: t.$surface-100;
+  padding: t.$space-lg;
+  border-radius: t.$radius-md;
+  box-shadow: t.$shadow-sm;
+  text-align: center;
+
+  .title {
+    font-size: 2.6rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: t.$color-text-strong;
+    margin: t.$space-sm;
+  }
+
+  .meta {
+    display: flex;
+    justify-content: center;
+    gap: t.$space-lg;
+    flex-wrap: wrap;
+    margin-top: t.$space-sm;
+
+    .meta-item {
+      background: t.$color-primary-600;
+      padding-left: t.$space-xs;
+      padding-right: t.$space-sm;
+      border-radius: t.$radius-sm;
+      box-shadow: t.$shadow-sm;
+      font-size: 0.95rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: t.$space-xs;
+      color: t.$text-inverse;
+      font-size: 1rem;
+
+      mat-icon {
+        font-size: 1.2rem;
+        opacity: 0.8;
+        line-height: 1.3;
+      }
+    }
+  }
+}
+
+.recipe-card mat-divider {
+  border-top-width: 3px;
+  border-top-style: solid;
+  border-top-color: t.$color-primary;
+  margin: t.$space-md 0;
+}
+
+.information-body {
+  display: flex;
+  gap: t.$space-xl;
+  align-items: center;
+  width: 100%;
+  margin-top: 0;
+}
+
+/* DESCRIPTION À GAUCHE */
+.description {
+  flex: 1;
+  font-size: 1.15rem;
+  line-height: 1.5;
+  color: t.$text-color;
+  padding: t.$space-xs;
+}
+
+/* INGRÉDIENTS À DROITE */
+.ingredients {
+  flex-shrink: 0;
+  width: max-content;
+  background: t.$surface-100;
+  padding: t.$space-lg;
+  border-radius: t.$radius-md;
+  box-shadow: t.$shadow-sm;
+
+  h2 {
+    margin-top: 0;
+    margin-bottom: t.$space-md;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: t.$color-text-strong;
+  }
+
+  ul {
+    list-style: disc;
+    padding: 0;
+    margin: 0;
+
+    li {
+      font-size: 1.05rem;
+      margin-bottom: t.$space-sm;
+
+      .product {
+        font-weight: 600;
+        color: t.$color-text-strong;
+        cursor: help;
+      }
+
+      .unit {
+        cursor: help;
+        color: t.$accent;
+      }
+    }
+  }
+}
+
+/* STEPS */
+.steps {
+  .steps-panel {
+    background: t.$surface-100;
+    border-radius: t.$radius-md;
+  }
+
+  .step-panel-title {
+    font-weight: 700;
+    font-style: italic;
+    font-size: 1.4rem;
+    color: t.$color-text-strong;
+  }
+
+  .step-list {
+    display: flex;
+    flex-direction: column;
+    gap: t.$space-md;
+    padding: t.$space-sm 0;
+  }
+
+  .step-item {
+    background: t.$surface;
+    border-radius: t.$radius-md;
+    box-shadow: t.$shadow-sm;
+
+    .step-title {
+      font-weight: 700;
+      font-style: italic;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      font-size: 1.2rem;
+      color: t.$color-text-strong;
+    }
+
+    .step-description {
+      margin: 0;
+      padding: t.$space-sm t.$space-md;
+      font-size: 1.05rem;
+      line-height: 1.5;
+      color: t.$text-color;
+    }
+  }
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .information-body {
+    flex-direction: column;
+  }
+
+  .ingredients {
+    width: 100%;
+  }
+}

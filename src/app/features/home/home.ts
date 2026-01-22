@@ -21,7 +21,7 @@ import { mockRecipe } from '../../../../public/mocks/recipe-mock';
 })
 export class Home implements OnInit {
   // Signals
-  dailyRecipe = signal<Recipe | null>(null);
+  dailyRecipe = signal<Recipe | any>(null);
   loading = signal(false);
   auth = isAuthenticated;
   errorMessage = signal<string | null>(null);

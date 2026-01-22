@@ -65,7 +65,9 @@
     "type": "Type de recette",
     "ingredientType": "Type d'ingrédient",
     "create": "Créer une recette",
-    "show": "Voir la recette"
+    "show": "Voir la recette",
+    "steps": "Préparation:",
+    "step": "Étape n°"
   },
   "recipeType": {
     "starter": "Entrée",
