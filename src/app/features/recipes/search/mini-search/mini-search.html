@@ -1,0 +1,58 @@
+<div class="mini-search">
+  <h3 class="title">
+    <mat-icon>search</mat-icon>
+    {{ 'search.mini.title' | translate }}
+  </h3>
+
+  <form (ngSubmit)="submit()" [formGroup]="form" class="form">
+    <!-- Nom de recette -->
+    <mat-form-field appearance="outline" class="field">
+      <mat-label>{{ 'recipe.title' | translate }}</mat-label>
+      <mat-icon matPrefix>search</mat-icon>
+      <input
+        matInput
+        formControlName="name"
+        placeholder="{{ 'search.mini.namePlaceHolder' | translate }}"
+      />
+    </mat-form-field>
+
+    <!-- Type de recette -->
+    <mat-form-field appearance="outline" class="field">
+      <mat-label>{{ 'recipe.type' | translate }}</mat-label>
+      <mat-icon matPrefix>restaurant_menu</mat-icon>
+      <mat-select formControlName="recipeType">
+        <ng-container>
+          <mat-option [value]="null">{{ 'common.none' | translate }}</mat-option>
+          @for (t of recipeTypes; track t.value) {
+            <mat-option [value]="t.value"> {{ t.label | translate }} </mat-option>
+          }
+        </ng-container>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Temps max -->
+    <mat-form-field appearance="outline" class="field">
+      <mat-label>{{ 'recipe.prepTimeMin' | translate }}</mat-label>
+      <mat-icon matPrefix>schedule</mat-icon>
+      <input matInput type="number" min="0" formControlName="maxTime" placeholder="15" />
+    </mat-form-field>
+
+    <!-- Type d'ingrédient -->
+    <mat-form-field appearance="outline" class="field">
+      <mat-label>{{ 'recipe.ingredientType' | translate }}</mat-label>
+      <mat-icon matPrefix>category</mat-icon>
+      <mat-select formControlName="ingredientType">
+        <ng-container>
+          <mat-option [value]="null">{{ 'common.none' | translate }}</mat-option>
+          @for (t of ingredientTypes; track t.value) {
+            <mat-option [value]="t.value"> {{ t.label | translate }} </mat-option>
+          }
+        </ng-container>
+      </mat-select>
+    </mat-form-field>
+
+    <button mat-raised-button class="submit">
+      {{ 'search.search' | translate }}
+    </button>
+  </form>
+</div>

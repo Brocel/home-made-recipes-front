@@ -1,0 +1,46 @@
+@use 'tokens' as t;
+
+.mini-search {
+  display: flex;
+  flex-direction: column;
+  gap: t.$space-md;
+  padding: t.$space-md;
+
+  .title {
+    display: flex;
+    align-items: center;
+    gap: t.$space-sm;
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: t.$color-text-strong;
+
+    mat-icon {
+      font-size: 1.3rem;
+      line-height: 1.2;
+    }
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: t.$space-sm;
+  }
+
+  .field {
+    width: 100%;
+
+    mat-icon {
+      margin-right: t.$space-xs;
+      line-height: 1.3;
+    }
+  }
+
+  .submit {
+    margin-top: t.$space-sm;
+    width: fit-content;
+    background: t.$color-primary;
+    border-radius: t.$radius-md;
+    align-self: center;
+  }
+}

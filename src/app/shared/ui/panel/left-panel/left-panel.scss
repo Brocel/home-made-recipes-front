@@ -10,7 +10,7 @@
   box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15);
   transform: translateX(-100%);
   transition: transform 0.3s ease;
-  z-index: 2000;
+  z-index: 100;
 
   &.open {
     transform: translateX(0);
@@ -23,9 +23,22 @@
 }
 
 .panel-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
   height: 100%;
   overflow-y: auto;
-  padding: 20px;
+  scrollbar-width: none;
+  padding: t.$space-md;
+  gap: t.$space-lg;
+
+  h3 {
+    margin-bottom: t.$space-sm;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: t.$color-text-strong;
+  }
 }
 
 /* Handle demi-cercle */

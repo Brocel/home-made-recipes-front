@@ -150,6 +150,11 @@ footer {
   opacity: 1 !important; // enlève la transparence
 }
 
+.mat-select-panel {
+  background-color: surface !important;
+  opacity: 1 !important; // enlève la transparence
+}
+
 /* responsive utilities */
 @media (max-width: 768px) {
   .container {

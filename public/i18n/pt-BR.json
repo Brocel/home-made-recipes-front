@@ -44,10 +44,14 @@
     "googlePrivacyNote": "Ao se conectar com o Google, usamos apenas as informações necessárias para criar sua conta."
   },
   "search": {
-    "placeholder": "Pesquisar por palavra-chave...",
+    "placeholder": "Receita...",
     "advancedSearchPlaceHolder": "Pesquisa avançada...",
     "advancedSearch": "Pesquisa avançada",
-    "search": "Pesquisar"
+    "search": "Pesquisar",
+    "mini": {
+      "title": "Pesquisa rápida",
+      "namePlaceHolder": "Ex: Frango assado"
+    }
   },
   "authCta": {
     "title": "Junte-se à comunidade",
@@ -124,7 +128,8 @@
     "cancel": "Cancelar",
     "save": "Salvar",
     "ok": "OK",
-    "loading": "Carregando..."
+    "loading": "Carregando...",
+    "none": "Nenhum.a"
   },
   "errors": {
     "recipe": {

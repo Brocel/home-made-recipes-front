@@ -44,10 +44,14 @@
     "googlePrivacyNote": "En te connectant avec Google, nous utilisons uniquement les informations nécessaires pour créer ton compte."
   },
   "search": {
-    "placeholder": "Rechercher par mot‑clé...",
+    "placeholder": "Recette...",
     "advancedSearchPlaceHolder": "Recherche avancée...",
     "advancedSearch": "Recherche avancée",
-    "search": "Rechercher"
+    "search": "Rechercher",
+    "mini": {
+      "title": "Recherche rapide",
+      "namePlaceHolder": "Ex: Poulet rôti"
+    }
   },
   "authCta": {
     "title": "Rejoins la communauté",
@@ -124,7 +128,8 @@
     "cancel": "Annuler",
     "save": "Enregistrer",
     "ok": "OK",
-    "loading": "Chargement..."
+    "loading": "Chargement...",
+    "none": "Aucun.e"
   },
   "errors": {
     "recipe": {
