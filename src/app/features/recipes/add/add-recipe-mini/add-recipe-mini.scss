@@ -1,10 +1,1 @@
 @use 'tokens' as t;
-
-.submit {
-  margin-top: t.$space-sm;
-  width: fit-content;
-  background: t.$color-primary;
-  border-radius: t.$radius-md;
-  align-self: center;
-  color: whitesmoke;
-}

@@ -27,6 +27,7 @@ import { IngredientTypeLabel } from '@models/recipes/ingredient-type.enum';
 })
 export class MiniSearch {
   @Output() search = new EventEmitter<any>();
+  @Output() close = new EventEmitter<void>();
 
   private fb: FormBuilder = inject(FormBuilder);
 
@@ -41,8 +42,7 @@ export class MiniSearch {
   });
 
   submit() {
-    console.log('recipeTypes:', this.recipeTypes);
-    console.log('ingredientTypes:', this.ingredientTypes);
     this.search.emit(this.form.value);
+    this.close.emit();
   }
 }

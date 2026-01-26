@@ -27,6 +27,9 @@ import { RecipeTypeLabel } from '@models/recipes/recipe-type.enum';
   styleUrls: ['./add-recipe-mini.scss'],
 })
 export class AddRecipeMini {
+  @Output() close = new EventEmitter<void>();
+  @Output() openCreateFull = new EventEmitter<{ title?: string; type?: string }>();
+
   private fb: FormBuilder = inject(FormBuilder);
 
   title: string = '';
@@ -39,7 +42,6 @@ export class AddRecipeMini {
     recipeType: this.fb.control<string>('')
   });
 
-  @Output() openCreateFull = new EventEmitter<{ title?: string; type?: string }>();
 
   constructor(private router: Router) {}
 
@@ -47,5 +49,6 @@ export class AddRecipeMini {
     const payload = { title: this.title || undefined, type: this.type || undefined };
     this.openCreateFull.emit(payload);
     this.router.navigate(['/recipes/create'], { state: payload });
+    this.close.emit();
   }
 }

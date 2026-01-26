@@ -144,6 +144,15 @@ footer {
     padding: t.$space-md;
     align-self: center;
     width: 90%;
+
+    .submit {
+      margin-top: t.$space-sm;
+      width: fit-content;
+      background: t.$color-primary;
+      border-radius: t.$radius-md;
+      align-self: center;
+      color: whitesmoke;
+    }
   }
 
   .field {
@@ -155,14 +164,6 @@ footer {
       margin-right: t.$space-xs;
       line-height: 1.2;
     }
-  }
-
-  .submit {
-    margin-top: t.$space-sm;
-    width: fit-content;
-    background: t.$color-primary;
-    border-radius: t.$radius-md;
-    align-self: center;
   }
 }
 

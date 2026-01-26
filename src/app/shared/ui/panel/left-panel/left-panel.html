@@ -1,8 +1,9 @@
 <div class="panel" [class.open]="isOpen()">
   <div class="panel-content">
-    <app-mini-search (search)="onMiniSearch($event)"></app-mini-search>
+    <app-mini-search (search)="onMiniSearch($event)" (close)="toggle()"> </app-mini-search>
 
-    <app-add-recipe-mini (openCreateFull)="onOpenCreateFull($event)"> </app-add-recipe-mini>
+    <app-add-recipe-mini (openCreateFull)="onOpenCreateFull($event)" (close)="toggle()">
+    </app-add-recipe-mini>
   </div>
 
   <button class="handle" (click)="toggle()">
