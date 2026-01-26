@@ -1,23 +1,35 @@
-<form class="add-recipe-mini" (ngSubmit)="submit()">
-  <label>
-    {{ 'recipe.title' | translate }}
-    <input
-      [(ngModel)]="title"
-      name="title"
-      type="text"
-      placeholder="{{ 'recipe.title' | translate }}"
-    />
-  </label>
+<div class="mini-form">
+  <h3 class="title">
+    <mat-icon>add_box</mat-icon>
+    {{ 'add.mini.title' | translate }}
+  </h3>
+  <form (ngSubmit)="submit()" [formGroup]="form" class="form">
+    <!-- Nom de recette -->
+    <mat-form-field appearance="outline" class="field">
+      <mat-label>{{ 'recipe.title' | translate }}</mat-label>
+      <mat-icon matPrefix>create</mat-icon>
+      <input
+        matInput
+        formControlName="title"
+        placeholder="{{ 'add.mini.namePlaceHolder' | translate }}"
+      />
+    </mat-form-field>
 
-  <label>
-    {{ 'recipe.type' | translate }}
-    <input
-      [(ngModel)]="type"
-      name="type"
-      type="text"
-      placeholder="{{ 'recipe.type' | translate }}"
-    />
-  </label>
+    <!-- Type de recette -->
+    <mat-form-field appearance="outline" class="field">
+      <mat-label>{{ 'recipe.type' | translate }}</mat-label>
+      <mat-icon matPrefix>restaurant_menu</mat-icon>
+      <mat-select formControlName="recipeType">
+        <ng-container>
+          @for (t of recipeTypes; track t.value) {
+            <mat-option [value]="t.value"> {{ t.label | translate }} </mat-option>
+          }
+        </ng-container>
+      </mat-select>
+    </mat-form-field>
 
-  <app-button variant="primary" type="submit">{{ 'recipe.create' | translate }}</app-button>
-</form>
+    <button mat-raised-button class="submit">
+      {{ 'add.create' | translate }}
+    </button>
+  </form>
+</div>

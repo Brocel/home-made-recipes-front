@@ -53,6 +53,13 @@
       "namePlaceHolder": "Ex: Poulet rôti"
     }
   },
+  "add": {
+    "create": "Créer",
+    "mini": {
+      "title": "Création rapide",
+      "namePlaceHolder": "Ex: Saucisse"
+    }
+  },
   "authCta": {
     "title": "Rejoins la communauté",
     "description": "Connecte‑toi pour ajouter et sauvegarder tes recettes."

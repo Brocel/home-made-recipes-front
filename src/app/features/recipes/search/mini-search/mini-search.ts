@@ -34,7 +34,7 @@ export class MiniSearch {
   ingredientTypes = Object.entries(IngredientTypeLabel).map(([value, label]) => ({ value, label }));
 
   form = this.fb.nonNullable.group({
-    name: '',
+    name: this.fb.control<string>(''),
     recipeType: this.fb.control<string[]>([]),
     maxTime: this.fb.control<number | null>(null),
     ingredientType: this.fb.control<string[]>([]),

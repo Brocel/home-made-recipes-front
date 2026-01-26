@@ -1,17 +1,10 @@
 @use 'tokens' as t;
 
-.add-recipe-mini {
-  display: flex;
-  flex-direction: column;
-  gap: t.$space-sm;
-  background: t.$color-surface;
-  padding: t.$space-md;
+.submit {
+  margin-top: t.$space-sm;
+  width: fit-content;
+  background: t.$color-primary;
   border-radius: t.$radius-md;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
-
-  input {
-    padding: 8px;
-    border-radius: 8px;
-    border: 1px solid rgba(0, 0, 0, 0.08);
-  }
+  align-self: center;
+  color: whitesmoke;
 }

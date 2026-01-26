@@ -53,6 +53,13 @@
       "namePlaceHolder": "Ex: Frango assado"
     }
   },
+  "add": {
+    "create": "Criar",
+    "mini": {
+      "title": "Criação rápida",
+      "namePlaceHolder": "Ex: Linguiça"
+    }
+  },
   "authCta": {
     "title": "Junte-se à comunidade",
     "description": "Conecte-se para adicionar e salvar suas receitas."
