@@ -13,7 +13,7 @@
     margin: 0;
     font-size: 1.2rem;
     font-weight: 600;
-    color: t.$color-text-strong;
+    color: t.$color-primary;
 
     mat-icon {
       font-size: 1.3rem;
@@ -25,10 +25,17 @@
     display: flex;
     flex-direction: column;
     gap: t.$space-sm;
+    border: 1px solid t.$color-primary;
+    border-radius: t.$radius-lg;
+    padding: t.$space-md;
+    align-self: center;
+    width: 90%;
   }
 
   .field {
     width: 90%;
+    align-self: center;
+    color: t.$color-primary;
 
     mat-icon {
       margin-right: t.$space-xs;
