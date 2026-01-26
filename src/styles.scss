@@ -141,18 +141,32 @@ footer {
 }
 
 .mat-mdc-tooltip {
-  background: t.$color-primary !important; // fond opaque
-  color: t.$surface !important; // texte clair
+  background: t.$color-primary !important;
+  color: t.$surface !important;
   font-size: 0.9rem !important;
   padding: 6px 10px !important;
   border-radius: t.$radius-sm !important;
   box-shadow: t.$shadow-md !important;
-  opacity: 1 !important; // enlève la transparence
+  opacity: 1 !important;
 }
 
-.mat-select-panel {
-  background-color: surface !important;
-  opacity: 1 !important; // enlève la transparence
+.cdk-overlay-pane .mat-mdc-select-panel {
+  background: t.$surface !important;
+  backdrop-filter: none !important;
+  opacity: 1 !important;
+}
+
+.mat-mdc-option {
+  background: t.$surface !important;
+  opacity: 1 !important;
+}
+
+.mat-mdc-option:hover {
+  background: t.$color-hover-surface !important;
+}
+
+.mat-mdc-option.cdk-focused:not(:hover) {
+  background: t.$color-hover-surface !important;
 }
 
 /* responsive utilities */

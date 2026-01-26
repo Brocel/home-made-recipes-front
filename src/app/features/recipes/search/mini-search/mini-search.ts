@@ -30,20 +30,14 @@ export class MiniSearch {
 
   private fb: FormBuilder = inject(FormBuilder);
 
-  recipeTypes = Object.entries(RecipeTypeLabel).map(([key, label]) => ({
-    value: key,
-    label,
-  }));
-  ingredientTypes = Object.entries(IngredientTypeLabel).map(([key, label]) => ({
-    value: key,
-    label,
-  }));
+  recipeTypes = Object.entries(RecipeTypeLabel).map(([value, label]) => ({ value, label }));
+  ingredientTypes = Object.entries(IngredientTypeLabel).map(([value, label]) => ({ value, label }));
 
-  form = this.fb.group({
-    name: [''],
-    recipeType: [''],
-    maxTime: [null],
-    ingredientType: [''],
+  form = this.fb.nonNullable.group({
+    name: '',
+    recipeType: this.fb.control<string[]>([]),
+    maxTime: this.fb.control<number | null>(null),
+    ingredientType: this.fb.control<string[]>([]),
   });
 
   submit() {

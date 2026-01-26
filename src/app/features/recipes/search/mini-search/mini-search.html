@@ -20,9 +20,8 @@
     <mat-form-field appearance="outline" class="field">
       <mat-label>{{ 'recipe.type' | translate }}</mat-label>
       <mat-icon matPrefix>restaurant_menu</mat-icon>
-      <mat-select formControlName="recipeType">
+      <mat-select formControlName="recipeType" multiple>
         <ng-container>
-          <mat-option [value]="null">{{ 'common.none' | translate }}</mat-option>
           @for (t of recipeTypes; track t.value) {
             <mat-option [value]="t.value"> {{ t.label | translate }} </mat-option>
           }
@@ -41,9 +40,8 @@
     <mat-form-field appearance="outline" class="field">
       <mat-label>{{ 'recipe.ingredientType' | translate }}</mat-label>
       <mat-icon matPrefix>category</mat-icon>
-      <mat-select formControlName="ingredientType">
+      <mat-select formControlName="ingredientType" multiple>
         <ng-container>
-          <mat-option [value]="null">{{ 'common.none' | translate }}</mat-option>
           @for (t of ingredientTypes; track t.value) {
             <mat-option [value]="t.value"> {{ t.label | translate }} </mat-option>
           }
