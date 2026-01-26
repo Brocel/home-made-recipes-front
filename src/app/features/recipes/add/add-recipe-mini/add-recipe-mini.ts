@@ -8,7 +8,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { RecipeTypeLabel } from '@models/recipes/recipe-type.enum';
+import { RecipeTypeLabel, RecipeType } from '@models/recipes/recipe-type.enum';
+import { EnumUtilsService } from '@shared/services/enum-utils.service';
 
 @Component({
   selector: 'app-add-recipe-mini',
@@ -31,22 +32,21 @@ export class AddRecipeMini {
   @Output() openCreateFull = new EventEmitter<{ title?: string; type?: string }>();
 
   private fb: FormBuilder = inject(FormBuilder);
+  private enumUtils: EnumUtilsService = inject(EnumUtilsService);
 
-  title: string = '';
-  type: string = '';
-
-  recipeTypes = Object.entries(RecipeTypeLabel).map(([value, label]) => ({ value, label }));
+  recipeTypes = this.enumUtils.enumToList(RecipeType, RecipeTypeLabel);
 
   form = this.fb.nonNullable.group({
     title: this.fb.control<string>(''),
-    recipeType: this.fb.control<string>('')
+    recipeType: this.fb.control<RecipeType | ''>(''),
   });
-
 
   constructor(private router: Router) {}
 
   submit() {
-    const payload = { title: this.title || undefined, type: this.type || undefined };
+    const { title, recipeType } = this.form.value;
+    const payload = { title: title || undefined, recipeType: recipeType || undefined };
+
     this.openCreateFull.emit(payload);
     this.router.navigate(['/recipes/create'], { state: payload });
     this.close.emit();
