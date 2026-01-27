@@ -2,8 +2,7 @@
   <div class="panel-content">
     <app-mini-search (search)="onMiniSearch($event)" (close)="toggle()"> </app-mini-search>
 
-    <app-add-recipe-mini (openCreateFull)="onOpenCreateFull($event)" (close)="toggle()">
-    </app-add-recipe-mini>
+    <app-mini-add (openCreateFull)="onOpenCreateFull($event)" (close)="toggle()"> </app-mini-add>
   </div>
 
   <button class="handle" (click)="toggle()">

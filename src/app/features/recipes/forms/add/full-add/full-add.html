@@ -1,0 +1,15 @@
+<div class="full-add">
+  <h2>{{ 'recipe.createFullTitle' | translate }}</h2>
+
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <app-recipe-info [form]="form"></app-recipe-info>
+
+    <app-recipe-ingredients [ingredients]="ingredient_list"></app-recipe-ingredients>
+
+    <app-recipe-steps [steps]="step_list"></app-recipe-steps>
+
+    <button mat-raised-button color="primary">
+      {{ 'common.save' | translate }}
+    </button>
+  </form>
+</div>

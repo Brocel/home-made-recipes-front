@@ -1,16 +1,17 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { RecipeType } from '../models/recipes/recipe-type.enum';
 import { IngredientType } from '../models/recipes/ingredient-type.enum';
-import { Recipe } from '../models/recipes/recipe';
+import { RecipeDTO } from '../models/recipes/recipe';
 import { Unit } from '../models/recipes/unit.enum';
 
 @Injectable({ providedIn: 'root' })
 export class RecipeFormService {
-  constructor(private fb: FormBuilder) {}
+  private fb = inject(FormBuilder);
+  private form!: FormGroup;
 
   createForm() {
-    return this.fb.group({
+    this.form = this.fb.group({
       title: [''],
       description: [''],
       preparation_time: [0],
@@ -18,16 +19,26 @@ export class RecipeFormService {
       ingredient_list: this.fb.array([]),
       step_list: this.fb.array([]),
     });
+
+    return this.form;
   }
 
-  addIngredient(form: FormGroup) {
-    const ingredients = form.get('ingredient_list') as FormArray;
-    ingredients.push(this.createIngredient());
+  get recipeForm() {
+    return this.form;
   }
 
-  createIngredient() {
+  // Ingredients
+
+  addIngredient(): void {
+    this.ingredientsArray.push(this.createIngredient());
+  }
+
+  get ingredientsArray() {
+    return this.form.get('ingredient_list') as FormArray;
+  }
+
+  createIngredient(): FormGroup {
     return this.fb.group({
-      id: [null],
       quantity: [0],
       unit: [null as Unit | null],
       product: this.fb.group({
@@ -38,20 +49,28 @@ export class RecipeFormService {
     });
   }
 
-  addStep(form: FormGroup) {
-    const steps = form.get('step_list') as FormArray;
-    steps.push(this.createStep(steps.length + 1));
+  // Steps
+
+  addStep() {
+    this.stepsArray.push(this.createStep(this.stepsArray.length + 1));
+  }
+
+  get stepsArray() {
+    return this.form.get('step_list') as FormArray;
   }
 
   createStep(order: number) {
     return this.fb.group({
-      id: [null],
       description: [''],
       order: [order],
     });
   }
 
-  toDto(form: FormGroup): Recipe {
-    return form.value as Recipe;
+  toDto(): RecipeDTO {
+    return this.form.value as RecipeDTO;
+  }
+
+  patchStateValue(state: { title?: string; recipe_type?: string }): void {
+    this.form.patchValue({ title: state.title ?? '', recipe_type: state.recipe_type ?? null });
   }
 }

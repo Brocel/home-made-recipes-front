@@ -8,6 +8,12 @@ export interface Ingredient {
   product: Product;
 }
 
+export interface IngredientDTO {
+  quantity: number;
+  unit: Unit;
+  product: Product;
+}
+
 export interface Product {
   id: number;
   name: string;

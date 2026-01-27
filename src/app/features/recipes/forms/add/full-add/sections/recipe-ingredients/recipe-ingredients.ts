@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-recipe-ingredients',
@@ -7,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './recipe-ingredients.scss',
 })
 export class RecipeIngredients {
-
+  @Input() ingredients!: FormArray;
 }

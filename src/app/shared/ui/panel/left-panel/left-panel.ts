@@ -1,11 +1,11 @@
 import { Component, signal } from '@angular/core';
-import { MiniSearch } from '@app/features/recipes/search/mini-search/mini-search';
-import { AddRecipeMini } from '@app/features/recipes/add/add-recipe-mini/add-recipe-mini';
+import { MiniSearch } from '@app/features/recipes/forms/search/mini-search/mini-search';
+import { MiniAdd } from '@app/features/recipes/forms/add/mini-add/mini-add';
 
 @Component({
   selector: 'app-left-panel',
   standalone: true,
-  imports: [MiniSearch, AddRecipeMini],
+  imports: [MiniSearch, MiniAdd],
   templateUrl: './left-panel.html',
   styleUrls: ['./left-panel.scss'],
 })

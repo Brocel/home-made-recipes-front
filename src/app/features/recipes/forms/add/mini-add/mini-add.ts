@@ -12,7 +12,7 @@ import { RecipeTypeLabel, RecipeType } from '@models/recipes/recipe-type.enum';
 import { EnumUtilsService } from '@shared/services/enum-utils.service';
 
 @Component({
-  selector: 'app-add-recipe-mini',
+  selector: 'app-mini-add',
   standalone: true,
   imports: [
     CommonModule,
@@ -24,10 +24,10 @@ import { EnumUtilsService } from '@shared/services/enum-utils.service';
     MatButtonModule,
     MatIconModule,
   ],
-  templateUrl: './add-recipe-mini.html',
-  styleUrls: ['./add-recipe-mini.scss'],
+  templateUrl: './mini-add.html',
+  styleUrls: ['./mini-add.scss'],
 })
-export class AddRecipeMini {
+export class MiniAdd {
   @Output() close = new EventEmitter<void>();
   @Output() openCreateFull = new EventEmitter<{ title?: string; type?: string }>();
 
@@ -45,7 +45,7 @@ export class AddRecipeMini {
 
   submit() {
     const { title, recipeType } = this.form.value;
-    const payload = { title: title || undefined, recipeType: recipeType || undefined };
+    const payload = { title: title || undefined, recipe_type: recipeType || undefined };
 
     this.openCreateFull.emit(payload);
     this.router.navigate(['/recipes/create'], { state: payload });
