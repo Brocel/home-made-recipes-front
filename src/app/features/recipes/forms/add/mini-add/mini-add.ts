@@ -1,7 +1,6 @@
 import { Component, Output, EventEmitter, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
 import { TranslatePipe } from '@ngx-translate/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -9,7 +8,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { RecipeTypeLabel, RecipeType } from '@models/recipes/recipe-type.enum';
-import { EnumUtilsService } from '@shared/services/enum-utils.service';
+import { EnumUtilsService } from '@services/enum-utils.service';
+import { RecipeCreateBridgeService } from '@services/recipe-create-bridge.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-mini-add',
@@ -29,10 +30,11 @@ import { EnumUtilsService } from '@shared/services/enum-utils.service';
 })
 export class MiniAdd {
   @Output() close = new EventEmitter<void>();
-  @Output() openCreateFull = new EventEmitter<{ title?: string; type?: string }>();
 
   private fb: FormBuilder = inject(FormBuilder);
   private enumUtils: EnumUtilsService = inject(EnumUtilsService);
+  private bridge: RecipeCreateBridgeService = inject(RecipeCreateBridgeService);
+  private router = inject(Router);
 
   recipeTypes = this.enumUtils.enumToList(RecipeType, RecipeTypeLabel);
 
@@ -41,14 +43,14 @@ export class MiniAdd {
     recipeType: this.fb.control<RecipeType | ''>(''),
   });
 
-  constructor(private router: Router) {}
-
   submit() {
     const { title, recipeType } = this.form.value;
     const payload = { title: title || undefined, recipe_type: recipeType || undefined };
 
-    this.openCreateFull.emit(payload);
-    this.router.navigate(['/recipes/create'], { state: payload });
+    this.bridge.setPayload(payload);
+
+    this.router.navigate(['/recipes/create']);
+
     this.close.emit();
   }
 }

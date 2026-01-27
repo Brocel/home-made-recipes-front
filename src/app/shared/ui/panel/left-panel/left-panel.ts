@@ -1,6 +1,7 @@
 import { Component, signal } from '@angular/core';
-import { MiniSearch } from '@app/features/recipes/forms/search/mini-search/mini-search';
-import { MiniAdd } from '@app/features/recipes/forms/add/mini-add/mini-add';
+import { MiniSearch } from '@features/recipes/forms/search/mini-search/mini-search';
+import { MiniAdd } from '@features/recipes/forms/add/mini-add/mini-add';
+import { RecipeType } from '@models/recipes/recipe-type.enum';
 
 @Component({
   selector: 'app-left-panel',
@@ -18,9 +19,5 @@ export class LeftPanel {
 
   onMiniSearch(query: string) {
     console.log('search', query);
-  }
-
-  onOpenCreateFull(payload: { title?: string; type?: string }) {
-    console.log('open create full', payload);
   }
 }

@@ -70,7 +70,7 @@ export class RecipeFormService {
     return this.form.value as RecipeDTO;
   }
 
-  patchStateValue(state: { title?: string; recipe_type?: string }): void {
+  patchStateValue(state: { title?: string; recipe_type?: RecipeType }): void {
     this.form.patchValue({ title: state.title ?? '', recipe_type: state.recipe_type ?? null });
   }
 }

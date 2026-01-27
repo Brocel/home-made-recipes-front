@@ -1,0 +1,18 @@
+@use 'tokens' as t;
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: t.$space-md;
+  padding: t.$space-md;
+  background: t.$color-surface;
+  border-radius: t.$radius-md;
+  box-shadow: t.$shadow-sm;
+
+  h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: t.$color-text-strong;
+  }
+}

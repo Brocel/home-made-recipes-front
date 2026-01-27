@@ -2,7 +2,7 @@
   <div class="panel-content">
     <app-mini-search (search)="onMiniSearch($event)" (close)="toggle()"> </app-mini-search>
 
-    <app-mini-add (openCreateFull)="onOpenCreateFull($event)" (close)="toggle()"> </app-mini-add>
+    <app-mini-add (close)="toggle()"> </app-mini-add>
   </div>
 
   <button class="handle" (click)="toggle()">

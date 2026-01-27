@@ -1,1 +1,29 @@
-<p>recipe-info works!</p>
+<div class="section" [formGroup]="form">
+  <h3>{{ 'recipe.info' | translate }}</h3>
+
+  <mat-form-field appearance="outline">
+    <mat-label>{{ 'recipe.title' | translate }}</mat-label>
+    <input matInput formControlName="title" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>{{ 'recipe.description' | translate }}</mat-label>
+    <textarea matInput formControlName="description"></textarea>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>{{ 'recipe.prepTime' | translate }}</mat-label>
+    <input matInput type="number" formControlName="preparation_time" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>{{ 'recipe.type' | translate }}</mat-label>
+    <mat-select formControlName="recipe_type">
+      @for (t of recipeTypes; track t.value) {
+        <mat-option [value]="t.value">
+          {{ t.label | translate }}
+        </mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+</div>

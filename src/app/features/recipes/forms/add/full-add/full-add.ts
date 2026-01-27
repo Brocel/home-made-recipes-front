@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, effect, inject, OnInit } from '@angular/core';
 import { ReactiveFormsModule, FormGroup, FormArray } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TranslatePipe } from '@ngx-translate/core';
@@ -7,6 +7,7 @@ import { RecipeInfo } from './sections/recipe-info/recipe-info';
 import { RecipeIngredients } from './sections/recipe-ingredients/recipe-ingredients';
 import { RecipeSteps } from './sections/recipe-steps/recipe-steps';
 import { RecipeType } from '@models/recipes/recipe-type.enum';
+import { RecipeCreateBridgeService } from '@app/shared/services/recipe-create-bridge.service';
 
 @Component({
   selector: 'app-full-add',
@@ -17,8 +18,17 @@ import { RecipeType } from '@models/recipes/recipe-type.enum';
 export class FullAdd implements OnInit {
   private router = inject(Router);
   private formService = inject(RecipeFormService);
+  private bridge = inject(RecipeCreateBridgeService);
 
   form!: FormGroup;
+
+  bridgeEffect = effect(() => {
+    const payload = this.bridge.payload();
+    if (payload) {
+      this.formService.patchStateValue(payload);
+      this.bridge.clear();
+    }
+  });
 
   get ingredient_list(): FormArray {
     return this.formService.ingredientsArray;
@@ -28,13 +38,7 @@ export class FullAdd implements OnInit {
   }
 
   ngOnInit() {
-    this.formService.createForm();
-    this.form = this.formService.recipeForm;
-    const nav = this.router.getCurrentNavigation();
-    const state = nav?.extras.state as { title?: string; recipe_type?: string };
-    if (state) {
-      this.formService.patchStateValue(state);
-    }
+    this.form = this.formService.createForm();
   }
 
   submit() {
