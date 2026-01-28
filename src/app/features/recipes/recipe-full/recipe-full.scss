@@ -11,7 +11,7 @@
   height: 70vh;
   padding: t.$space-lg;
 
-  background: t.$color-panel-bg;
+  background: t.$primary-100;
   border-radius: t.$radius-lg;
   box-shadow: t.$shadow-lg;
 }
@@ -28,7 +28,7 @@
     font-size: 2.6rem;
     font-weight: 700;
     letter-spacing: -0.5px;
-    color: t.$color-text-strong;
+    color: t.$text-strong;
     margin: t.$space-sm;
   }
 
@@ -40,7 +40,7 @@
     margin-top: t.$space-sm;
 
     .meta-item {
-      background: t.$color-primary-600;
+      background: t.$primary-600;
       padding-left: t.$space-xs;
       padding-right: t.$space-sm;
       border-radius: t.$radius-sm;
@@ -65,7 +65,7 @@
 .recipe-card mat-divider {
   border-top-width: 3px;
   border-top-style: solid;
-  border-top-color: t.$color-primary;
+  border-top-color: t.$primary;
   margin: t.$space-md 0;
 }
 
@@ -82,7 +82,7 @@
   flex: 1;
   font-size: 1.15rem;
   line-height: 1.5;
-  color: t.$text-color;
+  color: t.$text;
   padding: t.$space-xs;
 }
 
@@ -100,7 +100,7 @@
     margin-bottom: t.$space-md;
     font-size: 1.3rem;
     font-weight: 600;
-    color: t.$color-text-strong;
+    color: t.$text-strong;
   }
 
   ul {
@@ -114,7 +114,7 @@
 
       .product {
         font-weight: 600;
-        color: t.$color-text-strong;
+        color: t.$text-strong;
         cursor: help;
       }
 
@@ -137,7 +137,7 @@
     font-weight: 700;
     font-style: italic;
     font-size: 1.4rem;
-    color: t.$color-text-strong;
+    color: t.$text-strong;
   }
 
   .step-list {
@@ -158,7 +158,7 @@
       text-decoration: underline;
       text-underline-offset: 3px;
       font-size: 1.2rem;
-      color: t.$color-text-strong;
+      color: t.$text-strong;
     }
 
     .step-description {
@@ -166,7 +166,7 @@
       padding: t.$space-sm t.$space-md;
       font-size: 1.05rem;
       line-height: 1.5;
-      color: t.$text-color;
+      color: t.$text;
     }
   }
 }
