@@ -8,10 +8,18 @@ import { RecipeIngredients } from './sections/recipe-ingredients/recipe-ingredie
 import { RecipeSteps } from './sections/recipe-steps/recipe-steps';
 import { RecipeType } from '@models/recipes/recipe-type.enum';
 import { RecipeCreateBridgeService } from '@app/shared/services/recipe-create-bridge.service';
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
   selector: 'app-full-add',
-  imports: [ReactiveFormsModule, RecipeInfo, RecipeIngredients, RecipeSteps, TranslatePipe],
+  imports: [
+    ReactiveFormsModule,
+    RecipeInfo,
+    RecipeIngredients,
+    RecipeSteps,
+    TranslatePipe,
+    MatIcon,
+  ],
   templateUrl: './full-add.html',
   styleUrl: './full-add.scss',
 })

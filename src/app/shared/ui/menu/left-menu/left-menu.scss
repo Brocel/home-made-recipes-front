@@ -7,8 +7,8 @@
   .menu-btn {
     background: transparent;
     border: none;
-    padding: t.$space-sm;
-    font-size: 1.2rem;
+    margin: 0;
+    font-size: 1.3rem;
     cursor: pointer;
     display: inline-flex;
     align-items: center;
@@ -17,11 +17,11 @@
     transition: background 120ms ease;
 
     &:hover {
-      background: t.$color-hover-surface;
+      background: t.$hover-surface;
     }
 
     &:focus {
-      outline: 2px solid rgba(t.$color-primary, t.$focus-alpha);
+      outline: 2px solid rgba(t.$primary, t.$focus-alpha);
       outline-offset: 2px;
     }
   }

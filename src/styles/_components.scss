@@ -1,0 +1,76 @@
+@use 'tokens' as t;
+
+/* Cards */
+.card {
+  background: t.$bg;
+  padding: t.$space-lg;
+  border-radius: t.$radius-lg;
+  box-shadow: t.$shadow-md;
+  width: 90%;
+  max-width: 600px;
+}
+
+.error {
+  width: fit-content;
+  max-width: 600px;
+  padding: t.$space-lg;
+  border-radius: t.$radius-lg;
+  box-shadow: t.$shadow-md;
+  text-align: center;
+  color: t.$primary-600;
+  background-color: t.$primary-100;
+}
+
+/* Scroll */
+.scroll-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  border-radius: t.$radius-lg;
+  overflow-y: auto;
+  scrollbar-width: none;
+  gap: t.$space-lg;
+}
+
+.scroll-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: t.$space-xs t.$space-sm;
+  border-radius: t.$radius-md;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn-primary {
+  background: t.$primary;
+  color: white;
+}
+
+.btn-secondary {
+  background: t.$primary-100;
+  color: white;
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  color: t.$text;
+}
+
+/* Spinner */
+.spinner {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  border-top-color: rgba(255, 255, 255, 0.9);
+  animation: spin 0.8s linear infinite;
+}

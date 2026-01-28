@@ -58,6 +58,12 @@
     "mini": {
       "title": "Création rapide",
       "namePlaceHolder": "Ex: Saucisse"
+    },
+    "full": {
+      "title": "Créer une recette"
+    },
+    "info": {
+      "title": "Description de la recette"
     }
   },
   "authCta": {

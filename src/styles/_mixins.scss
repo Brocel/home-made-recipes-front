@@ -1,0 +1,22 @@
+@use 'tokens' as t;
+
+@mixin focus-ring($color: t.$primary, $alpha: t.$focus-alpha, $offset: 2px) {
+  outline: 2px solid rgba(red($color), green($color), blue($color), $alpha);
+  outline-offset: $offset;
+}
+
+@mixin card-base {
+  background: t.$surface;
+  border-radius: t.$radius-lg;
+  box-shadow: t.$shadow-md;
+  padding: t.$space-lg;
+}
+
+@mixin scroll-y {
+  overflow-y: auto;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

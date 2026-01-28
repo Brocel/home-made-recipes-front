@@ -1,0 +1,49 @@
+@use 'tokens' as t;
+@use 'mixins' as m;
+
+/* Spacing utilities */
+.p-xs {
+  padding: t.$space-xs;
+}
+.p-sm {
+  padding: t.$space-sm;
+}
+.p-md {
+  padding: t.$space-md;
+}
+.p-lg {
+  padding: t.$space-lg;
+}
+
+.m-xs {
+  margin: t.$space-xs;
+}
+.m-sm {
+  margin: t.$space-sm;
+}
+.m-md {
+  margin: t.$space-md;
+}
+.m-lg {
+  margin: t.$space-lg;
+}
+
+/* Flex utilities */
+.flex {
+  display: flex;
+}
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+.flex-1 {
+  flex: 1;
+}
+.min-h-0 {
+  min-height: 0;
+}
+
+/* Scroll */
+.scroll-y {
+  @include m.scroll-y;
+}

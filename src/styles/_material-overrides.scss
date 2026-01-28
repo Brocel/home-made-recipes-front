@@ -1,0 +1,47 @@
+@use 'tokens' as t;
+
+.mat-mdc-menu-panel {
+  background: t.$primary-100 !important;
+  border-radius: t.$radius-md !important;
+  box-shadow: t.$shadow-md !important;
+  padding: t.$space-xs !important;
+  backdrop-filter: blur(6px);
+  opacity: 0.98;
+}
+
+.mat-mdc-menu-item:hover,
+.mat-mdc-menu-item.cdk-focused:not(:hover) {
+  background: t.$hover-surface !important;
+}
+
+.mat-mdc-menu-item {
+  border-radius: t.$radius-sm !important;
+  color: t.$text-strong !important;
+  font-size: 0.95rem;
+}
+
+.mat-mdc-tooltip {
+  background: t.$primary !important;
+  color: t.$surface !important;
+  font-size: 0.9rem !important;
+  padding: 6px 10px !important;
+  border-radius: t.$radius-sm !important;
+  box-shadow: t.$shadow-md !important;
+  opacity: 1 !important;
+}
+
+.cdk-overlay-pane .mat-mdc-select-panel,
+.mat-mdc-option {
+  background: t.$surface !important;
+  opacity: 1 !important;
+}
+
+.mat-mdc-option:hover,
+.mat-mdc-option.cdk-focused:not(:hover) {
+  background: t.$hover-surface !important;
+}
+
+.mat-mdc-divider {
+  background: black;
+  color: black;
+}

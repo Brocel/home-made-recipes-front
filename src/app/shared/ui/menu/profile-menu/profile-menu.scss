@@ -4,27 +4,6 @@
   position: relative;
   display: inline-block;
 
-  .profile-btn {
-    background: transparent;
-    border: none;
-    padding: t.$space-sm;
-    border-radius: 999px;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 120ms ease;
-
-    &:hover {
-      background: t.$color-hover-surface;
-    }
-
-    &:focus {
-      outline: 2px solid rgba(t.$color-primary, t.$focus-alpha);
-      outline-offset: 2px;
-    }
-  }
-
   .avatar,
   .avatar-fallback {
     width: 36px;

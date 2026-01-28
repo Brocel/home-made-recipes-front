@@ -1,15 +1,27 @@
-<div class="full-add">
-  <h2>{{ 'recipe.createFullTitle' | translate }}</h2>
+<div class="page">
+  <div class="main-container">
+    <div class="main-content">
+      <section class="main-section">
+        <h1 class="title">
+          <mat-icon>add_box</mat-icon>
+          {{ 'add.full.title' | translate }}
+        </h1>
+        <div class="section-content">
+          <div class="mini-form">
+            <form [formGroup]="form" (ngSubmit)="submit()" class="form full-form">
+              <app-recipe-info [form]="form"></app-recipe-info>
 
-  <form [formGroup]="form" (ngSubmit)="submit()">
-    <app-recipe-info [form]="form"></app-recipe-info>
+              <app-recipe-ingredients [ingredients]="ingredient_list"></app-recipe-ingredients>
 
-    <app-recipe-ingredients [ingredients]="ingredient_list"></app-recipe-ingredients>
+              <app-recipe-steps [steps]="step_list"></app-recipe-steps>
 
-    <app-recipe-steps [steps]="step_list"></app-recipe-steps>
-
-    <button mat-raised-button color="primary">
-      {{ 'common.save' | translate }}
-    </button>
-  </form>
+              <button mat-raised-button class="submit">
+                {{ 'common.save' | translate }}
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
 </div>

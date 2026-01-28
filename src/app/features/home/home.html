@@ -1,10 +1,10 @@
-<div class="home-page">
-  <div class="home-container">
+<div class="page">
+  <div class="main-container">
     <div class="main-content">
-      <section class="daily-section">
+      <section class="main-section">
         <h1 class="title">{{ 'home.dailyRecipe' | translate }}</h1>
 
-        <div class="daily-content">
+        <div class="section-content">
           @if (loading()) {
             <mat-spinner aria-label="{{ 'common.loading' | translate }}"> </mat-spinner>
           } @else {

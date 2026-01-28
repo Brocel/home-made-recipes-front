@@ -9,6 +9,8 @@
     </app-left-menu>
   </div>
 
+  <mat-divider vertical></mat-divider>
+
   <!-- CENTER -->
   <div class="center">
     <section class="title">
@@ -20,18 +22,22 @@
     </div>
   </div>
 
+  <mat-divider vertical></mat-divider>
+
   <!-- RIGHT -->
   <div class="right">
     <!-- bouton de langue lié au LanguageService -->
     <button
-      class="lang-btn"
+      class="btn"
       type="button"
       (click)="toggleLang()"
       [attr.aria-label]="'navbar.langLabel' | translate"
       [attr.aria-pressed]="lang.current() === 'pt-BR'"
     >
-      {{ lang.current() === 'fr' ? 'FR' : 'pt-BR' }}
+      {{ lang.current() === 'fr' ? 'FR' : 'BR' }}
     </button>
+
+    <mat-divider inset vertical></mat-divider>
 
     <!-- PROFILE MENU -->
     <app-profile-menu

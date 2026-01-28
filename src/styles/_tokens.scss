@@ -1,149 +1,48 @@
-// Tokens SCSS + exposition en CSS custom properties pour theming runtime
-
 // -----------------------------
-// Palette de base (SCSS)
+// Palette
 // -----------------------------
-$color-primary: #e76f51;
-$color-primary-600: #d85b3f;
-$color-primary-100: #f5b8a6ff;
+$primary: #e76f51;
+$primary-600: #d85b3f;
+$primary-100: #f5b8a6ff;
 
-$color-accent: #2a9d8f;
-$color-accent-600: #238a78;
+$accent: #2a9d8f;
+$accent-600: #238a78;
 
-$color-bg: #fff8f0;
-$color-surface: #ffffff;
-$color-surface-100: #fbf7f4;
+$bg: #fff8f0;
+$surface: #ffffff;
+$surface-100: #fbf7f4;
+$hover-surface: #f3f4f6;
 
 $text: #2b2b2b;
 $text-muted: #7a7a7a;
-$text-inverse: #ffffff;
+$text-strong: #111827;
 
-$color-panel-bg: $color-primary-100;
-$color-text-strong: #111827;
-$color-hover-surface: #f3f4f6;
-
-// ombres
-$shadow-sm: 0 4px 12px rgba(15, 23, 42, 0.06);
-$shadow-md: 0 8px 24px rgba(15, 23, 42, 0.08);
-$shadow-lg: 0 12px 36px rgba(15, 23, 42, 0.12);
-
-// focus / alpha
-$focus-alpha: 0.18;
-
-// rayons et espacements
-$radius-sm: 6px;
-$radius-md: 8px;
-$radius-lg: 12px;
-
+// -----------------------------
+// Spacing
+// -----------------------------
 $space-xs: 4px;
 $space-sm: 8px;
 $space-md: 16px;
 $space-lg: 24px;
 $space-xl: 32px;
 
+// -----------------------------
+// Radius
+// -----------------------------
+$radius-sm: 6px;
+$radius-md: 8px;
+$radius-lg: 12px;
+
+// -----------------------------
+// Shadows
+// -----------------------------
+$shadow-sm: 0 4px 12px rgba(15, 23, 42, 0.06);
+$shadow-md: 0 8px 24px rgba(15, 23, 42, 0.08);
+$shadow-lg: 0 12px 36px rgba(15, 23, 42, 0.12);
+
+// -----------------------------
+// Misc
+// -----------------------------
+$focus-alpha: 0.18;
 $max-width: 100%;
 $search-max-width: clamp(220px, 45vw, 520px);
-
-// -----------------------------
-// Tokens sémantiques SCSS
-// -----------------------------
-$bg: $color-bg;
-$surface: $color-surface;
-$surface-100: $color-surface-100;
-$primary: $color-primary;
-$primary-strong: $color-primary-600;
-$accent: $color-accent;
-$text-color: $text;
-$text-muted-color: $text-muted;
-$card-shadow: $shadow-md;
-
-// -----------------------------
-// Exposer en CSS custom properties
-// (utile pour theming runtime / dark mode)
-// -----------------------------
-:root {
-  /* couleurs sémantiques */
-  --color-bg: #{$bg};
-  --color-surface: #{$surface};
-  --color-surface-100: #{$surface-100};
-  --color-primary: #{$primary};
-  --color-primary-strong: #{$primary-strong};
-  --color-accent: #{$accent};
-  --color-text: #{$text-color};
-  --color-text-muted: #{$text-muted-color};
-
-  /* variables ajoutées exposées */
-  --color-panel-bg: #{$color-panel-bg};
-  --color-text-strong: #{$color-text-strong};
-  --color-hover-surface: #{$color-hover-surface};
-
-  /* ombres */
-  --shadow-sm: #{$shadow-sm};
-  --shadow-md: #{$shadow-md};
-  --shadow-lg: #{$shadow-lg};
-
-  /* focus / alpha */
-  --focus-alpha: #{$focus-alpha};
-
-  /* rayons et espacements */
-  --radius-sm: #{$radius-sm};
-  --radius-md: #{$radius-md};
-  --radius-lg: #{$radius-lg};
-
-  --space-xs: #{$space-xs};
-  --space-sm: #{$space-sm};
-  --space-md: #{$space-md};
-  --space-lg: #{$space-lg};
-  --space-xl: #{$space-xl};
-
-  --max-width: #{$max-width};
-}
-
-/* Thème sombre (override runtime) */
-[data-theme='dark'] {
-  --color-bg: #071025;
-  --color-surface: #0b1220;
-  --color-surface-100: #071827;
-  --color-text: #e6eef6;
-  --color-text-muted: #9aa6b2;
-  --color-primary: #ff8a5b;
-  --color-primary-strong: #ff7a45;
-  --color-panel-bg: #071025;
-  --color-text-strong: #e6eef6;
-  --color-hover-surface: rgba(255, 255, 255, 0.03);
-  --shadow-md: 0 10px 30px rgba(2, 6, 23, 0.6);
-}
-
-/* -----------------------------
-   Helpers / mixins utiles (SCSS)
-   ----------------------------- */
-
-@mixin focus-ring($color: $primary, $alpha: $focus-alpha, $offset: 2px) {
-  outline: 2px solid rgba(red($color), green($color), blue($color), $alpha);
-  outline-offset: $offset;
-}
-
-@mixin btn-primary {
-  background: $primary;
-  color: $text-inverse;
-  border-radius: $radius-md;
-  padding: $space-sm $space-md;
-  border: none;
-  cursor: pointer;
-
-  &:hover {
-    background: $primary-strong;
-  }
-  &:focus {
-    @include focus-ring($primary);
-  }
-}
-
-@mixin card {
-  background: $color-panel-bg;
-  padding: $space-lg;
-  border-radius: $radius-lg;
-  box-shadow: $shadow-md;
-  width: 90%;
-  max-width: 600px;
-}

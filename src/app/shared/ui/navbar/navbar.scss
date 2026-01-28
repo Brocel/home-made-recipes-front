@@ -1,21 +1,20 @@
-@use 'tokens' as t;
+@use 'tokens';
 
 .navbar {
-  background-color: t.$color-primary;
+  background-color: var(--color-primary);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: t.$space-md;
-  padding: t.$space-xs t.$space-sm;
-  max-width: t.$max-width;
+  gap: var(--space-md);
+  max-width: var(--max-width);
   margin: 0 auto;
-  box-shadow: 0 1px 2px t.$text;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
 
   .left,
   .right {
-    align-items: center;
     display: flex;
-    gap: t.$space-xs;
+    align-items: center;
+    gap: var(--space-xs);
     flex: 0 0 auto;
   }
 
@@ -23,14 +22,14 @@
     display: flex;
     align-items: center;
     flex: 1 1 auto;
-    gap: t.$space-md;
+    gap: var(--space-md);
     min-width: 0;
   }
 
   .title {
     display: flex;
     align-items: baseline;
-    gap: t.$space-xs; // plus fin que space-sm
+    gap: var(--space-xs);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -53,27 +52,28 @@
   .search-inline {
     flex: 1 1 auto;
     min-width: 200px;
-    max-width: t.$search-max-width;
+    max-width: var(--search-max-width);
     display: flex;
     justify-content: center;
-    padding: 0 t.$space-sm;
+    padding: 0 var(--space-sm);
     transition: max-width 0.2s ease;
   }
 
-  .avatar {
+  .avatar,
+  .avatar-fallback {
     width: 36px;
     height: 36px;
     border-radius: 50%;
+  }
+
+  .avatar {
     object-fit: cover;
   }
 
   .avatar-fallback {
-    width: 36px;
-    height: 36px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50%;
     background: var(--color-surface);
   }
 
@@ -81,10 +81,10 @@
     position: absolute;
     right: 1rem;
     top: calc(100% + 8px);
-    background: t.$color-panel-bg;
-    box-shadow: t.$shadow-md;
-    border-radius: t.$radius-md;
-    padding: t.$space-sm;
+    background: var(--surface-100);
+    box-shadow: var(--shadow-md);
+    border-radius: var(--radius-md);
+    padding: var(--space-sm);
     min-width: 200px;
     z-index: 60;
 
@@ -94,11 +94,11 @@
       background: transparent;
       border: none;
       padding: 0.5rem 0.75rem;
-      border-radius: t.$radius-sm;
+      border-radius: var(--radius-sm);
     }
 
     button:hover {
-      background: t.$color-hover-surface;
+      background: var(--hover-surface);
     }
   }
 
@@ -106,11 +106,7 @@
   @media (max-width: 768px) {
     flex-direction: column;
     align-items: stretch;
-    gap: t.$space-sm;
-
-    .navbar {
-      gap: t.$space-sm;
-    }
+    gap: var(--space-sm);
 
     .left,
     .center,
@@ -122,7 +118,7 @@
     .center {
       flex-direction: column;
       align-items: flex-start;
-      gap: t.$space-xs;
+      gap: var(--space-xs);
     }
 
     .title {

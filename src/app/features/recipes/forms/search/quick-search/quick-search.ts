@@ -1,12 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Button } from '@shared/ui/button/button';
 
 @Component({
   selector: 'app-quick-search',
   standalone: true,
-  imports: [CommonModule, FormsModule, Button],
+  imports: [CommonModule, FormsModule],
   templateUrl: './quick-search.html',
   styleUrls: ['./quick-search.scss'],
 })

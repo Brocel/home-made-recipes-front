@@ -8,11 +8,20 @@ import { NavigationService } from '@core/navigation/navigation.service';
 import { QuickSearch } from '@features/recipes/forms/search/quick-search/quick-search';
 import { LeftMenu } from '@ui/menu/left-menu/left-menu';
 import { AuthService } from '@core/auth/auth.service';
+import { MatDivider } from '@angular/material/divider';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule, RouterModule, TranslatePipe, ProfileMenu, QuickSearch, LeftMenu],
+  imports: [
+    CommonModule,
+    RouterModule,
+    TranslatePipe,
+    ProfileMenu,
+    QuickSearch,
+    LeftMenu,
+    MatDivider,
+  ],
   templateUrl: './navbar.html',
   styleUrls: ['./navbar.scss'],
 })

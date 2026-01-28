@@ -3,46 +3,28 @@
 .full-add {
   display: flex;
   flex-direction: column;
-  gap: t.$space-lg;
+  gap: t.$space-xs;
   padding: t.$space-lg;
+  width: 90%;
+  height: 82vh;
 
-  h2 {
-    margin: 0;
-    font-size: 1.6rem;
-    font-weight: 600;
-    color: t.$color-text-strong;
+  .title {
     display: flex;
     align-items: center;
+    align-self: center;
     gap: t.$space-sm;
-  }
+    margin: 0;
+    color: t.$primary;
 
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: t.$space-xl;
-  }
-
-  .section {
-    display: flex;
-    flex-direction: column;
-    gap: t.$space-md;
-    padding: t.$space-md;
-    background: t.$color-surface;
-    border-radius: t.$radius-md;
-    box-shadow: t.$shadow-sm;
-
-    h3 {
-      margin: 0;
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: t.$color-text-strong;
+    mat-icon {
+      font-size: 1.3rem;
+      line-height: 1.3;
     }
   }
+}
 
-  button[type='submit'],
-  button[mat-raised-button] {
-    align-self: center;
-    padding-inline: t.$space-lg;
-    border-radius: t.$radius-md;
-  }
+.full-form {
+  background: t.$primary-100;
+  padding: t.$space-lg;
+  margin: 0;
 }

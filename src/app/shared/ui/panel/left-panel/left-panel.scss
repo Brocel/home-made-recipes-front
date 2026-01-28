@@ -6,7 +6,7 @@
   left: 0;
   height: 100vh;
   width: 500px;
-  background: t.$color-panel-bg;
+  background: t.$primary-100;
   box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15);
   transform: translateX(-100%);
   transition: transform 0.3s ease;
@@ -37,7 +37,7 @@
     margin-bottom: t.$space-sm;
     font-size: 1.2rem;
     font-weight: 600;
-    color: t.$color-text-strong;
+    color: t.$text-strong;
   }
 }
 
@@ -50,7 +50,7 @@
   width: 40px;
   height: 80px;
   border-radius: 0 40px 40px 0;
-  background: t.$color-panel-bg;
+  background: t.$primary-100;
   border: 1px solid #ddd;
   border-left: none;
   cursor: pointer;

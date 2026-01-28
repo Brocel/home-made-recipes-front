@@ -58,6 +58,12 @@
     "mini": {
       "title": "Criação rápida",
       "namePlaceHolder": "Ex: Linguiça"
+    },
+    "full": {
+      "title": "Criar uma receita"
+    },
+    "info": {
+      "title": "Descrição da receita"
     }
   },
   "authCta": {

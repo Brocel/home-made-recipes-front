@@ -1,5 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
-@use 'tokens' as t;
+/* Global entry point */
+
+@use 'tokens';
+@use 'variables';
+@use 'mixins';
+@use 'utilities';
+@use 'layout';
+@use 'components';
+@use 'material-overrides';
+
+/* Global resets & base */
 
 router-outlet {
   display: block;
@@ -17,9 +26,8 @@ html,
 body {
   margin: 0;
   padding: 0;
-  // height: 100%;
-  background: t.$color-bg;
-  color: t.$text;
+  background: var(--color-bg);
+  color: var(--color-text);
   font-family:
     Inter,
     system-ui,
@@ -54,175 +62,4 @@ main > * {
 
 footer {
   flex-shrink: 0;
-}
-
-.container {
-  max-width: t.$max-width;
-  margin: 0 auto;
-  padding: 0 t.$space-md;
-}
-
-.card {
-  background: t.$color-panel-bg;
-  padding: t.$space-lg;
-  border-radius: t.$radius-lg;
-  box-shadow: t.$shadow-md;
-  width: 90%;
-  max-width: 600px;
-}
-
-.error {
-  width: fit-content;
-  max-width: 600px;
-  padding: t.$space-lg;
-  border-radius: t.$radius-lg;
-  box-shadow: t.$shadow-md;
-  text-align: center;
-  color: t.$color-primary-600;
-  background-color: t.$color-primary-100;
-}
-
-/* Buttons */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 16px;
-  border-radius: t.$radius-md;
-  border: none;
-  cursor: pointer;
-  font-weight: 600;
-}
-.btn-primary {
-  background: t.$color-primary;
-  color: white;
-}
-.btn-outline {
-  background: transparent;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  color: t.$text;
-}
-
-/* Spinner simple CSS */
-.spinner {
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  border: 2px solid rgba(255, 255, 255, 0.25);
-  border-top-color: rgba(255, 255, 255, 0.9);
-  animation: spin 0.8s linear infinite;
-}
-
-/* Forms */
-.mini-form {
-  display: flex;
-  flex-direction: column;
-  gap: t.$space-md;
-  padding: t.$space-xl;
-
-  .title {
-    display: flex;
-    align-items: center;
-    gap: t.$space-sm;
-    margin: 0;
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: t.$color-primary;
-
-    mat-icon {
-      font-size: 1.3rem;
-      line-height: 1.3;
-    }
-  }
-
-  .form {
-    display: flex;
-    flex-direction: column;
-    gap: t.$space-sm;
-    border: 1px solid t.$color-primary;
-    border-radius: t.$radius-lg;
-    padding: t.$space-md;
-    align-self: center;
-    width: 90%;
-
-    .submit {
-      margin-top: t.$space-sm;
-      width: fit-content;
-      background: t.$color-primary;
-      border-radius: t.$radius-md;
-      align-self: center;
-      color: whitesmoke;
-    }
-  }
-
-  .field {
-    width: 90%;
-    align-self: center;
-    color: t.$color-primary;
-
-    mat-icon {
-      margin-right: t.$space-xs;
-      line-height: 1.2;
-    }
-  }
-}
-
-/* Material */
-.mat-mdc-menu-panel {
-  background: t.$color-panel-bg !important;
-  border-radius: t.$radius-md !important;
-  box-shadow: t.$shadow-md !important;
-  padding: t.$space-xs !important;
-  backdrop-filter: blur(6px);
-  opacity: 0.98;
-}
-
-.mat-mdc-menu-item:hover {
-  background: t.$color-hover-surface !important;
-}
-
-.mat-mdc-menu-item.cdk-focused:not(:hover) {
-  background: t.$color-hover-surface !important;
-}
-
-.mat-mdc-menu-item {
-  border-radius: t.$radius-sm !important;
-  color: t.$color-text-strong !important;
-  font-size: 0.95rem;
-}
-
-.mat-mdc-tooltip {
-  background: t.$color-primary !important;
-  color: t.$surface !important;
-  font-size: 0.9rem !important;
-  padding: 6px 10px !important;
-  border-radius: t.$radius-sm !important;
-  box-shadow: t.$shadow-md !important;
-  opacity: 1 !important;
-}
-
-.cdk-overlay-pane .mat-mdc-select-panel {
-  background: t.$surface !important;
-  backdrop-filter: none !important;
-  opacity: 1 !important;
-}
-
-.mat-mdc-option {
-  background: t.$surface !important;
-  opacity: 1 !important;
-}
-
-.mat-mdc-option:hover {
-  background: t.$color-hover-surface !important;
-}
-
-.mat-mdc-option.cdk-focused:not(:hover) {
-  background: t.$color-hover-surface !important;
-}
-
-/* responsive utilities */
-@media (max-width: 768px) {
-  .container {
-    padding: 0 t.$space-sm;
-  }
 }

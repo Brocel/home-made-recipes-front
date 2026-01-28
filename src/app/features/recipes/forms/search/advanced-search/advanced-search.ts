@@ -1,13 +1,12 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { Button } from '@ui/button/button';
 import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'advanced-search',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, Button, TranslatePipe],
+  imports: [CommonModule, ReactiveFormsModule, TranslatePipe],
   templateUrl: './advanced-search.html',
   styleUrls: ['./advanced-search.scss'],
 })

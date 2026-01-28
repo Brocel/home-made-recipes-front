@@ -16,23 +16,6 @@
   box-shadow: t.$shadow-lg;
 }
 
-.scroll-wrapper {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  min-height: 0;
-  border-radius: t.$radius-lg;
-
-  overflow-y: auto;
-  scrollbar-width: none;
-
-  gap: t.$space-lg;
-}
-
-.scroll-wrapper::-webkit-scrollbar {
-  display: none;
-}
-
 /* HEADER */
 .header {
   background: t.$surface-100;
