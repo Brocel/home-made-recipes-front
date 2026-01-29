@@ -1,6 +1,11 @@
 @use 'tokens' as t;
 
 .panel {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+
   position: fixed;
   top: 0;
   left: 0;
@@ -31,7 +36,7 @@
   overflow-y: auto;
   scrollbar-width: none;
   padding: t.$space-md;
-  gap: t.$space-lg;
+  gap: t.$space-xs;
 
   h3 {
     margin-bottom: t.$space-sm;

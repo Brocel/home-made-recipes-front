@@ -1,9 +1,9 @@
 <div class="panel" [class.open]="isOpen()">
-  <div class="panel-content">
+  <app-scroll-wrapper gap="xs" padding="md">
     <app-mini-search (search)="onMiniSearch($event)" (close)="toggle()"> </app-mini-search>
 
     <app-mini-add (close)="toggle()"> </app-mini-add>
-  </div>
+  </app-scroll-wrapper>
 
   <button class="handle" (click)="toggle()">
     <span class="chevron" [class.open]="isOpen()">›</span>

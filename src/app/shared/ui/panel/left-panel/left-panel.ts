@@ -2,11 +2,12 @@ import { Component, signal } from '@angular/core';
 import { MiniSearch } from '@features/recipes/forms/search/mini-search/mini-search';
 import { MiniAdd } from '@features/recipes/forms/add/mini-add/mini-add';
 import { RecipeType } from '@models/recipes/recipe-type.enum';
+import { ScrollWrapper } from '@layout/scroll-wrapper/scroll-wrapper';
 
 @Component({
   selector: 'app-left-panel',
   standalone: true,
-  imports: [MiniSearch, MiniAdd],
+  imports: [MiniSearch, MiniAdd, ScrollWrapper],
   templateUrl: './left-panel.html',
   styleUrls: ['./left-panel.scss'],
 })
