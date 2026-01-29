@@ -9,6 +9,7 @@ import { RecipeSteps } from './sections/recipe-steps/recipe-steps';
 import { RecipeType } from '@models/recipes/recipe-type.enum';
 import { RecipeCreateBridgeService } from '@app/shared/services/recipe-create-bridge.service';
 import { MatIcon } from '@angular/material/icon';
+import { ScrollWrapper } from '@layout/scroll-wrapper/scroll-wrapper';
 
 @Component({
   selector: 'app-full-add',
@@ -19,6 +20,7 @@ import { MatIcon } from '@angular/material/icon';
     RecipeSteps,
     TranslatePipe,
     MatIcon,
+    ScrollWrapper
   ],
   templateUrl: './full-add.html',
   styleUrl: './full-add.scss',

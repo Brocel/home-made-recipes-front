@@ -45,3 +45,16 @@
   background: black;
   color: black;
 }
+
+.field.mat-mdc-form-field .mat-mdc-form-field-flex {
+  align-items: flex-start;
+}
+
+.field.mat-mdc-form-field .mat-mdc-form-field-icon-prefix {
+  align-self: flex-start;
+  margin-top: 0.8rem;
+}
+
+.mat-mdc-form-field-infix {
+  padding: t.$space-xs;
+}

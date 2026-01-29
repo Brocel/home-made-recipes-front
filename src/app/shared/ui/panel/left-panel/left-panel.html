@@ -1,6 +1,7 @@
-<div class="panel" [class.open]="isOpen()">
+<div class="panel" [class.open]="isOpen()" (clickOutside)="close()">
   <app-scroll-wrapper gap="xs" padding="md">
-    <app-mini-search (search)="onMiniSearch($event)" (close)="toggle()"> </app-mini-search>
+    <app-mini-search (search)="onMiniSearch($event)" (close)="toggle()">
+    </app-mini-search>
 
     <app-mini-add (close)="toggle()"> </app-mini-add>
   </app-scroll-wrapper>

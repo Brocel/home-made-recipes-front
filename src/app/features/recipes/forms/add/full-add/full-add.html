@@ -1,27 +1,21 @@
-<div class="page">
-  <div class="main-container">
-    <div class="main-content">
-      <section class="main-section">
-        <h1 class="title">
-          <mat-icon>add_box</mat-icon>
-          {{ 'add.full.title' | translate }}
-        </h1>
-        <div class="section-content">
-          <div class="mini-form">
-            <form [formGroup]="form" (ngSubmit)="submit()" class="form full-form">
-              <app-recipe-info [form]="form"></app-recipe-info>
+<div class="full-add">
+  <h1 class="title">
+    <mat-icon>add_box</mat-icon>
+    {{ 'add.full.title' | translate }}
+  </h1>
+  <div class="mini-form">
+    <form [formGroup]="form" (ngSubmit)="submit()" class="form full-form">
+      <app-scroll-wrapper gap="sm" padding="xs">
+        <app-recipe-info [form]="form"></app-recipe-info>
 
-              <app-recipe-ingredients [ingredients]="ingredient_list"></app-recipe-ingredients>
+        <app-recipe-ingredients [ingredients]="ingredient_list"></app-recipe-ingredients>
 
-              <app-recipe-steps [steps]="step_list"></app-recipe-steps>
+        <app-recipe-steps [steps]="step_list"></app-recipe-steps>
 
-              <button mat-raised-button class="submit">
-                {{ 'common.save' | translate }}
-              </button>
-            </form>
-          </div>
-        </div>
-      </section>
-    </div>
+        <button mat-raised-button class="submit">
+          {{ 'common.save' | translate }}
+        </button>
+      </app-scroll-wrapper>
+    </form>
   </div>
 </div>

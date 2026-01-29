@@ -3,11 +3,12 @@ import { MiniSearch } from '@features/recipes/forms/search/mini-search/mini-sear
 import { MiniAdd } from '@features/recipes/forms/add/mini-add/mini-add';
 import { RecipeType } from '@models/recipes/recipe-type.enum';
 import { ScrollWrapper } from '@layout/scroll-wrapper/scroll-wrapper';
+import { ClickOutsideDirective } from '@directives/click-outside.directive';
 
 @Component({
   selector: 'app-left-panel',
   standalone: true,
-  imports: [MiniSearch, MiniAdd, ScrollWrapper],
+  imports: [MiniSearch, MiniAdd, ScrollWrapper, ClickOutsideDirective],
   templateUrl: './left-panel.html',
   styleUrls: ['./left-panel.scss'],
 })
@@ -16,6 +17,10 @@ export class LeftPanel {
 
   toggle() {
     this.isOpen.update((v) => !v);
+  }
+
+  close() {
+    this.isOpen.update((v) => false);
   }
 
   onMiniSearch(query: string) {
