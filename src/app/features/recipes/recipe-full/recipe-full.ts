@@ -5,12 +5,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDividerModule } from '@angular/material/divider';
+import { ScrollWrapper } from '@layout/scroll-wrapper/scroll-wrapper';
 import { TranslatePipe } from '@ngx-translate/core';
 
 import { Recipe } from '@models/recipes/recipe';
 import { RecipeTypeLabel } from '@models/recipes/recipe-type.enum';
 import { UnitShortLabel, UnitLongLabel } from '@models/recipes/unit.enum';
-import {IngredientTypeLabel} from '@models/recipes/ingredient-type.enum';
+import { IngredientTypeLabel } from '@models/recipes/ingredient-type.enum';
 
 @Component({
   selector: 'app-recipe-full',
@@ -23,6 +24,7 @@ import {IngredientTypeLabel} from '@models/recipes/ingredient-type.enum';
     MatTooltipModule,
     MatDividerModule,
     TranslatePipe,
+    ScrollWrapper,
   ],
   templateUrl: './recipe-full.html',
   styleUrl: './recipe-full.scss',

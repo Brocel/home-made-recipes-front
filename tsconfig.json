@@ -23,6 +23,7 @@
       "@models/*": ["app/shared/models/*"],
       "@services/*": ["app/shared/services/*"],
       "@ui/*": ["app/shared/ui/*"],
+      "@layout/*": ["app/shared/ui/layout/*"],
       "@env/*": ["environments/environment.ts"],
       "@mocks/*": ["public/mocks/*"]
     }

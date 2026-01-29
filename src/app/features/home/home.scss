@@ -1,4 +1,9 @@
 @use 'tokens' as t;
+@use 'mixins' as m;
+
+:host {
+  @include m.page-flex;
+}
 
 .title {
   color: t.$text-strong;

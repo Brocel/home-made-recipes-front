@@ -1,22 +1,17 @@
-// src/app/app.component.ts
 import { Component } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 import { AuthService } from '@app/core/auth/auth.service';
 import { currentUser, isAuthenticated } from '@app/core/auth/auth.signals';
 import { Navbar } from '@ui/navbar/navbar';
 import { Footer } from '@ui/footer/footer';
-import { LeftPanel } from './shared/ui/panel/left-panel/left-panel';
+import { LeftPanel } from '@ui/panel/left-panel/left-panel';
+import { PageLayout } from '@layout/page-layout/page-layout';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [
-    Navbar,
-    RouterOutlet,
-    Footer,
-    LeftPanel,
-  ],
-  templateUrl: './app.html'
+  imports: [Navbar, RouterOutlet, Footer, LeftPanel, PageLayout],
+  templateUrl: './app.html',
 })
 export class App {
   // Expose les signaux pour le template (tu peux appeler user() et isAuthenticated() dans le HTML)
@@ -25,7 +20,7 @@ export class App {
 
   constructor(
     private router: Router,
-    public auth: AuthService
+    public auth: AuthService,
   ) {}
 
   /**
@@ -41,7 +36,7 @@ export class App {
       this.auth.initGsi('google-button');
 
       // navigation vers une page de login (si tu as une route)
-      this.router.navigate(['/login']).catch(err => {
+      this.router.navigate(['/login']).catch((err) => {
         console.warn('Navigation vers /login échouée', err);
       });
     } catch (err) {
@@ -55,7 +50,7 @@ export class App {
    * - Si tu utilises une modal, remplace la navigation par l'ouverture de la modal.
    */
   handleOpenRegister(): void {
-    this.router.navigate(['/register']).catch(err => {
+    this.router.navigate(['/register']).catch((err) => {
       console.warn('Navigation vers /register échouée', err);
     });
   }
@@ -66,7 +61,7 @@ export class App {
    * - Si tu veux préremplir le formulaire, tu peux passer un state ou queryParams.
    */
   handleAddRecipe(): void {
-    this.router.navigate(['/recipes/create']).catch(err => {
+    this.router.navigate(['/recipes/create']).catch((err) => {
       console.warn('Navigation vers /recipes/create échouée', err);
     });
   }

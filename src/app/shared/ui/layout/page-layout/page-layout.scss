@@ -1,0 +1,55 @@
+@use 'tokens' as t;
+
+.page {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  background: t.$bg;
+  padding: t.$space-xs;
+  margin: t.$space-xs;
+  overflow: hidden;
+}
+
+.main-container {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  max-width: t.$max-width;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  min-height: 0;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  min-height: 0;
+  align-items: center;
+  background: t.$surface;
+  border-radius: t.$radius-lg;
+  box-shadow: t.$shadow-md;
+  padding: t.$space-xs;
+}
+
+.main-section {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  width: 75%;
+}
+
+.section-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+  width: 100%;
+  min-height: 0;
+  overflow: hidden;
+  border-radius: t.$radius-lg;
+}

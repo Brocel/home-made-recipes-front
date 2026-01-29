@@ -21,22 +21,6 @@
   background-color: t.$primary-100;
 }
 
-/* Scroll */
-.scroll-wrapper {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  min-height: 0;
-  border-radius: t.$radius-lg;
-  overflow-y: auto;
-  scrollbar-width: none;
-  gap: t.$space-lg;
-}
-
-.scroll-wrapper::-webkit-scrollbar {
-  display: none;
-}
-
 /* Buttons */
 .btn {
   display: inline-flex;
