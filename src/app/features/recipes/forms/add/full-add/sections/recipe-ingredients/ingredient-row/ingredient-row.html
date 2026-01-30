@@ -1,0 +1,27 @@
+<div class="ingredient-row" [formGroup]="group">
+  <mat-form-field appearance="outline" class="field small">
+    <mat-label>{{ 'ingredient.quantity' | translate }}</mat-label>
+    <input matInput type="number" formControlName="quantity" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="field small">
+    <mat-label>{{ 'ingredient.unit' | translate }}</mat-label>
+    <mat-select formControlName="unit">
+      @for (u of units; track u) {
+        <mat-option [value]="u">
+          {{ unitLabels[u] | translate }}
+        </mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+
+  <app-product-autocomplete
+    class="field"
+    formControlName="product"
+    [label]="'ingredient.product' | translate"
+  />
+
+  <button mat-icon-button type="button" (click)="remove.emit()">
+    <mat-icon>delete</mat-icon>
+  </button>
+</div>

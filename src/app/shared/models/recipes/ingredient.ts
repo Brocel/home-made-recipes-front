@@ -19,3 +19,8 @@ export interface Product {
   name: string;
   ingredient_type: IngredientType;
 }
+
+export interface ProductDTO {
+  name: string;
+  ingredient_type: IngredientType;
+}

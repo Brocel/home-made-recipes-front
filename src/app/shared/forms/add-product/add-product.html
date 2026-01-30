@@ -1,0 +1,28 @@
+<h2 mat-dialog-title>{{ 'product.add.title' | translate }}</h2>
+
+<form [formGroup]="form" (ngSubmit)="submit()" class="form">
+  <mat-form-field appearance="outline" class="field">
+    <mat-label>{{ 'product.name' | translate }}</mat-label>
+    <input matInput formControlName="name" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="field">
+    <mat-label>{{ 'product.ingredient_type' | translate }}</mat-label>
+    <mat-select formControlName="ingredient_type">
+      @for (type of ingredientTypes; track type) {
+        <mat-option [value]="type">
+          {{ 'ingredientType.' + type | translate }}
+        </mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+
+  <div class="actions">
+    <button mat-button type="button" (click)="cancel()">
+      {{ 'common.cancel' | translate }}
+    </button>
+    <button mat-raised-button color="primary" type="submit">
+      {{ 'common.save' | translate }}
+    </button>
+  </div>
+</form>

@@ -1,1 +1,9 @@
-<p>recipe-ingredients works!</p>
+<div class="ingredients">
+  @for (group of ingredientsControls; let i = $index; track i) {
+    <app-ingredient-row [group]="group" (remove)="removeIngredient(i)" />
+  }
+
+  <button mat-stroked-button type="button" (click)="addIngredient()">
+    {{ 'recipe.ingredients.add' | translate }}
+  </button>
+</div>

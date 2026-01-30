@@ -22,6 +22,7 @@
       "@shared/*": ["app/shared/*"],
       "@models/*": ["app/shared/models/*"],
       "@services/*": ["app/shared/services/*"],
+      "@forms/*": ["app/shared/forms/*"],
       "@ui/*": ["app/shared/ui/*"],
       "@layout/*": ["app/shared/ui/layout/*"],
       "@directives/*": ["app/shared/directives/*"],
