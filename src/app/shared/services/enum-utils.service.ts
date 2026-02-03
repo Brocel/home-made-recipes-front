@@ -11,4 +11,20 @@ export class EnumUtilsService {
       label: labels[key],
     }));
   }
+
+  enumToShortAndLongLabels<T extends object>(
+    enumType: T,
+    shortLabels: Record<string, string>,
+    longLabels: Record<string, string>
+  ) {
+    return Object.keys(shortLabels).map((key) => ({
+      value: key,
+      short: shortLabels[key],
+      long: longLabels[key],
+    }));
+  }
 }
+
+  
+
+

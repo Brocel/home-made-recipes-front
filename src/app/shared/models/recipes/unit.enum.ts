@@ -1,12 +1,12 @@
 export enum Unit {
-  GRAM,
-  KILOGRAM,
-  LITER,
-  MILLILITER,
-  CUP,
-  TABLESPOON,
-  TEASPOON,
-  PIECE,
+  GRAM = 'GRAM',
+  KILOGRAM = 'KILOGRAM',
+  LITER = 'LITER',
+  MILLILITER = 'MILLILITER',
+  CUP = 'CUP',
+  TABLESPOON = 'TABLESPOON',
+  TEASPOON = 'TEASPOON',
+  PIECE = 'PIECE',
 }
 
 export const UnitShortLabel: Record<Unit, string> = {

@@ -1,4 +1,5 @@
 import { Component, inject } from '@angular/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialogModule } from '@angular/material/dialog';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -20,6 +21,7 @@ import { ProductService } from '@services/product.service';
     MatInputModule,
     MatSelectModule,
     MatButtonModule,
+    TranslatePipe,
   ],
   templateUrl: './add-product.html',
   styleUrls: ['./add-product.scss'],

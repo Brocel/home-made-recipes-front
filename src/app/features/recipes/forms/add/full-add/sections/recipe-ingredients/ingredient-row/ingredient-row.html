@@ -7,11 +7,13 @@
   <mat-form-field appearance="outline" class="field small">
     <mat-label>{{ 'ingredient.unit' | translate }}</mat-label>
     <mat-select formControlName="unit">
-      @for (u of units; track u) {
-        <mat-option [value]="u">
-          {{ unitLabels[u] | translate }}
+      <ng-container>
+      @for (u of unitLabels; track u) {
+        <mat-option [value]="u.value">
+          {{ u.short | translate }} ({{ u.long | translate }})
         </mat-option>
       }
+      </ng-container>
     </mat-select>
   </mat-form-field>
 

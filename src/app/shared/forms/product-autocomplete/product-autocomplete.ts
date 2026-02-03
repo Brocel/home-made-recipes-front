@@ -51,7 +51,7 @@ export class ProductAutocomplete implements ControlValueAccessor {
   results = signal<Product[]>([]);
 
   // Afficher "Créer X" si aucun résultat
-  showCreate = computed(() => this.control.value()?.length! >= 3 && this.results().length === 0);
+  showCreate = computed(() => this.control.value?.length! >= 3 && this.results().length === 0);
 
   constructor() {
     // Recherche API
@@ -87,9 +87,9 @@ export class ProductAutocomplete implements ControlValueAccessor {
   }
 
   createProduct() {
-    const name = this.control.value() ?? '';
+    const name = this.control.value ?? '';
 
-    const dialogRef = this.dialog.open(AddProductComponent, {
+    const dialogRef = this.dialog.open(AddProduct, {
       data: { name },
     });
 

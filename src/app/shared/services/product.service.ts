@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { Product } from '../models/recipes/ingredient';
+import { Product, ProductDTO } from '@models/recipes/ingredient';
 
 @Injectable({ providedIn: 'root' })
 export class ProductService {
@@ -13,5 +13,9 @@ export class ProductService {
     return this.http.get<Product[]>(`/api/products/search`, {
       params: { q: query },
     });
+  }
+
+  createProduct(dto: ProductDTO) {
+    return this.http.post<Product>('/api/products', dto);
   }
 }

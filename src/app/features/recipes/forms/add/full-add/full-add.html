@@ -6,7 +6,7 @@
   <div class="mini-form">
     <form [formGroup]="form" (ngSubmit)="submit()" class="form full-form">
       <app-scroll-wrapper gap="sm" padding="xs">
-        <app-recipe-info [form]="form"></app-recipe-info>
+        <app-recipe-info [informations]="form"></app-recipe-info>
 
         <app-recipe-ingredients [ingredients]="ingredient_list"></app-recipe-ingredients>
 

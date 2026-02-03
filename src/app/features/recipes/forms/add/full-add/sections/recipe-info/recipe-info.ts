@@ -27,7 +27,7 @@ export class RecipeInfo {
   private enumUtils = inject(EnumUtilsService);
 
 
-  @Input() form!: FormGroup;
+  @Input() informations!: FormGroup;
 
   recipeTypes = this.enumUtils.enumToList(RecipeType, RecipeTypeLabel);
 

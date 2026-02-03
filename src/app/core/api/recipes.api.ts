@@ -35,7 +35,7 @@ export class RecipesApi {
   }
 
   dailyRecipe(): Observable<Recipe> {
-    return this.http.get<Recipe>(`${this.base}/dailyRecipe`)
+    return this.http.get<Recipe>(`${this.base}/daily`)
       .pipe(catchError(this.handleError));
   }
 
