@@ -3,7 +3,7 @@ import { Component, OnInit, signal } from '@angular/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { RouterModule } from '@angular/router';
 import { RecipesApi } from '@core/api/recipes.api';
-import { isAuthenticated } from '@core/auth/auth.signals';
+import { isAuthenticated } from '@app/core/state/auth.state';
 import { LanguageService } from '@core/i18n/language.service';
 import { TranslatePipe } from '@ngx-translate/core';
 import { Recipe } from '@shared/models/recipes/recipe';

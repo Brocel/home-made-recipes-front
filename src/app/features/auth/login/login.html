@@ -1,8 +1,31 @@
-<!-- Vue simple pour la page de connexion -->
-<div class="auth-page container">
-  <h1>{{ 'login.title' | translate }}</h1>
-  <p>{{ 'login.description' | translate }}</p>
+<div class="login-container">
+  <h1>Connexion</h1>
 
-  <!-- Google rendra son bouton ici via google.accounts.id.renderButton -->
-  <div id="google-button" class="mt-16"></div>
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <label>Email</label>
+    <input type="email" formControlName="email" />
+
+    @if (form.controls.email.invalid && form.controls.email.touched) {
+      <p class="error">Email invalide</p>
+    }
+
+    <label>Mot de passe</label>
+    <input type="password" formControlName="password" />
+
+    @if (form.controls.password.invalid && form.controls.password.touched) {
+      <p class="error">Mot de passe requis</p>
+    }
+
+    @if (errorKey()) {
+      <p class="error">{{ errorKey() | translate }}</p>
+    }
+
+    <button type="submit" [disabled]="loading() || form.invalid">
+      @if (loading()) {
+        <span>Connexion...</span>
+      } @else {
+        <span>Se connecter</span>
+      }
+    </button>
+  </form>
 </div>

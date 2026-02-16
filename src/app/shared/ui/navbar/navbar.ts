@@ -7,7 +7,7 @@ import { ProfileMenu } from '@ui/menu/profile-menu/profile-menu';
 import { NavigationService } from '@core/navigation/navigation.service';
 import { QuickSearch } from '@features/recipes/forms/search/quick-search/quick-search';
 import { LeftMenu } from '@ui/menu/left-menu/left-menu';
-import { AuthService } from '@core/auth/auth.service';
+import { AuthService } from '@app/core/services/auth.service';
 import { MatDivider } from '@angular/material/divider';
 
 @Component({

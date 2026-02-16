@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
-import { AuthService } from '@app/core/auth/auth.service';
-import { currentUser, isAuthenticated } from '@app/core/auth/auth.signals';
+import { AuthService } from '@app/core/services/auth.service';
+import { currentUser, isAuthenticated } from '@app/core/state/auth.state';
 import { Navbar } from '@ui/navbar/navbar';
 import { Footer } from '@ui/footer/footer';
 import { LeftPanel } from '@ui/panel/left-panel/left-panel';
