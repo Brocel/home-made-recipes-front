@@ -1,7 +1,7 @@
 @use 'tokens' as t;
 
 /* Cards */
-.card {
+@mixin card {
   background: t.$bg;
   padding: t.$space-lg;
   border-radius: t.$radius-lg;
@@ -13,7 +13,7 @@
 .error {
   width: fit-content;
   max-width: 600px;
-  padding: t.$space-lg;
+  padding: t.$space-sm;
   border-radius: t.$radius-lg;
   box-shadow: t.$shadow-md;
   text-align: center;

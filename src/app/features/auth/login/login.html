@@ -3,21 +3,17 @@
 
   <form [formGroup]="form" (ngSubmit)="submit()">
     <label>Email</label>
-    <input type="email" formControlName="email" />
+    <input type="email" formControlName="email" class="input" />
 
     @if (form.controls.email.invalid && form.controls.email.touched) {
-      <p class="error">Email invalide</p>
+      <span class="input-error">Email invalide</span>
     }
 
     <label>Mot de passe</label>
-    <input type="password" formControlName="password" />
+    <input type="password" formControlName="password" class="input" />
 
     @if (form.controls.password.invalid && form.controls.password.touched) {
-      <p class="error">Mot de passe requis</p>
-    }
-
-    @if (errorKey()) {
-      <p class="error">{{ errorKey() | translate }}</p>
+      <span class="input-error">Mot de passe requis</span>
     }
 
     <button type="submit" [disabled]="loading() || form.invalid">
@@ -28,4 +24,10 @@
       }
     </button>
   </form>
+  <div class="login-register-section">
+    <h2>Première visite ?</h2>
+    <button type="button" class="btn btn-secondary" (click)="goToRegister()">
+      Créer un compte
+    </button>
+  </div>
 </div>

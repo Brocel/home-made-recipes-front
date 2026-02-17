@@ -4,6 +4,7 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginRequest } from '@app/core/auth/login.request';
 import { AuthService } from '@app/core/services/auth.service';
+import { ModalService } from '@app/shared/services/modal.service';
 import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
@@ -13,10 +14,11 @@ import { TranslatePipe } from '@ngx-translate/core';
   templateUrl: './login.html',
   styleUrl: './login.scss',
 })
-export class LoginComponent {
+export class Login {
   private fb = inject(FormBuilder);
   private authService = inject(AuthService);
   private router = inject(Router);
+  private modal = inject(ModalService);
 
   // --- Signals ---
   loading = signal(false);
@@ -46,5 +48,10 @@ export class LoginComponent {
         this.errorKey.set(err.errorKey);
       },
     });
+  }
+
+  goToRegister() {
+    this.modal.close();
+    this.modal.open('register');
   }
 }
