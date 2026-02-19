@@ -1,11 +1,11 @@
-import { CanActivateFn } from "@angular/router";
-import { isAuthenticated } from "../state/auth.state";
-import { inject } from "@angular/core";
-import { ModalService } from "@app/shared/services/modal.service";
+import { inject } from '@angular/core';
+import { CanActivateFn } from '@angular/router';
+import { NavigationService } from '@core/navigation/navigation.service';
+import { isAuthenticated } from '../state/auth.state';
 
 export const authGuard: CanActivateFn = () => {
-    if (!isAuthenticated()) {
-        inject(ModalService).open('login');
-    }
+  if (!isAuthenticated()) {
+    inject(NavigationService).openLoginModal();
+  }
   return isAuthenticated();
 };

@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, signal } from '@angular/core';
+import { Component, Inject, inject, OnInit, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { LoginRequest } from '@app/core/auth/login.request';
+import { NavigationService } from '@app/core/navigation/navigation.service';
 import { AuthService } from '@app/core/services/auth.service';
-import { ModalService } from '@app/shared/services/modal.service';
 import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
@@ -14,11 +15,11 @@ import { TranslatePipe } from '@ngx-translate/core';
   templateUrl: './login.html',
   styleUrl: './login.scss',
 })
-export class Login {
+export class Login implements OnInit {
   private fb = inject(FormBuilder);
   private authService = inject(AuthService);
   private router = inject(Router);
-  private modal = inject(ModalService);
+  private nav = inject(NavigationService);
 
   // --- Signals ---
   loading = signal(false);
@@ -29,6 +30,17 @@ export class Login {
     email: ['', [Validators.required, Validators.email]],
     password: ['', Validators.required],
   });
+
+  constructor(
+    private dialogRef: MatDialogRef<Login>,
+    @Inject(MAT_DIALOG_DATA) private data: { email: string | null },
+  ) {}
+
+  ngOnInit(): void {
+    if (this.data?.email) {
+      this.form.patchValue({ email: this.data.email });
+    }
+  }
 
   submit(): void {
     if (this.form.invalid || this.loading()) return;
@@ -51,7 +63,7 @@ export class Login {
   }
 
   goToRegister() {
-    this.modal.close();
-    this.modal.open('register');
+    this.dialogRef.close();
+    this.nav.openRegisterModal();
   }
 }

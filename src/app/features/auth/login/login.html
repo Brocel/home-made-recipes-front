@@ -1,33 +1,33 @@
-<div class="login-container">
-  <h1>Connexion</h1>
+<div class="modal-container">
+  <h1>{{ 'login.title' | translate }}</h1>
 
   <form [formGroup]="form" (ngSubmit)="submit()">
-    <label>Email</label>
+    <label>{{ 'form.label.email' | translate }}</label>
     <input type="email" formControlName="email" class="input" />
 
     @if (form.controls.email.invalid && form.controls.email.touched) {
-      <span class="input-error">Email invalide</span>
+      <span class="input-error">{{ 'form.validation.email' | translate }}</span>
     }
 
-    <label>Mot de passe</label>
+    <label>{{ 'form.label.password' | translate }}</label>
     <input type="password" formControlName="password" class="input" />
 
     @if (form.controls.password.invalid && form.controls.password.touched) {
-      <span class="input-error">Mot de passe requis</span>
+      <span class="input-error">{{ 'form.validation.password' | translate }}</span>
     }
 
     <button type="submit" [disabled]="loading() || form.invalid">
       @if (loading()) {
-        <span>Connexion...</span>
+        <span>{{ 'login.spinner' | translate }}</span>
       } @else {
-        <span>Se connecter</span>
+        <span>{{ 'login.button' | translate }}</span>
       }
     </button>
   </form>
-  <div class="login-register-section">
-    <h2>Première visite ?</h2>
-    <button type="button" class="btn btn-secondary" (click)="goToRegister()">
-      Créer un compte
-    </button>
+  <div class="modal-section">
+    <h2>{{ 'login.register' | translate }}</h2>
+    <div class="btn btn-secondary" (click)="goToRegister()">
+      {{ 'register.create' | translate }}
+    </div>
   </div>
 </div>

@@ -1,1 +1,86 @@
-<p>register works!</p>
+<div class="modal-container">
+  <h1>{{ 'register.title' | translate }}</h1>
+
+  @if (!success()) {
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <label>{{ 'form.label.first_name' | translate }}</label>
+      <input type="text" formControlName="first_name" class="input" />
+      @if (form.controls.first_name.invalid && form.controls.first_name.touched) {
+        <span class="input-error">
+          {{ 'form.validation.first_name' | translate }}
+        </span>
+      }
+
+      <label>{{ 'form.label.last_name' | translate }}</label>
+      <input type="text" formControlName="last_name" class="input" />
+      @if (form.controls.last_name.invalid && form.controls.last_name.touched) {
+        <span class="input-error">
+          {{ 'form.validation.last_name' | translate }}
+        </span>
+      }
+
+      <label>{{ 'form.label.username' | translate }}</label>
+      <input type="text" formControlName="username" class="input" />
+      @if (form.controls.username.invalid && form.controls.username.touched) {
+        <span class="input-error">
+          {{ 'form.validation.username' | translate }}
+        </span>
+      }
+
+      <label>{{ 'form.label.email' | translate }}</label>
+      <input type="email" formControlName="email" class="input" />
+      @if (form.controls.email.invalid && form.controls.email.touched) {
+        <span class="input-error">
+          {{ 'form.validation.email' | translate }}
+        </span>
+      }
+
+      <label>{{ 'form.label.password' | translate }}</label>
+      <input type="password" formControlName="password" class="input" />
+      @if (form.controls.password.invalid && form.controls.password.touched) {
+        <span class="input-error">
+          {{ 'form.validation.password' | translate }}
+        </span>
+      }
+
+      <label>{{ 'form.label.confirm_password' | translate }}</label>
+      <input type="password" formControlName="confirmPassword" class="input" />
+      @if (form.controls.confirmPassword.invalid && form.controls.confirmPassword.touched) {
+        <span class="input-error">
+          {{ 'form.validation.confirm_password' | translate }}
+        </span>
+      }
+
+      <label>{{ 'form.label.birth_date' | translate }}</label>
+      <input type="date" formControlName="birth_date" class="input" />
+      @if (form.controls.birth_date.invalid && form.controls.birth_date.touched) {
+        <span class="input-error">
+          {{ 'form.validation.birth_date' | translate }}
+        </span>
+      }
+
+      @if (errorKey()) {
+        <div class="error">
+          {{ errorKey() | translate }}
+        </div>
+      }
+
+      <button type="submit" [disabled]="loading() || form.invalid">
+        @if (loading()) {
+          <span>{{ 'register.spinner' | translate }}</span>
+        } @else {
+          <span>{{ 'register.create' | translate }}</span>
+        }
+      </button>
+    </form>
+  } @else {
+    <div class="register-success">
+      <h2>{{ 'register.success.title' | translate }}</h2>
+      <p>{{ 'register.success.message' | translate }}</p>
+
+      <button type="button" class="btn btn-primary" (click)="confirmSuccess()">
+        {{ 'register.success.ok' | translate }}
+      </button>
+    </div>
+  }
+</div>

@@ -34,12 +34,16 @@
   },
   "login": {
     "title": "Conneção",
-    "description": "Conecte-se com o Google para acessar suas receitas"
+    "description": "Conecte-se com o Google para acessar suas receitas",
+    "button": "Conectar-se",
+    "spinner": "Conneção...",
+    "register": "Primeira visita ?"
   },
   "register": {
+    "create": "Criar uma conta",
+    "spinner": "Criação...",
     "title": "Inscrição",
     "description": "Registre-se rapidamente com sua conta do Google para começar a adicionar suas receitas",
-    "googleButton": "Registrar-se com o Google",
     "existingAccount": "Você já tem uma conta?",
     "googlePrivacyNote": "Ao se conectar com o Google, usamos apenas as informações necessárias para criar sua conta."
   },
@@ -65,10 +69,6 @@
     "info": {
       "title": "Descrição da receita"
     }
-  },
-  "authCta": {
-    "title": "Junte-se à comunidade",
-    "description": "Conecte-se para adicionar e salvar suas receitas."
   },
   "recipe": {
     "description": "Descrição",
@@ -135,6 +135,21 @@
       "tablespoon": "Colher de sopa",
       "teaspoon": "Colher de chá",
       "piece": "Peça"
+    }
+  },
+  "form": {
+    "validation": {
+      "email": "Email inválido",
+      "password": "Senha obrigatória"
+    },
+    "label": {
+      "email": "Email",
+      "password": "Senha",
+      "first_name": "Nome",
+      "last_name": "Sobrenome",
+      "username": "Username",
+      "confirm_password": "Confirma senha",
+      "birth_date": "Data de nascimento"
     }
   },
   "common": {

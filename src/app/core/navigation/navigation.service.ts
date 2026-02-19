@@ -1,12 +1,16 @@
 // src/app/core/navigation/navigation.service.ts
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { Login } from '@features/auth/login/login';
+import { Register } from '@features/auth/register/register';
 
 @Injectable({ providedIn: 'root' })
 export class NavigationService {
-  constructor(private router: Router, private dialog: MatDialog) {}
+  constructor(
+    private router: Router,
+    private dialog: MatDialog,
+  ) {}
 
   // navigation simple
   goHome(): Promise<boolean> {
@@ -31,17 +35,28 @@ export class NavigationService {
     return this.safeNavigate(['/recipes/search'], { state: prefill });
   }
 
-  openLoginModal(): void {
+  // Modals
+  openLoginModal(emailPrefill?: string): void {
     this.dialog.open(Login, {
       width: '30%',
       panelClass: 'app-modal-panel',
       autoFocus: true,
-      restoreFocus: true
+      restoreFocus: true,
+      data: { email: emailPrefill ?? null },
     });
   }
 
-  closeModal(): Promise<boolean> {
-    return this.safeNavigate([{ outlets: { modal: null } }]);
+  openRegisterModal(): void {
+    this.dialog.open(Register, {
+      width: '30%',
+      panelClass: 'app-modal-panel',
+      autoFocus: true,
+      restoreFocus: true,
+    });
+  }
+
+  closeAllModals(): void {
+    this.dialog.closeAll();
   }
 
   // back with fallback
