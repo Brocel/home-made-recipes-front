@@ -1,35 +1,71 @@
-import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { currentUser } from '../state/auth.state';
-import { environment } from '@env/environment';
+import { Injectable, inject } from '@angular/core';
 import { AuthResponse } from '@app/core/auth/auth.response';
-import { TokenService } from './token.service';
+import { environment } from '@env/environment';
+import { User } from '@models/user';
 import { tap } from 'rxjs';
 import { LoginRequest } from '../auth/login.request';
 import { RegisterRequest } from '../auth/register.request';
+import { NavigationService } from '../navigation/navigation.service';
+import { AuthStore } from '../store/auth.store';
+import { TOKEN_KEY, USER_KEY } from '../store/storage.constants';
+import { LocalStorageService } from './local-storage.service';
+import { TokenService } from './token.service';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   private readonly http = inject(HttpClient);
   private readonly tokenService = inject(TokenService);
+  private nav = inject(NavigationService);
+  private store = inject(AuthStore);
+  private storage = inject(LocalStorageService);
+
+  private baseUrl = environment.apiBase + '/auth';
 
   login(payload: LoginRequest) {
-    return this.http.post<AuthResponse>(environment.apiBase + '/auth/login', payload).pipe(
-      tap(res => {
-        this.tokenService.save(res.token);
-        currentUser.set(res);
-      })
+    return this.http.post<AuthResponse>(this.baseUrl + '/login', payload).pipe(
+      tap((res) => {
+        if (res.token) {
+          this.setSession(res.token, res.user);
+        }
+      }),
     );
   }
 
   register(payload: RegisterRequest) {
-    return this.http.post(environment.apiBase + '/auth/register', payload);
+    return this.http.post(this.baseUrl + '/register', payload);
   }
 
   logout() {
-    this.tokenService.clear();
-    currentUser.set(null);
+    this.clearSession();
+    this.nav.goHome();
+  }
+
+  // ---- Session management ----
+  private setSession(token: string, user: User): void {
+    this.store.setToken(token);
+    this.store.setUser(user);
+
+    // Persitence
+    this.storage.set(TOKEN_KEY, token);
+    this.storage.set(USER_KEY, user);
+  }
+
+  private clearSession(): void {
+    this.store.clear();
+
+    this.storage.remove(TOKEN_KEY);
+    this.storage.remove(USER_KEY);
+  }
+
+  loadAuthFromStorage(): void {
+    const token = this.storage.get<string>(TOKEN_KEY);
+    const user = this.storage.get<User>(USER_KEY);
+    if (token && user) {
+      this.store.setToken(token);
+      this.store.setUser(user);
+    } else {
+      this.clearSession();
+    }
   }
 }
-
-

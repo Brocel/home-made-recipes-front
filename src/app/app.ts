@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
-import { AuthService } from '@app/core/services/auth.service';
-import { currentUser, isAuthenticated } from '@app/core/state/auth.state';
+import { AuthService } from '@core/services/auth.service';
+import { AuthStore } from '@core/store/auth.store';
 import { PageLayout } from '@layout/page-layout/page-layout';
 import { Footer } from '@ui/footer/footer';
 import { Navbar } from '@ui/navbar/navbar';
@@ -13,14 +13,17 @@ import { LeftPanel } from '@ui/panel/left-panel/left-panel';
   imports: [Navbar, RouterOutlet, Footer, LeftPanel, PageLayout],
   templateUrl: './app.html',
 })
-export class App {
-  user = currentUser;
-  isAuthenticated = isAuthenticated;
+export class App implements OnInit {
+  private router = inject(Router);
+  private authStore = inject(AuthStore);
+  private authService = inject(AuthService);
 
-  constructor(
-    private router: Router,
-    public auth: AuthService,
-  ) {}
+  user = this.authStore.user();
+  isAuthenticated = this.authStore.isAuthenticated();
+
+  ngOnInit(): void {
+    this.authService.loadAuthFromStorage();
+  }
 
   handleOpenLogin(): void {
     try {

@@ -1,5 +1,5 @@
 // src/app/core/navigation/navigation.service.ts
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Login } from '@features/auth/login/login';
@@ -7,10 +7,8 @@ import { Register } from '@features/auth/register/register';
 
 @Injectable({ providedIn: 'root' })
 export class NavigationService {
-  constructor(
-    private router: Router,
-    private dialog: MatDialog,
-  ) {}
+  private router = inject(Router);
+  private dialog = inject(MatDialog);
 
   // navigation simple
   goHome(): Promise<boolean> {

@@ -1,11 +1,12 @@
 import { inject } from '@angular/core';
 import { CanActivateFn } from '@angular/router';
 import { NavigationService } from '@core/navigation/navigation.service';
-import { isAuthenticated } from '../state/auth.state';
+import { AuthStore } from '../store/auth.store';
 
 export const authGuard: CanActivateFn = () => {
-  if (!isAuthenticated()) {
+  const authStore = inject(AuthStore);
+  if (!authStore.isAuthenticated()) {
     inject(NavigationService).openLoginModal();
   }
-  return isAuthenticated();
+  return authStore.isAuthenticated();
 };

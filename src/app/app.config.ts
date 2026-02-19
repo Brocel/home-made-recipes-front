@@ -8,11 +8,11 @@ import {
 } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
-import { routes } from './app.routes';
-import { HttpClient, provideHttpClient } from '@angular/common/http';
+import { HttpClient, provideHttpClient, withInterceptors } from '@angular/common/http';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
-import { provideAnimations } from '@angular/platform-browser/animations';
+import { routes } from './app.routes';
+import { AuthInterceptor } from './core/interceptors/auth.interceptors';
 
 @Injectable()
 export class HttpTranslateLoader implements TranslateLoader {
@@ -27,8 +27,7 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideRouter(routes),
-    provideHttpClient(),
-    provideAnimations(),
+    provideHttpClient(withInterceptors([AuthInterceptor])),
     importProvidersFrom(
       TranslateModule.forRoot({
         loader: { provide: TranslateLoader, useClass: HttpTranslateLoader },
