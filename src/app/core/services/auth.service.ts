@@ -68,4 +68,8 @@ export class AuthService {
       this.clearSession();
     }
   }
+
+  isTokenExpired(): boolean {
+    return this.tokenService.isTokenExpired(this.storage.get(TOKEN_KEY));
+  }
 }
