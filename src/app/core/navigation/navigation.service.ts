@@ -1,14 +1,18 @@
 // src/app/core/navigation/navigation.service.ts
 import { inject, Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Login } from '@features/auth/login/login';
 import { Register } from '@features/auth/register/register';
+import { TranslateService } from '@ngx-translate/core';
 
 @Injectable({ providedIn: 'root' })
 export class NavigationService {
   private router = inject(Router);
   private dialog = inject(MatDialog);
+  private snack = inject(MatSnackBar);
+  private translate = inject(TranslateService);
 
   // navigation simple
   goHome(): Promise<boolean> {
@@ -80,4 +84,17 @@ export class NavigationService {
   goToProfile() {
     // TODO
   }
+
+  showSuccess(key: string): void {
+    const message = this.translate.instant(key);
+
+    this.snack.open(message, undefined, {
+      duration: 5000,
+      panelClass: ['snackbar-success'],
+      horizontalPosition: 'right',
+      verticalPosition: 'bottom',
+    });
+  }
+
+  // TODO Snack-bar -> error toaster
 }

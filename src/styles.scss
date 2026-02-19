@@ -62,3 +62,25 @@ footer {
   padding: 0 12px;
   margin: 0;
 }
+
+.snackbar-success {
+  background-color: #78e17c;
+  color: black;
+  font-weight: 500;
+  border-radius: t.$radius-md;
+  padding: t.$space-xs t.$space-xs;
+  animation: slide-up 300ms ease-out;
+  text-align: center;
+  width: fit-content;
+}
+
+@keyframes slide-up {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

@@ -1,14 +1,14 @@
-import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component, Input } from '@angular/core';
+import { MatDivider } from '@angular/material/divider';
 import { RouterModule } from '@angular/router';
-import { TranslatePipe } from '@ngx-translate/core';
 import { LanguageService } from '@app/core/i18n/language.service';
-import { ProfileMenu } from '@ui/menu/profile-menu/profile-menu';
+import { AuthService } from '@app/core/services/auth.service';
 import { NavigationService } from '@core/navigation/navigation.service';
 import { QuickSearch } from '@features/recipes/forms/search/quick-search/quick-search';
+import { TranslatePipe } from '@ngx-translate/core';
 import { LeftMenu } from '@ui/menu/left-menu/left-menu';
-import { AuthService } from '@app/core/services/auth.service';
-import { MatDivider } from '@angular/material/divider';
+import { ProfileMenu } from '@ui/menu/profile-menu/profile-menu';
 
 @Component({
   selector: 'app-navbar',
@@ -58,7 +58,7 @@ export class Navbar {
   }
 
   goProfile() {
-    void this.nav.gotToProfile();
+    void this.nav.goToProfile();
   }
 
   signOut() {

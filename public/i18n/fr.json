@@ -37,7 +37,8 @@
     "description": "Connectes-toi avec Google pour accéder à tes recettes",
     "button": "Se connecter",
     "spinner": "Connexion...",
-    "register": "Première visite ?"
+    "register": "Première visite ?",
+    "success": "Bienvenu.e dans Home Made Recipe!"
   },
   "register": {
     "create": "Créer un compte",
@@ -45,7 +46,10 @@
     "title": "Inscription",
     "description": "Inscris-toi rapidement avec ton compte Google pour commencer à ajouter tes recettes",
     "existingAccount": "Si tu as déjà un compte",
-    "googlePrivacyNote": "En te connectant avec Google, nous utilisons uniquement les informations nécessaires pour créer ton compte."
+    "success": {
+      "title": "Félicitations !",
+      "message": "La création d'un nouveau compte a réussi !"
+    }
   },
   "search": {
     "placeholder": "Recette...",

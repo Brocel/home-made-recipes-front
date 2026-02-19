@@ -26,6 +26,7 @@
       "@ui/*": ["app/shared/ui/*"],
       "@layout/*": ["app/shared/ui/layout/*"],
       "@directives/*": ["app/shared/directives/*"],
+      "@utils/*": ["app/shared/utils/*"],
       "@env/*": ["environments/environment.ts"],
       "@mocks/*": ["public/mocks/*"]
     }

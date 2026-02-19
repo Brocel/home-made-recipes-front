@@ -6,6 +6,7 @@ import { NavigationService } from '@core/navigation/navigation.service';
 import { AuthService } from '@core/services/auth.service';
 import { UsernameValidator } from '@core/validators/username.validator';
 import { TranslatePipe } from '@ngx-translate/core';
+import { isoToDDMMYYYY } from '@utils/date.utils';
 import { Subscription, timer } from 'rxjs';
 
 @Component({
@@ -71,7 +72,7 @@ export class Register implements OnDestroy {
       username,
       email,
       password,
-      birth_date,
+      birth_date: isoToDDMMYYYY(birth_date)!,
     };
 
     this.auth.register(payload).subscribe({

@@ -9,7 +9,12 @@ export const AuthInterceptor: HttpInterceptorFn = (req, next) => {
   const auth = inject(AuthService);
   const nav = inject(NavigationService);
 
-  const publicEndpoints = ['/auth/login', '/auth/register', '/auth/check-username'];
+  const publicEndpoints = [
+    '/auth/login',
+    '/auth/register',
+    '/auth/check-username',
+    '/recipes/daily',
+  ];
 
   // No token on public endpoints
   if (publicEndpoints.some((endpoint) => req.url.includes(endpoint))) {

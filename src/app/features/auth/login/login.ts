@@ -52,6 +52,7 @@ export class Login implements OnInit {
       next: () => {
         this.loading.set(false);
         this.dialogRef.close();
+        this.nav.showSuccess('login.success');
         this.nav.goHome();
       },
       error: (err) => {

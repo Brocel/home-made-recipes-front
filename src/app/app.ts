@@ -18,8 +18,8 @@ export class App implements OnInit {
   private authStore = inject(AuthStore);
   private authService = inject(AuthService);
 
-  user = this.authStore.user();
-  isAuthenticated = this.authStore.isAuthenticated();
+  user = this.authStore.user;
+  isAuthenticated = this.authStore.isAuthenticated;
 
   ngOnInit(): void {
     this.authService.loadAuthFromStorage();
