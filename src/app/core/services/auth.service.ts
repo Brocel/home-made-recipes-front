@@ -70,6 +70,10 @@ export class AuthService {
   }
 
   isTokenExpired(): boolean {
-    return this.tokenService.isTokenExpired(this.storage.get(TOKEN_KEY));
+    return this.tokenService.isTokenExpired(this.store.token());
+  }
+
+  getToken(): string | null {
+    return this.store.token();
   }
 }

@@ -1,8 +1,11 @@
-import { computed, Injectable, signal } from '@angular/core';
+import { computed, inject, Injectable, signal } from '@angular/core';
 import { User } from '@models/user';
+import { TokenService } from '../services/token.service';
 
 @Injectable({ providedIn: 'root' })
 export class AuthStore {
+  private readonly tokenService = inject(TokenService);
+
   // --- Signals ---
   private _user = signal<User | null>(null);
   private _token = signal<string | null>(null);
@@ -12,7 +15,13 @@ export class AuthStore {
   token = computed(() => this._token());
 
   roles = computed(() => this._user()?.roles ?? []);
-  isAuthenticated = computed(() => !!this._token());
+  isAuthenticated = computed(() => {
+    const token = this._token();
+    if (!token) {
+      return false;
+    }
+    return !this.tokenService.isTokenExpired(token);
+  });
 
   // --- Mutators (appelés par AuthService) ---
   setUser(user: User | null): void {

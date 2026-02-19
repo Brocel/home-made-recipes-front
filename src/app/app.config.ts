@@ -12,7 +12,7 @@ import { HttpClient, provideHttpClient, withInterceptors } from '@angular/common
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
 import { routes } from './app.routes';
-import { AuthInterceptor } from './core/interceptors/auth.interceptors';
+import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 
 @Injectable()
 export class HttpTranslateLoader implements TranslateLoader {

@@ -4,21 +4,19 @@ import { NavigationService } from '@app/core/navigation/navigation.service';
 import { AuthService } from '@app/core/services/auth.service';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { AuthStore } from '../store/auth.store';
 
 export const AuthInterceptor: HttpInterceptorFn = (req, next) => {
   const auth = inject(AuthService);
   const nav = inject(NavigationService);
-  const store = inject(AuthStore);
 
   const publicEndpoints = ['/auth/login', '/auth/register', '/auth/check-username'];
 
-  // Pas de token sur les endpoints publics
+  // No token on public endpoints
   if (publicEndpoints.some((endpoint) => req.url.includes(endpoint))) {
     return next(req);
   }
 
-  const token = store.token();
+  const token = auth.getToken();
   let authReq = req;
 
   if (token) {

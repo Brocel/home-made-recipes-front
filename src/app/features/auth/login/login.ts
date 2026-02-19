@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { Component, Inject, inject, OnInit, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Router } from '@angular/router';
 import { LoginRequest } from '@app/core/auth/login.request';
 import { NavigationService } from '@app/core/navigation/navigation.service';
 import { AuthService } from '@app/core/services/auth.service';
@@ -18,7 +17,6 @@ import { TranslatePipe } from '@ngx-translate/core';
 export class Login implements OnInit {
   private fb = inject(FormBuilder);
   private authService = inject(AuthService);
-  private router = inject(Router);
   private nav = inject(NavigationService);
 
   // --- Signals ---
@@ -53,11 +51,12 @@ export class Login implements OnInit {
     this.authService.login(payload).subscribe({
       next: () => {
         this.loading.set(false);
-        this.router.navigate(['/']);
+        this.dialogRef.close();
+        this.nav.goHome();
       },
       error: (err) => {
         this.loading.set(false);
-        this.errorKey.set(err.errorKey);
+        this.errorKey.set(err.errorKey ?? 'UNKNOWN_ERROR');
       },
     });
   }

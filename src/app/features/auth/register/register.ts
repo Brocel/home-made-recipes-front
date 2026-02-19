@@ -33,7 +33,7 @@ export class Register implements OnDestroy {
     username: this.fb.nonNullable.control('', {
       validators: [Validators.required],
       asyncValidators: [this.usernameValidator.validate.bind(this.usernameValidator)],
-      updateOn: 'change',
+      updateOn: 'blur',
     }),
     email: this.fb.nonNullable.control('', {
       validators: [Validators.required, Validators.email],
