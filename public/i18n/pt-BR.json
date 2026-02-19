@@ -140,7 +140,9 @@
   "form": {
     "validation": {
       "email": "Email inválido",
-      "password": "Senha obrigatória"
+      "password": "Senha obrigatória",
+      "username_taken": "Esse username já existe",
+      "username": "O username deve ter pelo menos 5 lettras"
     },
     "label": {
       "email": "Email",

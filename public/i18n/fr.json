@@ -140,7 +140,9 @@
   "form": {
     "validation": {
       "email": "Email non-valide",
-      "password": "Mot de passe obligatoire"
+      "password": "Mot de passe obligatoire",
+      "username_taken": "Ce pseudonyme n'est pas disponible",
+      "username": "Le pseudonyme doit être composé au minimum de 5 lettres"
     },
     "label": {
       "email": "Email",

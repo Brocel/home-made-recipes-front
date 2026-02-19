@@ -1,9 +1,10 @@
 import { Component, inject, OnDestroy, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { RegisterRequest } from '@app/core/auth/register.request';
-import { NavigationService } from '@app/core/navigation/navigation.service';
-import { AuthService } from '@app/core/services/auth.service';
+import { RegisterRequest } from '@core/auth/register.request';
+import { NavigationService } from '@core/navigation/navigation.service';
+import { AuthService } from '@core/services/auth.service';
+import { UsernameValidator } from '@core/validators/username.validator';
 import { TranslatePipe } from '@ngx-translate/core';
 import { Subscription, timer } from 'rxjs';
 
@@ -18,6 +19,7 @@ export class Register implements OnDestroy {
   private fb = inject(FormBuilder);
   private auth = inject(AuthService);
   private nav = inject(NavigationService);
+  private usernameValidator = inject(UsernameValidator);
 
   loading = signal(false);
   errorKey = signal<string | null>(null);
@@ -28,7 +30,11 @@ export class Register implements OnDestroy {
   form = this.fb.nonNullable.group({
     first_name: this.fb.nonNullable.control('', { validators: [Validators.required] }),
     last_name: this.fb.nonNullable.control('', { validators: [Validators.required] }),
-    username: this.fb.nonNullable.control('', { validators: [Validators.required] }),
+    username: this.fb.nonNullable.control('', {
+      validators: [Validators.required],
+      asyncValidators: [this.usernameValidator.validate.bind(this.usernameValidator)],
+      updateOn: 'change',
+    }),
     email: this.fb.nonNullable.control('', {
       validators: [Validators.required, Validators.email],
     }),

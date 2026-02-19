@@ -21,6 +21,9 @@
 
       <label>{{ 'form.label.username' | translate }}</label>
       <input type="text" formControlName="username" class="input" />
+      @if (form.controls.username.hasError('usernameTaken')) {
+        <span class="input-error"> {{ 'form.validation.username_taken' | translate }} </span>
+      }
       @if (form.controls.username.invalid && form.controls.username.touched) {
         <span class="input-error">
           {{ 'form.validation.username' | translate }}
