@@ -17,6 +17,11 @@ export class ClickOutsideDirective {
       return;
     }
 
+    // Prevent closing if the click comes from a mat overlay container
+    if (target.closest('.cdk-overlay-container')) {
+      return;
+    }
+
     const clickedInside = this.el.nativeElement.contains(target);
 
     if (!clickedInside) {

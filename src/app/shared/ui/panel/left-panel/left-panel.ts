@@ -1,9 +1,8 @@
 import { Component, signal } from '@angular/core';
-import { MiniSearch } from '@features/recipes/forms/search/mini-search/mini-search';
-import { MiniAdd } from '@features/recipes/forms/add/mini-add/mini-add';
-import { RecipeType } from '@models/recipes/recipe-type.enum';
-import { ScrollWrapper } from '@layout/scroll-wrapper/scroll-wrapper';
 import { ClickOutsideDirective } from '@directives/click-outside.directive';
+import { MiniAdd } from '@features/recipes/forms/add/mini-add/mini-add';
+import { MiniSearch } from '@features/recipes/forms/search/mini-search/mini-search';
+import { ScrollWrapper } from '@layout/scroll-wrapper/scroll-wrapper';
 
 @Component({
   selector: 'app-left-panel',
