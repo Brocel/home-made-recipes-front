@@ -28,7 +28,8 @@
       "@directives/*": ["app/shared/directives/*"],
       "@utils/*": ["app/shared/utils/*"],
       "@env/*": ["environments/environment.ts"],
-      "@mocks/*": ["public/mocks/*"]
+      "@mocks/*": ["public/mocks/*"],
+      "@icons/*": ["public/assets/icons/*"]
     }
   },
   "angularCompilerOptions": {

@@ -1,0 +1,18 @@
+@use 'tokens' as t;
+
+.app-footer {
+  width: 100%;
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #777;
+
+  .credits {
+    padding: t.$space-md;
+  }
+
+  .credits a {
+    color: inherit;
+    text-decoration: underline;
+  }
+}
