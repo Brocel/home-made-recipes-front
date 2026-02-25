@@ -5,6 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Login } from '@features/auth/login/login';
 import { Register } from '@features/auth/register/register';
+import { Profile } from '@features/profile/profile';
 import { TranslateService } from '@ngx-translate/core';
 
 @Injectable({ providedIn: 'root' })
@@ -57,6 +58,15 @@ export class NavigationService {
     });
   }
 
+  openProfileModal(): void {
+    this.dialog.open(Profile, {
+      width: '30%',
+      panelClass: 'app-modal-panel',
+      autoFocus: true,
+      restoreFocus: true,
+    });
+  }
+
   closeAllModals(): void {
     this.dialog.closeAll();
   }
@@ -79,10 +89,6 @@ export class NavigationService {
       console.warn('Navigation failed', err);
       return false;
     }
-  }
-
-  goToProfile() {
-    // TODO
   }
 
   showSuccess(key: string): void {

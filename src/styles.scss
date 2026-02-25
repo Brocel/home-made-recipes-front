@@ -22,6 +22,7 @@ body {
   padding: 0;
   background: var(--color-bg);
   color: var(--color-text);
+  overflow: hidden;
   font-family:
     Inter,
     system-ui,
@@ -37,7 +38,6 @@ body {
 body {
   display: flex;
   flex-direction: column;
-  overflow: hidden;
   min-height: 0;
 }
 

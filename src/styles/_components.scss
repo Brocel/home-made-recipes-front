@@ -149,6 +149,11 @@
   color: t.$text;
 }
 
+.btn-round {
+  border-radius: 50%;
+  padding: t.$space-xs;
+}
+
 /* Spinner */
 .spinner {
   width: 16px;

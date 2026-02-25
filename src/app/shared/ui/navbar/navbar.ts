@@ -58,7 +58,7 @@ export class Navbar {
   }
 
   goProfile() {
-    void this.nav.goToProfile();
+    void this.nav.openProfileModal();
   }
 
   signOut() {

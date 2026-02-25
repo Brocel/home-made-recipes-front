@@ -22,7 +22,7 @@ import { TranslateModule } from '@ngx-translate/core';
 })
 export class ProfileMenu {
   /** Inputs */
-  @Input() user!: User;
+  @Input() user: User | undefined;
   @Input() isAuthenticated = false;
 
   /** Outputs */

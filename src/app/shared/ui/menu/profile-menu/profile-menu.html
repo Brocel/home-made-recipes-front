@@ -1,13 +1,13 @@
 <div class="profile-menu-root">
   <!-- Trigger button -->
   <button
-    class="btn btn-secondary profile-btn btn-round"
+    class="btn btn-secondary btn-round"
     mat-icon-button
     [matMenuTriggerFor]="profileMenu"
     aria-label="{{ 'menu.profile.label' | translate }}"
   >
-    @if (user.avatar_name) {
-      <img [src]="user.avatar_name" alt="{{ user.username || 'User' }}" class="avatar" />
+    @if (user?.avatar_name) {
+      <img [src]="user?.avatar_name" alt="{{ user?.username || 'User' }}" class="avatar" />
     } @else {
       <span class="avatar-fallback" aria-hidden="true">👤</span>
     }

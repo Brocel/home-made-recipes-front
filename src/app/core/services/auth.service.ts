@@ -76,4 +76,8 @@ export class AuthService {
   getToken(): string | null {
     return this.store.token();
   }
+
+  getCurrentUser(): User | null {
+    return this.store.user();
+  }
 }
