@@ -1,9 +1,10 @@
-import { Component, EventEmitter, Input, Output, viewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TranslateModule } from '@ngx-translate/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule, MatMenuTrigger } from '@angular/material/menu';
-import { MatDividerModule } from '@angular/material/divider';
+import { User } from '@app/shared/models/user';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-profile-menu',
@@ -21,7 +22,7 @@ import { MatDividerModule } from '@angular/material/divider';
 })
 export class ProfileMenu {
   /** Inputs */
-  @Input() user: any = null;
+  @Input() user!: User;
   @Input() isAuthenticated = false;
 
   /** Outputs */

@@ -1,7 +1,7 @@
 import {
+  IngredientType,
   Recipe,
   RecipeType,
-  IngredientType,
   Unit,
 } from '../../src/app/shared/models/recipes/recipe';
 
@@ -22,6 +22,7 @@ export const mockRecipe: Recipe = {
     email: 'maxime@example.com',
     birth_date: '1990-05-12',
     inscription_date: '2023-01-01',
+    avatar_name: 'butchering.png',
     roles: [
       {
         id: 1,

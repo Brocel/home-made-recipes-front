@@ -32,6 +32,10 @@
     "home": "Accueil",
     "searchPlaceholder": "Recherche rapide"
   },
+  "profile": {
+    "title": "Mon profil",
+    "edit": "Éditer"
+  },
   "login": {
     "title": "Connexion",
     "description": "Connectes-toi avec Google pour accéder à tes recettes",
@@ -155,11 +159,13 @@
       "last_name": "Nom",
       "username": "Pseudonyme",
       "confirm_password": "Confirmer le mot de passe",
-      "birth_date": "Date de naissance"
+      "birth_date": "Date de naissance",
+      "changeAvatar": "Changer l'image"
     }
   },
   "common": {
     "cancel": "Annuler",
+    "validate": "Valider",
     "save": "Enregistrer",
     "ok": "OK",
     "loading": "Chargement...",

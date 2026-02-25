@@ -1,1 +1,21 @@
-<p>profile works!</p>
+<div class="modal-container">
+  <h1>{{ 'profile.title' | translate }}</h1>
+  @if (isEditing()) {
+  } @else {
+    <div class="card">
+      <section>
+        <article>
+          <div>Avatar</div>
+        </article>
+        <article>
+          <span>{{ user?.username }}</span>
+          <span>{{ user?.first_name }}</span>
+          <span>{{ user?.last_name }}</span>
+          <span>{{ user?.email }}</span>
+          <span>{{ user?.birth_date }}</span>
+          <span>{{ user?.inscription_date }}</span>
+        </article>
+      </section>
+    </div>
+  }
+</div>
