@@ -150,7 +150,11 @@
       "email": "Email inválido",
       "password": "Senha obrigatória",
       "username_taken": "Esse username já existe",
-      "username": "O username deve ter pelo menos 5 lettras"
+      "username": "O username deve ter pelo menos 5 lettras",
+      "first_name": "O nome é obligatório",
+      "last_name": "O sobrenome é obligatório",
+      "confirm_password": "As senhas devem ser as mesmas",
+      "birth_date": "A data de nascimento é obligatória"
     },
     "label": {
       "email": "Email",

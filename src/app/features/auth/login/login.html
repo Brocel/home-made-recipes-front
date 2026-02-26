@@ -1,33 +1,36 @@
 <div class="modal-container">
-  <h1>{{ 'login.title' | translate }}</h1>
+  <div class="modal-section">
+    <h1>{{ 'login.title' | translate }}</h1>
 
-  <form [formGroup]="form" (ngSubmit)="submit()">
-    <label>{{ 'form.label.email' | translate }}</label>
-    <input type="email" formControlName="email" class="input" />
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <label>{{ 'form.label.email' | translate }}</label>
+      <input type="email" formControlName="email" class="input" />
 
-    @if (form.controls.email.invalid && form.controls.email.touched) {
-      <span class="input-error">{{ 'form.validation.email' | translate }}</span>
-    }
-
-    <label>{{ 'form.label.password' | translate }}</label>
-    <input type="password" formControlName="password" class="input" />
-
-    @if (form.controls.password.invalid && form.controls.password.touched) {
-      <span class="input-error">{{ 'form.validation.password' | translate }}</span>
-    }
-
-    <button type="submit" [disabled]="loading() || form.invalid">
-      @if (loading()) {
-        <span>{{ 'login.spinner' | translate }}</span>
-      } @else {
-        <span>{{ 'login.button' | translate }}</span>
+      @if (form.controls.email.invalid && form.controls.email.touched) {
+        <span class="input-error">{{ 'form.validation.email' | translate }}</span>
       }
-    </button>
-  </form>
+
+      <label>{{ 'form.label.password' | translate }}</label>
+      <input type="password" formControlName="password" class="input" />
+
+      @if (form.controls.password.invalid && form.controls.password.touched) {
+        <span class="input-error">{{ 'form.validation.password' | translate }}</span>
+      }
+
+      <button type="submit" [disabled]="loading() || form.invalid">
+        @if (loading()) {
+          <span>{{ 'login.spinner' | translate }}</span>
+        } @else {
+          <span>{{ 'login.button' | translate }}</span>
+        }
+      </button>
+    </form>
+  </div>
+
   <div class="modal-section">
     <h2>{{ 'login.register' | translate }}</h2>
-    <div class="btn btn-secondary" (click)="goToRegister()">
+    <button (click)="goToRegister()">
       {{ 'register.create' | translate }}
-    </div>
+    </button>
   </div>
 </div>

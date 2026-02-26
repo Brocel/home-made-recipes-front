@@ -21,66 +21,56 @@
   background: t.$bg;
   border-radius: t.$radius-lg;
 
-  h1 {
-    margin-bottom: t.$space-lg;
-    color: t.$text-strong;
-    font-size: 1.8rem;
-    font-weight: 700;
-  }
-
-  form {
+  .modal-section {
     @extend .card;
     display: flex;
     flex-direction: column;
     gap: t.$space-sm;
+    margin-top: t.$space-sm;
+    margin-bottom: t.$space-sm;
+    padding-top: t.$space-md;
 
-    label {
-      font-weight: 600;
+    h1 {
+      margin-bottom: t.$space-lg;
       color: t.$text-strong;
-      margin-bottom: t.$space-xs;
+      font-size: 1.8rem;
+      font-weight: 700;
     }
 
-    input {
-      width: 80%;
-      padding: t.$space-sm t.$space-md;
-      border-radius: t.$radius-md;
-      border: 1px solid rgba(0, 0, 0, 0.12);
-      background: t.$surface;
-      color: t.$text;
-      font-size: 1rem;
-      transition:
-        border-color 0.2s,
-        background-color 0.2s;
-
-      &:focus {
-        outline: none;
-        border-color: t.$primary;
-        box-shadow: 0 0 0 3px rgba(t.$primary, t.$focus-alpha);
-      }
-
-      &.ng-invalid.ng-touched {
-        border-color: t.$primary-600;
-        background-color: t.$primary-100;
-      }
+    h1,
+    h2 {
+      align-self: center;
     }
 
-    .input-error {
-      width: 85%;
-      display: block;
-      font-size: 0.95rem;
-      color: t.$primary-600;
-      padding-left: 2px;
-      text-align: right;
+    .info-row {
+      display: flex;
+      flex-direction: row;
+      gap: t.$space-sm;
+      justify-content: space-between;
+      align-items: center;
+      padding: t.$space-xs 0;
+      margin-bottom: t.$space-md;
+
+      label {
+        width: 40%;
+        font-weight: 600;
+        color: t.$text-strong;
+      }
+
+      span,
+      .input {
+        width: 55%;
+        text-align: right;
+      }
     }
 
     button {
       @extend .btn;
-      @extend .btn-primary;
+      @extend .btn-secondary;
       width: fit-content;
       justify-content: center;
       align-self: center;
-      margin-top: t.$space-md;
-      padding: t.$space-sm t.$space-md;
+      padding: t.$space-md t.$space-lg;
       font-size: 1rem;
 
       &:disabled {
@@ -88,24 +78,68 @@
         cursor: not-allowed;
       }
     }
-  }
 
-  .modal-section {
-    margin-top: t.$space-sm;
-    margin-bottom: t.$space-sm;
-    padding-top: t.$space-md;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    form {
+      @extend .card;
+      display: flex;
+      flex-direction: column;
+      gap: t.$space-sm;
+      margin-top: t.$space-sm;
+      margin-bottom: t.$space-sm;
+      padding-top: t.$space-md;
 
-    button {
-      @extend .btn-secondary;
-      padding: t.$space-sm t.$space-md;
-      margin-top: t.$space-md;
-      font-size: 1rem;
-      text-align: center;
-      align-self: center;
+      label {
+        font-weight: 600;
+        color: t.$text-strong;
+        margin-bottom: t.$space-xs;
+      }
+
+      input {
+        width: 80%;
+        padding: t.$space-sm t.$space-md;
+        border-radius: t.$radius-md;
+        border: 1px solid rgba(0, 0, 0, 0.12);
+        background: t.$surface;
+        color: t.$text;
+        font-size: 1rem;
+        transition:
+          border-color 0.2s,
+          background-color 0.2s;
+
+        &:focus {
+          outline: none;
+          border-color: t.$primary;
+          box-shadow: 0 0 0 3px rgba(t.$primary, t.$focus-alpha);
+        }
+
+        &.ng-invalid.ng-touched {
+          border-color: t.$primary-600;
+          background-color: t.$primary-100;
+        }
+      }
+
+      .input-error {
+        width: 85%;
+        display: block;
+        font-size: 0.95rem;
+        color: t.$primary-600;
+        padding-left: 2px;
+        text-align: right;
+      }
+
+      button {
+        width: fit-content;
+        justify-content: center;
+        align-self: center;
+        margin-top: t.$space-md;
+        padding: t.$space-sm t.$space-md;
+        font-size: 1rem;
+
+        &:disabled {
+          opacity: 0.6;
+          cursor: not-allowed;
+        }
+      }
     }
   }
 }

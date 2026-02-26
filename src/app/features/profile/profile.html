@@ -1,44 +1,44 @@
 <div class="modal-container">
-  <div class="header">
-    <button
-      class="btn btn-secondary btn-round"
-      mat-icon-button
-      aria-label="{{ 'menu.profile.label' | translate }}"
-    >
-      @if (user?.avatar_name) {
-        <img [src]="user?.avatar_name" alt="{{ user?.username || 'User' }}" class="avatar" />
-      } @else {
-        <span class="avatar-fallback" aria-hidden="true">👤</span>
-      }
-    </button>
-    <h1>{{ 'profile.title' | translate }}</h1>
+  <div class="modal-section">
+    <div class="header">
+      <button
+        class="avatar-btn"
+        mat-icon-button
+        aria-label="{{ 'menu.profile.label' | translate }}"
+      >
+        @if (user?.avatar_name) {
+          <img [src]="user?.avatar_name" alt="{{ user?.username || 'User' }}" class="avatar" />
+        } @else {
+          <span class="avatar-fallback" aria-hidden="true">👤</span>
+        }
+      </button>
+      <h1>{{ 'profile.title' | translate }}</h1>
+    </div>
   </div>
 
   @if (isEditing()) {
     <form></form>
   } @else {
-    <div class="modal-section profile-section">
-      <div class="profile-info">
-        <div class="info-row">
-          <label>Nom d’utilisateur</label> <span>{{ user?.username }}</span>
-        </div>
-        <div class="info-row">
-          <label>Prénom</label> <span>{{ user?.first_name }}</span>
-        </div>
-        <div class="info-row">
-          <label>Nom</label> <span>{{ user?.last_name }}</span>
-        </div>
-        <div class="info-row">
-          <label>Email</label> <span>{{ user?.email }}</span>
-        </div>
-        <div class="info-row">
-          <label>Date de naissance</label> <span>{{ user?.birth_date }}</span>
-        </div>
-        <div class="info-row">
-          <label>Inscription</label> <span>{{ user?.inscription_date }}</span>
-        </div>
+    <div class="modal-section">
+      <div class="info-row">
+        <label>Nom d’utilisateur</label> <span>{{ user?.username }}</span>
       </div>
-      <button class="btn btn-primary" (click)="startEditing()">
+      <div class="info-row">
+        <label>Prénom</label> <span>{{ user?.first_name }}</span>
+      </div>
+      <div class="info-row">
+        <label>Nom</label> <span>{{ user?.last_name }}</span>
+      </div>
+      <div class="info-row">
+        <label>Email</label> <span>{{ user?.email }}</span>
+      </div>
+      <div class="info-row">
+        <label>Date de naissance</label> <span>{{ user?.birth_date }}</span>
+      </div>
+      <div class="info-row">
+        <label>Inscription</label> <span>{{ user?.inscription_date }}</span>
+      </div>
+      <button class="edit-btn" (click)="startEditing()">
         {{ 'profile.edit' | translate }}
       </button>
     </div>

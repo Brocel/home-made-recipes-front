@@ -150,7 +150,11 @@
       "email": "Email non-valide",
       "password": "Mot de passe obligatoire",
       "username_taken": "Ce pseudonyme n'est pas disponible",
-      "username": "Le pseudonyme doit être composé au minimum de 5 lettres"
+      "username": "Le pseudonyme doit comporter au minimum 5 lettres",
+      "first_name": "Le prénom est obligatoire",
+      "last_name": "Le nom est obligatoire",
+      "confirm_password": "Le mot de passe doit être identique",
+      "birth_date": "La date de naissance est obligatoire"
     },
     "label": {
       "email": "Email",

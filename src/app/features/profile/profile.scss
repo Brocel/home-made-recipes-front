@@ -3,24 +3,22 @@
 
 .header {
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   gap: 1rem;
 
-  /* Le titre ne doit pas écraser l’avatar */
   h1 {
-    margin: 0;
     font-size: 1.6rem;
     text-align: center;
+    vertical-align: bottom;
   }
 
   .avatar-btn {
-    padding: 0;
     width: 48px;
     height: 48px;
     border-radius: 50%;
     overflow: hidden;
-    display: flex;
     justify-content: center;
     align-items: center;
 
@@ -35,30 +33,35 @@
     }
   }
 
-  /* SECTION DU PROFIL */
-  .profile-section {
-    width: 100%;
+  .avatar-edit {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: t.$space-lg;
+    gap: t.$space-xs;
+
+    .avatar-label {
+      font-size: 0.9rem;
+      color: t.$text;
+    }
   }
-  .profile-info {
-    width: 100%;
+
+  .avatar-selector {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: t.$space-sm;
-    .info-row {
-      display: flex;
-      justify-content: space-between;
-      width: 100%;
-      padding: t.$space-xs 0;
-      label {
-        font-weight: 600;
-        color: t.$text-strong;
-      }
-      span {
-        color: t.$text;
+    margin-bottom: t.$space-md;
+
+    .avatar-option {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: border-color 0.2s;
+
+      &.selected {
+        border-color: t.$primary;
       }
     }
   }
