@@ -17,26 +17,80 @@
   </div>
 
   @if (isEditing()) {
-    <form></form>
+    <form [formGroup]="form" (ngSubmit)="updateUserInfo()">
+      <label>{{ 'form.label.first_name' | translate }}</label>
+      <input type="text" formControlName="first_name" class="input" />
+      @if (form.controls.first_name.invalid && form.controls.first_name.touched) {
+        <span class="input-error">
+          {{ 'form.validation.first_name' | translate }}
+        </span>
+      }
+
+      <label>{{ 'form.label.last_name' | translate }}</label>
+      <input type="text" formControlName="last_name" class="input" />
+      @if (form.controls.last_name.invalid && form.controls.last_name.touched) {
+        <span class="input-error">
+          {{ 'form.validation.last_name' | translate }}
+        </span>
+      }
+
+      <label>{{ 'form.label.username' | translate }}</label>
+      <input type="text" formControlName="username" class="input" />
+      @if (form.controls.username.hasError('usernameTaken')) {
+        <span class="input-error"> {{ 'form.validation.username_taken' | translate }} </span>
+      }
+      @if (
+        form.controls.username.invalid &&
+        form.controls.username.touched &&
+        !form.controls.username.hasError('usernameTaken')
+      ) {
+        <span class="input-error">
+          {{ 'form.validation.username' | translate }}
+        </span>
+      }
+
+      <label>{{ 'form.label.birth_date' | translate }}</label>
+      <input type="date" formControlName="birth_date" class="input" />
+      @if (form.controls.birth_date.invalid && form.controls.birth_date.touched) {
+        <span class="input-error">
+          {{ 'form.validation.birth_date' | translate }}
+        </span>
+      }
+
+      @if (errorKey()) {
+        <div class="error">
+          {{ errorKey() | translate }}
+        </div>
+      }
+
+      <button type="submit" [disabled]="loading() || form.invalid">
+        @if (loading()) {
+          <span>{{ 'register.spinner' | translate }}</span>
+        } @else {
+          <span>{{ 'register.create' | translate }}</span>
+        }
+      </button>
+    </form>
   } @else {
     <div class="modal-section">
       <div class="info-row">
-        <label>Nom d’utilisateur</label> <span>{{ user?.username }}</span>
+        <label>{{ 'form.label.username' | translate }}</label> <span>{{ user?.username }}</span>
       </div>
       <div class="info-row">
-        <label>Prénom</label> <span>{{ user?.first_name }}</span>
+        <label>{{ 'form.label.first_name' | translate }}</label> <span>{{ user?.first_name }}</span>
       </div>
       <div class="info-row">
-        <label>Nom</label> <span>{{ user?.last_name }}</span>
+        <label>{{ 'form.label.last_name' | translate }}</label> <span>{{ user?.last_name }}</span>
       </div>
       <div class="info-row">
-        <label>Email</label> <span>{{ user?.email }}</span>
+        <label>{{ 'form.label.email' | translate }}</label> <span>{{ user?.email }}</span>
       </div>
       <div class="info-row">
-        <label>Date de naissance</label> <span>{{ user?.birth_date }}</span>
+        <label>{{ 'form.label.birth_date' | translate }}</label> <span>{{ user?.birth_date }}</span>
       </div>
       <div class="info-row">
-        <label>Inscription</label> <span>{{ user?.inscription_date }}</span>
+        <label>{{ 'form.label.inscription_date' | translate }}</label>
+        <span>{{ user?.inscription_date }}</span>
       </div>
       <button class="edit-btn" (click)="startEditing()">
         {{ 'profile.edit' | translate }}

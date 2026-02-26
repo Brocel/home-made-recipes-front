@@ -164,7 +164,8 @@
       "username": "Pseudonyme",
       "confirm_password": "Confirmer le mot de passe",
       "birth_date": "Date de naissance",
-      "changeAvatar": "Changer l'image"
+      "changeAvatar": "Changer l'image",
+      "inscription_date": "Date d'inscription"
     }
   },
   "common": {
