@@ -9,7 +9,7 @@ import { TranslatePipe } from '@ngx-translate/core';
 import { Recipe } from '@shared/models/recipes/recipe';
 import { finalize, of, take, tap } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { mockRecipe } from '../../../../public/mocks/recipe-mock';
+import { MOCK_RECIPES } from '../../../../public/mocks/recipes.mock';
 import { RecipeFull } from '../recipes/recipe-full/recipe-full';
 
 @Component({
@@ -33,7 +33,7 @@ export class Home implements OnInit {
   ngOnInit(): void {
     this.fetchDailyRecipe();
     if (!this.dailyRecipe()) {
-      this.dailyRecipe.set(mockRecipe);
+      this.dailyRecipe.set(MOCK_RECIPES);
     }
   }
 

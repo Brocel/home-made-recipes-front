@@ -14,6 +14,7 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
 import { routes } from './app.routes';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
+import { MockHttpInterceptor } from './core/interceptors/mock-http.interceptor';
 
 @Injectable()
 export class HttpTranslateLoader implements TranslateLoader {
@@ -28,7 +29,7 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideRouter(routes),
-    provideHttpClient(withInterceptors([AuthInterceptor])),
+    provideHttpClient(withInterceptors([AuthInterceptor, MockHttpInterceptor])),
     importProvidersFrom(
       TranslateModule.forRoot({
         loader: { provide: TranslateLoader, useClass: HttpTranslateLoader },
