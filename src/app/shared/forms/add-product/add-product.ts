@@ -1,15 +1,15 @@
 import { Component, inject } from '@angular/core';
-import { TranslatePipe } from '@ngx-translate/core';
-import { MAT_DIALOG_DATA, MatDialogRef, MatDialogModule } from '@angular/material/dialog';
-import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { MatButtonModule } from '@angular/material/button';
+import { TranslatePipe } from '@ngx-translate/core';
 
+import { ProductApi } from '@app/core/api/product.api';
 import { Product, ProductDTO } from '@models/recipes/ingredient';
 import { IngredientType } from '@models/recipes/ingredient-type.enum';
-import { ProductService } from '@services/product.service';
 
 @Component({
   selector: 'app-add-product',
@@ -29,7 +29,7 @@ import { ProductService } from '@services/product.service';
 export class AddProduct {
   private dialogRef = inject(MatDialogRef<AddProduct>);
   private data = inject<{ name: string }>(MAT_DIALOG_DATA);
-  private productService = inject(ProductService);
+  private productService = inject(ProductApi);
 
   ingredientTypes = Object.values(IngredientType);
 

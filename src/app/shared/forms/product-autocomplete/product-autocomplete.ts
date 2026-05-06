@@ -1,20 +1,20 @@
-import { Component, forwardRef, Input, inject, signal, computed, effect } from '@angular/core';
+import { Component, computed, forwardRef, inject, Input, signal } from '@angular/core';
 import {
   ControlValueAccessor,
-  NG_VALUE_ACCESSOR,
   FormControl,
+  NG_VALUE_ACCESSOR,
   ReactiveFormsModule,
 } from '@angular/forms';
-import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { MatIconModule } from '@angular/material/icon';
 import { MatDialog } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs';
 
-import { Product } from '@models/recipes/ingredient';
-import { ProductService } from '@services/product.service';
+import { ProductApi } from '@app/core/api/product.api';
 import { AddProduct } from '@forms/add-product/add-product';
+import { Product } from '@models/recipes/ingredient';
 
 @Component({
   selector: 'app-product-autocomplete',
@@ -40,7 +40,7 @@ export class ProductAutocomplete implements ControlValueAccessor {
   @Input() label = 'Produit';
 
   private dialog = inject(MatDialog);
-  private productService = inject(ProductService);
+  private productService = inject(ProductApi);
 
   control = new FormControl<string>('');
 

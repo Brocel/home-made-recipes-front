@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
 import { Product, ProductDTO } from '@models/recipes/ingredient';
+import { Observable, of } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
-export class ProductService {
+export class ProductApi {
   constructor(private http: HttpClient) {}
 
   searchProducts(query: string): Observable<Product[]> {
