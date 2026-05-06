@@ -1,46 +1,25 @@
-import { HttpInterceptorFn, HttpResponse } from '@angular/common/http';
+import { HttpInterceptorFn } from '@angular/common/http';
+import { inject } from '@angular/core';
+import { matchRoute } from '@app/mocks/router/mock-router';
+import { MOCK_ROUTES } from '@app/mocks/routes/routes';
 import { environment } from '@env/environment';
-import { of } from 'rxjs';
-import { delay } from 'rxjs/operators';
-
-import { MOCK_RECIPES } from '@mocks/recipes.mock';
+import { MockApiService } from '@mocks/services/mock-api.service';
 
 export const MockHttpInterceptor: HttpInterceptorFn = (req, next) => {
-  // 1. Mock disabled → pass through
   if (!environment.useMock) {
     return next(req);
   }
 
-  // 2. Only intercept backend API
-  if (!req.url.includes('/hmr/api/')) {
+  if (!req.url.startsWith(environment.apiBase)) {
     return next(req);
   }
 
-  // 3. GET /recipes
-  if (req.method === 'GET' && req.url.endsWith('/recipes')) {
-    return of(
-      new HttpResponse({
-        status: 200,
-        body: {
-          items: MOCK_RECIPES,
-          total: MOCK_RECIPES.length,
-          page: 1,
-          pageSize: MOCK_RECIPES.length,
-        },
-      }),
-    ).pipe(delay(300));
-  }
+  const mockApi = inject(MockApiService);
+  const cleanUrl = req.url.replace(environment.apiBase, '');
 
-  // 4. GET /recipes/daily
-  if (req.method === 'GET' && req.url.endsWith('/recipes/daily')) {
-    return of(
-      new HttpResponse({
-        status: 200,
-        body: MOCK_RECIPES[0],
-      }),
-    ).pipe(delay(300));
-  }
+  const result = matchRoute(req, MOCK_ROUTES, cleanUrl, mockApi);
 
-  // fallback → real request
+  if (result) return result;
+
   return next(req);
 };

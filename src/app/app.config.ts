@@ -29,7 +29,7 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideRouter(routes),
-    provideHttpClient(withInterceptors([AuthInterceptor, MockHttpInterceptor])),
+    provideHttpClient(withInterceptors([MockHttpInterceptor, AuthInterceptor])),
     importProvidersFrom(
       TranslateModule.forRoot({
         loader: { provide: TranslateLoader, useClass: HttpTranslateLoader },

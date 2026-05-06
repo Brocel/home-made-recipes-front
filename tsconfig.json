@@ -26,8 +26,8 @@
       "@layout/*": ["./src/app/shared/ui/layout/*"],
       "@directives/*": ["./src/app/shared/directives/*"],
       "@utils/*": ["./src/app/shared/utils/*"],
-      "@env/*": ["./src/environments/environment.ts"],
-      "@mocks/*": ["./public/mocks/*"]
+      "@env/*": ["./src/environments/*"],
+      "@mocks/*": ["./src/app/mocks/*"]
     }
   },
   "angularCompilerOptions": {
