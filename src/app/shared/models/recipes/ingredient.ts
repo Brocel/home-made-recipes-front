@@ -8,11 +8,7 @@ export interface Ingredient {
   product: Product;
 }
 
-export interface IngredientDTO {
-  quantity: number;
-  unit: Unit;
-  product: Product;
-}
+export type IngredientDTO = Omit<Ingredient, 'id'>;
 
 export interface Product {
   id: number;
@@ -20,7 +16,4 @@ export interface Product {
   ingredient_type: IngredientType;
 }
 
-export interface ProductDTO {
-  name: string;
-  ingredient_type: IngredientType;
-}
+export type ProductDTO = Omit<Product, 'id'>;

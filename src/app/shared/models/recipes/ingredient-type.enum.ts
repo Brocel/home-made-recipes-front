@@ -37,5 +37,5 @@ export const IngredientTypeLabel: Record<IngredientType, string> = {
   [IngredientType.BEVERAGE]: 'ingredientType.beverage',
   [IngredientType.ALCOHOL]: 'ingredientType.alcohol',
   [IngredientType.STARCHES]: 'ingredientType.starches',
-  [IngredientType.OTHER]: 'ingredientType.orher',
+  [IngredientType.OTHER]: 'ingredientType.other',
 };

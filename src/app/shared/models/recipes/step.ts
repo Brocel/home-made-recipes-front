@@ -4,7 +4,4 @@ export interface Step {
   order: number;
 }
 
-export interface StepDTO {
-  description: string;
-  order: number;
-}
+export type StepDTO = Omit<Step, 'id'>;

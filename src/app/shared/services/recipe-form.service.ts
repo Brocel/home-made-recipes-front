@@ -1,8 +1,8 @@
 import { Injectable, inject } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
-import { RecipeType } from '../models/recipes/recipe-type.enum';
+import { RecipeFormModel } from '../models/form/recipe-form.model';
 import { IngredientType } from '../models/recipes/ingredient-type.enum';
-import { RecipeDTO } from '../models/recipes/recipe';
+import { RecipeType } from '../models/recipes/recipe-type.enum';
 import { Unit } from '../models/recipes/unit.enum';
 
 @Injectable({ providedIn: 'root' })
@@ -66,8 +66,8 @@ export class RecipeFormService {
     });
   }
 
-  toDto(): RecipeDTO {
-    return this.form.value as RecipeDTO;
+  toDto(): RecipeFormModel {
+    return this.form.value as RecipeFormModel;
   }
 
   patchStateValue(state: { title?: string; recipe_type?: RecipeType }): void {
