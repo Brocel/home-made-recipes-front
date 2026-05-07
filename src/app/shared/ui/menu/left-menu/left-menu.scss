@@ -1,5 +1,3 @@
-@use 'tokens' as t;
-
 .left-menu-root {
   position: relative;
   display: inline-block;
@@ -13,15 +11,15 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    border-radius: t.$radius-sm;
+    border-radius: var(--radius-sm);
     transition: background 120ms ease;
 
     &:hover {
-      background: t.$hover-surface;
+      background: var(--color-hover-surface);
     }
 
     &:focus {
-      outline: 2px solid rgba(t.$primary, t.$focus-alpha);
+      outline: 2px solid rgba(var(--color-primary), var(--focus-alpha));
       outline-offset: 2px;
     }
   }

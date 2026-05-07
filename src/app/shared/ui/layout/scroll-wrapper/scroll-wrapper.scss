@@ -1,4 +1,3 @@
-@use 'tokens' as t;
 @use 'mixins' as m;
 
 :host {
@@ -12,7 +11,7 @@
   min-height: 0;
   height: 55vh;
 
-  border-radius: t.$radius-lg;
+  border-radius: var(--radius-lg);
 
   overflow-y: auto;
   scrollbar-width: none;

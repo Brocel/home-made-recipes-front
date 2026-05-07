@@ -1,12 +1,10 @@
-@use 'tokens' as t;
-
 .profile-menu-root {
   position: relative;
   display: inline-block;
 
   .btn-round {
     border-radius: 50%;
-    padding: t.$space-xs;
+    padding: var(--space-xs);
   }
 
   .avatar,

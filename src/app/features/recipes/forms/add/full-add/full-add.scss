@@ -1,4 +1,3 @@
-@use 'tokens' as t;
 @use 'forms';
 @use 'mixins' as m;
 
@@ -29,9 +28,9 @@
   justify-self: center;
   justify-content: center;
 
-  gap: t.$space-sm;
+  gap: var(--space-sm);
   margin: 0;
-  color: t.$primary;
+  color: var(--color-primary);
 
   mat-icon {
     font-size: 1.3rem;
@@ -40,7 +39,7 @@
 }
 
 .full-form {
-  background: t.$primary-100;
-  padding: t.$space-lg;
+  background: var(--color-primary-light);
+  padding: var(--space-lg);
   margin: 0;
 }

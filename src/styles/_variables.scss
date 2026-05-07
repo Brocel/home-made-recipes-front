@@ -3,15 +3,19 @@
 :root {
   --color-bg: #{t.$bg};
   --color-surface: #{t.$surface};
-  --color-surface-100: #{t.$surface-100};
+  --color-surface-light: #{t.$surface-100};
+  --color-hover-surface: #{t.$hover-surface};
 
   --color-primary: #{t.$primary};
+  --color-primary-light: #{t.$primary-100};
   --color-primary-strong: #{t.$primary-600};
   --color-accent: #{t.$accent};
+  --color-accent-strong: #{t.$accent-600};
 
   --color-text: #{t.$text};
   --color-text-muted: #{t.$text-muted};
   --color-text-strong: #{t.$text-strong};
+  --color-text-inverse: #{t.$text-inverse};
 
   --shadow-sm: #{t.$shadow-sm};
   --shadow-md: #{t.$shadow-md};
@@ -26,12 +30,14 @@
   --space-md: #{t.$space-md};
   --space-lg: #{t.$space-lg};
   --space-xl: #{t.$space-xl};
+
+  --focus-alpha: #{t.$focus-alpha};
 }
 
 [data-theme='dark'] {
   --color-bg: #071025;
   --color-surface: #0b1220;
-  --color-surface-100: #071827;
+  --color-surface-light: #071827;
   --color-text: #e6eef6;
   --color-text-muted: #9aa6b2;
   --color-primary: #ff8a5b;

@@ -1,12 +1,10 @@
-@use 'tokens' as t;
-
 .page {
   display: flex;
   flex: 1;
   min-height: 0;
-  background: t.$bg;
-  padding: t.$space-xs;
-  margin: t.$space-xs;
+  background: var(--color-bg);
+  padding: var(--space-xs);
+  margin: var(--space-xs);
   overflow: hidden;
 }
 
@@ -29,10 +27,10 @@
   overflow: hidden;
   min-height: 0;
   align-items: center;
-  background: t.$surface;
-  border-radius: t.$radius-lg;
-  box-shadow: t.$shadow-md;
-  padding: t.$space-xs;
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: var(--space-xs);
 }
 
 .main-section {
@@ -51,5 +49,5 @@
   width: 100%;
   min-height: 0;
   overflow: hidden;
-  border-radius: t.$radius-lg;
+  border-radius: var(--radius-lg);
 }

@@ -1,31 +1,30 @@
-@use 'tokens' as t;
 @use 'mixins' as m;
 
 /* Spacing utilities */
 .p-xs {
-  padding: t.$space-xs;
+  padding: var(--space-xs);
 }
 .p-sm {
-  padding: t.$space-sm;
+  padding: var(--space-sm);
 }
 .p-md {
-  padding: t.$space-md;
+  padding: var(--space-md);
 }
 .p-lg {
-  padding: t.$space-lg;
+  padding: var(--space-lg);
 }
 
 .m-xs {
-  margin: t.$space-xs;
+  margin: var(--space-xs);
 }
 .m-sm {
-  margin: t.$space-sm;
+  margin: var(--space-sm);
 }
 .m-md {
-  margin: t.$space-md;
+  margin: var(--space-md);
 }
 .m-lg {
-  margin: t.$space-lg;
+  margin: var(--space-lg);
 }
 
 /* Flex utilities */

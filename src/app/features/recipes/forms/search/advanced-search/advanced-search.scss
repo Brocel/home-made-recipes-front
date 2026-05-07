@@ -1,8 +1,6 @@
-@use 'tokens' as t;
-
 .advanced-search {
   display: flex;
-  gap: t.$space-sm;
+  gap: var(--space-sm);
   input {
     flex: 1;
     padding: 10px;

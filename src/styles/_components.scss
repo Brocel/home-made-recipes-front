@@ -1,11 +1,9 @@
-@use 'tokens' as t;
-
 /* Cards */
 .card {
-  background: t.$bg;
-  padding: t.$space-lg;
-  border-radius: t.$radius-lg;
-  box-shadow: t.$shadow-md;
+  background: var(--color-bg);
+  padding: var(--space-lg);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
   width: 90%;
   max-width: 600px;
 }
@@ -16,14 +14,14 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: t.$space-md;
+  padding: var(--space-md);
   min-height: 100%;
-  background: t.$bg;
-  border-radius: t.$radius-lg;
+  background: var(--color-bg);
+  border-radius: var(--radius-lg);
 
   h1 {
-    margin-bottom: t.$space-lg;
-    color: t.$text-strong;
+    margin-bottom: var(--space-lg);
+    color: var(--color-text-strong);
     font-size: 1.8rem;
     font-weight: 700;
   }
@@ -32,21 +30,21 @@
     @extend .card;
     display: flex;
     flex-direction: column;
-    gap: t.$space-sm;
+    gap: var(--space-sm);
 
     label {
       font-weight: 600;
-      color: t.$text-strong;
-      margin-bottom: t.$space-xs;
+      color: var(--color-text-strong);
+      margin-bottom: var(--space-xs);
     }
 
     input {
       width: 80%;
-      padding: t.$space-sm t.$space-md;
-      border-radius: t.$radius-md;
+      padding: var(--space-sm) var(--space-md);
+      border-radius: var(--radius-md);
       border: 1px solid rgba(0, 0, 0, 0.12);
-      background: t.$surface;
-      color: t.$text;
+      background: var(--color-surface);
+      color: var(--color-text);
       font-size: 1rem;
       transition:
         border-color 0.2s,
@@ -54,13 +52,13 @@
 
       &:focus {
         outline: none;
-        border-color: t.$primary;
-        box-shadow: 0 0 0 3px rgba(t.$primary, t.$focus-alpha);
+        border-color: var(--color-primary);
+        box-shadow: 0 0 0 3px rgba(var(--color-primary), var(--focus-alpha));
       }
 
       &.ng-invalid.ng-touched {
-        border-color: t.$primary-600;
-        background-color: t.$primary-100;
+        border-color: var(--color-primary-strong);
+        background-color: var(--color-primary-light);
       }
     }
 
@@ -68,7 +66,7 @@
       width: 85%;
       display: block;
       font-size: 0.95rem;
-      color: t.$primary-600;
+      color: var(--color-primary-strong);
       padding-left: 2px;
       text-align: right;
     }
@@ -79,8 +77,8 @@
       width: fit-content;
       justify-content: center;
       align-self: center;
-      margin-top: t.$space-md;
-      padding: t.$space-sm t.$space-md;
+      margin-top: var(--space-md);
+      padding: var(--space-sm) var(--space-md);
       font-size: 1rem;
 
       &:disabled {
@@ -91,9 +89,9 @@
   }
 
   .modal-section {
-    margin-top: t.$space-sm;
-    margin-bottom: t.$space-sm;
-    padding-top: t.$space-md;
+    margin-top: var(--space-sm);
+    margin-bottom: var(--space-sm);
+    padding-top: var(--space-md);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -101,8 +99,8 @@
 
     button {
       @extend .btn-secondary;
-      padding: t.$space-sm t.$space-md;
-      margin-top: t.$space-md;
+      padding: var(--space-sm) var(--space-md);
+      margin-top: var(--space-md);
       font-size: 1rem;
       text-align: center;
       align-self: center;
@@ -113,12 +111,12 @@
 .error {
   width: fit-content;
   max-width: 600px;
-  padding: t.$space-sm;
-  border-radius: t.$radius-lg;
-  box-shadow: t.$shadow-md;
+  padding: var(--space-sm);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
   text-align: center;
-  color: t.$primary-600;
-  background-color: t.$primary-100;
+  color: var(--color-primary-strong);
+  background-color: var(--color-primary-light);
 }
 
 /* Buttons */
@@ -126,27 +124,27 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: t.$space-xs t.$space-sm;
-  border-radius: t.$radius-md;
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-md);
   border: none;
   cursor: pointer;
   font-weight: 600;
 }
 
 .btn-primary {
-  background: t.$primary;
+  background: var(--color-primary);
   color: white;
 }
 
 .btn-secondary {
-  background: t.$primary-100;
+  background: var(--color-primary-light);
   color: white;
 }
 
 .btn-outline {
   background: transparent;
   border: 1px solid rgba(0, 0, 0, 0.08);
-  color: t.$text;
+  color: var(--color-text);
 }
 
 /* Spinner */

@@ -1,13 +1,11 @@
-@use 'tokens' as t;
-
 .container {
-  max-width: t.$max-width;
+  max-width: 100%;
   margin: 0 auto;
-  padding: t.$space-sm t.$space-sm;
+  padding: var(--space-sm) var(--space-sm);
 }
 
 @media (max-width: 768px) {
   .container {
-    padding: 0 t.$space-sm;
+    padding: 0 var(--space-sm);
   }
 }
