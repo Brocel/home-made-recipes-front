@@ -74,7 +74,7 @@ export const MOCK_PRODUCTS: Product[] = [
 
   // CONDIMENTS
   { id: 90, name: 'Oignon', ingredient_type: IngredientType.CONDIMENT },
-  { id: 91, name: 'Ail', ingredient_type: IngredientType.CONDIMENT },
+  { id: 91, name: "Gousse d'ail", ingredient_type: IngredientType.CONDIMENT },
   { id: 92, name: 'Échalote', ingredient_type: IngredientType.CONDIMENT },
   { id: 93, name: 'Ketchup', ingredient_type: IngredientType.CONDIMENT },
   { id: 94, name: 'Moutarde', ingredient_type: IngredientType.CONDIMENT },
@@ -138,4 +138,13 @@ export const MOCK_PRODUCTS: Product[] = [
   { id: 181, name: 'Bouillon de légumes', ingredient_type: IngredientType.OTHER },
   { id: 182, name: 'Farine', ingredient_type: IngredientType.OTHER },
   { id: 183, name: 'Levure boulangère', ingredient_type: IngredientType.OTHER },
+  { id: 184, name: 'Champignons de Paris', ingredient_type: IngredientType.OTHER },
+
+  // LATE ADD
+  { id: 185, name: 'Laurier', ingredient_type: IngredientType.SPICE },
+  { id: 186, name: 'Baies de genièvre', ingredient_type: IngredientType.SPICE },
+  { id: 187, name: 'Palette fumée', ingredient_type: IngredientType.MEAT },
+  { id: 188, name: 'Lard', ingredient_type: IngredientType.MEAT },
+  { id: 189, name: 'Saucisse de Strasbourg', ingredient_type: IngredientType.MEAT },
+  { id: 190, name: 'Choucroute crue', ingredient_type: IngredientType.VEGETABLE },
 ];
