@@ -1,7 +1,7 @@
 import { HttpInterceptorFn } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { matchRoute } from '@app/mocks/router/mock-router';
-import { MOCK_ROUTES } from '@app/mocks/routes/routes';
+import { MOCK_ROUTES } from '@app/mocks/router/routes';
 import { environment } from '@env/environment';
 import { MockApiService } from '@mocks/services/mock-api.service';
 

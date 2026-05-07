@@ -1,5 +1,5 @@
-import { MOCK_PRODUCTS } from '@app/mocks/db/products.mock';
-import { MOCK_USERS } from '@app/mocks/db/users.mocks';
+import { MOCK_PRODUCTS } from '@app/mocks/data/products.mock';
+import { MOCK_USERS } from '@app/mocks/data/users.mocks';
 import { Ingredient, Product } from '@models/recipes/ingredient';
 import { Recipe } from '@models/recipes/recipe';
 import { RecipeType } from '@models/recipes/recipe-type.enum';
