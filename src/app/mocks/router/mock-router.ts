@@ -1,4 +1,5 @@
 import { HttpRequest } from '@angular/common/http';
+import { Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { MockRoute } from './mock-route.model';
 
@@ -6,6 +7,7 @@ export function matchRoute(
   req: HttpRequest<any>,
   routes: MockRoute[],
   cleanUrl: string,
+  injector: Injector,
 ): Observable<any> | null {
   for (const route of routes) {
     if (req.method !== route.method) continue;
@@ -20,7 +22,7 @@ export function matchRoute(
       Object.assign(params, match.groups);
     }
 
-    return route.handler(req, params);
+    return route.handler(req, params, injector);
   }
 
   return null;

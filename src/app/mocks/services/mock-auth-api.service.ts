@@ -8,8 +8,8 @@ import { delay, Observable, of, throwError } from 'rxjs';
 export class MockAuthApiService {
   private users: User[] = structuredClone(MOCK_USERS);
 
-  login(username: string): Observable<{ token: string; user: User }> {
-    const user = this.users.find((u) => u.username === username);
+  login(email: string): Observable<{ token: string; user: User }> {
+    const user = this.users.find((u) => u.email === email);
 
     if (!user) {
       return throwError(() => ({

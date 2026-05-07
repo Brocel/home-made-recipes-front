@@ -9,6 +9,12 @@ import { latency } from '../utils/mock.constant';
 export class MockProductApiService {
   private products: Product[] = structuredClone(MOCK_PRODUCTS);
 
+  getProducts(): Observable<Product[]> {
+    const results = this.products;
+
+    return of(results).pipe(delay(latency));
+  }
+
   searchProducts(query: string): Observable<Product[]> {
     const normalized = query.toLowerCase();
 

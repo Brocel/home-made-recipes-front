@@ -49,12 +49,13 @@ export const MOCK_PRODUCTS: Product[] = [
   { id: 53, name: 'Parmesan', ingredient_type: IngredientType.CHEESE },
   { id: 54, name: 'Camembert', ingredient_type: IngredientType.CHEESE },
 
-  // GRAIN / STARCHES
+  // GRAIN
   { id: 60, name: 'Quinoa', ingredient_type: IngredientType.GRAIN },
   { id: 61, name: 'Semoule', ingredient_type: IngredientType.GRAIN },
   { id: 62, name: 'Boulgour', ingredient_type: IngredientType.GRAIN },
   { id: 63, name: 'Avoine', ingredient_type: IngredientType.GRAIN },
 
+  // STARCHES
   { id: 70, name: 'Pâtes', ingredient_type: IngredientType.STARCHES },
   { id: 71, name: 'Riz', ingredient_type: IngredientType.STARCHES },
   { id: 72, name: 'Pommes de terre', ingredient_type: IngredientType.STARCHES },
@@ -141,10 +142,15 @@ export const MOCK_PRODUCTS: Product[] = [
   { id: 184, name: 'Champignons de Paris', ingredient_type: IngredientType.OTHER },
 
   // LATE ADD
-  { id: 185, name: 'Laurier', ingredient_type: IngredientType.SPICE },
+  { id: 185, name: 'Laurier', ingredient_type: IngredientType.HERBS },
   { id: 186, name: 'Baies de genièvre', ingredient_type: IngredientType.SPICE },
   { id: 187, name: 'Palette fumée', ingredient_type: IngredientType.MEAT },
   { id: 188, name: 'Lard', ingredient_type: IngredientType.MEAT },
   { id: 189, name: 'Saucisse de Strasbourg', ingredient_type: IngredientType.MEAT },
   { id: 190, name: 'Choucroute crue', ingredient_type: IngredientType.VEGETABLE },
+  { id: 191, name: 'Crème liquide', ingredient_type: IngredientType.DAIRY },
+  { id: 191, name: 'Chocolat noir', ingredient_type: IngredientType.SUGAR },
+  { id: 192, name: 'Œuf', ingredient_type: IngredientType.MEAT },
+  { id: 193, name: 'Pâte feuilletée', ingredient_type: IngredientType.GRAIN },
+  { id: 194, name: 'Menthe', ingredient_type: IngredientType.HERBS },
 ];
