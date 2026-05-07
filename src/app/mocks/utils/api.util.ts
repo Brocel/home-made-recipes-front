@@ -8,3 +8,7 @@ export function pickDailyIndex(length: number): number {
 
   return Math.abs(hash) % length;
 }
+
+export function nextId<T extends { id: number }>(arr: T[]): number {
+  return arr.length ? Math.max(...arr.map((i) => i.id)) + 1 : 1;
+}
