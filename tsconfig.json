@@ -37,6 +37,7 @@
       "@services/*": ["./src/app/shared/services/*"],
       "@ui/*": ["./src/app/shared/ui/*"],
       "@utils/*": ["./src/app/shared/utils/*"],
+      "@appTypes/*": ["./src/app/shared/types/*"],
       // Mocks
       "@mocks/*": ["./src/app/mocks/*"],
       // Other

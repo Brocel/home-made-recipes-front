@@ -1,20 +1,15 @@
-<app-side-drawer [open]="isOpen()">
-  <app-scroll-wrapper gap="xs" padding="md">
-    <app-mini-search (search)="onMiniSearch($event)" />
-    <app-mini-add />
-  </app-scroll-wrapper>
+<app-side-drawer
+  [position]="position"
+  [open]="isOpen()"
+  width="500px"
+  (openChange)="isOpen.set($event)"
+  (clickOutside)="close()"
+>
+  <div class="panel-content">
+    <app-scroll-wrapper gap="xs" padding="md">
+      <app-mini-search (search)="onMiniSearch($event)" />
 
-  <app-drawer-handle (click)="toggle()" />
+      <app-mini-add />
+    </app-scroll-wrapper>
+  </div>
 </app-side-drawer>
-
-<div class="panel" [class.open]="isOpen()" (clickOutside)="close()">
-  <app-scroll-wrapper gap="xs" padding="md">
-    <app-mini-search (search)="onMiniSearch($event)" (close)="toggle()"> </app-mini-search>
-
-    <app-mini-add (close)="toggle()"> </app-mini-add>
-  </app-scroll-wrapper>
-
-  <button class="handle" (click)="toggle()">
-    <span class="chevron" [class.open]="isOpen()">›</span>
-  </button>
-</div>

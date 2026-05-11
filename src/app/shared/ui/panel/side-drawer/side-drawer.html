@@ -1,1 +1,13 @@
-<p>side-drawer works!</p>
+<div
+  class="drawer"
+  [class.open]="open()"
+  [class.left]="position() === 'left'"
+  [class.right]="position() === 'right'"
+  [style.width]="width()"
+>
+  <ng-content />
+
+  <button class="drawer-handle" (click)="toggle()">
+    <span class="chevron" [class.open]="open()">›</span>
+  </button>
+</div>
