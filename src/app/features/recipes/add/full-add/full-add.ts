@@ -1,15 +1,14 @@
 import { Component, effect, inject, OnInit } from '@angular/core';
-import { ReactiveFormsModule, FormGroup, FormArray } from '@angular/forms';
+import { FormArray, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { MatIcon } from '@angular/material/icon';
 import { Router } from '@angular/router';
+import { RecipeCreateBridgeService } from '@app/shared/services/recipe-create-bridge.service';
+import { ScrollWrapper } from '@layout/scroll-wrapper/scroll-wrapper';
 import { TranslatePipe } from '@ngx-translate/core';
 import { RecipeFormService } from '@services/recipe-form.service';
 import { RecipeInfo } from './sections/recipe-info/recipe-info';
 import { RecipeIngredients } from './sections/recipe-ingredients/recipe-ingredients';
 import { RecipeSteps } from './sections/recipe-steps/recipe-steps';
-import { RecipeType } from '@models/recipes/recipe-type.enum';
-import { RecipeCreateBridgeService } from '@app/shared/services/recipe-create-bridge.service';
-import { MatIcon } from '@angular/material/icon';
-import { ScrollWrapper } from '@layout/scroll-wrapper/scroll-wrapper';
 
 @Component({
   selector: 'app-full-add',
@@ -20,7 +19,7 @@ import { ScrollWrapper } from '@layout/scroll-wrapper/scroll-wrapper';
     RecipeSteps,
     TranslatePipe,
     MatIcon,
-    ScrollWrapper
+    ScrollWrapper,
   ],
   templateUrl: './full-add.html',
   styleUrl: './full-add.scss',

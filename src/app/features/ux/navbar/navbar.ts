@@ -4,11 +4,11 @@ import { MatDivider } from '@angular/material/divider';
 import { RouterModule } from '@angular/router';
 import { LanguageService } from '@app/core/i18n/language.service';
 import { AuthService } from '@app/core/services/auth.service';
+import { LeftMenu } from '@app/features/menu/left-menu/left-menu';
+import { ProfileMenu } from '@app/features/menu/profile-menu/profile-menu';
 import { NavigationService } from '@core/navigation/navigation.service';
-import { QuickSearch } from '@features/recipes/forms/search/quick-search/quick-search';
+import { QuickSearch } from '@features/recipes/search/quick-search/quick-search';
 import { TranslatePipe } from '@ngx-translate/core';
-import { LeftMenu } from '@ui/menu/left-menu/left-menu';
-import { ProfileMenu } from '@ui/menu/profile-menu/profile-menu';
 
 @Component({
   selector: 'app-navbar',

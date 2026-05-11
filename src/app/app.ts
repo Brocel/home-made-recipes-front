@@ -1,11 +1,11 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
+import { Footer } from '@app/features/ux/footer/footer';
+import { LeftPanel } from '@app/features/ux/left-panel/left-panel';
+import { Navbar } from '@app/features/ux/navbar/navbar';
 import { AuthService } from '@core/services/auth.service';
 import { AuthStore } from '@core/store/auth.store';
 import { PageLayout } from '@layout/page-layout/page-layout';
-import { Footer } from '@ui/footer/footer';
-import { Navbar } from '@ui/navbar/navbar';
-import { LeftPanel } from '@ui/panel/left-panel/left-panel';
 
 @Component({
   selector: 'app-root',

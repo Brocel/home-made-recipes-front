@@ -1,14 +1,14 @@
 import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
-import { TranslatePipe } from '@ngx-translate/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
+import { TranslatePipe } from '@ngx-translate/core';
 
-import { ProductAutocomplete } from '@forms/product-autocomplete/product-autocomplete';
-import { Unit, UnitShortLabel, UnitLongLabel } from '@models/recipes/unit.enum';
+import { ProductAutocomplete } from '@app/features/products/product-autocomplete/product-autocomplete';
+import { Unit, UnitLongLabel, UnitShortLabel } from '@models/recipes/unit.enum';
 import { EnumUtilsService } from '@shared/services/enum-utils.service';
 
 @Component({
@@ -32,8 +32,6 @@ export class IngredientRow {
   @Output() remove = new EventEmitter<void>();
 
   private enumUtils: EnumUtilsService = inject(EnumUtilsService);
-
-
 
   unitLabels = this.enumUtils.enumToShortAndLongLabels(Unit, UnitShortLabel, UnitLongLabel);
 }

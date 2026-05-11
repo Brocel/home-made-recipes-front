@@ -13,8 +13,8 @@ import { MatInputModule } from '@angular/material/input';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs';
 
 import { ProductApi } from '@app/core/api/product.api';
-import { AddProduct } from '@forms/add-product/add-product';
 import { Product } from '@models/recipes/ingredient';
+import { AddProduct } from '../add-product/add-product';
 
 @Component({
   selector: 'app-product-autocomplete',
