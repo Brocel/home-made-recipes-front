@@ -7,7 +7,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { TranslatePipe } from '@ngx-translate/core';
 
-import { ProductApi } from '@app/core/api/product.api';
+import { ProductApi } from '@api/product.api';
 import { Product, ProductDTO } from '@models/recipes/ingredient';
 import { IngredientType } from '@models/recipes/ingredient-type.enum';
 

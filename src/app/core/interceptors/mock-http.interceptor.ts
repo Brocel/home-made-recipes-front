@@ -1,8 +1,8 @@
 import { HttpInterceptorFn } from '@angular/common/http';
 import { inject, Injector } from '@angular/core';
-import { matchRoute } from '@app/mocks/router/mock-router';
-import { MOCK_ROUTES } from '@app/mocks/router/routes';
 import { environment } from '@env/environment';
+import { matchRoute } from '@mocks/router/mock-router';
+import { MOCK_ROUTES } from '@mocks/router/routes';
 
 export const MockHttpInterceptor: HttpInterceptorFn = (req, next) => {
   if (!environment.useMock) {

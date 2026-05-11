@@ -1,12 +1,12 @@
 import { Component, inject, OnDestroy, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { RegisterRequest } from '@core/auth/register.request';
-import { NavigationService } from '@core/navigation/navigation.service';
-import { AuthService } from '@core/services/auth.service';
-import { UsernameValidator } from '@core/validators/username.validator';
+import { AuthService } from '@auth/auth.service';
+import { RegisterRequest } from '@auth/register.request';
+import { NavigationService } from '@nav/navigation.service';
 import { TranslatePipe } from '@ngx-translate/core';
 import { isoToDDMMYYYY } from '@utils/date.utils';
+import { UsernameValidator } from '@validators/username.validator';
 import { Subscription, timer } from 'rxjs';
 
 @Component({

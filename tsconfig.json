@@ -15,19 +15,32 @@
     "target": "ES2022",
     "module": "preserve",
     "paths": {
-      "@app/*": ["./src/app/*"],
-      "@core/*": ["./src/app/core/*"],
-      "@features/*": ["./src/app/features/*"],
-      "@shared/*": ["./src/app/shared/*"],
+      // Core
+      "@api/*": ["./src/app/core/api/*"],
+      "@auth/*": ["./src/app/core/auth/*"],
+      "@guards/*": ["./src/app/core/guards/*"],
+      "@translation/*": ["./src/app/core/i18n/*"],
+      "@interceptors/*": ["./src/app/core/interceptors/*"],
+      "@nav/*": ["./src/app/core/navigation/*"],
+      "@store/*": ["./src/app/core/store/*"],
+      "@validators/*": ["./src/app/core/validators/*"],
+      // Features
+      "@home/*": ["./src/app/features/home/*"],
+      "@menu/*": ["./src/app/features/menu/*"],
+      "@products/*": ["./src/app/features/products/*"],
+      "@recipes/*": ["./src/app/features/recipes/*"],
+      "@signin/*": ["./src/app/features/signin/*"],
+      "@ux/*": ["./src/app/features/ux/*"],
+      // Shared
+      "@directives/*": ["./src/app/shared/directives/*"],
       "@models/*": ["./src/app/shared/models/*"],
       "@services/*": ["./src/app/shared/services/*"],
-      "@forms/*": ["./src/app/shared/forms/*"],
       "@ui/*": ["./src/app/shared/ui/*"],
-      "@layout/*": ["./src/app/shared/ui/layout/*"],
-      "@directives/*": ["./src/app/shared/directives/*"],
       "@utils/*": ["./src/app/shared/utils/*"],
-      "@env/*": ["./src/environments/*"],
-      "@mocks/*": ["./src/app/mocks/*"]
+      // Mocks
+      "@mocks/*": ["./src/app/mocks/*"],
+      // Other
+      "@env/*": ["./src/environments/*"]
     }
   },
   "angularCompilerOptions": {

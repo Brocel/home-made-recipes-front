@@ -1,15 +1,15 @@
 import { Component, EventEmitter, Output, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
 import { TranslatePipe } from '@ngx-translate/core';
-import { EnumUtilsService } from '@shared/services/enum-utils.service';
+import { EnumUtilsService } from '@services/enum-utils.service';
 
-import { RecipeTypeLabel, RecipeType } from '@models/recipes/recipe-type.enum';
-import { IngredientTypeLabel, IngredientType } from '@models/recipes/ingredient-type.enum';
+import { IngredientType, IngredientTypeLabel } from '@models/recipes/ingredient-type.enum';
+import { RecipeType, RecipeTypeLabel } from '@models/recipes/recipe-type.enum';
 
 @Component({
   selector: 'app-mini-search',

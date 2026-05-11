@@ -1,8 +1,8 @@
 import { Routes } from '@angular/router';
-import { Home } from '@app/features/home/home';
-import { AuthGuard } from '@core/guards/auth.guard';
-import { RecipeFull } from '@features/recipes/recipe-full/recipe-full';
-import { RecipeList } from '@features/recipes/recipe-list/recipe-list';
+import { Home } from '@home/home';
+import { RecipeFull } from '@recipes/recipe-full/recipe-full';
+import { RecipeList } from '@recipes/recipe-list/recipe-list';
+import { AuthGuard } from './core/guards/auth.guard';
 import { FullAdd } from './features/recipes/add/full-add/full-add';
 import { AdvancedSearch } from './features/recipes/search/advanced-search/advanced-search';
 

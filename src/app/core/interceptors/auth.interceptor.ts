@@ -1,7 +1,7 @@
 import { HttpInterceptorFn } from '@angular/common/http';
 import { inject } from '@angular/core';
-import { NavigationService } from '@app/core/navigation/navigation.service';
-import { AuthService } from '@app/core/services/auth.service';
+import { AuthService } from '@auth/auth.service';
+import { NavigationService } from '@nav/navigation.service';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 

@@ -2,9 +2,9 @@ import { CommonModule } from '@angular/common';
 import { Component, Inject, inject, OnInit, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { LoginRequest } from '@app/core/auth/login.request';
-import { NavigationService } from '@app/core/navigation/navigation.service';
-import { AuthService } from '@app/core/services/auth.service';
+import { AuthService } from '@auth/auth.service';
+import { LoginRequest } from '@auth/login.request';
+import { NavigationService } from '@nav/navigation.service';
 import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({

@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { environment } from '@env/environment';
 import { Product, ProductDTO } from '@models/recipes/ingredient';
 import { Observable, of } from 'rxjs';
@@ -9,7 +9,7 @@ export class ProductApi {
   private readonly apiBase = environment.apiBase;
   private readonly base = `${this.apiBase}/products`;
 
-  constructor(private http: HttpClient) {}
+  private http = inject(HttpClient);
 
   searchProducts(query: string): Observable<Product[]> {
     if (query.length < 3) return of([]);

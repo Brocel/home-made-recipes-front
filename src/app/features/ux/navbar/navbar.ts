@@ -2,13 +2,13 @@ import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { MatDivider } from '@angular/material/divider';
 import { RouterModule } from '@angular/router';
-import { LanguageService } from '@app/core/i18n/language.service';
-import { AuthService } from '@app/core/services/auth.service';
-import { LeftMenu } from '@app/features/menu/left-menu/left-menu';
-import { ProfileMenu } from '@app/features/menu/profile-menu/profile-menu';
-import { NavigationService } from '@core/navigation/navigation.service';
-import { QuickSearch } from '@features/recipes/search/quick-search/quick-search';
+import { AuthService } from '@auth/auth.service';
+import { LeftMenu } from '@menu/left-menu/left-menu';
+import { ProfileMenu } from '@menu/profile-menu/profile-menu';
+import { NavigationService } from '@nav/navigation.service';
 import { TranslatePipe } from '@ngx-translate/core';
+import { QuickSearch } from '@recipes/search/quick-search/quick-search';
+import { LanguageService } from '@translation/language.service';
 
 @Component({
   selector: 'app-navbar',

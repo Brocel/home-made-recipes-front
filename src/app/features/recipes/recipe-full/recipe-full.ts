@@ -1,17 +1,17 @@
-import { Component, Input, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component, Input, signal } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
-import { MatIconModule } from '@angular/material/icon';
-import { MatExpansionModule } from '@angular/material/expansion';
-import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDividerModule } from '@angular/material/divider';
-import { ScrollWrapper } from '@layout/scroll-wrapper/scroll-wrapper';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { TranslatePipe } from '@ngx-translate/core';
+import { ScrollWrapper } from '@ui/layout/scroll-wrapper/scroll-wrapper';
 
+import { IngredientTypeLabel } from '@models/recipes/ingredient-type.enum';
 import { Recipe } from '@models/recipes/recipe';
 import { RecipeTypeLabel } from '@models/recipes/recipe-type.enum';
-import { UnitShortLabel, UnitLongLabel } from '@models/recipes/unit.enum';
-import { IngredientTypeLabel } from '@models/recipes/ingredient-type.enum';
+import { UnitLongLabel, UnitShortLabel } from '@models/recipes/unit.enum';
 
 @Component({
   selector: 'app-recipe-full',

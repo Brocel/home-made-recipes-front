@@ -3,9 +3,9 @@ import { inject, Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { Login } from '@features/auth/login/login';
-import { Register } from '@features/auth/register/register';
 import { TranslateService } from '@ngx-translate/core';
+import { Login } from '@signin/login/login';
+import { Register } from '@signin/register/register';
 
 @Injectable({ providedIn: 'root' })
 export class NavigationService {

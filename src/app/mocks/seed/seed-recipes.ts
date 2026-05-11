@@ -1,4 +1,4 @@
-import { MOCK_USERS } from '@app/mocks/data/users.mocks';
+import { MOCK_USERS } from '@mocks/data/users.mocks';
 import { Recipe } from '@models/recipes/recipe';
 import { RecipeType } from '@models/recipes/recipe-type.enum';
 import { Unit } from '@models/recipes/unit.enum';

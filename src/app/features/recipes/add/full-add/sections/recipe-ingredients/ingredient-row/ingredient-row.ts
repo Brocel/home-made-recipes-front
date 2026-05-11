@@ -7,9 +7,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { TranslatePipe } from '@ngx-translate/core';
 
-import { ProductAutocomplete } from '@app/features/products/product-autocomplete/product-autocomplete';
 import { Unit, UnitLongLabel, UnitShortLabel } from '@models/recipes/unit.enum';
-import { EnumUtilsService } from '@shared/services/enum-utils.service';
+import { ProductAutocomplete } from '@products/product-autocomplete/product-autocomplete';
+import { EnumUtilsService } from '@services/enum-utils.service';
 
 @Component({
   selector: 'app-ingredient-row',

@@ -1,8 +1,8 @@
-import { Component, EventEmitter, Output, ViewChild, viewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TranslateModule } from '@ngx-translate/core';
-import { MatMenuModule, MatMenuTrigger } from '@angular/material/menu';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-left-menu',

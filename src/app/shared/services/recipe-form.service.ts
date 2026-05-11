@@ -1,9 +1,9 @@
 import { Injectable, inject } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
-import { RecipeFormModel } from '../models/form/recipe-form.model';
-import { IngredientType } from '../models/recipes/ingredient-type.enum';
-import { RecipeType } from '../models/recipes/recipe-type.enum';
-import { Unit } from '../models/recipes/unit.enum';
+import { RecipeFormModel } from '@models/form/recipe-form.model';
+import { IngredientType } from '@models/recipes/ingredient-type.enum';
+import { RecipeType } from '@models/recipes/recipe-type.enum';
+import { Unit } from '@models/recipes/unit.enum';
 
 @Injectable({ providedIn: 'root' })
 export class RecipeFormService {

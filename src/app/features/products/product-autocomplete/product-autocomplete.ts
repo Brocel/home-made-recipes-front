@@ -12,7 +12,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs';
 
-import { ProductApi } from '@app/core/api/product.api';
+import { ProductApi } from '@api/product.api';
 import { Product } from '@models/recipes/ingredient';
 import { AddProduct } from '../add-product/add-product';
 

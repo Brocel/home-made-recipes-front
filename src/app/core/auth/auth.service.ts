@@ -1,16 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { AuthResponse } from '@app/core/auth/auth.response';
+import { AuthResponse } from '@auth/auth.response';
+import { LoginRequest } from '@auth/login.request';
+import { RegisterRequest } from '@auth/register.request';
+import { TokenService } from '@auth/token.service';
 import { environment } from '@env/environment';
 import { User } from '@models/user';
+import { NavigationService } from '@nav/navigation.service';
+import { AuthStore } from '@store/auth.store';
+import { LocalStorageService } from '@store/local-storage.service';
+import { TOKEN_KEY, USER_KEY } from '@store/storage.constants';
 import { tap } from 'rxjs';
-import { LoginRequest } from '../auth/login.request';
-import { RegisterRequest } from '../auth/register.request';
-import { NavigationService } from '../navigation/navigation.service';
-import { AuthStore } from '../store/auth.store';
-import { TOKEN_KEY, USER_KEY } from '../store/storage.constants';
-import { LocalStorageService } from './local-storage.service';
-import { TokenService } from './token.service';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {

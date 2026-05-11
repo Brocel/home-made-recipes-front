@@ -10,11 +10,11 @@ import { provideRouter } from '@angular/router';
 
 import { HttpClient, provideHttpClient, withInterceptors } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { AuthInterceptor } from '@interceptors/auth.interceptor';
+import { MockHttpInterceptor } from '@interceptors/mock-http.interceptor';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
 import { routes } from './app.routes';
-import { AuthInterceptor } from './core/interceptors/auth.interceptor';
-import { MockHttpInterceptor } from './core/interceptors/mock-http.interceptor';
 
 @Injectable()
 export class HttpTranslateLoader implements TranslateLoader {

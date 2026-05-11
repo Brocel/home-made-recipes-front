@@ -1,16 +1,16 @@
-import { Component, Output, EventEmitter, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component, EventEmitter, inject, Output } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { TranslatePipe } from '@ngx-translate/core';
+import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-import { RecipeTypeLabel, RecipeType } from '@models/recipes/recipe-type.enum';
+import { Router } from '@angular/router';
+import { RecipeType, RecipeTypeLabel } from '@models/recipes/recipe-type.enum';
+import { TranslatePipe } from '@ngx-translate/core';
 import { EnumUtilsService } from '@services/enum-utils.service';
 import { RecipeCreateBridgeService } from '@services/recipe-create-bridge.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-mini-add',

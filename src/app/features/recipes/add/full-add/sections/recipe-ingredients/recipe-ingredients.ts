@@ -1,9 +1,8 @@
 import { Component, Input } from '@angular/core';
-import { TranslatePipe } from '@ngx-translate/core';
-import { FormArray, FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { TranslatePipe } from '@ngx-translate/core';
 
-import { IngredientDTO } from '@models/recipes/ingredient';
 import { Unit } from '@models/recipes/unit.enum';
 import { IngredientRow } from './ingredient-row/ingredient-row';
 
