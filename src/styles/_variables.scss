@@ -1,29 +1,80 @@
 @use 'tokens' as t;
 
 :root {
-  --color-bg: #{t.$bg};
-  --color-surface: #{t.$surface};
-  --color-surface-light: #{t.$surface-100};
-  --color-hover-surface: #{t.$hover-surface};
+  // ======================================================
+  // COLORS
+  // ======================================================
 
+  // Brand
   --color-primary: #{t.$primary};
-  --color-primary-light: #{t.$primary-100};
-  --color-primary-strong: #{t.$primary-600};
-  --color-accent: #{t.$accent};
-  --color-accent-strong: #{t.$accent-600};
+  --color-primary-strong: #{t.$primary-strong};
+  --color-primary-soft: #{t.$primary-soft};
 
+  --color-accent: #{t.$accent};
+  --color-accent-strong: #{t.$accent-strong};
+  --color-accent-soft: #{t.$accent-soft};
+
+  // Backgrounds & surfaces
+  --color-bg: #{t.$bg};
+
+  --color-surface: #{t.$surface};
+  --color-surface-muted: #{t.$surface-muted};
+  --color-surface-subtle: #{t.$surface-subtle};
+  --color-surface-hover: #{t.$surface-hover};
+  --color-surface-elevated: #{t.$surface-elevated};
+
+  // Typography
   --color-text: #{t.$text};
   --color-text-muted: #{t.$text-muted};
   --color-text-strong: #{t.$text-strong};
   --color-text-inverse: #{t.$text-inverse};
 
-  --shadow-sm: #{t.$shadow-sm};
-  --shadow-md: #{t.$shadow-md};
-  --shadow-lg: #{t.$shadow-lg};
+  // Borders
+  --color-border: #{t.$border};
+  --color-border-light: #{t.$border-light};
 
-  --radius-sm: #{t.$radius-sm};
-  --radius-md: #{t.$radius-md};
-  --radius-lg: #{t.$radius-lg};
+  // Semantic
+  --color-success: #{t.$success};
+  --color-success-soft: #{t.$success-soft};
+
+  --color-warning: #{t.$warning};
+  --color-warning-soft: #{t.$warning-soft};
+
+  --color-error: #{t.$error};
+  --color-error-soft: #{t.$error-soft};
+
+  --color-info: #{t.$info};
+  --color-info-soft: #{t.$info-soft};
+
+  // States
+  --color-disabled-bg: #{t.$disabled-bg};
+  --color-disabled-text: #{t.$disabled-text};
+
+  --color-overlay: #{t.$overlay};
+  --color-focus-ring: #{t.$focus-ring};
+
+  // ======================================================
+  // TYPOGRAPHY
+  // ======================================================
+
+  --font-body: #{t.$font-body};
+  --font-heading: #{t.$font-heading};
+
+  --text-xs: #{t.$text-xs};
+  --text-sm: #{t.$text-sm};
+  --text-md: #{t.$text-md};
+  --text-lg: #{t.$text-lg};
+  --text-xl: #{t.$text-xl};
+  --text-2xl: #{t.$text-2xl};
+  --text-3xl: #{t.$text-3xl};
+
+  --leading-tight: #{t.$leading-tight};
+  --leading-normal: #{t.$leading-normal};
+  --leading-relaxed: #{t.$leading-relaxed};
+
+  // ======================================================
+  // SPACING
+  // ======================================================
 
   --space-xs: #{t.$space-xs};
   --space-sm: #{t.$space-sm};
@@ -31,15 +82,87 @@
   --space-lg: #{t.$space-lg};
   --space-xl: #{t.$space-xl};
 
-  --focus-alpha: #{t.$focus-alpha};
+  // ======================================================
+  // RADIUS
+  // ======================================================
+
+  --radius-xs: #{t.$radius-xs};
+  --radius-sm: #{t.$radius-sm};
+  --radius-md: #{t.$radius-md};
+  --radius-lg: #{t.$radius-lg};
+  --radius-pill: #{t.$radius-pill};
+
+  // ======================================================
+  // SHADOWS
+  // ======================================================
+
+  --shadow-sm: #{t.$shadow-sm};
+  --shadow-md: #{t.$shadow-md};
+  --shadow-lg: #{t.$shadow-lg};
+
+  // ======================================================
+  // MOTION
+  // ======================================================
+
+  --transition-fast: #{t.$transition-fast};
+  --transition-base: #{t.$transition-base};
+  --transition-slow: #{t.$transition-slow};
+
+  // ======================================================
+  // Z-INDEX
+  // ======================================================
+
+  --z-base: #{t.$z-base};
+  --z-dropdown: #{t.$z-dropdown};
+  --z-sticky: #{t.$z-sticky};
+  --z-overlay: #{t.$z-overlay};
+  --z-modal: #{t.$z-modal};
+  --z-toast: #{t.$z-toast};
+
+  // ======================================================
+  // LAYOUT
+  // ======================================================
+
+  --content-width: #{t.$content-width};
+  --content-narrow: #{t.$content-narrow};
+  --sidebar-width: #{t.$sidebar-width};
+  --header-height: #{t.$header-height};
+
+  --search-max-width: #{t.$search-max-width};
 }
 
+// ======================================================
+// DARK THEME
+// ======================================================
+
 [data-theme='dark'] {
-  --color-bg: #071025;
-  --color-surface: #0b1220;
-  --color-surface-light: #071827;
-  --color-text: #e6eef6;
-  --color-text-muted: #9aa6b2;
-  --color-primary: #ff8a5b;
-  --color-primary-strong: #ff7a45;
+  --color-bg: #1f1b18;
+
+  --color-surface: #2a2420;
+  --color-surface-muted: #332c27;
+  --color-surface-subtle: #3b332d;
+  --color-surface-hover: #463d36;
+  --color-surface-elevated: #342d28;
+
+  --color-primary: #d88a6d;
+  --color-primary-strong: #e29b80;
+  --color-primary-soft: #5a3d33;
+
+  --color-accent: #87a98b;
+  --color-accent-strong: #9abc9d;
+  --color-accent-soft: #3d5140;
+
+  --color-text: #f3ede6;
+  --color-text-muted: #b8aea4;
+  --color-text-strong: #fffaf5;
+
+  --color-border: #4a4039;
+  --color-border-light: #5a4f47;
+
+  --color-success: #7eb07e;
+  --color-warning: #e0b35c;
+  --color-error: #d97b6d;
+  --color-info: #7aa8c2;
+
+  --color-overlay: rgba(0, 0, 0, 0.55);
 }

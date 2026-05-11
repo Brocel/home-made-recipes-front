@@ -1,48 +1,143 @@
+// ======================================================
+// COLORS
+// ======================================================
+
 // -----------------------------
-// Palette
+// Brand
 // -----------------------------
-$primary: #e76f51;
-$primary-600: #d85b3f;
-$primary-100: #f5b8a6ff;
+$primary: #c96a4b;
+$primary-strong: #b4583a;
+$primary-soft: #f3dfd7;
 
-$accent: #2a9d8f;
-$accent-600: #238a78;
+$accent: #6f8f72;
+$accent-strong: #5e7a61;
+$accent-soft: #dfe8df;
 
-$bg: #fff8f0;
-$surface: #ffffff;
-$surface-100: #fbf7f4;
-$hover-surface: #f3f4f6;
+// -----------------------------
+// Surfaces
+// -----------------------------
+$bg: #f7f4ef;
 
-$text: #2b2b2b;
-$text-muted: #7a7a7a;
-$text-strong: #111827;
+$surface: #fffdf9;
+$surface-muted: #f8f3ed;
+$surface-subtle: #f1ece5;
+$surface-hover: #ebe5dc;
+$surface-elevated: #ffffff;
+
+// -----------------------------
+// Typography
+// -----------------------------
+$text: #2f2a24;
+$text-muted: #6f6a63;
+$text-strong: #181512;
 $text-inverse: #ffffff;
 
 // -----------------------------
-// Spacing
+// Borders
 // -----------------------------
+$border: #ded6cc;
+$border-light: #ebe5dc;
+
+// -----------------------------
+// Semantic
+// -----------------------------
+$success: #6b9b6b;
+$success-soft: #e4f0e4;
+
+$warning: #d9a441;
+$warning-soft: #f6ead1;
+
+$error: #c65b4b;
+$error-soft: #f5dfdb;
+
+$info: #5f8ea8;
+$info-soft: #dce9f1;
+
+// -----------------------------
+// States
+// -----------------------------
+$disabled-bg: #d8d2ca;
+$disabled-text: #8c857d;
+
+$overlay: rgba(24, 21, 18, 0.45);
+$focus-ring: rgba(201, 106, 75, 0.22);
+
+// ======================================================
+// TYPOGRAPHY
+// ======================================================
+
+// Font families
+$font-body: 'Inter', system-ui, sans-serif;
+$font-heading: 'Playfair Display', serif;
+
+// Font sizes
+$text-xs: 0.75rem;
+$text-sm: 0.875rem;
+$text-md: 1rem;
+$text-lg: 1.125rem;
+$text-xl: 1.5rem;
+$text-2xl: 2rem;
+$text-3xl: 2.75rem;
+
+// Line heights
+$leading-tight: 1.1;
+$leading-normal: 1.5;
+$leading-relaxed: 1.7;
+
+// ======================================================
+// SPACING
+// ======================================================
+
 $space-xs: 4px;
 $space-sm: 8px;
 $space-md: 16px;
 $space-lg: 24px;
 $space-xl: 32px;
 
-// -----------------------------
-// Radius
-// -----------------------------
+// ======================================================
+// RADIUS
+// ======================================================
+
+$radius-xs: 2px;
 $radius-sm: 6px;
-$radius-md: 8px;
-$radius-lg: 12px;
+$radius-md: 10px;
+$radius-lg: 16px;
+$radius-pill: 999px;
 
-// -----------------------------
-// Shadows
-// -----------------------------
-$shadow-sm: 0 4px 12px rgba(15, 23, 42, 0.06);
-$shadow-md: 0 8px 24px rgba(15, 23, 42, 0.08);
-$shadow-lg: 0 12px 36px rgba(15, 23, 42, 0.12);
+// ======================================================
+// SHADOWS
+// ======================================================
 
-// -----------------------------
-// Misc
-// -----------------------------
-$focus-alpha: 0.18;
+$shadow-sm: 0 1px 4px rgba(15, 23, 42, 0.04);
+$shadow-md: 0 4px 12px rgba(15, 23, 42, 0.07);
+$shadow-lg: 0 10px 24px rgba(15, 23, 42, 0.1);
+
+// ======================================================
+// MOTION
+// ======================================================
+
+$transition-fast: 120ms ease;
+$transition-base: 200ms ease;
+$transition-slow: 320ms ease;
+
+// ======================================================
+// Z-INDEX
+// ======================================================
+
+$z-base: 1;
+$z-dropdown: 100;
+$z-sticky: 200;
+$z-overlay: 300;
+$z-modal: 400;
+$z-toast: 500;
+
+// ======================================================
+// LAYOUT
+// ======================================================
+
+$content-width: 1200px;
+$content-narrow: 720px;
+$sidebar-width: 280px;
+$header-height: 72px;
+
 $search-max-width: clamp(220px, 45vw, 520px);

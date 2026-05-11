@@ -9,7 +9,7 @@
 
 .mat-mdc-menu-item:hover,
 .mat-mdc-menu-item.cdk-focused:not(:hover) {
-  background: var(--color-hover-surface) !important;
+  background: var(--color-surface-hover) !important;
 }
 
 .mat-mdc-menu-item {
@@ -36,7 +36,7 @@
 
 .mat-mdc-option:hover,
 .mat-mdc-option.cdk-focused:not(:hover) {
-  background: var(--color-hover-surface) !important;
+  background: var(--color-surface-hover) !important;
 }
 
 .mat-mdc-divider {

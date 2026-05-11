@@ -22,7 +22,7 @@
 
 /* HEADER */
 .header {
-  background: var(--color-surface-light);
+  background: var(--color-surface-subtle);
   padding: var(--space-lg);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-sm);
@@ -94,7 +94,7 @@
 .ingredients {
   flex-shrink: 0;
   width: max-content;
-  background: var(--color-surface-light);
+  background: var(--color-surface-subtle);
   padding: var(--space-lg);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-sm);
@@ -133,7 +133,7 @@
 /* STEPS */
 .steps {
   .steps-panel {
-    background: var(--color-surface-light);
+    background: var(--color-surface-subtle);
     border-radius: var(--radius-md);
   }
 
