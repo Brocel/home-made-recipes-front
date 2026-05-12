@@ -1,22 +1,22 @@
 import { inject } from '@angular/core';
 import { CanActivateFn } from '@angular/router';
+import { AuthDialogService } from '@auth/auth-dialog.service';
 import { AuthService } from '@auth/auth.service';
-import { NavigationService } from '@nav/navigation.service';
 import { AuthStore } from '@store/auth.store';
 
 export const AuthGuard: CanActivateFn = () => {
   const authStore = inject(AuthStore);
-  const nav = inject(NavigationService);
+  const authModal = inject(AuthDialogService);
   const auth = inject(AuthService);
 
   if (!authStore.isAuthenticated()) {
-    nav.openLoginModal();
+    authModal.openLoginModal();
     return false;
   }
 
   if (auth.isTokenExpired()) {
     auth.logout();
-    nav.openLoginModal();
+    authModal.openLoginModal();
     return false;
   }
 

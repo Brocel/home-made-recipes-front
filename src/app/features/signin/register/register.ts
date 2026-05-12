@@ -1,9 +1,9 @@
 import { Component, inject, OnDestroy, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { AuthDialogService } from '@auth/auth-dialog.service';
 import { AuthService } from '@auth/auth.service';
 import { RegisterRequest } from '@auth/register.request';
-import { NavigationService } from '@nav/navigation.service';
 import { TranslatePipe } from '@ngx-translate/core';
 import { isoToDDMMYYYY } from '@utils/date.utils';
 import { UsernameValidator } from '@validators/username.validator';
@@ -19,8 +19,8 @@ import { Subscription, timer } from 'rxjs';
 export class Register implements OnDestroy {
   private fb = inject(FormBuilder);
   private auth = inject(AuthService);
-  private nav = inject(NavigationService);
   private usernameValidator = inject(UsernameValidator);
+  private authModal = inject(AuthDialogService);
 
   loading = signal(false);
   errorKey = signal<string | null>(null);
@@ -103,7 +103,7 @@ export class Register implements OnDestroy {
 
   private goToLoginWithEmail(email: string): void {
     this.dialogRef.close();
-    this.nav.openLoginModal(email);
+    this.authModal.openLoginModal(email);
   }
 
   ngOnDestroy(): void {

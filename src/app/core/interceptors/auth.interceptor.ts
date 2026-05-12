@@ -1,13 +1,13 @@
 import { HttpInterceptorFn } from '@angular/common/http';
 import { inject } from '@angular/core';
+import { AuthDialogService } from '@auth/auth-dialog.service';
 import { AuthService } from '@auth/auth.service';
-import { NavigationService } from '@nav/navigation.service';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 export const AuthInterceptor: HttpInterceptorFn = (req, next) => {
   const auth = inject(AuthService);
-  const nav = inject(NavigationService);
+  const authModal = inject(AuthDialogService);
 
   const publicEndpoints = [
     '/auth/login',
@@ -36,7 +36,7 @@ export const AuthInterceptor: HttpInterceptorFn = (req, next) => {
     catchError((err) => {
       if (err.status === 401) {
         auth.logout();
-        nav.openLoginModal();
+        authModal.openLoginModal();
       }
       return throwError(() => err);
     }),

@@ -1,19 +1,15 @@
-// src/app/core/navigation/navigation.service.ts
 import { inject, Injectable } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
-import { Login } from '@signin/login/login';
-import { Register } from '@signin/register/register';
 
 @Injectable({ providedIn: 'root' })
 export class NavigationService {
   private router = inject(Router);
-  private dialog = inject(MatDialog);
-  private snack = inject(MatSnackBar);
-  private translate = inject(TranslateService);
 
+  go(commands: any[], extras?: any) {
+    return this.safeNavigate(commands, extras);
+  }
+
+  // TODO: replace following by routes nav (cf refacto routes.ts)
   // navigation simple
   goHome(): Promise<boolean> {
     return this.safeNavigate(['/']);
@@ -35,30 +31,6 @@ export class NavigationService {
   }
   goToAdvancedSearch(prefill?: any): Promise<boolean> {
     return this.safeNavigate(['/recipes/search'], { state: prefill });
-  }
-
-  // Modals
-  openLoginModal(emailPrefill?: string): void {
-    this.dialog.open(Login, {
-      width: '30%',
-      panelClass: 'app-modal-panel',
-      autoFocus: true,
-      restoreFocus: true,
-      data: { email: emailPrefill ?? null },
-    });
-  }
-
-  openRegisterModal(): void {
-    this.dialog.open(Register, {
-      width: '30%',
-      panelClass: 'app-modal-panel',
-      autoFocus: true,
-      restoreFocus: true,
-    });
-  }
-
-  closeAllModals(): void {
-    this.dialog.closeAll();
   }
 
   // back with fallback
@@ -84,17 +56,4 @@ export class NavigationService {
   goToProfile() {
     // TODO
   }
-
-  showSuccess(key: string): void {
-    const message = this.translate.instant(key);
-
-    this.snack.open(message, undefined, {
-      duration: 5000,
-      panelClass: ['snackbar-success'],
-      horizontalPosition: 'right',
-      verticalPosition: 'bottom',
-    });
-  }
-
-  // TODO Snack-bar -> error toaster
 }

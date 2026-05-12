@@ -2,10 +2,12 @@ import { CommonModule } from '@angular/common';
 import { Component, Inject, inject, OnInit, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { AuthDialogService } from '@auth/auth-dialog.service';
 import { AuthService } from '@auth/auth.service';
 import { LoginRequest } from '@auth/login.request';
 import { NavigationService } from '@nav/navigation.service';
 import { TranslatePipe } from '@ngx-translate/core';
+import { NotificationService } from '@services/notification.service';
 
 @Component({
   selector: 'app-login',
@@ -18,6 +20,8 @@ export class Login implements OnInit {
   private fb = inject(FormBuilder);
   private authService = inject(AuthService);
   private nav = inject(NavigationService);
+  private authModal = inject(AuthDialogService);
+  private notif = inject(NotificationService);
 
   // --- Signals ---
   loading = signal(false);
@@ -52,7 +56,7 @@ export class Login implements OnInit {
       next: () => {
         this.loading.set(false);
         this.dialogRef.close();
-        this.nav.showSuccess('login.success');
+        this.notif.showSuccess('login.success');
         this.nav.goHome();
       },
       error: (err) => {
@@ -64,6 +68,6 @@ export class Login implements OnInit {
 
   goToRegister() {
     this.dialogRef.close();
-    this.nav.openRegisterModal();
+    this.authModal.openRegisterModal();
   }
 }
