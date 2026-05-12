@@ -1,15 +1,37 @@
-import { inject, Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import { Location } from '@angular/common';
+import { computed, inject, Injectable } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { NavigationEnd, Router } from '@angular/router';
+import { filter, map } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class NavigationService {
   private router = inject(Router);
 
+  // URL helpers
+  private url = toSignal(
+    this.router.events.pipe(
+      filter((e) => e instanceof NavigationEnd),
+      map(() => this.router.url),
+    ),
+    { initialValue: this.router.url },
+  );
+
+  readonly segments = computed(() => {
+    const tree = this.router.parseUrl(this.url());
+    const primary = tree.root.children['primary'];
+    return primary ? primary.segments.map((s) => s.path) : [];
+  });
+
+  // Navigation methods
   go(commands: any[], extras?: any) {
     return this.safeNavigate(commands, extras);
   }
 
-  // TODO: replace following by routes nav (cf refacto routes.ts)
+  goTo(path: string) {
+    return this.safeNavigate([path]);
+  }
+
   // navigation simple
   goHome(): Promise<boolean> {
     return this.safeNavigate(['/']);
@@ -35,11 +57,21 @@ export class NavigationService {
 
   // back with fallback
   back(fallback = '/'): void {
-    // simple fallback si history.back ne suffit pas
     if (window.history.length > 1) {
       window.history.back();
     } else {
       this.router.navigateByUrl(fallback);
+    }
+  }
+
+  // Other back solution
+  goBack(location: Location) {
+    const canGoBack: boolean = window.history.length > 2;
+
+    if (canGoBack) {
+      location.back();
+    } else {
+      this.goHome();
     }
   }
 

@@ -30,7 +30,7 @@
       </div>
 
       <div class="ingredients">
-        <h2>{{ 'recipe.ingredients' | translate }}</h2>
+        <h2>{{ 'glossary.recipe.ingredients' | translate }}</h2>
 
         <ul>
           @for (ing of recipe.ingredient_list; track ing.id) {
@@ -65,7 +65,7 @@
       >
         <mat-expansion-panel-header>
           <mat-panel-title class="step-panel-title">
-            {{ 'recipe.steps' | translate }}
+            {{ 'glossary.recipe.steps' | translate }}
           </mat-panel-title>
         </mat-expansion-panel-header>
 
@@ -74,7 +74,7 @@
             <mat-expansion-panel class="step-item" [expanded]="globalExpanded()">
               <mat-expansion-panel-header>
                 <mat-panel-title class="step-title">
-                  {{ 'recipe.step' | translate }} {{ step.order }}
+                  {{ 'glossary.recipe.step' | translate }} {{ step.order }}
                 </mat-panel-title>
               </mat-expansion-panel-header>
 

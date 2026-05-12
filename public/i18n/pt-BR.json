@@ -1,144 +1,171 @@
 {
-  "home": {
-    "title": "Home Made Recipes",
-    "lead": "Receitas caseiras simples e saborosas.",
-    "dailyRecipe": "Receita do dia"
-  },
-  "navbar": {
-    "searchPlaceholder": "Pesquisa rápida",
-    "langLabel": "Idioma"
-  },
-  "menu": {
-    "label": "Menu",
-    "left": {
-      "home": "Início",
-      "addRecipe": "Adicionar uma receita",
-      "search": "Pesquisa avançada"
+  "feature": {
+    "home": {
+      "title": "Home Made Recipes",
+      "lead": "Receitas caseiras simples e saborosas.",
+      "dailyRecipe": "Recette du jour"
     },
-    "profile": {
-      "label": "Perfil",
-      "profileAlt": "Avatar",
-      "guest": {
-        "label": "Menu de convidado",
-        "login": "Conectar-se",
-        "register": "Inscrever-se"
+    "recipes": {
+      "daily": {
+        "title": "Receita do dia",
+        "description": "Uma receita nova a cada dia."
       },
-      "user": {
-        "label": "Meu perfil",
-        "dashboard": "Dashboard",
-        "logout": "Desconectar-se"
+      "list": {
+        "title": "Receitas",
+        "description": "Lista das receitas"
+      },
+      "add": {
+        "mini": {
+          "title": "Criação rápida",
+          "namePlaceHolder": "Ex: Linguiça"
+        },
+        "full": {
+          "title": "Criar uma receita"
+        },
+        "info": {
+          "title": "Descrição da receita"
+        }
+      },
+      "search": {
+        "placeholder": "Receita...",
+        "advancedSearchPlaceHolder": "Pesquisa avançada...",
+        "advancedSearch": "Pesquisa avançada",
+        "search": "Pesquisar",
+        "mini": {
+          "title": "Pesquisa rápida",
+          "namePlaceHolder": "Ex: Frango assado"
+        }
       }
     },
-    "home": "Início",
-    "searchPlaceholder": "Pesquisa rápida"
-  },
-  "login": {
-    "title": "Conneção",
-    "description": "Conecte-se com o Google para acessar suas receitas",
-    "button": "Conectar-se",
-    "spinner": "Conneção...",
-    "register": "Primeira visita?",
-    "success": "Bem vindo.a no Home Made Recipe!"
-  },
-  "register": {
-    "create": "Criar uma conta",
-    "spinner": "Criação...",
-    "title": "Inscrição",
-    "description": "Registre-se rapidamente com sua conta do Google para começar a adicionar suas receitas",
-    "existingAccount": "Você já tem uma conta?",
-    "success": {
-      "title": "Parabens !",
-      "message": "Você conseguiu a criar uma conta !"
+    "products": {
+      "title": "Produtos",
+      "description": "Lista dos produtos"
+    },
+    "profile": {
+      "title": "Perfil",
+      "description": "Perfil do usuário"
+    },
+    "planner": {
+      "title": "Planning",
+      "description": "Menu da semana"
+    },
+    "ux": {
+      "navbar": {
+        "searchPlaceholder": "Pesquisa rápida",
+        "langLabel": "Idioma"
+      },
+      "menu": {
+        "label": "Menu",
+        "left": {
+          "home": "Início",
+          "addRecipe": "Adicionar uma receita",
+          "search": "Pesquisa avançada"
+        },
+        "profile": {
+          "label": "Perfil",
+          "profileAlt": "Avatar",
+          "guest": {
+            "label": "Menu de convidado",
+            "login": "Conectar-se",
+            "register": "Inscrever-se"
+          },
+          "user": {
+            "label": "Meu perfil",
+            "dashboard": "Dashboard",
+            "logout": "Desconectar-se"
+          }
+        },
+        "home": "Início",
+        "searchPlaceholder": "Pesquisa rápida"
+      },
+      "login": {
+        "title": "Conneção",
+        "description": "Conecte-se com o Google para acessar suas receitas",
+        "button": "Conectar-se",
+        "spinner": "Conneção...",
+        "register": "Primeira visita?",
+        "success": "Bem vindo.a no Home Made Recipe!"
+      },
+      "register": {
+        "create": "Criar uma conta",
+        "spinner": "Criação...",
+        "title": "Inscrição",
+        "description": "Registre-se rapidamente com sua conta do Google para começar a adicionar suas receitas",
+        "existingAccount": "Você já tem uma conta?",
+        "success": {
+          "title": "Parabens !",
+          "message": "Você conseguiu a criar uma conta !"
+        }
+      }
     }
   },
-  "search": {
-    "placeholder": "Receita...",
-    "advancedSearchPlaceHolder": "Pesquisa avançada...",
-    "advancedSearch": "Pesquisa avançada",
-    "search": "Pesquisar",
-    "mini": {
-      "title": "Pesquisa rápida",
-      "namePlaceHolder": "Ex: Frango assado"
-    }
-  },
-  "add": {
-    "create": "Criar",
-    "mini": {
-      "title": "Criação rápida",
-      "namePlaceHolder": "Ex: Linguiça"
+  "glossary": {
+    "recipe": {
+      "description": "Descrição",
+      "ingredients": "Ingredientes",
+      "instructions": "Instruções",
+      "addRecipe": "Adicionar uma receita",
+      "prepTime": "Tempo de preparo",
+      "prepTimeMin": "Tempo de preparo (min)",
+      "author": "Autor",
+      "title": "Nome da receita",
+      "type": "Tipo de receita",
+      "ingredientType": "Tipo de ingrediente",
+      "create": "Criar uma receita",
+      "show": "Ver a receita",
+      "steps": "Preparação:",
+      "step": "Etapa n°"
     },
-    "full": {
-      "title": "Criar uma receita"
+    "recipeType": {
+      "starter": "Entrada",
+      "mainCourse": "Prato principal",
+      "dessert": "Sobremesa",
+      "beverage": "Bebida",
+      "snack": "Lanche",
+      "apetizer": "Aperitivo",
+      "sideDish": "Acompanhamento"
     },
-    "info": {
-      "title": "Descrição da receita"
-    }
-  },
-  "recipe": {
-    "description": "Descrição",
-    "ingredients": "Ingredientes",
-    "instructions": "Instruções",
-    "addRecipe": "Adicionar uma receita",
-    "prepTime": "Tempo de preparo",
-    "prepTimeMin": "Tempo de preparo (min)",
-    "author": "Autor",
-    "title": "Nome da receita",
-    "type": "Tipo de receita",
-    "ingredientType": "Tipo de ingrediente",
-    "create": "Criar uma receita",
-    "show": "Ver a receita",
-    "steps": "Preparação:",
-    "step": "Etapa n°"
-  },
-  "recipeType": {
-    "starter": "Entrada",
-    "mainCourse": "Prato principal",
-    "dessert": "Sobremesa",
-    "beverage": "Bebida",
-    "snack": "Lanche",
-    "apetizer": "Aperitivo",
-    "sideDish": "Acompanhamento"
-  },
-  "ingredientType": {
-    "vegetable": "Legume",
-    "fruit": "Fruta",
-    "meat": "Carne",
-    "fish": "Peixe",
-    "seaFruit": "Fruta do mar",
-    "dairy": "Leiteria",
-    "cheese": "Queijo",
-    "grain": "Cereais",
-    "spice": "Tempero",
-    "condiment": "Condimento",
-    "nut": "Nozes",
-    "herbs": "Erva aromática",
-    "fat": "Gordura",
-    "sugar": "Doce",
-    "beverage": "Bebida",
-    "alcohol": "Álcool",
-    "starches": "Feculentos",
-    "other": "Outros"
-  },
-  "unit": {
-    "short": {
-      "gram": "g",
-      "kilogram": "kg",
-      "liter": "L",
-      "milliliter": "mL",
-      "cup": "xc",
-      "tablespoon": "c.d.s.",
-      "teaspoon": "c.d.c.",
-      "piece": "pc"
+    "ingredientType": {
+      "vegetable": "Legume",
+      "fruit": "Fruta",
+      "meat": "Carne",
+      "fish": "Peixe",
+      "seaFruit": "Fruta do mar",
+      "dairy": "Leiteria",
+      "cheese": "Queijo",
+      "grain": "Cereais",
+      "spice": "Tempero",
+      "condiment": "Condimento",
+      "nut": "Nozes",
+      "herbs": "Erva aromática",
+      "fat": "Gordura",
+      "sugar": "Doce",
+      "beverage": "Bebida",
+      "alcohol": "Álcool",
+      "starches": "Feculentos",
+      "other": "Outros"
     },
-    "full": {
-      "gram": "Grama",
-      "kilogram": "Kilograma",
-      "liter": "Litro",
-      "milliliter": "Mililitro",
-      "cup": "Xícara",
-      "tablespoon": "Colher de sopa",
-      "teaspoon": "Colher de chá",
-      "piece": "Peça"
+    "unit": {
+      "short": {
+        "gram": "g",
+        "kilogram": "kg",
+        "liter": "L",
+        "milliliter": "mL",
+        "cup": "xc",
+        "tablespoon": "c.d.s.",
+        "teaspoon": "c.d.c.",
+        "piece": "pc"
+      },
+      "full": {
+        "gram": "Grama",
+        "kilogram": "Kilograma",
+        "liter": "Litro",
+        "milliliter": "Mililitro",
+        "cup": "Xícara",
+        "tablespoon": "Colher de sopa",
+        "teaspoon": "Colher de chá",
+        "piece": "Peça"
+      }
     }
   },
   "form": {
@@ -159,6 +186,7 @@
     }
   },
   "common": {
+    "create": "Criar",
     "cancel": "Cancelar",
     "save": "Salvar",
     "ok": "OK",

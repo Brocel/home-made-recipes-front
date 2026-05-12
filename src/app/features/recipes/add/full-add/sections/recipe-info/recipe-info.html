@@ -5,9 +5,9 @@
   </h3>
 
   <mat-form-field appearance="outline" class="field">
-    <mat-label>{{ 'recipe.title' | translate }}</mat-label>
+    <mat-label>{{ 'glossary.recipe.title' | translate }}</mat-label>
     <mat-icon matPrefix>create</mat-icon>
-    <input matInput formControlName="title"/>
+    <input matInput formControlName="title" />
   </mat-form-field>
 
   <mat-form-field appearance="outline" class="field">
@@ -17,13 +17,13 @@
   </mat-form-field>
 
   <mat-form-field appearance="outline" class="field">
-    <mat-label>{{ 'recipe.prepTimeMin' | translate }}</mat-label>
+    <mat-label>{{ 'glossary.recipe.prepTimeMin' | translate }}</mat-label>
     <mat-icon matPrefix>access_time</mat-icon>
     <input matInput type="number" formControlName="preparation_time" />
   </mat-form-field>
 
   <mat-form-field appearance="outline" class="field">
-    <mat-label>{{ 'recipe.type' | translate }}</mat-label>
+    <mat-label>{{ 'glossary.recipe.type' | translate }}</mat-label>
     <mat-select formControlName="recipe_type">
       @for (t of recipeTypes; track t.value) {
         <mat-option [value]="t.value">

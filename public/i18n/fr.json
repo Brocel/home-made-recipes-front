@@ -1,144 +1,171 @@
 {
-  "home": {
-    "title": "Home Made Recipes",
-    "lead": "Recettes maison simples et savoureuses.",
-    "dailyRecipe": "Recette du jour"
-  },
-  "navbar": {
-    "searchPlaceholder": "Recherche rapide",
-    "langLabel": "Langue"
-  },
-  "menu": {
-    "label": "Menu",
-    "left": {
-      "home": "Accueil",
-      "addRecipe": "Ajouter une recette",
-      "search": "Recherche avancée"
+  "feature": {
+    "home": {
+      "title": "Home Made Recipes",
+      "lead": "Recettes maison simples et savoureuses.",
+      "dailyRecipe": "Recette du jour"
     },
-    "profile": {
-      "label": "Profil",
-      "profileAlt": "Avatar",
-      "guest": {
-        "label": "Menu invité",
-        "login": "Se connecter",
-        "register": "S'inscrire"
+    "recipes": {
+      "daily": {
+        "title": "Recette du jour",
+        "description": "Une nouvelle recette à découvrir tous les jours."
       },
-      "user": {
-        "label": "Mon profil",
-        "dashboard": "Tableau de bord",
-        "logout": "Se déconnecter"
+      "list": {
+        "title": "Recettes",
+        "description": "Liste des recettes"
+      },
+      "add": {
+        "mini": {
+          "title": "Création rapide",
+          "namePlaceHolder": "Ex: Saucisse"
+        },
+        "full": {
+          "title": "Créer une recette"
+        },
+        "info": {
+          "title": "Description de la recette"
+        }
+      },
+      "search": {
+        "placeholder": "Recette...",
+        "advancedSearchPlaceHolder": "Recherche avancée...",
+        "advancedSearch": "Recherche avancée",
+        "search": "Rechercher",
+        "mini": {
+          "title": "Recherche rapide",
+          "namePlaceHolder": "Ex: Poulet rôti"
+        }
       }
     },
-    "home": "Accueil",
-    "searchPlaceholder": "Recherche rapide"
-  },
-  "login": {
-    "title": "Connexion",
-    "description": "Connectes-toi avec Google pour accéder à tes recettes",
-    "button": "Se connecter",
-    "spinner": "Connexion...",
-    "register": "Première visite ?",
-    "success": "Bienvenu.e dans Home Made Recipe!"
-  },
-  "register": {
-    "create": "Créer un compte",
-    "spinner": "Création du compte...",
-    "title": "Inscription",
-    "description": "Inscris-toi rapidement avec ton compte Google pour commencer à ajouter tes recettes",
-    "existingAccount": "Si tu as déjà un compte",
-    "success": {
-      "title": "Félicitations !",
-      "message": "La création d'un nouveau compte a réussi !"
+    "products": {
+      "title": "Produits",
+      "description": "Liste des produits"
+    },
+    "profile": {
+      "title": "Profil",
+      "description": "Profil de l'utilisateur"
+    },
+    "planner": {
+      "title": "Planning",
+      "description": "Menu de la semaine"
+    },
+    "ux": {
+      "navbar": {
+        "searchPlaceholder": "Recherche rapide",
+        "langLabel": "Langue"
+      },
+      "menu": {
+        "label": "Menu",
+        "left": {
+          "home": "Accueil",
+          "addRecipe": "Ajouter une recette",
+          "search": "Recherche avancée"
+        },
+        "profile": {
+          "label": "Profil",
+          "profileAlt": "Avatar",
+          "guest": {
+            "label": "Menu invité",
+            "login": "Se connecter",
+            "register": "S'inscrire"
+          },
+          "user": {
+            "label": "Mon profil",
+            "dashboard": "Tableau de bord",
+            "logout": "Se déconnecter"
+          }
+        },
+        "home": "Accueil",
+        "searchPlaceholder": "Recherche rapide"
+      },
+      "login": {
+        "title": "Connexion",
+        "description": "Connectes-toi avec Google pour accéder à tes recettes",
+        "button": "Se connecter",
+        "spinner": "Connexion...",
+        "register": "Première visite ?",
+        "success": "Bienvenu.e dans Home Made Recipe!"
+      },
+      "register": {
+        "create": "Créer un compte",
+        "spinner": "Création du compte...",
+        "title": "Inscription",
+        "description": "Inscris-toi rapidement avec ton compte Google pour commencer à ajouter tes recettes",
+        "existingAccount": "Si tu as déjà un compte",
+        "success": {
+          "title": "Félicitations !",
+          "message": "La création d'un nouveau compte a réussi !"
+        }
+      }
     }
   },
-  "search": {
-    "placeholder": "Recette...",
-    "advancedSearchPlaceHolder": "Recherche avancée...",
-    "advancedSearch": "Recherche avancée",
-    "search": "Rechercher",
-    "mini": {
-      "title": "Recherche rapide",
-      "namePlaceHolder": "Ex: Poulet rôti"
-    }
-  },
-  "add": {
-    "create": "Créer",
-    "mini": {
-      "title": "Création rapide",
-      "namePlaceHolder": "Ex: Saucisse"
+  "glossary": {
+    "recipe": {
+      "description": "Description",
+      "ingredients": "Ingrédients",
+      "instructions": "Instructions",
+      "addRecipe": "Ajouter une recette",
+      "prepTime": "Temps de préparation",
+      "prepTimeMin": "Temps de préparation (min)",
+      "author": "Auteur",
+      "title": "Nom de la recette",
+      "type": "Type de recette",
+      "ingredientType": "Type d'ingrédient",
+      "create": "Créer une recette",
+      "show": "Voir la recette",
+      "steps": "Préparation:",
+      "step": "Étape n°"
     },
-    "full": {
-      "title": "Créer une recette"
+    "recipeType": {
+      "starter": "Entrée",
+      "mainCourse": "Plat principal",
+      "dessert": "Dessert",
+      "beverage": "Boisson",
+      "snack": "Snack",
+      "apetizer": "Apéritif",
+      "sideDish": "Accompagnement"
     },
-    "info": {
-      "title": "Description de la recette"
-    }
-  },
-  "recipe": {
-    "description": "Description",
-    "ingredients": "Ingrédients",
-    "instructions": "Instructions",
-    "addRecipe": "Ajouter une recette",
-    "prepTime": "Temps de préparation",
-    "prepTimeMin": "Temps de préparation (min)",
-    "author": "Auteur",
-    "title": "Nom de la recette",
-    "type": "Type de recette",
-    "ingredientType": "Type d'ingrédient",
-    "create": "Créer une recette",
-    "show": "Voir la recette",
-    "steps": "Préparation:",
-    "step": "Étape n°"
-  },
-  "recipeType": {
-    "starter": "Entrée",
-    "mainCourse": "Plat principal",
-    "dessert": "Dessert",
-    "beverage": "Boisson",
-    "snack": "Snack",
-    "apetizer": "Apéritif",
-    "sideDish": "Accompagnement"
-  },
-  "ingredientType": {
-    "vegetable": "Légume",
-    "fruit": "Fruit",
-    "meat": "Viande",
-    "fish": "Poisson",
-    "seaFruit": "Fruit de mer",
-    "dairy": "Produit laitier",
-    "cheese": "Fromage",
-    "grain": "Céréales",
-    "spice": "Épice",
-    "condiment": "Condiment",
-    "nut": "Noix",
-    "herbs": "Herbe aromatique",
-    "fat": "Matière grasse",
-    "sugar": "Sucre",
-    "beverage": "Boisson",
-    "alcohol": "Alcool",
-    "starches": "Féculents",
-    "other": "Autres"
-  },
-  "unit": {
-    "short": {
-      "gram": "g",
-      "kilogram": "kg",
-      "liter": "L",
-      "milliliter": "mL",
-      "cup": "t",
-      "tablespoon": "c.a.s.",
-      "teaspoon": "c.a.c.",
-      "piece": "pc"
+    "ingredientType": {
+      "vegetable": "Légume",
+      "fruit": "Fruit",
+      "meat": "Viande",
+      "fish": "Poisson",
+      "seaFruit": "Fruit de mer",
+      "dairy": "Produit laitier",
+      "cheese": "Fromage",
+      "grain": "Céréales",
+      "spice": "Épice",
+      "condiment": "Condiment",
+      "nut": "Noix",
+      "herbs": "Herbe aromatique",
+      "fat": "Matière grasse",
+      "sugar": "Sucre",
+      "beverage": "Boisson",
+      "alcohol": "Alcool",
+      "starches": "Féculents",
+      "other": "Autres"
     },
-    "full": {
-      "gram": "Gramme",
-      "kilogram": "Kilogramme",
-      "liter": "Litre",
-      "milliliter": "Millilitre",
-      "cup": "Tasse",
-      "tablespoon": "Cuillère à soupe",
-      "teaspoon": "Cuillère à café",
-      "piece": "Pièce"
+    "unit": {
+      "short": {
+        "gram": "g",
+        "kilogram": "kg",
+        "liter": "L",
+        "milliliter": "mL",
+        "cup": "t",
+        "tablespoon": "c.a.s.",
+        "teaspoon": "c.a.c.",
+        "piece": "pc"
+      },
+      "full": {
+        "gram": "Gramme",
+        "kilogram": "Kilogramme",
+        "liter": "Litre",
+        "milliliter": "Millilitre",
+        "cup": "Tasse",
+        "tablespoon": "Cuillère à soupe",
+        "teaspoon": "Cuillère à café",
+        "piece": "Pièce"
+      }
     }
   },
   "form": {
@@ -159,6 +186,7 @@
     }
   },
   "common": {
+    "create": "Créer",
     "cancel": "Annuler",
     "save": "Enregistrer",
     "ok": "OK",

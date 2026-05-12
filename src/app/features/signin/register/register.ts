@@ -5,7 +5,7 @@ import { AuthDialogService } from '@auth/auth-dialog.service';
 import { AuthService } from '@auth/auth.service';
 import { RegisterRequest } from '@auth/register.request';
 import { TranslatePipe } from '@ngx-translate/core';
-import { isoToDDMMYYYY } from '@utils/date.utils';
+import { isoToDDMMYYYY } from '@utils/date.util';
 import { UsernameValidator } from '@validators/username.validator';
 import { Subscription, timer } from 'rxjs';
 

@@ -1,13 +1,13 @@
 <div class="mini-form">
   <h3 class="title">
     <mat-icon>search</mat-icon>
-    {{ 'search.mini.title' | translate }}
+    {{ 'feature.recipes.search.mini.title' | translate }}
   </h3>
 
   <form (ngSubmit)="submit()" [formGroup]="form" class="form">
     <!-- Nom de recette -->
     <mat-form-field appearance="outline" class="field">
-      <mat-label>{{ 'recipe.title' | translate }}</mat-label>
+      <mat-label>{{ 'glossary.recipe.title' | translate }}</mat-label>
       <mat-icon matPrefix>create</mat-icon>
       <input
         matInput
@@ -18,7 +18,7 @@
 
     <!-- Type de recette -->
     <mat-form-field appearance="outline" class="field">
-      <mat-label>{{ 'recipe.type' | translate }}</mat-label>
+      <mat-label>{{ 'glossary.recipe.type' | translate }}</mat-label>
       <mat-icon matPrefix>restaurant_menu</mat-icon>
       <mat-select formControlName="recipeType" multiple>
         <ng-container>
@@ -31,14 +31,14 @@
 
     <!-- Temps max -->
     <mat-form-field appearance="outline" class="field">
-      <mat-label>{{ 'recipe.prepTimeMin' | translate }}</mat-label>
+      <mat-label>{{ 'glossary.recipe.prepTimeMin' | translate }}</mat-label>
       <mat-icon matPrefix>schedule</mat-icon>
       <input matInput type="number" min="0" formControlName="maxTime" placeholder="15" />
     </mat-form-field>
 
     <!-- Type d'ingrédient -->
     <mat-form-field appearance="outline" class="field">
-      <mat-label>{{ 'recipe.ingredientType' | translate }}</mat-label>
+      <mat-label>{{ 'glossary.recipe.ingredientType' | translate }}</mat-label>
       <mat-icon matPrefix>category</mat-icon>
       <mat-select formControlName="ingredientType" multiple>
         <ng-container>
