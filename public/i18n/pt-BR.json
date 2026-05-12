@@ -3,7 +3,7 @@
     "home": {
       "title": "Home Made Recipes",
       "lead": "Receitas caseiras simples e saborosas.",
-      "dailyRecipe": "Recette du jour"
+      "dailyRecipe": "Receita do dia"
     },
     "recipes": {
       "daily": {
@@ -15,6 +15,8 @@
         "description": "Lista das receitas"
       },
       "add": {
+        "title": "Criar Receita",
+        "description": "Criar uma nova receita caseira",
         "mini": {
           "title": "Criação rápida",
           "namePlaceHolder": "Ex: Linguiça"
@@ -26,15 +28,24 @@
           "title": "Descrição da receita"
         }
       },
+      "edit": {
+        "title": "Edição",
+        "description": "Editar uma receita"
+      },
       "search": {
         "placeholder": "Receita...",
         "advancedSearchPlaceHolder": "Pesquisa avançada...",
         "advancedSearch": "Pesquisa avançada",
         "search": "Pesquisar",
+        "description": "Pesquisar uma receita",
         "mini": {
           "title": "Pesquisa rápida",
           "namePlaceHolder": "Ex: Frango assado"
         }
+      },
+      "see": {
+        "title": "Receita",
+        "description": "Ver uma receita"
       }
     },
     "products": {
