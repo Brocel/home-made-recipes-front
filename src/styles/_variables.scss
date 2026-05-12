@@ -23,6 +23,13 @@
   --color-surface-hover: #{t.$surface-hover};
   --color-surface-elevated: #{t.$surface-elevated};
 
+  // Opacity
+  --opacity-solid: #{t.$opacity-solid};
+  --opacity-strong: #{t.$opacity-strong};
+  --opacity-medium: #{t.$opacity-medium};
+  --opacity-soft: #{t.$opacity-soft};
+  --opacity-transparent: #{t.$opacity-transparent};
+
   // Typography
   --color-text: #{t.$text};
   --color-text-muted: #{t.$text-muted};
@@ -128,6 +135,7 @@
   --content-narrow: #{t.$content-narrow};
   --sidebar-width: #{t.$sidebar-width};
   --header-height: #{t.$header-height};
+  --navbar-height: #{t.$navbar-height};
 
   --search-max-width: #{t.$search-max-width};
 }

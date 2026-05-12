@@ -5,7 +5,7 @@ import { MiniAdd } from '@recipes/add/mini-add/mini-add';
 import { MiniSearch } from '@recipes/search/mini-search/mini-search';
 import { ScrollWrapper } from '@ui/layout/scroll-wrapper/scroll-wrapper';
 import { SideDrawer } from '@ui/panel/side-drawer/side-drawer';
-import { SidePosition } from '../../../shared/types/element.type';
+import { SidePosition } from '../../../shared/types/style.type';
 
 @Component({
   selector: 'app-left-panel',

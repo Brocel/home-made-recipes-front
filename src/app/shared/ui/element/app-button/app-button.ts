@@ -1,9 +1,9 @@
 import { NgClass } from '@angular/common';
 import { Component, computed, input, output } from '@angular/core';
-import { ButtonSize, ButtonType, ButtonVariant } from '@appTypes/element.type';
+import { ButtonSize, ButtonType, ButtonVariant } from '@appTypes/style.type';
 
 @Component({
-  selector: 'app-app-button',
+  selector: 'app-button',
   imports: [NgClass],
   templateUrl: './app-button.html',
   styleUrl: './app-button.scss',

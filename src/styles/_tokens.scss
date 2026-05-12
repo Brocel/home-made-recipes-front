@@ -25,6 +25,15 @@ $surface-hover: #ebe5dc;
 $surface-elevated: #ffffff;
 
 // -----------------------------
+// Opacity
+// -----------------------------
+$opacity-solid: 1;
+$opacity-strong: 0.92;
+$opacity-medium: 0.78;
+$opacity-soft: 0.58;
+$opacity-transparent: 0.32;
+
+// -----------------------------
 // Typography
 // -----------------------------
 $text: #2f2a24;
@@ -140,5 +149,6 @@ $content-width: 1200px;
 $content-narrow: 720px;
 $sidebar-width: 280px;
 $header-height: 72px;
+$navbar-height: 65px;
 
 $search-max-width: clamp(220px, 45vw, 520px);
