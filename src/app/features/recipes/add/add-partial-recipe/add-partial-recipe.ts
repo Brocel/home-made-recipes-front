@@ -25,10 +25,10 @@ import { RecipeCreateBridgeService } from '@services/recipe-create-bridge.servic
     MatButtonModule,
     MatIconModule,
   ],
-  templateUrl: './mini-add.html',
-  styleUrls: ['./mini-add.scss'],
+  templateUrl: './add-partial-recipe.html',
+  styleUrls: ['./add-partial-recipe.scss'],
 })
-export class MiniAdd {
+export class AddPartialRecipe {
   @Output() close = new EventEmitter<void>();
 
   private fb: FormBuilder = inject(FormBuilder);

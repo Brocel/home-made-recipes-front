@@ -12,19 +12,14 @@ export class PageTitleService {
   // =========================================================
   // Dependencies
   // =========================================================
-
   private router = inject(Router);
-
   private activatedRoute = inject(ActivatedRoute);
-
   private title = inject(Title);
-
   private translate = inject(TranslateService);
 
   // =========================================================
   // Public API
   // =========================================================
-
   init(): void {
     this.router.events
       .pipe(
@@ -42,7 +37,6 @@ export class PageTitleService {
   // =========================================================
   // Helpers
   // =========================================================
-
   private getDeepestRoute(route: ActivatedRoute): ActivatedRoute {
     while (route.firstChild) {
       route = route.firstChild;

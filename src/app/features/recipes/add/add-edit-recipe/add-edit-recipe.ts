@@ -1,7 +1,6 @@
 import { Component, effect, inject, OnInit } from '@angular/core';
 import { FormArray, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatIcon } from '@angular/material/icon';
-import { Router } from '@angular/router';
 import { TranslatePipe } from '@ngx-translate/core';
 import { RecipeCreateBridgeService } from '@services/recipe-create-bridge.service';
 import { RecipeFormService } from '@services/recipe-form.service';
@@ -21,11 +20,10 @@ import { RecipeSteps } from './sections/recipe-steps/recipe-steps';
     MatIcon,
     ScrollWrapper,
   ],
-  templateUrl: './full-add.html',
-  styleUrl: './full-add.scss',
+  templateUrl: './add-edit-recipe.html',
+  styleUrl: './add-edit-recipe.scss',
 })
-export class FullAdd implements OnInit {
-  private router = inject(Router);
+export class AddEditRecipe implements OnInit {
   private formService = inject(RecipeFormService);
   private bridge = inject(RecipeCreateBridgeService);
 

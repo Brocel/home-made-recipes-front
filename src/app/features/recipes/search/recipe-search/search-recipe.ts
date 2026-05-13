@@ -1,16 +1,16 @@
+import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
 import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'advanced-search',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, TranslatePipe],
-  templateUrl: './advanced-search.html',
-  styleUrls: ['./advanced-search.scss'],
+  templateUrl: './search-recipe.html',
+  styleUrls: ['./search-recipe.scss'],
 })
-export class AdvancedSearch {
+export class SearchRecipe {
   form;
 
   @Output() submitAdvanced = new EventEmitter<any>();
