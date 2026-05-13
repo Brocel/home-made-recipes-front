@@ -1,0 +1,18 @@
+.panel-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  height: 100%;
+  overflow-y: auto;
+  scrollbar-width: none;
+  padding: var(--space-md);
+  gap: var(--space-xs);
+
+  h3 {
+    margin-bottom: var(--space-sm);
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--color-text-strong);
+  }
+}

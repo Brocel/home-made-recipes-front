@@ -29,15 +29,19 @@ export class SideDrawer {
   // =========================================================
   classes = computed(() => ({
     drawer: true,
-
     open: this.open(),
-
     [`drawer--${this.position()}`]: true,
+  }));
+
+  handlerClasses = computed(() => ({
+    handler: true,
+    [`handler--${this.position()}`]: true,
   }));
 
   chevronClasses = computed(() => ({
     chevron: true,
     open: this.open(),
+    [`chevron--${this.position()}`]: true,
   }));
 
   // =========================================================

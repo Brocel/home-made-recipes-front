@@ -1,7 +1,7 @@
 <div [ngClass]="classes()" [ngStyle]="styles()">
   <ng-content />
 
-  <button class="drawer-handle" (click)="toggle()">
+  <button [ngClass]="handlerClasses()" (click)="toggle()">
     <span [ngClass]="chevronClasses()">›</span>
   </button>
 </div>

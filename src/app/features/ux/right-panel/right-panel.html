@@ -1,0 +1,17 @@
+<app-side-drawer
+  [position]="position"
+  [open]="isOpen()"
+  width="500px"
+  background="primary-soft"
+  opacity="strong"
+  (openChange)="isOpen.set($event)"
+  (clickOutside)="close()"
+>
+  <div class="panel-content">
+    <app-scroll-wrapper gap="xs" padding="md">
+      <app-mini-search (search)="onMiniSearch($event)" />
+
+      <app-mini-add />
+    </app-scroll-wrapper>
+  </div>
+</app-side-drawer>

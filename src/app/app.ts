@@ -7,11 +7,12 @@ import { PageLayout } from '@ui/layout/page-layout/page-layout';
 import { Footer } from '@ux/footer/footer';
 import { LeftPanel } from '@ux/left-panel/left-panel';
 import { Navbar } from '@ux/navbar/navbar';
+import { RightPanel } from '@ux/right-panel/right-panel';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [Navbar, RouterOutlet, Footer, LeftPanel, PageLayout],
+  imports: [Navbar, RouterOutlet, Footer, LeftPanel, PageLayout, RightPanel],
   templateUrl: './app.html',
 })
 export class App implements OnInit {
