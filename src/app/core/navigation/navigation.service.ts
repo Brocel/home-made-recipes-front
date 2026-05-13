@@ -2,6 +2,7 @@ import { Location } from '@angular/common';
 import { computed, inject, Injectable } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { NavigationEnd, Router } from '@angular/router';
+import { FEATURE_ROUTES } from '@utils/datas/feature-data.util';
 import { filter, map } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
@@ -32,6 +33,12 @@ export class NavigationService {
     return this.safeNavigate([path]);
   }
 
+  goToFeature(path: string[]) {
+    const newPath = [FEATURE_ROUTES.home, ...path];
+    console.log('newPath :: ' + newPath);
+    return this.safeNavigate(newPath);
+  }
+
   // navigation simple
   goHome(): Promise<boolean> {
     return this.safeNavigate(['/']);
@@ -41,7 +48,18 @@ export class NavigationService {
     return this.safeNavigate(commands, extras);
   }
 
+  // internal helper
+  private async safeNavigate(commands: any[], extras?: any): Promise<boolean> {
+    try {
+      return await this.router.navigate(commands, extras);
+    } catch (err) {
+      console.warn('Navigation failed', err);
+      return false;
+    }
+  }
+
   // navigation avec state utile pour préremplir formulaires
+  // TODO: refacto
   goToRecipeList(prefill?: any): Promise<boolean> {
     return this.safeNavigate(['/recipes'], { state: prefill });
   }
@@ -72,16 +90,6 @@ export class NavigationService {
       location.back();
     } else {
       this.goHome();
-    }
-  }
-
-  // internal helper
-  private async safeNavigate(commands: any[], extras?: any): Promise<boolean> {
-    try {
-      return await this.router.navigate(commands, extras);
-    } catch (err) {
-      console.warn('Navigation failed', err);
-      return false;
     }
   }
 

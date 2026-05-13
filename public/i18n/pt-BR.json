@@ -6,6 +6,8 @@
       "dailyRecipe": "Receita do dia"
     },
     "recipes": {
+      "title": "Receitas",
+      "description": "Todas as receitas que você precisa.",
       "daily": {
         "title": "Receita do dia",
         "description": "Uma receita nova a cada dia."

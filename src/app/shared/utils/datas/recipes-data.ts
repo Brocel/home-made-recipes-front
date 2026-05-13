@@ -1,5 +1,5 @@
 import { FeatureData } from '@models/features/feature-data.model';
-import { LeftPanelItem } from '@models/features/left-panel-item.model';
+import { MenuItem } from '@models/features/menu-item.model';
 import { FEATURE_ROUTES } from './feature-data.util';
 
 export const RECIPES_ROUTES = {
@@ -69,7 +69,7 @@ export const RECIPE_SEE_DATA: FeatureData = {
   image: RECIPES_IMAGES.see,
 };
 
-export const RECIPES_SIDEBAR_ITEMS: LeftPanelItem[] = [
+export const RECIPES_MENU_ITEMS: MenuItem[] = [
   {
     label: RECIPES_LABEL.list,
     description: RECIPES_DESCRIPTION.list,

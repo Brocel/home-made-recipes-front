@@ -1,59 +1,29 @@
-import { inject, Injectable } from '@angular/core';
+import { effect, inject, Injectable } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { FeatureData } from '@models/features/feature-data.model';
+import { RouteContextService } from '@nav/route-context.service';
 import { TranslateService } from '@ngx-translate/core';
-import { filter, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PageTitleService {
-  // =========================================================
-  // Dependencies
-  // =========================================================
-  private router = inject(Router);
-  private activatedRoute = inject(ActivatedRoute);
   private title = inject(Title);
   private translate = inject(TranslateService);
+  private context = inject(RouteContextService);
 
-  // =========================================================
-  // Public API
-  // =========================================================
   init(): void {
-    this.router.events
-      .pipe(
-        filter((event) => event instanceof NavigationEnd),
+    effect(() => {
+      const feature = this.context.feature();
 
-        map(() => this.getDeepestRoute(this.activatedRoute)),
+      if (!feature?.title) {
+        this.title.setTitle('Home Made Recipe');
 
-        map((route) => route.snapshot.data['feature'] as FeatureData | undefined),
-      )
-      .subscribe((feature) => {
-        this.updateTitle(feature);
+        return;
+      }
+
+      this.translate.stream(feature.title).subscribe((translated) => {
+        this.title.setTitle(translated);
       });
-  }
-
-  // =========================================================
-  // Helpers
-  // =========================================================
-  private getDeepestRoute(route: ActivatedRoute): ActivatedRoute {
-    while (route.firstChild) {
-      route = route.firstChild;
-    }
-
-    return route;
-  }
-
-  private updateTitle(feature?: FeatureData): void {
-    if (!feature?.title) {
-      this.title.setTitle('My Recipe App');
-
-      return;
-    }
-
-    this.translate.stream(feature.title).subscribe((translated) => {
-      this.title.setTitle(translated);
     });
   }
 }

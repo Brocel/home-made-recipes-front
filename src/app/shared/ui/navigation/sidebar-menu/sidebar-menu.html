@@ -1,0 +1,10 @@
+<nav class="menu">
+  @for (item of items(); track item.path.join('/')) {
+    <app-sidebar-menu-item
+      [item]="item"
+      [expanded]="expanded()"
+      [active]="isActive(item)"
+      (navigate)="onNavigate($event)"
+    />
+  }
+</nav>

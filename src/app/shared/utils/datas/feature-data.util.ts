@@ -1,7 +1,8 @@
 import { FeatureData } from '@models/features/feature-data.model';
+import { MenuItem } from '@models/features/menu-item.model';
 
 export const FEATURE_ROUTES = {
-  home: 'home',
+  home: 'hmr',
   products: 'products',
   recipes: 'recipes',
   profile: 'profile', // TODO
@@ -28,8 +29,15 @@ export const FEATURE_IMAGE = {
   home: 'assets/recipe-book.png',
   products: 'assets/ingredients.png',
   recipes: 'assets/recipe-book.png',
-  profile: 'assets/default-avatar.png',
+  profile: 'assets/default_avatar.png',
   planner: 'assets/planner.png',
+};
+
+export const FEATURE_WRAPPER: FeatureData = {
+  path: 'syntax-social',
+  title: 'Syntax Social',
+  description: 'Organize your social life!',
+  image: '',
 };
 
 export const HOME_DATA: FeatureData = {
@@ -66,3 +74,30 @@ export const PLANNER_DATA: FeatureData = {
   description: FEATURE_DESCRIPTION.planner,
   image: FEATURE_IMAGE.planner,
 };
+
+export const HOME_MENU_ITEMS: MenuItem[] = [
+  {
+    label: FEATURE_TITLE.products,
+    description: FEATURE_DESCRIPTION.products,
+    path: [FEATURE_ROUTES.products],
+    image: FEATURE_IMAGE.products,
+  },
+  {
+    label: FEATURE_TITLE.recipes,
+    description: FEATURE_DESCRIPTION.recipes,
+    path: [FEATURE_ROUTES.recipes],
+    image: FEATURE_IMAGE.recipes,
+  },
+  {
+    label: FEATURE_TITLE.profile,
+    description: FEATURE_DESCRIPTION.profile,
+    path: [FEATURE_ROUTES.profile],
+    image: FEATURE_IMAGE.profile,
+  },
+  {
+    label: FEATURE_TITLE.planner,
+    description: FEATURE_DESCRIPTION.planner,
+    path: [FEATURE_ROUTES.planner],
+    image: FEATURE_IMAGE.planner,
+  },
+].sort((a, b) => a.label.localeCompare(b.label, undefined, { sensitivity: 'base' }));

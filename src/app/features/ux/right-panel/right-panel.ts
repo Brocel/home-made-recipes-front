@@ -4,7 +4,7 @@ import { ClickOutsideDirective } from '@directives/click-outside.directive';
 import { AddPartialRecipe } from '@recipes/add/add-partial-recipe/add-partial-recipe';
 import { MiniSearch } from '@recipes/search/mini-search/mini-search';
 import { ScrollWrapper } from '@ui/layout/scroll-wrapper/scroll-wrapper';
-import { SideDrawer } from '@ui/panel/side-drawer/side-drawer';
+import { SideDrawer } from '@ui/layout/side-drawer/side-drawer';
 
 @Component({
   selector: 'app-right-panel',
@@ -17,10 +17,6 @@ export class RightPanel {
 
   position: SidePosition = 'right';
   width = '500px';
-
-  toggle() {
-    this.isOpen.update((v) => !v);
-  }
 
   close() {
     this.isOpen.update(() => false);

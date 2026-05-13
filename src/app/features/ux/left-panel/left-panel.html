@@ -1,17 +1,13 @@
-<app-side-drawer
-  [position]="position"
-  [open]="isOpen()"
-  width="500px"
+<app-side-rail
+  position="left"
   background="primary-soft"
   opacity="strong"
-  (openChange)="isOpen.set($event)"
-  (clickOutside)="close()"
+  (expandedChange)="isOpen.set($event)"
 >
-  <div class="panel-content">
-    <app-scroll-wrapper gap="xs" padding="md">
-      <app-mini-search (search)="onMiniSearch($event)" />
-
-      <app-mini-add />
-    </app-scroll-wrapper>
-  </div>
-</app-side-drawer>
+  <app-sidebar-menu
+    [items]="items()"
+    [expanded]="isOpen()"
+    [activePath]="activePath()"
+    (navigate)="navigate($event)"
+  />
+</app-side-rail>

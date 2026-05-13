@@ -1,35 +1,43 @@
-import { Component, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 
-import { ClickOutsideDirective } from '@directives/click-outside.directive';
-import { AddPartialRecipe } from '@recipes/add/add-partial-recipe/add-partial-recipe';
-import { MiniSearch } from '@recipes/search/mini-search/mini-search';
-import { ScrollWrapper } from '@ui/layout/scroll-wrapper/scroll-wrapper';
-import { SideDrawer } from '@ui/panel/side-drawer/side-drawer';
-import { SidePosition } from '../../../shared/types/style.type';
+import { NavigationService } from '@nav/navigation.service';
+import { RouteContextService } from '@nav/route-context.service';
+import { SideRail } from '@ui/layout/side-rail/side-rail';
+import { SidebarMenu } from '@ui/navigation/sidebar-menu/sidebar-menu';
 
 @Component({
   selector: 'app-left-panel',
   standalone: true,
-  imports: [ScrollWrapper, SideDrawer, ClickOutsideDirective, AddPartialRecipe, MiniSearch],
+  imports: [SideRail, SidebarMenu],
   templateUrl: './left-panel.html',
   styleUrls: ['./left-panel.scss'],
 })
 export class LeftPanel {
+  // =========================================================
+  // Dependencies
+  // =========================================================
+  private nav = inject(NavigationService);
+  private routeContext = inject(RouteContextService);
+
+  // =========================================================
+  // State
+  // =========================================================
   isOpen = signal(false);
+  items = computed(() => this.routeContext.menu() ?? []);
+  activePath = computed(() => this.nav.segments().slice(1));
+  drawerWidth = computed(() => {
+    return this.isOpen() ? '240px' : '72px';
+  });
 
-  position: SidePosition = 'left';
-  width = '500px';
-
-  toggle() {
-    this.isOpen.update((v) => !v);
-  }
-
+  // =========================================================
+  // Actions
+  // =========================================================
   close() {
-    this.isOpen.update(() => false);
+    this.isOpen.set(false);
   }
 
-  onMiniSearch(query: string) {
-    console.log('search', query);
-    // TODO
+  navigate(path: string[]) {
+    console.log('path :: ' + path);
+    this.nav.goToFeature(path);
   }
 }

@@ -1,0 +1,9 @@
+<div
+  class="rail"
+  [ngClass]="classes()"
+  [ngStyle]="styles()"
+  appHoverExpand
+  (hovered)="onHover($event)"
+>
+  <ng-content></ng-content>
+</div>

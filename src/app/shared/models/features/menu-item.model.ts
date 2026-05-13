@@ -1,4 +1,4 @@
-export interface LeftPanelItem {
+export interface MenuItem {
   label: string;
   description: string;
   path: string[];

@@ -1,0 +1,14 @@
+<button [ngClass]="classes()" (click)="onClick()">
+  <img
+    class="item__icon"
+    [src]="item().image"
+    [alt]="item().label | translate"
+    [title]="item().description | translate"
+  />
+
+  @if (expanded()) {
+    <span class="item__label">
+      {{ item().label | translate }}
+    </span>
+  }
+</button>
