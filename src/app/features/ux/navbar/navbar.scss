@@ -1,147 +1,126 @@
-@use 'tokens';
-
 .navbar {
-  background-color: var(--color-primary);
+  position: sticky;
+  top: 0;
+  z-index: var(--z-navbar);
+
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-md);
-  max-width: var(--max-width);
-  margin: 0 auto;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+
   height: var(--navbar-height);
 
-  .left,
-  .right {
-    display: flex;
-    align-items: center;
-    gap: var(--space-xs);
-    flex: 0 0 auto;
+  padding-inline: var(--space-lg);
+
+  background: var(--color-primary);
+
+  box-shadow: var(--shadow-sm);
+}
+
+.navbar__brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+
+  cursor: pointer;
+
+  min-width: 0;
+}
+
+.navbar__titles {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+}
+
+.navbar__logo {
+  width: 36px;
+  height: 36px;
+
+  object-fit: contain;
+
+  flex-shrink: 0;
+}
+
+.navbar__title {
+  margin: 0;
+
+  font-size: var(--text-lg);
+  font-weight: 600;
+  line-height: 1.1;
+
+  color: var(--color-text);
+}
+
+.navbar__lead {
+  margin: 0;
+
+  font-size: var(--text-sm);
+
+  color: var(--color-text-soft);
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.navbar__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xl);
+
+  flex-shrink: 0;
+}
+
+.lang-switch {
+  display: flex;
+  align-items: center;
+
+  padding: 0.2rem;
+
+  border-radius: 999px;
+
+  background: color-mix(in srgb, var(--color-surface-elevated) 85%, transparent);
+
+  box-shadow: var(--shadow-sm);
+
+  gap: 0.2rem;
+}
+
+.lang-switch__option {
+  border: none;
+  background: transparent;
+
+  color: var(--color-text-soft);
+
+  padding: 0.45rem 0.9rem;
+
+  border-radius: 999px;
+
+  font-size: var(--text-sm);
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background-color var(--transition-base),
+    color var(--transition-base),
+    transform var(--transition-fast);
+
+  &:hover {
+    color: var(--color-text);
+    background: color-mix(in srgb, var(--color-primary-soft) 35%, transparent);
   }
 
-  .center {
-    display: flex;
-    align-items: center;
-    flex: 1 1 auto;
-    gap: var(--space-md);
-    min-width: 0;
+  &:active {
+    transform: scale(0.96);
   }
 
-  .title {
-    display: flex;
-    align-items: baseline;
-    gap: var(--space-xs);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  &.is-active {
+    background: var(--color-primary);
 
-    h1 {
-      margin: 0;
-      font-size: 1.25rem;
-      font-weight: 600;
-      letter-spacing: -0.5px;
-    }
+    color: var(--color-text-inverse);
 
-    .lead {
-      margin: 0;
-      font-size: 0.95rem;
-      opacity: 0.75;
-      font-weight: 400;
-    }
-  }
-
-  .search-inline {
-    flex: 1 1 auto;
-    min-width: 200px;
-    max-width: var(--search-max-width);
-    display: flex;
-    justify-content: center;
-    padding: 0 var(--space-sm);
-    transition: max-width 0.2s ease;
-  }
-
-  .avatar,
-  .avatar-fallback {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-  }
-
-  .avatar {
-    object-fit: cover;
-  }
-
-  .avatar-fallback {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--color-surface);
-  }
-
-  .profile-menu {
-    position: absolute;
-    right: 1rem;
-    top: calc(100% + 8px);
-    background: var(--surface-100);
-    box-shadow: var(--shadow-md);
-    border-radius: var(--radius-md);
-    padding: var(--space-sm);
-    min-width: 200px;
-    z-index: 60;
-
-    button {
-      width: 100%;
-      text-align: left;
-      background: transparent;
-      border: none;
-      padding: 0.5rem 0.75rem;
-      border-radius: var(--radius-sm);
-    }
-
-    button:hover {
-      background: var(--hover-surface);
-    }
-  }
-
-  /* MOBILE */
-  @media (max-width: 768px) {
-    flex-direction: column;
-    align-items: stretch;
-    gap: var(--space-sm);
-
-    .left,
-    .center,
-    .right {
-      width: 100%;
-      justify-content: flex-start;
-    }
-
-    .center {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: var(--space-xs);
-    }
-
-    .title {
-      white-space: normal;
-      flex-wrap: wrap;
-    }
-
-    .title h1 {
-      font-size: 1.2rem;
-    }
-
-    .lead {
-      font-size: 0.9rem;
-    }
-
-    .search-inline {
-      width: 100%;
-      justify-content: flex-start;
-    }
-
-    .right {
-      justify-content: flex-start;
-    }
+    box-shadow: var(--shadow-xs);
   }
 }

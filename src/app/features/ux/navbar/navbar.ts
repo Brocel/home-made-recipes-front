@@ -1,56 +1,48 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, Input } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { MatDivider } from '@angular/material/divider';
 import { RouterModule } from '@angular/router';
 import { AuthDialogService } from '@auth/auth-dialog.service';
 import { AuthService } from '@auth/auth.service';
-import { LeftMenu } from '@menu/left-menu/left-menu';
-import { ProfileMenu } from '@menu/profile-menu/profile-menu';
 import { NavigationService } from '@nav/navigation.service';
 import { TranslatePipe } from '@ngx-translate/core';
-import { QuickSearch } from '@recipes/search/quick-search/quick-search';
+import { AuthStore } from '@store/auth.store';
 import { LanguageService } from '@translation/language.service';
+import { ProfileMenu } from '../../profile/profile-menu/profile-menu';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [
-    CommonModule,
-    RouterModule,
-    TranslatePipe,
-    ProfileMenu,
-    QuickSearch,
-    LeftMenu,
-    MatDivider,
-  ],
+  imports: [CommonModule, RouterModule, TranslatePipe, ProfileMenu, MatDivider],
   templateUrl: './navbar.html',
   styleUrls: ['./navbar.scss'],
 })
 export class Navbar {
-  @Input() user: any | null = null;
-  @Input() isAuthenticated = false;
-
-  lang = inject(LanguageService);
+  // =========================================================
+  // Dependencies
+  // =========================================================
+  private lang = inject(LanguageService);
   private auth = inject(AuthService);
+  private authStore = inject(AuthStore);
   private nav = inject(NavigationService);
   private authModal = inject(AuthDialogService);
 
-  // Language toggle
-  toggleLang(): void {
-    const next = this.lang.current() === 'fr' ? 'pt-BR' : 'fr';
-    this.lang.use(next);
+  // =========================================================
+  // State
+  // =========================================================
+  currentLang = this.lang.current;
+  user = computed(() => this.authStore.user());
+  isAuthenticated = computed(() => this.authStore.isAuthenticated());
+  logoUrl: string = 'assets/recipe-book.png';
+
+  // Language selection
+  setLang(selectedLang: string) {
+    this.lang.use(selectedLang);
   }
 
+  // Navigation
   goHome() {
     void this.nav.goHome();
-  }
-
-  goToAdvancedSearch(prefill?: any) {
-    void this.nav.goToAdvancedSearch(prefill);
-  }
-
-  goToAddRecipe() {
-    void this.nav.goToAddRecipeFull();
   }
 
   goLogin() {

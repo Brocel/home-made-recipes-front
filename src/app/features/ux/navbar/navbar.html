@@ -1,54 +1,38 @@
-<nav class="navbar container">
-  <!-- LEFT -->
-  <div class="left">
-    <app-left-menu
-      (openHome)="goHome()"
-      (openAdvancedSearch)="goToAdvancedSearch($event)"
-      (openAddRecipe)="goToAddRecipe()"
-    >
-    </app-left-menu>
-  </div>
-
-  <mat-divider vertical></mat-divider>
-
-  <!-- CENTER -->
-  <div class="center">
-    <section class="title">
-      <h1>{{ 'feature.home.title' | translate }}</h1>
-      <p class="lead">{{ 'feature.home.lead' | translate }}</p>
-    </section>
-    <div class="search-inline">
-      <app-quick-search
-        placeholder="{{ 'feature.recipes.search.placeholder' | translate }}"
-      ></app-quick-search>
+<nav class="navbar">
+  <section class="navbar__brand" (click)="goHome()">
+    <img [src]="logoUrl" alt="Logo" class="navbar__logo" />
+    <div class="navbar__titles">
+      <h1 class="navbar__title">{{ 'feature.home.title' | translate }}</h1>
+      <p class="navbar__lead">{{ 'feature.home.lead' | translate }}</p>
     </div>
-  </div>
+  </section>
 
-  <mat-divider vertical></mat-divider>
+  <section class="navbar__actions">
+    <div class="lang-switch">
+      <button
+        class="lang-switch__option"
+        [class.is-active]="currentLang() === 'fr'"
+        (click)="setLang('fr')"
+      >
+        FR
+      </button>
 
-  <!-- RIGHT -->
-  <div class="right">
-    <!-- bouton de langue lié au LanguageService -->
-    <button
-      class="btn"
-      type="button"
-      (click)="toggleLang()"
-      [attr.aria-label]="'navbar.langLabel' | translate"
-      [attr.aria-pressed]="lang.current() === 'pt-BR'"
-    >
-      {{ lang.current() === 'fr' ? 'FR' : 'BR' }}
-    </button>
+      <button
+        class="lang-switch__option"
+        [class.is-active]="currentLang() === 'pt-BR'"
+        (click)="setLang('pt-BR')"
+      >
+        BR
+      </button>
+    </div>
 
-    <mat-divider inset vertical></mat-divider>
-
-    <!-- PROFILE MENU -->
     <app-profile-menu
       [user]="user"
-      [isAuthenticated]="isAuthenticated"
+      [isAuthenticated]="isAuthenticated()"
       (openLogin)="goLogin()"
       (openProfile)="goProfile()"
       (signOut)="signOut()"
     >
     </app-profile-menu>
-  </div>
+  </section>
 </nav>
