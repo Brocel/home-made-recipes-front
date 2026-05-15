@@ -156,25 +156,6 @@ button:disabled {
 }
 
 /* ======================================================
-   Snackbar
-====================================================== */
-
-.snackbar-success {
-  width: fit-content;
-  padding: var(--space-xs) var(--space-md);
-
-  border-radius: var(--radius-md);
-
-  background-color: var(--color-success);
-  color: var(--color-text-inverse);
-
-  font-weight: 600;
-  text-align: center;
-
-  animation: slide-up var(--transition-slow);
-}
-
-/* ======================================================
    Animations
 ====================================================== */
 

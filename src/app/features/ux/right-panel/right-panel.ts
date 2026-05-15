@@ -1,5 +1,5 @@
 import { Component, computed, inject, signal } from '@angular/core';
-import { SidePosition } from '@appTypes/style.type';
+import { SidePosition } from '@appTypes/ui.primitive.type';
 import { DashboardRightPanel } from '@dashboard/dashboard-right-panel/dashboard-right-panel';
 import { ClickOutsideDirective } from '@directives/click-outside.directive';
 import { RouteContextService } from '@nav/route-context.service';

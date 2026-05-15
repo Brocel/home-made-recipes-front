@@ -3,7 +3,6 @@ import { Component, computed, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { AuthDialogService } from '@auth/auth-dialog.service';
 import { AuthService } from '@auth/auth.service';
-import { ClickOutsideDirective } from '@directives/click-outside.directive';
 import { NavigationService } from '@nav/navigation.service';
 import { TranslatePipe } from '@ngx-translate/core';
 import { AuthStore } from '@store/auth.store';
@@ -13,7 +12,7 @@ import { ProfileMenu } from '../profile-menu/profile-menu';
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule, RouterModule, TranslatePipe, ProfileMenu, ClickOutsideDirective],
+  imports: [CommonModule, RouterModule, TranslatePipe, ProfileMenu],
   templateUrl: './navbar.html',
   styleUrls: ['./navbar.scss'],
 })

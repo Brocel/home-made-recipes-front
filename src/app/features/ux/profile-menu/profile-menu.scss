@@ -1,35 +1,33 @@
-.profile-menu {
-  position: relative;
-  display: inline-flex;
+:host {
+  display: flex;
   align-items: center;
 }
 
-/* =========================
-   TRIGGER
-========================= */
+/* =========================================================
+   Trigger
+========================================================= */
 
-.profile-menu__trigger {
-  width: 40px;
-  height: 40px;
-
-  border-radius: 999px;
-
-  border: none;
-
-  background: color-mix(in srgb, var(--color-surface-elevated) 80%, transparent);
-
+.profile-trigger {
   display: flex;
   align-items: center;
   justify-content: center;
 
+  width: 44px;
+  height: 44px;
+
+  padding: 0;
+
+  border: none;
+  border-radius: 999px;
+
+  background: transparent;
+
   cursor: pointer;
 
   transition:
-    transform 0.15s ease,
-    background 0.2s ease,
-    box-shadow 0.2s ease;
-
-  box-shadow: var(--shadow-sm);
+    transform var(--transition-fast),
+    box-shadow var(--transition-base),
+    background-color var(--transition-base);
 
   &:hover {
     background: var(--color-surface-hover);
@@ -38,99 +36,100 @@
   &:active {
     transform: scale(0.96);
   }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
 }
 
+/* =========================================================
+   Avatar
+========================================================= */
+
 .avatar {
-  width: 34px;
-  height: 34px;
+  width: 38px;
+  height: 38px;
+
+  background: var(--color-primary-soft);
 
   border-radius: 999px;
 
   object-fit: cover;
+
+  border: 2px solid color-mix(in srgb, var(--color-primary) 30%, transparent);
+
+  box-shadow: var(--shadow-sm);
 }
 
-/* =========================
-   DROPDOWN
-========================= */
+/* =========================================================
+   Floating Panel
+========================================================= */
 
-.profile-menu__panel {
-  position: absolute;
-  right: 0;
-  top: calc(100% + var(--space-xs));
-
-  min-width: 200px;
-
-  padding: var(--space-xs);
-
-  border-radius: var(--radius-lg);
-
-  background: color-mix(in srgb, var(--color-surface) 92%, transparent);
-
-  border: 1px solid var(--color-border);
-
-  box-shadow: var(--shadow-lg);
-
+.profile-panel {
   display: flex;
   flex-direction: column;
 
-  gap: 4px;
+  min-width: 220px;
 
-  z-index: var(--z-dropdown);
-
-  animation: pop 0.15s ease-out;
+  padding: var(--space-xs);
 }
 
-@keyframes pop {
-  from {
-    opacity: 0;
-    transform: translateY(-6px) scale(0.98);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
+/* =========================================================
+   Items
+========================================================= */
 
-/* =========================
-   ITEMS
-========================= */
+.profile-item {
+  display: flex;
+  align-items: center;
 
-.profile-menu__item {
   width: 100%;
 
+  padding: var(--space-sm) var(--space-md);
+
   border: none;
+  border-radius: var(--radius-md);
+
   background: transparent;
 
-  padding: 0.6rem 0.75rem;
-
-  border-radius: var(--radius-md);
+  color: var(--color-text);
 
   text-align: left;
 
   font-size: var(--text-sm);
   font-weight: 500;
 
-  color: var(--color-text);
-
   cursor: pointer;
 
-  transition: background 0.15s ease;
+  transition:
+    background-color var(--transition-fast),
+    color var(--transition-fast);
 
   &:hover {
     background: var(--color-surface-hover);
   }
+
+  &:focus-visible {
+    outline: none;
+
+    background: var(--color-primary-soft);
+  }
+
+  &.danger:hover {
+    background: color-mix(in srgb, var(--color-danger) 12%, transparent);
+
+    color: var(--color-danger);
+  }
 }
 
-.profile-menu__item.danger {
-  color: var(--color-error);
-}
+/* =========================================================
+   Divider
+========================================================= */
 
-/* =========================
-   DIVIDER
-========================= */
-
-.profile-menu__divider {
+.profile-divider {
   height: 1px;
+
+  margin: var(--space-xs) 0;
+
   background: var(--color-border);
-  margin: 4px 0;
 }

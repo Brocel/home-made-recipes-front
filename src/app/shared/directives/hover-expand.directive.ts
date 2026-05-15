@@ -22,4 +22,14 @@ export class HoverExpandDirective {
   onMouseLeave() {
     this.hovered.emit(false);
   }
+
+  @HostListener('focusin')
+  onFocusIn() {
+    this.hovered.emit(true);
+  }
+
+  @HostListener('focusout')
+  onFocusOut() {
+    this.hovered.emit(false);
+  }
 }

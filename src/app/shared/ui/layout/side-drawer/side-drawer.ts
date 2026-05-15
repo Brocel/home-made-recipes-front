@@ -1,6 +1,7 @@
 import { NgClass, NgStyle } from '@angular/common';
 import { Component, computed, input, output } from '@angular/core';
-import { Layer, SidePosition, SurfaceOpacity, SurfaceTone } from '@appTypes/style.type';
+import { SurfaceOpacity, SurfaceTone } from '@appTypes/style.type';
+import { LayerType, SidePosition } from '@appTypes/ui.primitive.type';
 
 @Component({
   selector: 'app-side-drawer',
@@ -15,7 +16,7 @@ export class SideDrawer {
   open = input(false);
   position = input<SidePosition>('left');
   width = input('400px');
-  layer = input<Layer>('drawer');
+  layer = input<LayerType>('drawer');
   background = input<SurfaceTone>('surface-elevated');
   opacity = input<SurfaceOpacity>('solid');
 

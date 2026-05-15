@@ -1,6 +1,7 @@
 import { NgClass, NgStyle } from '@angular/common';
 import { Component, computed, input, output, signal } from '@angular/core';
-import { Layer, SidePosition, SurfaceOpacity, SurfaceTone } from '@appTypes/style.type';
+import { SurfaceOpacity, SurfaceTone } from '@appTypes/style.type';
+import { LayerType, SidePosition } from '@appTypes/ui.primitive.type';
 import { HoverExpandDirective } from '@directives/hover-expand.directive';
 
 @Component({
@@ -19,7 +20,7 @@ export class SideRail {
   // Inputs
   // =========================================================
   position = input<SidePosition>('left');
-  layer = input<Layer>('drawer');
+  layer = input<LayerType>('drawer');
   background = input<SurfaceTone>('surface-elevated');
   opacity = input<SurfaceOpacity>('solid');
 
