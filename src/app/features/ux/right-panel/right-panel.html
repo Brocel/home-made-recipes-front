@@ -1,17 +1,26 @@
-<app-side-drawer
-  [position]="position"
-  [open]="isOpen()"
-  width="500px"
-  background="primary-soft"
-  opacity="strong"
-  (openChange)="isOpen.set($event)"
-  (clickOutside)="close()"
->
-  <div class="panel-content">
-    <app-scroll-wrapper gap="xs" padding="md">
-      <app-mini-search (search)="onMiniSearch($event)" />
-
-      <app-mini-add />
-    </app-scroll-wrapper>
-  </div>
-</app-side-drawer>
+@if (featureType()) {
+  <app-side-drawer
+    [position]="position"
+    [open]="isOpen()"
+    width="500px"
+    background="primary-soft"
+    opacity="strong"
+    (openChange)="isOpen.set($event)"
+    (clickOutside)="close()"
+  >
+    @switch (featureType()) {
+      @case ('recipes') {
+        <app-recipes-right-panel />
+      }
+      @case ('products') {
+        <app-products-right-panel />
+      }
+      @case ('profile') {
+        <app-profile-right-panel />
+      }
+      @case ('planner') {
+        <app-planner-right-panel />
+      }
+    }
+  </app-side-drawer>
+}

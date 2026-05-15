@@ -19,13 +19,11 @@ export const routes: Routes = [
     pathMatch: 'full',
     redirectTo: 'hmr',
   },
-
   /*
    * APP SHELL
    */
   {
     path: 'hmr',
-
     children: [
       /*
        * HOME
@@ -38,51 +36,49 @@ export const routes: Routes = [
           menu: HOME_MENU_ITEMS,
         },
       },
-
       /*
        * RECIPES
        */
       {
         path: 'recipes',
-
         children: [
           {
             path: '',
             component: RecipeList,
             data: {
               feature: RECIPE_LIST_DATA,
+              featureType: 'recipes',
             },
           },
-
           {
             path: 'add',
             component: AddEditRecipe,
             data: {
               feature: RECIPE_ADD_DATA,
+              featureType: 'recipes',
             },
             canActivate: [AuthGuard],
           },
-
           {
             path: 'search',
             component: SearchRecipe,
             data: {
               feature: RECIPE_SEARCH_DATA,
+              featureType: 'recipes',
             },
           },
-
           {
             path: 'see/:id',
             component: RecipeFull,
             data: {
               feature: RECIPE_SEE_DATA,
+              featureType: 'recipes',
             },
           },
         ],
       },
     ],
   },
-
   {
     path: '**',
     redirectTo: 'hmr',

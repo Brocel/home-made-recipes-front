@@ -36,13 +36,12 @@ export class RouteContextService {
   // Public computed state
   // =========================================================
   feature = computed(() => this.routeData().feature);
-
   menu = computed(() => this.routeData().menu);
+  featureType = computed(() => this.routeData().featureType);
 
   // =========================================================
   // Helpers
   // =========================================================
-
   private getDeepestRoute(route: ActivatedRoute): ActivatedRoute {
     while (route.firstChild) {
       route = route.firstChild;
