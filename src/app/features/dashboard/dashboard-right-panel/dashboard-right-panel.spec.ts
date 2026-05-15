@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ProfileRightPanel } from './profile-right-panel';
+import { DashboardRightPanel } from './dashboard-right-panel';
 
-describe('ProfileRightPanel', () => {
-  let component: ProfileRightPanel;
-  let fixture: ComponentFixture<ProfileRightPanel>;
+describe('DashboardRightPanel', () => {
+  let component: DashboardRightPanel;
+  let fixture: ComponentFixture<DashboardRightPanel>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ProfileRightPanel]
+      imports: [DashboardRightPanel]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ProfileRightPanel);
+    fixture = TestBed.createComponent(DashboardRightPanel);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

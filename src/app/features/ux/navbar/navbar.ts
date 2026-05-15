@@ -1,19 +1,19 @@
 import { CommonModule } from '@angular/common';
 import { Component, computed, inject } from '@angular/core';
-import { MatDivider } from '@angular/material/divider';
 import { RouterModule } from '@angular/router';
 import { AuthDialogService } from '@auth/auth-dialog.service';
 import { AuthService } from '@auth/auth.service';
+import { ClickOutsideDirective } from '@directives/click-outside.directive';
 import { NavigationService } from '@nav/navigation.service';
 import { TranslatePipe } from '@ngx-translate/core';
 import { AuthStore } from '@store/auth.store';
 import { LanguageService } from '@translation/language.service';
-import { ProfileMenu } from '../../profile/profile-menu/profile-menu';
+import { ProfileMenu } from '../profile-menu/profile-menu';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule, RouterModule, TranslatePipe, ProfileMenu, MatDivider],
+  imports: [CommonModule, RouterModule, TranslatePipe, ProfileMenu, ClickOutsideDirective],
   templateUrl: './navbar.html',
   styleUrls: ['./navbar.scss'],
 })
@@ -50,6 +50,10 @@ export class Navbar {
   }
 
   goProfile() {
+    void this.nav.goToProfile();
+  }
+
+  goDashboard() {
     void this.nav.goToProfile();
   }
 

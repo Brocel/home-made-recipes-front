@@ -1,1 +1,1 @@
-export type FeatureType = 'recipes' | 'products' | 'profile' | 'planner';
+export type FeatureType = 'recipes' | 'products' | 'dashboard' | 'planner';

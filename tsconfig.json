@@ -29,6 +29,8 @@
       "@menu/*": ["./src/app/features/menu/*"],
       "@products/*": ["./src/app/features/products/*"],
       "@recipes/*": ["./src/app/features/recipes/*"],
+      "@dashboard/*": ["./src/app/features/dashboard/*"],
+      "@planner/*": ["./src/app/features/planner/*"],
       "@signin/*": ["./src/app/features/signin/*"],
       "@ux/*": ["./src/app/features/ux/*"],
       // Shared

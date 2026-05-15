@@ -8,5 +8,6 @@ export interface User {
   email: string;
   birth_date: string;
   inscription_date: string;
+  picture?: string;
   roles: Role[];
 }

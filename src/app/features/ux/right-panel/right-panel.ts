@@ -1,12 +1,12 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { SidePosition } from '@appTypes/style.type';
+import { DashboardRightPanel } from '@dashboard/dashboard-right-panel/dashboard-right-panel';
 import { ClickOutsideDirective } from '@directives/click-outside.directive';
 import { RouteContextService } from '@nav/route-context.service';
+import { PlannerRightPanel } from '@planner/planner-right-panel/planner-right-panel';
 import { ProductsRightPanel } from '@products/products-right-panel/products-right-panel';
 import { RecipesRightPanel } from '@recipes/recipes-right-panel/recipes-right-panel';
 import { SideDrawer } from '@ui/layout/side-drawer/side-drawer';
-import { PlannerRightPanel } from '../../planner/planner-right-panel/planner-right-panel';
-import { ProfileRightPanel } from '../../profile/profile-right-panel/profile-right-panel';
 
 @Component({
   selector: 'app-right-panel',
@@ -15,7 +15,7 @@ import { ProfileRightPanel } from '../../profile/profile-right-panel/profile-rig
     ClickOutsideDirective,
     RecipesRightPanel,
     ProductsRightPanel,
-    ProfileRightPanel,
+    DashboardRightPanel,
     PlannerRightPanel,
   ],
   templateUrl: './right-panel.html',

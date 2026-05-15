@@ -5,7 +5,7 @@ export const FEATURE_ROUTES = {
   home: 'hmr',
   products: 'products',
   recipes: 'recipes',
-  profile: 'profile', // TODO
+  dashboard: 'dashboard', // TODO
   planner: 'week-planner', // TODO
 };
 
@@ -13,7 +13,7 @@ export const FEATURE_TITLE = {
   home: 'feature.home.title',
   products: 'feature.products.title',
   recipes: 'feature.recipes.title',
-  profile: 'feature.profile.title',
+  dashboard: 'feature.dashboard.title',
   planner: 'feature.planner.title',
 };
 
@@ -21,7 +21,7 @@ export const FEATURE_DESCRIPTION = {
   home: 'feature.home.lead',
   products: 'feature.products.description',
   recipes: 'feature.recipes.description',
-  profile: 'feature.profile.description',
+  dashboard: 'feature.dashboard.description',
   planner: 'feature.planner.description',
 };
 
@@ -29,7 +29,7 @@ export const FEATURE_IMAGE = {
   home: 'assets/recipe-book.png',
   products: 'assets/ingredients.png',
   recipes: 'assets/recipe-book.png',
-  profile: 'assets/default_avatar.png',
+  dashboard: 'assets/dashboard.png',
   planner: 'assets/planner.png',
 };
 
@@ -62,10 +62,10 @@ export const RECIPES_DATA: FeatureData = {
 };
 
 export const PROFILE_DATA: FeatureData = {
-  path: FEATURE_ROUTES.profile,
-  title: FEATURE_TITLE.profile,
-  description: FEATURE_DESCRIPTION.profile,
-  image: FEATURE_IMAGE.profile,
+  path: FEATURE_ROUTES.dashboard,
+  title: FEATURE_TITLE.dashboard,
+  description: FEATURE_DESCRIPTION.dashboard,
+  image: FEATURE_IMAGE.dashboard,
 };
 
 export const PLANNER_DATA: FeatureData = {
@@ -89,10 +89,10 @@ export const HOME_MENU_ITEMS: MenuItem[] = [
     image: FEATURE_IMAGE.recipes,
   },
   {
-    label: FEATURE_TITLE.profile,
-    description: FEATURE_DESCRIPTION.profile,
-    path: [FEATURE_ROUTES.profile],
-    image: FEATURE_IMAGE.profile,
+    label: FEATURE_TITLE.dashboard,
+    description: FEATURE_DESCRIPTION.dashboard,
+    path: [FEATURE_ROUTES.dashboard],
+    image: FEATURE_IMAGE.dashboard,
   },
   {
     label: FEATURE_TITLE.planner,

@@ -1,0 +1,39 @@
+<div class="profile-menu" (clickOutside)="close()">
+  <!-- Trigger -->
+  <button
+    class="profile-menu__trigger"
+    (click)="toggle()"
+    [attr.aria-label]="'feature.ux.menu.profile.label' | translate"
+  >
+    @if (user()?.picture) {
+      <img [src]="user()?.picture" alt="{{ user()?.username || 'User' }}" class="avatar" />
+    } @else {
+      <img src="assets/default_avatar.png" alt="Avatar" class="avatar" />
+    }
+  </button>
+
+  <!-- Dropdown -->
+  @if (open()) {
+    <div class="profile-menu__panel">
+      @if (isAuthenticated()) {
+        <button class="profile-menu__item" (click)="onProfile()">
+          {{ 'feature.ux.menu.profile.user.label' | translate }}
+        </button>
+
+        <button class="profile-menu__item" (click)="onDashboard()">
+          {{ 'feature.ux.menu.profile.user.dashboard' | translate }}
+        </button>
+
+        <div class="profile-menu__divider"></div>
+
+        <button class="profile-menu__item danger" (click)="onLogout()">
+          {{ 'feature.ux.menu.profile.user.logout' | translate }}
+        </button>
+      } @else {
+        <button class="profile-menu__item" (click)="onLogin()">
+          {{ 'feature.ux.menu.profile.guest.login' | translate }}
+        </button>
+      }
+    </div>
+  }
+</div>

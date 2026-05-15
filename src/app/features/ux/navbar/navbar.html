@@ -27,11 +27,12 @@
     </div>
 
     <app-profile-menu
-      [user]="user"
+      [user]="user()"
       [isAuthenticated]="isAuthenticated()"
-      (openLogin)="goLogin()"
-      (openProfile)="goProfile()"
-      (signOut)="signOut()"
+      (login)="goLogin()"
+      (profile)="goProfile()"
+      (dashboard)="goDashboard()"
+      (logout)="signOut()"
     >
     </app-profile-menu>
   </section>

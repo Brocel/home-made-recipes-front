@@ -54,9 +54,9 @@
       "title": "Produits",
       "description": "Liste des produits"
     },
-    "profile": {
-      "title": "Profil",
-      "description": "Profil de l'utilisateur"
+    "dashboard": {
+      "title": "Dashboard",
+      "description": "Dashboard de l'utilisateur"
     },
     "planner": {
       "title": "Planning",
