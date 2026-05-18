@@ -18,20 +18,12 @@ import { HoverExpandDirective } from '@directives/hover-expand.directive';
   imports: [NgClass, NgStyle, HoverExpandDirective, ClickOutsideDirective],
   templateUrl: './floating-surface.html',
   styleUrl: './floating-surface.scss',
-  providers: [
-    {
-      provide: FloatingSurface,
-      useExisting: FloatingSurface,
-    },
-  ],
 })
 export class FloatingSurface {
   // =========================================================
   // Content projection
   // =========================================================
-
   trigger = contentChild(FloatingTriggerDirective);
-
   content = contentChild(FloatingContentDirective);
 
   // =========================================================
@@ -43,7 +35,6 @@ export class FloatingSurface {
   variant = input<SurfaceVariant>('surface');
   tone = input<SurfaceTone>('elevated');
   layer = input<LayerType>('dropdown');
-  closeOnOutsideClick = input(true);
 
   // =========================================================
   // State

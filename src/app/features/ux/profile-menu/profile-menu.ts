@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, input, output } from '@angular/core';
+import { FloatingCloseItemDirective } from '@directives/floating-close-item.directive';
 import { User } from '@models/user';
 import { TranslateModule } from '@ngx-translate/core';
 import { FloatingSurface } from '@ui/layout/floating-surface/floating-surface';
@@ -7,7 +8,7 @@ import { FloatingSurface } from '@ui/layout/floating-surface/floating-surface';
 @Component({
   selector: 'app-profile-menu',
   standalone: true,
-  imports: [CommonModule, TranslateModule, FloatingSurface],
+  imports: [CommonModule, TranslateModule, FloatingSurface, FloatingCloseItemDirective],
   templateUrl: './profile-menu.html',
   styleUrls: ['./profile-menu.scss'],
 })

@@ -15,21 +15,21 @@
   <!-- ===================================================== -->
   <div floatingContent class="profile-panel">
     @if (isAuthenticated()) {
-      <button floatingContent class="profile-item" (click)="onProfile()">
+      <button class="profile-item" (click)="onProfile()" floatingCloseItem>
         {{ 'feature.ux.menu.profile.user.label' | translate }}
       </button>
 
-      <button floatingContent class="profile-item" (click)="onDashboard()">
+      <button class="profile-item" (click)="onDashboard()" floatingCloseItem>
         {{ 'feature.ux.menu.profile.user.dashboard' | translate }}
       </button>
 
       <div class="profile-divider"></div>
 
-      <button floatingContent class="profile-item danger" (click)="onLogout()">
+      <button class="profile-item danger" (click)="onLogout()" floatingCloseItem>
         {{ 'feature.ux.menu.profile.user.logout' | translate }}
       </button>
     } @else {
-      <button class="profile-item" (click)="onLogin()">
+      <button class="profile-item" (click)="onLogin()" floatingCloseItem>
         {{ 'feature.ux.menu.profile.guest.login' | translate }}
       </button>
     }
