@@ -1,0 +1,12 @@
+<div class="date-picker">
+  <input
+    class="date-picker__input"
+    type="date"
+    [value]="value() ?? ''"
+    [min]="min() ?? ''"
+    [max]="max() ?? ''"
+    [disabled]="disabled()"
+    [attr.placeholder]="placeholder()"
+    (input)="onInput($event)"
+  />
+</div>

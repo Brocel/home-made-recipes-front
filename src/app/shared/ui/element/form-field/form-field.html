@@ -1,0 +1,29 @@
+<div [ngClass]="classes()">
+  @if (label()) {
+    <label class="form-field__label">
+      <span>
+        {{ label() }}
+      </span>
+
+      @if (required()) {
+        <span class="form-field__required">*</span>
+      }
+    </label>
+  }
+
+  <div class="form-field__control">
+    <ng-content />
+  </div>
+
+  @if (hint() && !error()) {
+    <p class="form-field__hint">
+      {{ hint() }}
+    </p>
+  }
+
+  @if (error()) {
+    <p class="form-field__error">
+      {{ error() }}
+    </p>
+  }
+</div>

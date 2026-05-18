@@ -26,3 +26,16 @@ export type OpeningStrategy = 'click' | 'hover' | 'programmatic' | 'timed';
 export type SurfaceVariant = 'surface' | 'primary' | 'accent' | 'danger' | 'success';
 
 export type SurfaceTone = 'soft' | 'solid' | 'elevated' | 'glass';
+
+export type Direction = 'row' | 'column';
+
+export type InputType =
+  | 'text'
+  | 'email'
+  | 'password'
+  | 'search'
+  | 'number'
+  | 'textarea'
+  | 'select'
+  | 'checkbox'
+  | 'radio';

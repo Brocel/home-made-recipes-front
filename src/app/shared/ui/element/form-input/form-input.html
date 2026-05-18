@@ -1,0 +1,47 @@
+@if (type() === 'textarea') {
+  <textarea
+    class="form-input"
+    [ngClass]="classes()"
+    [placeholder]="placeholder()"
+    [rows]="rows()"
+    [disabled]="disabled()"
+    >{{ value() }}
+  </textarea>
+} @else if (type() === 'select') {
+  <select class="form-input" [ngClass]="classes()" [disabled]="disabled()">
+    @for (option of options(); track option.value) {
+      <option [value]="option.value">
+        {{ option.label }}
+      </option>
+    }
+  </select>
+} @else if (type() === 'checkbox') {
+  <label class="choice-input">
+    <input type="checkbox" [checked]="checked()" [disabled]="disabled()" />
+
+    <span class="choice-input__indicator"></span>
+
+    <span class="choice-input__label">
+      {{ placeholder() }}
+    </span>
+  </label>
+} @else if (type() === 'radio') {
+  <label class="choice-input">
+    <input type="radio" [name]="name()" [checked]="checked()" [disabled]="disabled()" />
+
+    <span class="choice-input__indicator choice-input__indicator--radio"></span>
+
+    <span class="choice-input__label">
+      {{ placeholder() }}
+    </span>
+  </label>
+} @else {
+  <input
+    class="form-input"
+    [ngClass]="classes()"
+    [type]="type()"
+    [placeholder]="placeholder()"
+    [disabled]="disabled()"
+    [value]="value()"
+  />
+}

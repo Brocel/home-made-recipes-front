@@ -1,0 +1,59 @@
+/* =========================================================
+   FORM CONTROL BASE
+========================================================= */
+@mixin form-control-base {
+  width: 100%;
+
+  padding: var(--space-sm) var(--space-md);
+
+  border: 1px solid color-mix(in srgb, var(--color-outline) 75%, transparent);
+
+  border-radius: var(--radius-md);
+
+  background: color-mix(in srgb, var(--color-surface-elevated) 92%, transparent);
+
+  color: var(--color-text);
+
+  font-size: var(--text-sm);
+  font-family: inherit;
+
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.12s ease;
+
+  outline: none;
+
+  /* =========================================================
+     Hover
+  ========================================================= */
+  &:hover:not(:disabled) {
+    border-color: color-mix(in srgb, var(--color-primary) 35%, var(--color-outline));
+  }
+
+  /* =========================================================
+     Focus
+  ========================================================= */
+  &:focus {
+    border-color: var(--color-primary);
+
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-primary) 18%, transparent);
+  }
+
+  /* =========================================================
+     Disabled
+  ========================================================= */
+  &:disabled {
+    opacity: 0.55;
+
+    cursor: not-allowed;
+  }
+
+  /* =========================================================
+     Placeholder
+  ========================================================= */
+  &::placeholder {
+    color: color-mix(in srgb, var(--color-text) 45%, transparent);
+  }
+}

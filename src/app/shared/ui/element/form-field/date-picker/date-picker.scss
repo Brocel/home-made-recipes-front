@@ -1,0 +1,30 @@
+@use '../../../../../../styles/form-base' as form;
+
+.date-picker {
+  width: 100%;
+}
+
+.date-picker__input {
+  @include form.form-control-base;
+
+  min-height: 44px;
+
+  appearance: none;
+
+  cursor: pointer;
+
+  /* =========================================================
+     Calendar icon
+  ========================================================= */
+  &::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+
+    opacity: 0.72;
+
+    transition: opacity 0.2s ease;
+  }
+
+  &::-webkit-calendar-picker-indicator:hover {
+    opacity: 1;
+  }
+}
