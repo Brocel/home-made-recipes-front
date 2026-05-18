@@ -2,16 +2,17 @@ import { Component, inject, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { AuthService } from '@auth/auth.service';
 import { PageTitleService } from '@translation/page-title.service';
-import { PageLayout } from '@ui/layout/page-layout/page-layout';
+import { ModalHost } from '@ui/surfaces/hosts/modal-host/modal-host';
 import { Footer } from '@ux/footer/footer';
 import { LeftPanel } from '@ux/left-panel/left-panel';
 import { Navbar } from '@ux/navbar/navbar';
 import { RightPanel } from '@ux/right-panel/right-panel';
+import { PageLayout } from './shared/components/layout/page-layout/page-layout';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [Navbar, RouterOutlet, Footer, LeftPanel, PageLayout, RightPanel],
+  imports: [Navbar, RouterOutlet, Footer, LeftPanel, PageLayout, RightPanel, ModalHost],
   templateUrl: './app.html',
 })
 export class App implements OnInit {

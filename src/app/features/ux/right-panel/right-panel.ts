@@ -1,12 +1,12 @@
 import { Component, computed, inject, signal } from '@angular/core';
-import { SidePosition } from '@appTypes/ui.primitive.type';
+import { SidePosition } from '@appTypes/ui.primitive.types';
 import { DashboardRightPanel } from '@dashboard/dashboard-right-panel/dashboard-right-panel';
 import { ClickOutsideDirective } from '@directives/click-outside.directive';
 import { RouteContextService } from '@nav/route-context.service';
 import { PlannerRightPanel } from '@planner/planner-right-panel/planner-right-panel';
 import { ProductsRightPanel } from '@products/products-right-panel/products-right-panel';
 import { RecipesRightPanel } from '@recipes/recipes-right-panel/recipes-right-panel';
-import { SideDrawer } from '@ui/layout/side-drawer/side-drawer';
+import { SideDrawer } from '../../../shared/components/layout/side-drawer/side-drawer';
 
 @Component({
   selector: 'app-right-panel',

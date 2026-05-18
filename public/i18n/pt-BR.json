@@ -62,6 +62,27 @@
       "title": "Planning",
       "description": "Menu da semana"
     },
+    "signin": {
+      "login": {
+        "title": "Conneção",
+        "description": "Conecte-se com o Google para acessar suas receitas",
+        "button": "Conectar-se",
+        "spinner": "Conneção...",
+        "register": "Primeira visita?",
+        "success": "Bem vindo.a no Home Made Recipe!"
+      },
+      "register": {
+        "create": "Criar uma conta",
+        "spinner": "Criação...",
+        "title": "Inscrição",
+        "description": "Registre-se rapidamente com sua conta do Google para começar a adicionar suas receitas",
+        "existingAccount": "Você já tem uma conta?",
+        "success": {
+          "title": "Parabens !",
+          "message": "Você conseguiu a criar uma conta !"
+        }
+      }
+    },
     "ux": {
       "navbar": {
         "searchPlaceholder": "Pesquisa rápida",
@@ -90,25 +111,6 @@
         },
         "home": "Início",
         "searchPlaceholder": "Pesquisa rápida"
-      },
-      "login": {
-        "title": "Conneção",
-        "description": "Conecte-se com o Google para acessar suas receitas",
-        "button": "Conectar-se",
-        "spinner": "Conneção...",
-        "register": "Primeira visita?",
-        "success": "Bem vindo.a no Home Made Recipe!"
-      },
-      "register": {
-        "create": "Criar uma conta",
-        "spinner": "Criação...",
-        "title": "Inscrição",
-        "description": "Registre-se rapidamente com sua conta do Google para começar a adicionar suas receitas",
-        "existingAccount": "Você já tem uma conta?",
-        "success": {
-          "title": "Parabens !",
-          "message": "Você conseguiu a criar uma conta !"
-        }
       }
     }
   },
@@ -185,8 +187,12 @@
     "validation": {
       "email": "Email inválido",
       "password": "Senha obrigatória",
+      "password_mismatch": "As senhas não coincidem",
+      "password_wrong": "Senha incorreta",
       "username_taken": "Esse username já existe",
-      "username": "O username deve ter pelo menos 5 lettras"
+      "username": "O username deve ter pelo menos 5 letras",
+      "first_name": "O nome deve conter pelo menos X letras",
+      "last_name": "O sobrenome deve conter pelo menos X letras"
     },
     "label": {
       "email": "Email",

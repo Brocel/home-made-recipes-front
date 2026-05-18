@@ -1,0 +1,21 @@
+<section class="form-section">
+  @if (title() || description()) {
+    <header class="form-section__header">
+      @if (title()) {
+        <h3 class="form-section__title">
+          {{ title() }}
+        </h3>
+      }
+
+      @if (description()) {
+        <p class="form-section__description">
+          {{ description() }}
+        </p>
+      }
+    </header>
+  }
+
+  <div class="form-section__content">
+    <ng-content />
+  </div>
+</section>

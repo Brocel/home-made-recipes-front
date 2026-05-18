@@ -4,7 +4,7 @@ import { MatIcon } from '@angular/material/icon';
 import { TranslatePipe } from '@ngx-translate/core';
 import { RecipeCreateBridgeService } from '@services/recipe-create-bridge.service';
 import { RecipeFormService } from '@services/recipe-form.service';
-import { ScrollWrapper } from '@ui/layout/scroll-wrapper/scroll-wrapper';
+import { ScrollWrapper } from '../../../../shared/components/layout/scroll-wrapper/scroll-wrapper';
 import { RecipeInfo } from './sections/recipe-info/recipe-info';
 import { RecipeIngredients } from './sections/recipe-ingredients/recipe-ingredients';
 import { RecipeSteps } from './sections/recipe-steps/recipe-steps';

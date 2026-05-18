@@ -1,9 +1,14 @@
 import { Component, inject, OnDestroy, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { AuthDialogService } from '@auth/auth-dialog.service';
+import { AuthUIService } from '@auth/auth-ui.service';
 import { AuthService } from '@auth/auth.service';
 import { RegisterRequest } from '@auth/register.request';
+import { AppButton } from '@components/element/app-button/app-button';
+import { FormField } from '@components/element/form-field/form-field';
+import { FormInput } from '@components/element/form-input/form-input';
+import { FormLayout } from '@components/layout/form-layout/form-layout';
+import { FormSection } from '@components/layout/form-section/form-section';
 import { TranslatePipe } from '@ngx-translate/core';
 import { isoToDDMMYYYY } from '@utils/date.util';
 import { UsernameValidator } from '@validators/username.validator';
@@ -12,7 +17,15 @@ import { Subscription, timer } from 'rxjs';
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [ReactiveFormsModule, TranslatePipe],
+  imports: [
+    ReactiveFormsModule,
+    TranslatePipe,
+    AppButton,
+    FormLayout,
+    FormSection,
+    FormField,
+    FormInput,
+  ],
   templateUrl: './register.html',
   styleUrl: './register.scss',
 })
@@ -20,7 +33,7 @@ export class Register implements OnDestroy {
   private fb = inject(FormBuilder);
   private auth = inject(AuthService);
   private usernameValidator = inject(UsernameValidator);
-  private authModal = inject(AuthDialogService);
+  private authUI = inject(AuthUIService);
 
   loading = signal(false);
   errorKey = signal<string | null>(null);
@@ -103,7 +116,7 @@ export class Register implements OnDestroy {
 
   private goToLoginWithEmail(email: string): void {
     this.dialogRef.close();
-    this.authModal.openLoginModal(email);
+    this.authUI.openLogin(email);
   }
 
   ngOnDestroy(): void {

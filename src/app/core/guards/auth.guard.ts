@@ -1,6 +1,6 @@
 import { inject } from '@angular/core';
 import { CanActivateFn } from '@angular/router';
-import { AuthDialogService } from '@auth/auth-dialog.service';
+import { AuthDialogService } from '@auth/auth-ui.service';
 import { AuthService } from '@auth/auth.service';
 import { AuthStore } from '@store/auth.store';
 

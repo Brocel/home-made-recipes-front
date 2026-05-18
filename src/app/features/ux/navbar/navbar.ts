@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, computed, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { AuthDialogService } from '@auth/auth-dialog.service';
+import { AuthUIService } from '@auth/auth-ui.service';
 import { AuthService } from '@auth/auth.service';
 import { NavigationService } from '@nav/navigation.service';
 import { TranslatePipe } from '@ngx-translate/core';
@@ -24,7 +24,7 @@ export class Navbar {
   private auth = inject(AuthService);
   private authStore = inject(AuthStore);
   private nav = inject(NavigationService);
-  private authModal = inject(AuthDialogService);
+  private authUI = inject(AuthUIService);
 
   // =========================================================
   // State
@@ -45,7 +45,7 @@ export class Navbar {
   }
 
   goLogin() {
-    void this.authModal.openLoginModal();
+    void this.authUI.openLogin();
   }
 
   goProfile() {

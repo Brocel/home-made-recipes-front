@@ -1,93 +1,132 @@
-<div class="modal-container">
-  <h1>{{ 'register.title' | translate }}</h1>
+<app-form-layout [title]="'register.title' | translate" [showActions]="true">
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <!-- =========================
+         IDENTITY SECTION
+    ========================== -->
+    <app-form-section [title]="'register.section.identity' | translate">
+      <app-form-field
+        [label]="'form.label.first_name' | translate"
+        [error]="
+          form.controls.first_name.touched && form.controls.first_name.invalid
+            ? ('form.validation.first_name' | translate)
+            : null
+        "
+      >
+        <app-form-input type="text" formControlName="first_name" />
+      </app-form-field>
 
-  @if (!success()) {
-    <form [formGroup]="form" (ngSubmit)="submit()">
-      <label>{{ 'form.label.first_name' | translate }}</label>
-      <input type="text" formControlName="first_name" class="input" />
-      @if (form.controls.first_name.invalid && form.controls.first_name.touched) {
-        <span class="input-error">
-          {{ 'form.validation.first_name' | translate }}
-        </span>
-      }
+      <app-form-field
+        [label]="'form.label.last_name' | translate"
+        [error]="
+          form.controls.last_name.touched && form.controls.last_name.invalid
+            ? ('form.validation.last_name' | translate)
+            : null
+        "
+      >
+        <app-form-input type="text" formControlName="last_name" />
+      </app-form-field>
 
-      <label>{{ 'form.label.last_name' | translate }}</label>
-      <input type="text" formControlName="last_name" class="input" />
-      @if (form.controls.last_name.invalid && form.controls.last_name.touched) {
-        <span class="input-error">
-          {{ 'form.validation.last_name' | translate }}
-        </span>
-      }
+      <app-form-field
+        [label]="'form.label.username' | translate"
+        [error]="
+          form.controls.username.hasError('usernameTaken')
+            ? ('form.validation.username_taken' | translate)
+            : form.controls.username.touched && form.controls.username.invalid
+              ? ('form.validation.username' | translate)
+              : null
+        "
+      >
+        <app-form-input type="text" formControlName="username" />
+      </app-form-field>
+    </app-form-section>
 
-      <label>{{ 'form.label.username' | translate }}</label>
-      <input type="text" formControlName="username" class="input" />
-      @if (form.controls.username.hasError('usernameTaken')) {
-        <span class="input-error"> {{ 'form.validation.username_taken' | translate }} </span>
-      }
-      @if (
-        form.controls.username.invalid &&
-        form.controls.username.touched &&
-        !form.controls.username.hasError('usernameTaken')
-      ) {
-        <span class="input-error">
-          {{ 'form.validation.username' | translate }}
-        </span>
-      }
+    <!-- =========================
+         CREDENTIALS SECTION
+    ========================== -->
+    <app-form-section [title]="'register.section.credentials' | translate">
+      <app-form-field
+        [label]="'form.label.email' | translate"
+        [error]="
+          form.controls.email.touched && form.controls.email.invalid
+            ? ('form.validation.email' | translate)
+            : null
+        "
+      >
+        <app-form-input type="email" formControlName="email" />
+      </app-form-field>
 
-      <label>{{ 'form.label.email' | translate }}</label>
-      <input type="email" formControlName="email" class="input" />
-      @if (form.controls.email.invalid && form.controls.email.touched) {
-        <span class="input-error">
-          {{ 'form.validation.email' | translate }}
-        </span>
-      }
+      <app-form-field
+        [label]="'form.label.password' | translate"
+        [error]="
+          form.controls.password.touched && form.controls.password.invalid
+            ? ('form.validation.password' | translate)
+            : null
+        "
+      >
+        <app-form-input type="password" formControlName="password" />
+      </app-form-field>
 
-      <label>{{ 'form.label.password' | translate }}</label>
-      <input type="password" formControlName="password" class="input" />
-      @if (form.controls.password.invalid && form.controls.password.touched) {
-        <span class="input-error">
-          {{ 'form.validation.password' | translate }}
-        </span>
-      }
+      <app-form-field
+        [label]="'form.label.confirm_password' | translate"
+        [error]="
+          form.controls.confirmPassword.touched && form.controls.confirmPassword.invalid
+            ? ('form.validation.confirm_password' | translate)
+            : null
+        "
+      >
+        <app-form-input type="password" formControlName="confirmPassword" />
+      </app-form-field>
+    </app-form-section>
 
-      <label>{{ 'form.label.confirm_password' | translate }}</label>
-      <input type="password" formControlName="confirmPassword" class="input" />
-      @if (form.controls.confirmPassword.invalid && form.controls.confirmPassword.touched) {
-        <span class="input-error">
-          {{ 'form.validation.confirm_password' | translate }}
-        </span>
-      }
+    <!-- =========================
+         META SECTION
+    ========================== -->
+    <app-form-section [title]="'register.section.meta' | translate">
+      <app-form-field
+        [label]="'form.label.birth_date' | translate"
+        [error]="
+          form.controls.birth_date.touched && form.controls.birth_date.invalid
+            ? ('form.validation.birth_date' | translate)
+            : null
+        "
+      >
+        <app-form-input formControlName="birth_date" />
+      </app-form-field>
+    </app-form-section>
 
-      <label>{{ 'form.label.birth_date' | translate }}</label>
-      <input type="date" formControlName="birth_date" class="input" />
-      @if (form.controls.birth_date.invalid && form.controls.birth_date.touched) {
-        <span class="input-error">
-          {{ 'form.validation.birth_date' | translate }}
-        </span>
-      }
+    <!-- =========================
+         GLOBAL ERROR
+    ========================== -->
+    @if (errorKey()) {
+      <div class="form-global-error">
+        {{ errorKey() | translate }}
+      </div>
+    }
 
-      @if (errorKey()) {
-        <div class="error">
-          {{ errorKey() | translate }}
-        </div>
-      }
+    <!-- =========================
+         ACTIONS
+    ========================== -->
+    <div form-actions>
+      <app-button
+        type="submit"
+        variant="primary"
+        [disabled]="loading() || form.invalid"
+        [loading]="loading()"
+      >
+        {{ loading() ? ('register.spinner' | translate) : ('register.create' | translate) }}
+      </app-button>
+    </div>
+  </form>
 
-      <button type="submit" [disabled]="loading() || form.invalid">
-        @if (loading()) {
-          <span>{{ 'register.spinner' | translate }}</span>
-        } @else {
-          <span>{{ 'register.create' | translate }}</span>
-        }
-      </button>
-    </form>
-  } @else {
-    <div class="success">
+  <!-- SUCCESS STATE -->
+  @if (success()) {
+    <div class="register-success">
       <h2>{{ 'register.success.title' | translate }}</h2>
       <p>{{ 'register.success.message' | translate }}</p>
 
-      <button type="button" class="btn btn-primary" (click)="confirmSuccess()">
+      <app-button variant="primary" (click)="confirmSuccess()">
         {{ 'register.success.ok' | translate }}
-      </button>
+      </app-button>
     </div>
   }
-</div>
+</app-form-layout>

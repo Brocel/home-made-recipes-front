@@ -62,6 +62,27 @@
       "title": "Planning",
       "description": "Menu de la semaine"
     },
+    "signin": {
+      "login": {
+        "title": "Connexion",
+        "description": "Connectes-toi avec Google pour accéder à tes recettes",
+        "button": "Se connecter",
+        "spinner": "Connexion...",
+        "register": "Première visite ?",
+        "success": "Bienvenu.e dans Home Made Recipe!"
+      },
+      "register": {
+        "create": "Créer un compte",
+        "spinner": "Création du compte...",
+        "title": "Inscription",
+        "description": "Inscris-toi rapidement avec ton compte Google pour commencer à ajouter tes recettes",
+        "existingAccount": "Si tu as déjà un compte",
+        "success": {
+          "title": "Félicitations !",
+          "message": "La création d'un nouveau compte a réussi !"
+        }
+      }
+    },
     "ux": {
       "navbar": {
         "searchPlaceholder": "Recherche rapide",
@@ -90,25 +111,6 @@
         },
         "home": "Accueil",
         "searchPlaceholder": "Recherche rapide"
-      },
-      "login": {
-        "title": "Connexion",
-        "description": "Connectes-toi avec Google pour accéder à tes recettes",
-        "button": "Se connecter",
-        "spinner": "Connexion...",
-        "register": "Première visite ?",
-        "success": "Bienvenu.e dans Home Made Recipe!"
-      },
-      "register": {
-        "create": "Créer un compte",
-        "spinner": "Création du compte...",
-        "title": "Inscription",
-        "description": "Inscris-toi rapidement avec ton compte Google pour commencer à ajouter tes recettes",
-        "existingAccount": "Si tu as déjà un compte",
-        "success": {
-          "title": "Félicitations !",
-          "message": "La création d'un nouveau compte a réussi !"
-        }
       }
     }
   },
@@ -185,8 +187,12 @@
     "validation": {
       "email": "Email non-valide",
       "password": "Mot de passe obligatoire",
+      "password_mismatch": "Les mots de passe ne correspondent pas",
+      "password_wrong": "Mot de passe incorrect",
       "username_taken": "Ce pseudonyme n'est pas disponible",
-      "username": "Le pseudonyme doit être composé au minimum de 5 lettres"
+      "username": "Le pseudonyme doit être composé au minimum de 5 lettres",
+      "first_name": "Le prénom doit être composé au minimum de X lettres",
+      "last_name": "Le nom doit être composé au minimum de X lettres"
     },
     "label": {
       "email": "Email",

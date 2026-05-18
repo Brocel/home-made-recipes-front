@@ -1,10 +1,15 @@
 import { CommonModule } from '@angular/common';
-import { Component, Inject, inject, OnInit, signal } from '@angular/core';
+import { Component, Inject, inject, input, OnInit, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { AuthDialogService } from '@auth/auth-dialog.service';
+import { AuthUIService } from '@auth/auth-ui.service';
 import { AuthService } from '@auth/auth.service';
 import { LoginRequest } from '@auth/login.request';
+import { AppButton } from '@components/element/app-button/app-button';
+import { FormField } from '@components/element/form-field/form-field';
+import { FormInput } from '@components/element/form-input/form-input';
+import { FormLayout } from '@components/layout/form-layout/form-layout';
+import { FormSection } from '@components/layout/form-section/form-section';
 import { NavigationService } from '@nav/navigation.service';
 import { TranslatePipe } from '@ngx-translate/core';
 import { NotificationService } from '@services/notification.service';
@@ -12,7 +17,16 @@ import { NotificationService } from '@services/notification.service';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, TranslatePipe],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    TranslatePipe,
+    FormLayout,
+    FormSection,
+    FormField,
+    FormInput,
+    AppButton,
+  ],
   templateUrl: './login.html',
   styleUrl: './login.scss',
 })
@@ -20,8 +34,11 @@ export class Login implements OnInit {
   private fb = inject(FormBuilder);
   private authService = inject(AuthService);
   private nav = inject(NavigationService);
-  private authModal = inject(AuthDialogService);
+  private authUI = inject(AuthUIService);
   private notif = inject(NotificationService);
+
+  // Inputs
+  prefillEmail = input<string | undefined>(undefined);
 
   // --- Signals ---
   loading = signal(false);
@@ -68,6 +85,6 @@ export class Login implements OnInit {
 
   goToRegister() {
     this.dialogRef.close();
-    this.authModal.openRegisterModal();
+    this.authUI.openRegister();
   }
 }

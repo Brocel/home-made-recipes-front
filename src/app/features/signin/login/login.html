@@ -1,33 +1,54 @@
-<div class="modal-container">
-  <h1>{{ 'login.title' | translate }}</h1>
-
+<app-form-layout
+  [title]="'login.title' | translate"
+  [subtitle]="'login.description' | translate"
+  [showActions]="true"
+>
   <form [formGroup]="form" (ngSubmit)="submit()">
-    <label>{{ 'form.label.email' | translate }}</label>
-    <input type="email" formControlName="email" class="input" />
+    <!-- EMAIL -->
+    <app-form-section>
+      <app-form-field
+        [label]="'form.label.email' | translate"
+        [error]="
+          form.controls.email.touched && form.controls.email.invalid
+            ? ('form.validation.email' | translate)
+            : null
+        "
+      >
+        <app-form-input type="email" formControlName="email" />
+      </app-form-field>
+    </app-form-section>
 
-    @if (form.controls.email.invalid && form.controls.email.touched) {
-      <span class="input-error">{{ 'form.validation.email' | translate }}</span>
-    }
+    <!-- PASSWORD -->
+    <app-form-section>
+      <app-form-field
+        [label]="'form.label.password' | translate"
+        [error]="
+          form.controls.password.touched && form.controls.password.invalid
+            ? ('form.validation.password' | translate)
+            : null
+        "
+      >
+        <app-form-input type="password" formControlName="password" />
+      </app-form-field>
+    </app-form-section>
 
-    <label>{{ 'form.label.password' | translate }}</label>
-    <input type="password" formControlName="password" class="input" />
-
-    @if (form.controls.password.invalid && form.controls.password.touched) {
-      <span class="input-error">{{ 'form.validation.password' | translate }}</span>
-    }
-
-    <button type="submit" [disabled]="loading() || form.invalid">
-      @if (loading()) {
-        <span>{{ 'login.spinner' | translate }}</span>
-      } @else {
-        <span>{{ 'login.button' | translate }}</span>
-      }
-    </button>
-  </form>
-  <div class="modal-section">
-    <h2>{{ 'login.register' | translate }}</h2>
-    <div class="btn btn-secondary" (click)="goToRegister()">
-      {{ 'register.create' | translate }}
+    <!-- ACTIONS -->
+    <div form-actions>
+      <app-button
+        type="submit"
+        variant="primary"
+        [disabled]="loading() || form.invalid"
+        [loading]="loading()"
+      >
+        {{ loading() ? ('login.spinner' | translate) : ('login.button' | translate) }}
+      </app-button>
     </div>
+  </form>
+
+  <!-- SECONDARY ACTION -->
+  <div class="login-secondary">
+    <app-button variant="secondary" type="button" (click)="goToRegister()">
+      {{ 'login.register' | translate }}
+    </app-button>
   </div>
-</div>
+</app-form-layout>

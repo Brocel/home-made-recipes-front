@@ -1,0 +1,78 @@
+.form-field {
+  display: flex;
+  flex-direction: column;
+
+  gap: var(--space-xs);
+
+  width: 100%;
+
+  /* =========================================================
+     Label
+  ========================================================= */
+  &__label {
+    display: flex;
+    align-items: center;
+
+    gap: 4px;
+
+    font-size: var(--text-sm);
+    font-weight: 600;
+
+    color: var(--color-text);
+  }
+
+  &__required {
+    color: var(--color-danger);
+    font-size: var(--text-sm);
+  }
+
+  /* =========================================================
+     Control
+  ========================================================= */
+  &__control {
+    display: flex;
+    width: 100%;
+  }
+
+  /* =========================================================
+     Hint / Error
+  ========================================================= */
+  &__hint,
+  &__error {
+    margin: 0;
+    padding-left: var(--space-xs);
+
+    font-size: var(--text-xs);
+
+    line-height: 1.4;
+
+    animation: fadeIn 0.15s ease;
+  }
+
+  &__hint {
+    color: var(--color-text-soft);
+  }
+
+  &__error {
+    color: var(--color-danger);
+  }
+
+  /* =========================================================
+     States
+  ========================================================= */
+
+  &.is-disabled {
+    opacity: 0.6;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

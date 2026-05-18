@@ -6,7 +6,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { TranslatePipe } from '@ngx-translate/core';
-import { ScrollWrapper } from '@ui/layout/scroll-wrapper/scroll-wrapper';
+import { ScrollWrapper } from '../../../shared/components/layout/scroll-wrapper/scroll-wrapper';
 
 import { IngredientTypeLabel } from '@models/recipes/ingredient-type.enum';
 import { Recipe } from '@models/recipes/recipe';

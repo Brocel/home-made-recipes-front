@@ -1,6 +1,6 @@
 import { HttpInterceptorFn } from '@angular/common/http';
 import { inject } from '@angular/core';
-import { AuthDialogService } from '@auth/auth-dialog.service';
+import { AuthDialogService } from '@auth/auth-ui.service';
 import { AuthService } from '@auth/auth.service';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';

@@ -1,0 +1,20 @@
+export type SidePosition = 'left' | 'right';
+
+export type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'danger' | 'success';
+
+export type ButtonType = 'button' | 'submit' | 'reset';
+
+export type ButtonSize = 'sm' | 'md' | 'lg';
+
+export type Direction = 'row' | 'column';
+
+export type InputType =
+  | 'text'
+  | 'email'
+  | 'password'
+  | 'search'
+  | 'number'
+  | 'textarea'
+  | 'select'
+  | 'checkbox'
+  | 'radio';
