@@ -7,8 +7,8 @@ import { TranslatePipe } from '@ngx-translate/core';
 import { AuthStore } from '@store/auth.store';
 import { LanguageService } from '@translation/language.service';
 import { ModalService } from '@uiServices/modal.service';
-import { ModalConfig } from '@uiTypes/modal.types';
 import { FEATURE_ROUTES } from '@utils/datas/feature-data.util';
+import { buildLoginConfig, buildProfileConfig } from '@utils/modal.util';
 import { ProfileMenu } from '../profile-menu/profile-menu';
 
 @Component({
@@ -47,31 +47,19 @@ export class Navbar {
   }
 
   goLogin() {
-    const config: ModalConfig<'login'> = {
-      type: 'login',
-      data: {
-        email: '',
-      },
-    };
-    void this.modal.open(config);
+    this.modal.open(buildLoginConfig());
   }
 
   goProfile() {
-    const config: ModalConfig<'profile'> = {
-      type: 'profile',
-      data: {
-        user: this.authStore.user()!,
-      },
-    };
-    void this.modal.open(config);
+    this.modal.open(buildProfileConfig(this.authStore.user()!));
   }
 
   goDashboard() {
-    void this.nav.goToFeature([FEATURE_ROUTES.dashboard]);
+    this.nav.goToFeature([FEATURE_ROUTES.dashboard]);
   }
 
   signOut() {
     this.auth.logout();
-    void this.nav.goHome();
+    this.nav.goHome();
   }
 }

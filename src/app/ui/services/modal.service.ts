@@ -1,4 +1,4 @@
-import { Injectable, signal } from '@angular/core';
+import { computed, Injectable, signal } from '@angular/core';
 import { ModalConfig } from '../types/modal.types';
 
 @Injectable({
@@ -15,28 +15,20 @@ export class ModalService {
   // Public signals
   // =========================================================
   modal = this.currentModal.asReadonly();
-  isOpen = this.opened.asReadonly();
+  isOpen = computed(() => this.currentModal() !== undefined && this.opened());
 
   // =========================================================
   // Actions
   // =========================================================
   open(config: ModalConfig): void {
+    console.log('OPENING MODAL');
     this.currentModal.set(config);
     this.opened.set(true);
   }
 
   close(): void {
+    console.log('CLOSING MODAL');
+    this.currentModal.set(undefined);
     this.opened.set(false);
-  }
-
-  toggle(config: ModalConfig): void {
-    const current = this.currentModal();
-
-    if (this.isOpen() && current?.type === config.type) {
-      this.close();
-      return;
-    }
-
-    this.open(config);
   }
 }

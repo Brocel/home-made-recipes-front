@@ -35,8 +35,8 @@ export class Modal {
   // =========================================================
   // State
   // =========================================================
-  modal = this.modalService.modal;
-  isOpen = this.modalService.isOpen;
+  modal = computed(() => this.modalService.modal());
+  isOpen = computed(() => this.modalService.isOpen());
 
   // =========================================================
   // Typed data helpers

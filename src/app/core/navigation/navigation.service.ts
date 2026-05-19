@@ -35,7 +35,6 @@ export class NavigationService {
 
   goToFeature(path: string[]) {
     const newPath = [FEATURE_ROUTES.home, ...path];
-    console.log('newPath :: ' + newPath);
     return this.safeNavigate(newPath);
   }
 
