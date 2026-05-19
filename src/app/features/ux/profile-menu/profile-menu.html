@@ -1,8 +1,8 @@
-<app-floating-surface position="anchored" strategy="click" layer="dropdown" [open]="menu.open()">
+<app-floating-surface [position]="position" [layer]="layer" [tone]="tone" [open]="open()">
   <!-- ===================================================== -->
   <!-- Trigger -->
   <!-- ===================================================== -->
-  <button floatingTrigger class="profile-trigger" type="button" (click)="menu.toggle()">
+  <button floatingTrigger class="profile-trigger" type="button" (click)="toggle()">
     @if (user()?.picture) {
       <img [src]="user()?.picture" [alt]="user()?.username || 'User'" class="avatar" />
     } @else {
@@ -15,21 +15,21 @@
   <!-- ===================================================== -->
   <div floatingContent class="profile-panel">
     @if (isAuthenticated()) {
-      <button class="profile-item" (click)="onProfile()" floatingCloseItem>
+      <button class="profile-item" (click)="onProfile()">
         {{ 'feature.ux.menu.profile.user.label' | translate }}
       </button>
 
-      <button class="profile-item" (click)="onDashboard()" floatingCloseItem>
+      <button class="profile-item" (click)="onDashboard()">
         {{ 'feature.ux.menu.profile.user.dashboard' | translate }}
       </button>
 
       <div class="profile-divider"></div>
 
-      <button class="profile-item danger" (click)="onLogout()" floatingCloseItem>
+      <button class="profile-item danger" (click)="onLogout()">
         {{ 'feature.ux.menu.profile.user.logout' | translate }}
       </button>
     } @else {
-      <button class="profile-item" (click)="onLogin()" floatingCloseItem>
+      <button class="profile-item" (click)="onLogin()">
         {{ 'feature.ux.menu.profile.guest.login' | translate }}
       </button>
     }

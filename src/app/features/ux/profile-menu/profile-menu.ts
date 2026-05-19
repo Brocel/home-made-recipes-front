@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { Component, input, output } from '@angular/core';
+import { Component, inject, input, output } from '@angular/core';
 import { FloatingContentDirective } from '@directives/floating-content.directive';
 import { FloatingTriggerDirective } from '@directives/floating-trigger.directive';
 import { User } from '@models/user';
 import { TranslateModule } from '@ngx-translate/core';
 import { FloatingSurface } from '@overlays/floating-surface/floating-surface';
 import { MenuService } from '@uiServices/menu.service';
+import { LayerType, Position, Tone } from '@uiTypes/overlay.types';
 
 @Component({
   selector: 'app-profile-menu',
@@ -22,9 +23,16 @@ import { MenuService } from '@uiServices/menu.service';
 })
 export class ProfileMenu {
   // =========================================================
-  // Controllers
+  // Dependencies
   // =========================================================
-  readonly menu = new MenuService();
+  private menu = inject(MenuService);
+
+  // =========================================================
+  // Porperties
+  // =========================================================
+  position: Position = 'anchored';
+  layer: LayerType = 'dropdown';
+  tone: Tone = 'elevated';
 
   // =========================================================
   // Inputs
@@ -43,6 +51,14 @@ export class ProfileMenu {
   // =========================================================
   // Actions
   // =========================================================
+  open() {
+    return this.menu.isOpen();
+  }
+
+  toggle() {
+    this.menu.toggle();
+  }
+
   onLogin() {
     this.login.emit();
     this.menu.closeMenu();

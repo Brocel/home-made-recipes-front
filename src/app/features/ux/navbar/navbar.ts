@@ -1,12 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { Component, computed, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { AuthUIService } from '@auth/auth-ui.service';
 import { AuthService } from '@auth/auth.service';
 import { NavigationService } from '@nav/navigation.service';
 import { TranslatePipe } from '@ngx-translate/core';
 import { AuthStore } from '@store/auth.store';
 import { LanguageService } from '@translation/language.service';
+import { ModalService } from '@uiServices/modal.service';
+import { ModalConfig } from '@uiTypes/modal.types';
+import { FEATURE_ROUTES } from '@utils/datas/feature-data.util';
 import { ProfileMenu } from '../profile-menu/profile-menu';
 
 @Component({
@@ -24,7 +26,7 @@ export class Navbar {
   private auth = inject(AuthService);
   private authStore = inject(AuthStore);
   private nav = inject(NavigationService);
-  private authUI = inject(AuthUIService);
+  private modal = inject(ModalService);
 
   // =========================================================
   // State
@@ -45,15 +47,27 @@ export class Navbar {
   }
 
   goLogin() {
-    void this.authUI.openLogin();
+    const config: ModalConfig<'login'> = {
+      type: 'login',
+      data: {
+        email: '',
+      },
+    };
+    void this.modal.open(config);
   }
 
   goProfile() {
-    void this.nav.goToProfile();
+    const config: ModalConfig<'profile'> = {
+      type: 'profile',
+      data: {
+        user: this.authStore.user()!,
+      },
+    };
+    void this.modal.open(config);
   }
 
   goDashboard() {
-    void this.nav.goToProfile();
+    void this.nav.goToFeature([FEATURE_ROUTES.dashboard]);
   }
 
   signOut() {

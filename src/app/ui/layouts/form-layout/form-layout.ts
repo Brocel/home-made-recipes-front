@@ -1,7 +1,7 @@
 import { NgClass } from '@angular/common';
 import { Component, computed, input } from '@angular/core';
 import { Alignment, BaseSize } from '@appTypes/style.type';
-import { Direction } from '@ui/types/primitive.types';
+import { Direction } from '@uiTypes/primitive.types';
 
 @Component({
   selector: 'app-form-layout',

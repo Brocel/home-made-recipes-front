@@ -1,5 +1,8 @@
-import { signal } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 
+@Injectable({
+  providedIn: 'root',
+})
 export class MenuService {
   readonly open = signal(false);
 
@@ -17,5 +20,9 @@ export class MenuService {
 
   setOpen(value: boolean): void {
     this.open.set(value);
+  }
+
+  isOpen(): boolean {
+    return this.open();
   }
 }

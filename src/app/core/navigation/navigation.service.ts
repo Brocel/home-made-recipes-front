@@ -92,8 +92,4 @@ export class NavigationService {
       this.goHome();
     }
   }
-
-  goToProfile() {
-    // TODO
-  }
 }

@@ -18,3 +18,5 @@ export type InputType =
   | 'select'
   | 'checkbox'
   | 'radio';
+
+export type PrimitiveValue = string | number | boolean;

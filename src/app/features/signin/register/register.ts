@@ -1,7 +1,5 @@
-import { Component, inject, OnDestroy, signal } from '@angular/core';
+import { Component, inject, OnDestroy, output, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
-import { AuthUIService } from '@auth/auth-ui.service';
 import { AuthService } from '@auth/auth.service';
 import { RegisterRequest } from '@auth/register.request';
 import { FormLayout } from '@layouts/form-layout/form-layout';
@@ -30,17 +28,30 @@ import { Subscription, timer } from 'rxjs';
   styleUrl: './register.scss',
 })
 export class Register implements OnDestroy {
+  // =========================================================
+  // Dependencies
+  // =========================================================
   private fb = inject(FormBuilder);
   private auth = inject(AuthService);
   private usernameValidator = inject(UsernameValidator);
-  private authUI = inject(AuthUIService);
 
+  // =========================================================
+  // Ouputs
+  // =========================================================
+  successfulRegister = output<string>();
+
+  // =========================================================
+  // State
+  // =========================================================
   loading = signal(false);
   errorKey = signal<string | null>(null);
   success = signal(false);
 
   private autoRedirectSub?: Subscription;
 
+  // =========================================================
+  // Form
+  // =========================================================
   form = this.fb.nonNullable.group({
     first_name: this.fb.nonNullable.control('', { validators: [Validators.required] }),
     last_name: this.fb.nonNullable.control('', { validators: [Validators.required] }),
@@ -62,8 +73,6 @@ export class Register implements OnDestroy {
       validators: [Validators.required],
     }),
   });
-
-  constructor(private dialogRef: MatDialogRef<Register>) {}
 
   submit(): void {
     if (this.form.invalid || this.loading()) return;
@@ -96,7 +105,7 @@ export class Register implements OnDestroy {
 
         this.autoRedirectSub?.unsubscribe();
         this.autoRedirectSub = timer(20000).subscribe(() => {
-          this.goToLoginWithEmail(email);
+          this.successfulRegister.emit(email);
         });
       },
       error: (err) => {
@@ -111,12 +120,7 @@ export class Register implements OnDestroy {
     const email = this.form.controls.email.value;
     this.success.set(false);
     this.autoRedirectSub?.unsubscribe();
-    this.goToLoginWithEmail(email);
-  }
-
-  private goToLoginWithEmail(email: string): void {
-    this.dialogRef.close();
-    this.authUI.openLogin(email);
+    this.successfulRegister.emit(email);
   }
 
   ngOnDestroy(): void {

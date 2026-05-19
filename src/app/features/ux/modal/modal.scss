@@ -1,0 +1,58 @@
+.modal-host {
+  position: relative;
+
+  width: min(100vw - 32px, 480px);
+}
+
+/* =========================================================
+   Close button
+========================================================= */
+.modal-host__close {
+  position: absolute;
+
+  top: var(--space-md);
+  right: var(--space-md);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+
+  border: none;
+  border-radius: var(--radius-pill);
+
+  background: transparent;
+
+  color: var(--color-text-muted);
+
+  cursor: pointer;
+
+  transition:
+    background-color var(--transition-fast),
+    color var(--transition-fast),
+    transform var(--transition-fast);
+
+  &:hover {
+    background: var(--color-surface-hover);
+
+    color: var(--color-text);
+
+    transform: scale(1.05);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+}
+
+/* =========================================================
+   Content
+========================================================= */
+.modal-host__content {
+  width: min(100%, 480px);
+
+  padding: var(--space-xl);
+}

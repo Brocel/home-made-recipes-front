@@ -1,3 +1,5 @@
+import { User } from '@models/user';
+
 export type ModalType = 'login' | 'register' | 'profile';
 
 export interface ModalConfig<T extends ModalType = ModalType> {
@@ -13,6 +15,6 @@ export interface ModalDataMap {
   register: undefined;
 
   profile: {
-    userId: string;
+    user: User;
   };
 }

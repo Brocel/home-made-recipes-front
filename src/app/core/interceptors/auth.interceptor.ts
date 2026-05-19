@@ -1,13 +1,14 @@
 import { HttpInterceptorFn } from '@angular/common/http';
 import { inject } from '@angular/core';
-import { AuthUIService } from '@auth/auth-ui.service';
 import { AuthService } from '@auth/auth.service';
+import { ModalService } from '@uiServices/modal.service';
+import { buildLoginConfig } from '@utils/modal.util';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 export const AuthInterceptor: HttpInterceptorFn = (req, next) => {
   const auth = inject(AuthService);
-  const authModal = inject(AuthUIService);
+  const modal = inject(ModalService);
 
   const publicEndpoints = [
     '/auth/login',
@@ -36,7 +37,7 @@ export const AuthInterceptor: HttpInterceptorFn = (req, next) => {
     catchError((err) => {
       if (err.status === 401) {
         auth.logout();
-        authModal.openLogin();
+        modal.open(buildLoginConfig());
       }
       return throwError(() => err);
     }),

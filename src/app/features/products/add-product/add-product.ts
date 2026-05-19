@@ -17,7 +17,7 @@ import { IngredientType } from '@models/recipes/ingredient-type.enum';
   imports: [
     MatDialogModule,
     ReactiveFormsModule,
-    MatFormFieldModule,
+    MatFormFieldModule, // TODO: refacto
     MatInputModule,
     MatSelectModule,
     MatButtonModule,

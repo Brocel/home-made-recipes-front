@@ -31,6 +31,7 @@
       "@recipes/*": ["./src/app/features/recipes/*"],
       "@dashboard/*": ["./src/app/features/dashboard/*"],
       "@planner/*": ["./src/app/features/planner/*"],
+      "@user/*": ["./src/app/features/user/*"],
       "@signin/*": ["./src/app/features/signin/*"],
       "@ux/*": ["./src/app/features/ux/*"],
       // Shared
@@ -39,7 +40,6 @@
       "@utils/*": ["./src/app/shared/utils/*"],
       "@appTypes/*": ["./src/app/shared/types/*"],
       // UI
-      "@components/*": ["./src/app/ui/components/*"],
       "@directives/*": ["./src/app/ui/directives/*"],
       "@layouts/*": ["./src/app/ui/layouts/*"],
       "@overlays/*": ["./src/app/ui/overlays/*"],

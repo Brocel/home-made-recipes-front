@@ -1,30 +1,27 @@
-import { CommonModule } from '@angular/common';
 import { Component, computed, inject } from '@angular/core';
+import { ClickOutsideDirective } from '@directives/click-outside.directive';
+import { NavigationService } from '@nav/navigation.service';
+import { FloatingSurface } from '@overlays/floating-surface/floating-surface';
 import { Login } from '@signin/login/login';
 import { Register } from '@signin/register/register';
-import { FloatingSurface } from '@ui/overlays/floating-surface/floating-surface';
-import { ModalService } from '@ui/services/modal.service';
-import { ModalDataMap } from '@ui/types/modal.types';
-import {
-  LayerType,
-  OpeningStrategy,
-  Placement,
-  Position,
-  Tone,
-  Variant,
-} from '@ui/types/surface.types';
+import { ModalService } from '@uiServices/modal.service';
+import { ModalDataMap } from '@uiTypes/modal.types';
+import { LayerType, Placement, Position, Tone, Variant } from '@uiTypes/overlay.types';
+import { Profile } from '@user/profile/profile';
+import { buildLoginConfig, buildRegisterConfig } from '@utils/modal.util';
 
 @Component({
-  selector: 'app-modal-host',
-  imports: [CommonModule, FloatingSurface, Login, Register],
-  templateUrl: './modal-host.html',
-  styleUrl: './modal-host.scss',
+  selector: 'app-modal',
+  imports: [FloatingSurface, Login, Register, Profile, ClickOutsideDirective],
+  templateUrl: './modal.html',
+  styleUrl: './modal.scss',
 })
-export class ModalHost {
+export class Modal {
   // =========================================================
   // Dependencies
   // =========================================================
   private modalService = inject(ModalService);
+  private nav = inject(NavigationService);
 
   // =========================================================
   // Porperties
@@ -32,7 +29,6 @@ export class ModalHost {
   position: Position = 'viewport';
   placement: Placement = 'center';
   layer: LayerType = 'modal';
-  strategy: OpeningStrategy = 'programmatic';
   variant: Variant = 'surface';
   tone: Tone = 'glass';
 
@@ -64,5 +60,22 @@ export class ModalHost {
   // =========================================================
   close(): void {
     this.modalService.close();
+  }
+
+  // Login Modal
+  onLoginSuccess() {
+    this.close();
+    this.nav.goHome();
+  }
+
+  onRegisterClick() {
+    this.close();
+    this.modalService.open(buildRegisterConfig());
+  }
+
+  // Register Modal
+  onRegisterSuccess(email: string) {
+    this.close();
+    this.modalService.open(buildLoginConfig(email));
   }
 }
