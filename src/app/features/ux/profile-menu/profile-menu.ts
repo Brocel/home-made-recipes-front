@@ -1,18 +1,31 @@
 import { CommonModule } from '@angular/common';
 import { Component, input, output } from '@angular/core';
+import { FloatingContentDirective } from '@directives/floating-content.directive';
+import { FloatingTriggerDirective } from '@directives/floating-trigger.directive';
 import { User } from '@models/user';
 import { TranslateModule } from '@ngx-translate/core';
-import { FloatingCloseItemDirective } from '@ui/surfaces/directives/floating-close-item.directive';
-import { FloatingSurface } from '@ui/surfaces/floating-surface/floating-surface';
+import { FloatingSurface } from '@overlays/floating-surface/floating-surface';
+import { MenuService } from '@uiServices/menu.service';
 
 @Component({
   selector: 'app-profile-menu',
   standalone: true,
-  imports: [CommonModule, TranslateModule, FloatingSurface, FloatingCloseItemDirective],
+  imports: [
+    CommonModule,
+    TranslateModule,
+    FloatingSurface,
+    FloatingTriggerDirective,
+    FloatingContentDirective,
+  ],
   templateUrl: './profile-menu.html',
   styleUrls: ['./profile-menu.scss'],
 })
 export class ProfileMenu {
+  // =========================================================
+  // Controllers
+  // =========================================================
+  readonly menu = new MenuService();
+
   // =========================================================
   // Inputs
   // =========================================================
@@ -30,20 +43,23 @@ export class ProfileMenu {
   // =========================================================
   // Actions
   // =========================================================
-
   onLogin() {
     this.login.emit();
+    this.menu.closeMenu();
   }
 
   onProfile() {
     this.profile.emit();
+    this.menu.closeMenu();
   }
 
   onDashboard() {
     this.dashboard.emit();
+    this.menu.closeMenu();
   }
 
   onLogout() {
     this.logout.emit();
+    this.menu.closeMenu();
   }
 }

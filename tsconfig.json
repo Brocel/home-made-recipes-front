@@ -34,14 +34,18 @@
       "@signin/*": ["./src/app/features/signin/*"],
       "@ux/*": ["./src/app/features/ux/*"],
       // Shared
-      "@directives/*": ["./src/app/shared/directives/*"],
       "@models/*": ["./src/app/shared/models/*"],
       "@services/*": ["./src/app/shared/services/*"],
-      "@components/*": ["./src/app/shared/components/*"],
       "@utils/*": ["./src/app/shared/utils/*"],
       "@appTypes/*": ["./src/app/shared/types/*"],
       // UI
-      "@ui/*": ["./src/app/ui/*"],
+      "@components/*": ["./src/app/ui/components/*"],
+      "@directives/*": ["./src/app/ui/directives/*"],
+      "@layouts/*": ["./src/app/ui/layouts/*"],
+      "@overlays/*": ["./src/app/ui/overlays/*"],
+      "@primitives/*": ["./src/app/ui/primitives/*"],
+      "@uiServices/*": ["./src/app/ui/services/*"],
+      "@uiTypes/*": ["./src/app/ui/types/*"],
       // Mocks
       "@mocks/*": ["./src/app/mocks/*"],
       // Other

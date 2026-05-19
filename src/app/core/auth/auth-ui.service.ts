@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { ModalService } from '@ui/surfaces/core/modal.service';
+import { ModalService } from '@uiServices/modal.service';
 
 @Injectable({ providedIn: 'root' })
 export class AuthUIService {

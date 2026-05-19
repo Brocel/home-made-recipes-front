@@ -23,7 +23,7 @@ import { AddProduct } from '../add-product/add-product';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatAutocompleteModule,
+    MatAutocompleteModule, // TODO: refacto with autocomplete primitive
     MatIconModule,
   ],
   providers: [

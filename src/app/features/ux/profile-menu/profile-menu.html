@@ -1,8 +1,8 @@
-<app-floating-surface position="anchored" strategy="click" layer="dropdown">
+<app-floating-surface position="anchored" strategy="click" layer="dropdown" [open]="menu.open()">
   <!-- ===================================================== -->
   <!-- Trigger -->
   <!-- ===================================================== -->
-  <button floatingTrigger class="profile-trigger" type="button" aria-haspopup="menu">
+  <button floatingTrigger class="profile-trigger" type="button" (click)="menu.toggle()">
     @if (user()?.picture) {
       <img [src]="user()?.picture" [alt]="user()?.username || 'User'" class="avatar" />
     } @else {

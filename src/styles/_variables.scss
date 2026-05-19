@@ -138,6 +138,15 @@
   --navbar-height: #{t.$navbar-height};
 
   --search-max-width: #{t.$search-max-width};
+
+  // ======================================================
+  // OVERLAYS
+  // ======================================================
+  --floating-bg: var(--color-surface-elevated);
+  --floating-color: var(--color-text);
+  --floating-border: 1px solid var(--color-border);
+  --floating-shadow: var(--shadow-lg);
+  --floating-blur: none;
 }
 
 // ======================================================
@@ -174,4 +183,9 @@
   --color-info: #7aa8c2;
 
   --color-overlay: rgba(0, 0, 0, 0.55);
+
+  --floating-bg: var(--color-surface-elevated);
+  --floating-color: var(--color-text);
+  --floating-border: var(--color-border);
+  --floating-shadow: var(--shadow-xl);
 }

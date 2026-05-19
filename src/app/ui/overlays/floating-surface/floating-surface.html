@@ -1,0 +1,13 @@
+<div class="floating" [ngClass]="classes()" [ngStyle]="styles()">
+  <!-- Trigger -->
+  <div class="floating__trigger">
+    <ng-content select="[floatingTrigger]" />
+  </div>
+
+  <!-- Surface -->
+  @if (open()) {
+    <div class="floating__surface">
+      <ng-content select="[floatingContent]" />
+    </div>
+  }
+</div>
