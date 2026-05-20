@@ -1,37 +1,70 @@
 import { User } from '@models/user';
 import { Tone, Variant } from './overlay.types';
+import { ButtonVariant } from './primitive.types';
 
-export type ConfirmType = 'delete' | 'update' | 'create' | 'success' | 'error';
+export type ConfirmIntent = 'delete' | 'update' | 'create' | 'default';
 
-export type ModalType = 'login' | 'register' | 'profile' | 'confirm';
+export type ModalType = keyof ModalDefinitionMap;
 
 export interface ConfirmData {
-  type: ConfirmType;
+  variant: ButtonVariant;
+  intent: ConfirmIntent;
 
   title: string;
   message: string;
 
   confirmLabel?: string;
   cancelLabel?: string;
+
+  actionData?: any;
 }
 
+export type ModalResult<T extends ModalType> = ModalDefinitionMap[T]['result'];
+
+export type AnyModalConfig = {
+  [K in ModalType]: ModalConfig<K>;
+}[ModalType];
+
 export interface ModalConfig<T extends ModalType = ModalType> {
-  type: ModalType;
-  data?: ModalDataMap[T];
+  type: T;
+  data: ModalDefinitionMap[T]['data'];
   variant?: Variant;
   tone?: Tone;
 }
 
-export interface ModalDataMap {
+export interface ModalStackItem {
+  id: string;
+  config: AnyModalConfig;
+  resolver?: (result: unknown) => void;
+  zIndex: number;
+  isTop: boolean;
+}
+
+export interface ModalDefinitionMap {
   login: {
-    email?: string;
+    data: {
+      email?: string;
+    };
+    result: void;
   };
 
-  register: undefined;
+  register: {
+    data: undefined;
+    result: {
+      registered: boolean;
+      email?: string;
+    };
+  };
 
   profile: {
-    user: User;
+    data: {
+      user: User;
+    };
+    result: void;
   };
 
-  confirm: ConfirmData;
+  confirm: {
+    data: ConfirmData;
+    result: { confirmed: boolean; actionData?: any };
+  };
 }

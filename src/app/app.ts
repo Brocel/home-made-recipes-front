@@ -4,7 +4,7 @@ import { AuthService } from '@auth/auth.service';
 import { PageTitleService } from '@translation/page-title.service';
 import { Footer } from '@ux/footer/footer';
 import { LeftPanel } from '@ux/left-panel/left-panel';
-import { Modal } from '@ux/modal/modal';
+import { ModalHost } from '@ux/modal/modal-host';
 import { Navbar } from '@ux/navbar/navbar';
 import { RightPanel } from '@ux/right-panel/right-panel';
 import { PageLayout } from './ui/layouts/page-layout/page-layout';
@@ -12,7 +12,7 @@ import { PageLayout } from './ui/layouts/page-layout/page-layout';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [Navbar, RouterOutlet, Footer, LeftPanel, PageLayout, RightPanel, Modal],
+  imports: [Navbar, RouterOutlet, Footer, LeftPanel, PageLayout, RightPanel, ModalHost],
   templateUrl: './app.html',
 })
 export class App implements OnInit {

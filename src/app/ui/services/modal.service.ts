@@ -1,38 +1,96 @@
 import { computed, Injectable, signal } from '@angular/core';
-import { ModalConfig } from '../types/modal.types';
+import { generateId } from '@utils/modal.util';
+import { ModalConfig, ModalResult, ModalStackItem, ModalType } from '../types/modal.types';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ModalService {
+  private readonly BASE_Z_INDEX = 1000;
   // =========================================================
   // State
   // =========================================================
-  private readonly opened = signal(false);
-  private readonly currentModal = signal<ModalConfig | undefined>(undefined);
+  stack = signal<ModalStackItem[]>([]);
+  currentItem = computed(() => {
+    const stack = this.stack();
+    return stack.length > 0 ? stack[stack.length - 1] : null;
+  });
+  currentModal = computed(() => this.currentItem()?.config ?? null);
+
+  readonly modals = this.stack.asReadonly();
 
   // =========================================================
   // Public signals
   // =========================================================
-  modal = this.currentModal.asReadonly();
-  isOpen = computed(() => this.currentModal() !== undefined && this.opened());
+  isOpen = computed(() => this.stack().length > 0);
+
+  // =========================================================
+  // Helpers
+  // =========================================================
+  resolveCurrent<T extends ModalType>(result: ModalResult<T>): void {
+    const current = this.currentItem();
+
+    if (!current) return;
+
+    current.resolver?.(result);
+
+    this.close();
+  }
 
   // =========================================================
   // Actions
   // =========================================================
-  open(config: ModalConfig): void {
+  open<T extends ModalType>(config: ModalConfig<T>): string {
     console.log('OPENING MODAL');
-    this.currentModal.set({
-      variant: 'surface',
-      tone: 'glass',
-      ...config,
-    });
-    this.opened.set(true);
+    const level = this.stack().length;
+    const item: ModalStackItem = {
+      id: generateId(),
+      config,
+      zIndex: this.BASE_Z_INDEX + level,
+      isTop: true,
+    };
+
+    const updated = this.stack().map((item) => ({
+      ...item,
+      isTop: false,
+    }));
+
+    this.stack.set([...updated, item]);
+
+    return item.id;
   }
 
-  close(): void {
+  openForResult<T extends ModalType>(config: ModalConfig<T>): Promise<ModalResult<T>> {
+    return new Promise((resolve) => {
+      const level = this.stack().length;
+      const item: ModalStackItem = {
+        id: generateId(),
+        config,
+        resolver: resolve,
+        zIndex: this.BASE_Z_INDEX + level,
+        isTop: true,
+      };
+
+      const updated = this.stack().map((item) => ({
+        ...item,
+        isTop: false,
+      }));
+
+      this.stack.set([...updated, item]);
+    });
+  }
+
+  close(id?: string): void {
     console.log('CLOSING MODAL');
-    this.currentModal.set(undefined);
-    this.opened.set(false);
+    if (!id) {
+      this.stack.update((stack) => stack.slice(0, -1));
+      return;
+    }
+
+    this.stack.update((stack) => stack.filter((item) => item.id !== id));
+  }
+
+  closeAll() {
+    this.stack.set([]);
   }
 }

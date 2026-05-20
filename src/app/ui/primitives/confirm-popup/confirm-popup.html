@@ -3,23 +3,7 @@
   <!-- Icon -->
   <!-- ============================================= -->
   <div class="confirm__icon">
-    @switch (type()) {
-      @case ('success') {
-        ✓
-      }
-
-      @case ('error') {
-        !
-      }
-
-      @case ('delete') {
-        🗑
-      }
-
-      @default {
-        ?
-      }
-    }
+    {{ icon() }}
   </div>
 
   <!-- ============================================= -->
@@ -43,7 +27,7 @@
       {{ cancelLabel() }}
     </app-button>
 
-    <app-button [variant]="confirmButtonVariant()" (click)="confirmed.emit()">
+    <app-button [variant]="variant()" (click)="confirmed.emit(data().actionData)">
       {{ confirmLabel() }}
     </app-button>
   </div>

@@ -1,0 +1,58 @@
+@for (item of modals(); track item.id) {
+  <app-floating-surface
+    [position]="position"
+    [placement]="placement"
+    [layer]="layer"
+    [open]="true"
+    [style.zIndex]="item.zIndex"
+  >
+    <div
+      floatingContent
+      class="modal-host"
+      [ngClass]="[
+        'modal--variant-' + getVariant(item),
+        'modal--tone-' + getTone(item),
+        getIsTop(item),
+      ]"
+    >
+      <!-- ============================================= -->
+      <!-- Close button -->
+      <!-- ============================================= -->
+      <button
+        class="modal-host__close"
+        type="button"
+        aria-label="Close modal"
+        (click)="close(item.id)"
+      >
+        ✕
+      </button>
+
+      <!-- ============================================= -->
+      <!-- Modal content -->
+      <!-- ============================================= -->
+      <div class="modal-host__content">
+        @switch (getType(item)) {
+          @case ('login') {
+            <app-login [prefillEmail]="item.config.data" (successfulLogin)="onLoginSuccess()" />
+          }
+
+          @case ('register') {
+            <app-register (successfulRegister)="onRegisterSuccess($event)" />
+          }
+
+          @case ('profile') {
+            <app-profile />
+          }
+
+          @case ('confirm') {
+            <app-confirm-popup
+              [data]="getData(item)"
+              (confirmed)="onConfirm($event)"
+              (cancelled)="onCancel()"
+            />
+          }
+        }
+      </div>
+    </div>
+  </app-floating-surface>
+}

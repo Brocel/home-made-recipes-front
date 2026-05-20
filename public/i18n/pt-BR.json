@@ -210,7 +210,11 @@
     "save": "Salvar",
     "ok": "OK",
     "loading": "Carregando...",
-    "none": "Nenhum.a"
+    "none": "Nenhum.a",
+    "logout": {
+      "title": "Confirmar desconexão",
+      "message": "Tem certeza de que deseja se desconectar?"
+    }
   },
   "errors": {
     "recipe": {

@@ -210,7 +210,11 @@
     "save": "Enregistrer",
     "ok": "OK",
     "loading": "Chargement...",
-    "none": "Aucun.e"
+    "none": "Aucun.e",
+    "logout": {
+      "title": "Confirmer la déconnexion",
+      "message": "Êtes-vous sûr de vouloir vous déconnecter ?"
+    }
   },
   "errors": {
     "recipe": {

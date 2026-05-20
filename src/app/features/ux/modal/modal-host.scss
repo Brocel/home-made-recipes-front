@@ -197,3 +197,14 @@
     filter: blur(0);
   }
 }
+
+/* =========================================================
+   INTERACTIVITY
+========================================================= */
+.modal-host.is-background {
+  pointer-events: none;
+
+  opacity: 0.7;
+
+  transform: scale(0.98);
+}

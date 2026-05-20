@@ -38,7 +38,7 @@ export class Login {
   // =========================================================
   // Inputs
   // =========================================================
-  prefillEmail = input<string | undefined>(undefined);
+  prefillEmail = input<any>(undefined);
 
   // =========================================================
   // Ouputs
@@ -62,7 +62,7 @@ export class Login {
 
   constructor() {
     effect(() => {
-      const email = this.prefillEmail();
+      const email = this.prefillEmail() as string;
 
       if (email) {
         this.form.patchValue({

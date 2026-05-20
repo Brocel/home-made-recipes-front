@@ -1,7 +1,6 @@
 import { NgClass } from '@angular/common';
 import { Component, computed, input, output } from '@angular/core';
 import { AppButton } from '@primitives/app-button/app-button';
-import { ConfirmData } from '@uiTypes/modal.types';
 
 @Component({
   selector: 'app-confirm-popup',
@@ -13,38 +12,35 @@ export class ConfirmPopup {
   // =========================================================
   // Inputs
   // =========================================================
-  data = input.required<ConfirmData>();
+  data = input.required<any>();
 
   // =========================================================
   // Outputs
   // =========================================================
-  confirmed = output<void>();
+  confirmed = output<any>();
   cancelled = output<void>();
 
   // =========================================================
   // State
   // =========================================================
-  type = computed(() => this.data().type);
+  variant = computed(() => this.data().variant);
+  intent = computed(() => this.data().intent);
   message = computed(() => this.data().message);
   title = computed(() => this.data().title);
   confirmLabel = computed(() => this.data().confirmLabel ?? 'common.ok');
   cancelLabel = computed(() => this.data().cancelLabel ?? 'common.cancel');
+  actionData = computed(() => this.data().actionData); // See how to use in service
 
-  confirmButtonVariant = computed(() => {
-    switch (this.type()) {
+  icon = computed(() => {
+    switch (this.intent()) {
       case 'delete':
-      case 'error':
-        return 'danger';
-
-      case 'success':
-        return 'success';
-
+        return '🗑️';
       case 'update':
+        return '✏️';
       case 'create':
-        return 'primary';
-
+        return '✅';
       default:
-        return 'primary';
+        return '❓';
     }
   });
 
@@ -53,6 +49,6 @@ export class ConfirmPopup {
   // =========================================================
   classes = computed(() => ({
     confirm: true,
-    [`confirm--${this.type()}`]: true,
+    [`confirm--${this.intent()}`]: true, // adapt scss logic with intent
   }));
 }
