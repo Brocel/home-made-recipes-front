@@ -3,11 +3,9 @@
     [position]="position"
     [placement]="placement"
     [layer]="layer"
-    [variant]="variant"
-    [tone]="tone"
     [open]="isOpen()"
   >
-    <div floatingContent class="modal-host">
+    <div floatingContent [ngClass]="classes()">
       <!-- ============================================= -->
       <!-- Close button -->
       <!-- ============================================= -->

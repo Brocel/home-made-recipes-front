@@ -1,11 +1,49 @@
+/* =========================================================
+   MODAL SURFACE
+========================================================= */
 .modal-host {
   position: relative;
 
+  display: flex;
+  flex-direction: column;
+
   width: min(100vw - 32px, 480px);
+
+  max-height: min(90vh, 900px);
+
+  overflow: hidden;
+
+  border-radius: var(--radius-lg);
+
+  background: var(--modal-bg);
+
+  color: var(--modal-color);
+
+  border: var(--modal-border);
+
+  box-shadow: var(--modal-shadow);
+
+  backdrop-filter: var(--modal-blur);
+
+  animation: modal-enter var(--transition-base);
 }
 
 /* =========================================================
-   Close button
+   CONTENT
+========================================================= */
+.modal-host__content {
+  display: flex;
+  flex-direction: column;
+
+  gap: var(--space-lg);
+
+  padding: var(--space-xl);
+
+  overflow-y: auto;
+}
+
+/* =========================================================
+   CLOSE BUTTON
 ========================================================= */
 .modal-host__close {
   position: absolute;
@@ -21,6 +59,7 @@
   height: 32px;
 
   border: none;
+
   border-radius: var(--radius-pill);
 
   background: transparent;
@@ -28,6 +67,8 @@
   color: var(--color-text-muted);
 
   cursor: pointer;
+
+  z-index: 2;
 
   transition:
     background-color var(--transition-fast),
@@ -44,15 +85,115 @@
 
   &:focus-visible {
     outline: 2px solid var(--color-primary);
+
     outline-offset: 2px;
   }
 }
 
 /* =========================================================
-   Content
+   VARIANTS
 ========================================================= */
-.modal-host__content {
-  width: min(100%, 480px);
+.modal--variant-surface {
+  --modal-bg: var(--color-surface-elevated);
 
-  padding: var(--space-xl);
+  --modal-color: var(--color-text);
+
+  --modal-border: 1px solid var(--color-border);
+}
+
+.modal--variant-primary {
+  --modal-bg: var(--color-primary);
+
+  --modal-color: var(--color-text-inverse);
+
+  --modal-border: none;
+}
+
+.modal--variant-accent {
+  --modal-bg: var(--color-accent);
+
+  --modal-color: var(--color-text-inverse);
+
+  --modal-border: none;
+}
+
+.modal--variant-danger {
+  --modal-bg: var(--color-error);
+
+  --modal-color: white;
+
+  --modal-border: none;
+}
+
+.modal--variant-success {
+  --modal-bg: var(--color-success);
+
+  --modal-color: white;
+
+  --modal-border: none;
+}
+
+/* =========================================================
+   TONES
+========================================================= */
+.modal--tone-soft {
+  --modal-shadow: var(--shadow-sm);
+
+  --modal-blur: none;
+}
+
+.modal--tone-elevated {
+  --modal-shadow: var(--shadow-lg);
+
+  --modal-blur: none;
+}
+
+.modal--tone-solid {
+  --modal-shadow: var(--shadow-xl);
+
+  --modal-blur: none;
+}
+
+.modal--tone-glass {
+  --modal-shadow: var(--shadow-xl);
+
+  --modal-blur: blur(18px);
+
+  --modal-bg: color-mix(in srgb, var(--modal-bg) 82%, transparent);
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+@media (max-width: 640px) {
+  .modal-host {
+    width: calc(100vw - 24px);
+
+    border-radius: var(--radius-md);
+  }
+
+  .modal-host__content {
+    padding: var(--space-lg);
+  }
+}
+
+/* =========================================================
+   ANIMATION
+========================================================= */
+@keyframes modal-enter {
+  from {
+    opacity: 0;
+
+    transform: translateY(12px) scale(0.98);
+
+    filter: blur(4px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0) scale(1);
+
+    filter: blur(0);
+  }
 }

@@ -22,7 +22,11 @@ export class ModalService {
   // =========================================================
   open(config: ModalConfig): void {
     console.log('OPENING MODAL');
-    this.currentModal.set(config);
+    this.currentModal.set({
+      variant: 'surface',
+      tone: 'glass',
+      ...config,
+    });
     this.opened.set(true);
   }
 

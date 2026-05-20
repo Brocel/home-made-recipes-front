@@ -1,0 +1,50 @@
+<div [ngClass]="classes()">
+  <!-- ============================================= -->
+  <!-- Icon -->
+  <!-- ============================================= -->
+  <div class="confirm__icon">
+    @switch (type()) {
+      @case ('success') {
+        ✓
+      }
+
+      @case ('error') {
+        !
+      }
+
+      @case ('delete') {
+        🗑
+      }
+
+      @default {
+        ?
+      }
+    }
+  </div>
+
+  <!-- ============================================= -->
+  <!-- Content -->
+  <!-- ============================================= -->
+  <div class="confirm__body">
+    <h2 class="confirm__title">
+      {{ data().title }}
+    </h2>
+
+    <p class="confirm__message">
+      {{ message() }}
+    </p>
+  </div>
+
+  <!-- ============================================= -->
+  <!-- Actions -->
+  <!-- ============================================= -->
+  <div class="confirm__actions">
+    <app-button variant="ghost" (click)="cancelled.emit()">
+      {{ cancelLabel() }}
+    </app-button>
+
+    <app-button [variant]="confirmButtonVariant()" (click)="confirmed.emit()">
+      {{ confirmLabel() }}
+    </app-button>
+  </div>
+</div>

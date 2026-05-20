@@ -1,18 +1,18 @@
+import { NgClass } from '@angular/common';
 import { Component, computed, inject } from '@angular/core';
-import { ClickOutsideDirective } from '@directives/click-outside.directive';
 import { NavigationService } from '@nav/navigation.service';
 import { FloatingSurface } from '@overlays/floating-surface/floating-surface';
 import { Login } from '@signin/login/login';
 import { Register } from '@signin/register/register';
 import { ModalService } from '@uiServices/modal.service';
 import { ModalDataMap } from '@uiTypes/modal.types';
-import { LayerType, Placement, Position, Tone, Variant } from '@uiTypes/overlay.types';
+import { LayerType, Placement, Position } from '@uiTypes/overlay.types';
 import { Profile } from '@user/profile/profile';
 import { buildLoginConfig, buildRegisterConfig } from '@utils/modal.util';
 
 @Component({
   selector: 'app-modal',
-  imports: [FloatingSurface, Login, Register, Profile, ClickOutsideDirective],
+  imports: [FloatingSurface, Login, Register, Profile, NgClass],
   templateUrl: './modal.html',
   styleUrl: './modal.scss',
 })
@@ -29,8 +29,6 @@ export class Modal {
   position: Position = 'viewport';
   placement: Placement = 'center';
   layer: LayerType = 'modal';
-  variant: Variant = 'surface';
-  tone: Tone = 'glass';
 
   // =========================================================
   // State
@@ -39,9 +37,21 @@ export class Modal {
   isOpen = computed(() => this.modalService.isOpen());
 
   // =========================================================
-  // Typed data helpers
+  // NgClasses
+  // =========================================================
+  classes = computed(() => ({
+    'modal-host': true,
+    [`modal--variant-${this.variant()}`]: true,
+    [`modal--tone-${this.tone()}`]: true,
+  }));
+
+  // =========================================================
+  // Helpers
   // =========================================================
   type = computed(() => this.modal()?.type);
+  variant = computed(() => this.modal()?.variant ?? 'surface');
+  tone = computed(() => this.modal()?.tone ?? 'glass');
+
   // Login Modal
   loginData = computed(
     () =>
@@ -54,6 +64,15 @@ export class Modal {
         ? this.modal()?.data
         : undefined) as ModalDataMap['profile'],
   );
+  // Confirm Modal
+  confirmData = computed(
+    () =>
+      (this.modal()?.type === 'confirm'
+        ? this.modal()?.data
+        : undefined) as ModalDataMap['confirm'],
+  );
+  confirmType = computed(() => this.confirmData()?.type);
+  confirmMessage = computed(() => this.confirmData()?.message);
 
   // =========================================================
   // Actions

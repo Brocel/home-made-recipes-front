@@ -3,7 +3,7 @@
 ========================================================= */
 .floating {
   position: relative;
-  display: inline-flex;
+
   isolation: isolate;
 }
 
@@ -12,42 +12,24 @@
 ========================================================= */
 .floating__trigger {
   display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
 }
 
 /* =========================================================
-   SURFACE BASE (geometry only)
+   SURFACE BASE
 ========================================================= */
 .floating__surface {
   position: absolute;
 
-  min-width: 220px;
-
-  padding: var(--space-sm);
-  border-radius: var(--radius-lg);
-
-  overflow: hidden;
-
-  /* 👇 EVERYTHING VISUAL NOW COMES FROM VARIABLES */
-  background: var(--floating-bg);
-  color: var(--floating-color);
-  border: var(--floating-border);
-  box-shadow: var(--floating-shadow);
-
-  backdrop-filter: var(--floating-blur);
-
   animation: floating-enter 160ms ease;
 
   transition:
-    transform 160ms ease,
     opacity 160ms ease,
+    transform 160ms ease,
     filter 160ms ease;
 }
 
 /* =========================================================
-   POSITIONING SYSTEM (UNCHANGED - STILL SCSS RESPONSIBILITY)
+   ANCHORED POSITIONING
 ========================================================= */
 .floating--anchored.floating--bottom-right .floating__surface {
   top: calc(100% + var(--space-xs));
@@ -69,18 +51,22 @@
   left: 0;
 }
 
-/* Viewport mode */
-.floating--viewport .floating__surface {
+/* =========================================================
+   VIEWPORT MODE
+========================================================= */
+.floating--viewport {
   position: fixed;
+
   inset: 0;
-  display: block;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.floating--viewport.floating--centered .floating__surface {
-  display: block;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+/* Surface itself should NOT be fullscreen anymore */
+.floating--viewport .floating__surface {
+  position: relative;
 }
 
 /* =========================================================
@@ -96,67 +82,4 @@
     opacity: 1;
     filter: blur(0);
   }
-}
-
-/* =========================================================
-   VARIANT SYSTEM
-========================================================= */
-.floating--variant-surface {
-  --floating-bg: var(--color-surface-elevated);
-  --floating-color: var(--color-text);
-  --floating-border: 1px solid var(--color-border);
-  --floating-shadow: var(--shadow-lg);
-  --floating-blur: none;
-}
-
-.floating--variant-primary {
-  --floating-bg: var(--color-primary);
-  --floating-color: var(--color-text-inverse);
-  --floating-border: none;
-  --floating-shadow: var(--shadow-lg);
-}
-
-.floating--variant-accent {
-  --floating-bg: var(--color-accent);
-  --floating-color: var(--color-text-inverse);
-  --floating-border: none;
-}
-
-.floating--variant-danger {
-  --floating-bg: var(--color-error);
-  --floating-color: white;
-  --floating-border: none;
-}
-
-.floating--variant-success {
-  --floating-bg: var(--color-success);
-  --floating-color: white;
-  --floating-border: none;
-}
-
-/* =========================================================
-   TONE SYSTEM (material + elevation)
-========================================================= */
-.floating--tone-soft {
-  --floating-shadow: var(--shadow-sm);
-  --floating-blur: none;
-  --floating-bg-opacity: 1;
-}
-
-.floating--tone-elevated {
-  --floating-shadow: var(--shadow-lg);
-  --floating-blur: none;
-  --floating-bg-opacity: 1;
-}
-
-.floating--tone-solid {
-  --floating-shadow: var(--shadow-xl);
-  --floating-blur: none;
-  --floating-bg-opacity: 1;
-}
-
-/* Glass = special material */
-.floating--tone-glass {
-  --floating-shadow: var(--shadow-xl);
-  --floating-blur: blur(18px);
 }

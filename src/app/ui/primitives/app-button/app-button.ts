@@ -1,5 +1,5 @@
 import { NgClass } from '@angular/common';
-import { Component, computed, input, output } from '@angular/core';
+import { Component, computed, input } from '@angular/core';
 import { ButtonSize, ButtonType, ButtonVariant } from '@uiTypes/primitive.types';
 
 @Component({
@@ -12,10 +12,8 @@ export class AppButton {
   // =========================
   // Inputs
   // =========================
-
   variant = input<ButtonVariant>('primary');
   size = input<ButtonSize>('md');
-
   type = input<ButtonType>('button');
 
   disabled = input(false);
@@ -26,15 +24,8 @@ export class AppButton {
   fullWidth = input(false);
 
   // =========================
-  // Outputs
-  // =========================
-
-  clicked = output<MouseEvent>();
-
-  // =========================
   // Computed classes
   // =========================
-
   classes = computed(() => ({
     btn: true,
 
@@ -47,14 +38,4 @@ export class AppButton {
     'btn--icon-only': this.iconOnly(),
     'btn--full': this.fullWidth(),
   }));
-
-  // =========================
-  // Events
-  // =========================
-
-  onClick(event: MouseEvent) {
-    if (this.disabled() || this.loading()) return;
-
-    this.clicked.emit(event);
-  }
 }
