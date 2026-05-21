@@ -1,19 +1,23 @@
 <div [ngClass]="classes()">
   <!-- ============================================= -->
-  <!-- Icon -->
+  <!-- Header -->
   <!-- ============================================= -->
-  <div class="confirm__icon">
-    {{ icon() }}
+  <div class="confirm__header">
+    <div class="confirm__header-left">
+      <div class="confirm__icon">
+        {{ icon() }}
+      </div>
+
+      <h2 class="confirm__title">
+        {{ title() }}
+      </h2>
+    </div>
   </div>
 
   <!-- ============================================= -->
-  <!-- Content -->
+  <!-- Body -->
   <!-- ============================================= -->
   <div class="confirm__body">
-    <h2 class="confirm__title">
-      {{ data().title }}
-    </h2>
-
     <p class="confirm__message">
       {{ message() }}
     </p>
@@ -27,7 +31,7 @@
       {{ cancelLabel() }}
     </app-button>
 
-    <app-button [variant]="variant()" (click)="confirmed.emit(data().actionData)">
+    <app-button [variant]="variant()" (click)="confirmed.emit(actionData())">
       {{ confirmLabel() }}
     </app-button>
   </div>

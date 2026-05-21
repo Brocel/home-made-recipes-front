@@ -7,7 +7,6 @@ import { TranslatePipe } from '@ngx-translate/core';
 import { AuthStore } from '@store/auth.store';
 import { LanguageService } from '@translation/language.service';
 import { ModalService } from '@uiServices/modal.service';
-import { ConfirmResult } from '@uiTypes/modal.types';
 import { FEATURE_ROUTES } from '@utils/datas/feature-data.util';
 import { buildConfirmConfig, buildLoginConfig, buildProfileConfig } from '@utils/modal.util';
 import { ProfileMenu } from '../profile-menu/profile-menu';
@@ -60,7 +59,7 @@ export class Navbar {
   }
 
   async signOut() {
-    const result = await this.modal.openForResult<ConfirmResult>(
+    const result = await this.modal.openForResult<'confirm'>(
       buildConfirmConfig(
         'danger',
         'default',

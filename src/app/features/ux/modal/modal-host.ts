@@ -5,8 +5,9 @@ import { FloatingSurface } from '@overlays/floating-surface/floating-surface';
 import { ConfirmPopup } from '@primitives/confirm-popup/confirm-popup';
 import { Login } from '@signin/login/login';
 import { Register } from '@signin/register/register';
+import { ModalDefinitionMap, ModalStackItem } from '@uiModels/modal.model';
 import { ModalService } from '@uiServices/modal.service';
-import { ModalDefinitionMap, ModalStackItem, ModalType } from '@uiTypes/modal.types';
+import { ModalType } from '@uiTypes/modal.types';
 import { LayerType, Placement, Position, Tone, Variant } from '@uiTypes/overlay.types';
 import { Profile } from '@user/profile/profile';
 import { buildLoginConfig, buildRegisterConfig } from '@utils/modal.util';
@@ -55,7 +56,7 @@ export class ModalHost {
     return item.config.type;
   }
 
-  getData<T extends ModalType>(item: ModalStackItem<T>): ModalDefinitionMap[T]['data'] {
+  getData<T extends ModalType>(item: ModalStackItem): ModalDefinitionMap[T]['data'] {
     return item.config.data;
   }
 

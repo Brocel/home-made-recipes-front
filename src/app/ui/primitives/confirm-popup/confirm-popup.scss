@@ -1,32 +1,68 @@
 .confirm {
   display: flex;
   flex-direction: column;
-  gap: var(--space-lg);
 
-  text-align: center;
+  min-width: 340px;
 }
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.confirm__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  padding-bottom: var(--space-lg);
+
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.confirm__header-left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+/* =========================================================
+   ICON
+========================================================= */
 
 .confirm__icon {
   display: flex;
   align-items: center;
   justify-content: center;
 
-  width: 64px;
-  height: 64px;
+  width: 48px;
+  height: 48px;
 
-  margin-inline: auto;
+  flex-shrink: 0;
 
-  border-radius: 50%;
+  border-radius: var(--radius-lg);
 
-  font-size: 2rem;
-  font-weight: 700;
+  font-size: 1.25rem;
 }
+
+/* =========================================================
+   TITLE
+========================================================= */
 
 .confirm__title {
   margin: 0;
 
-  font-size: var(--text-xl);
+  font-size: var(--text-lg);
   font-weight: 700;
+
+  line-height: 1.2;
+}
+
+/* =========================================================
+   BODY
+========================================================= */
+
+.confirm__body {
+  padding-block: var(--space-lg);
 }
 
 .confirm__message {
@@ -37,20 +73,24 @@
   line-height: var(--leading-relaxed);
 }
 
+/* =========================================================
+   ACTIONS
+========================================================= */
+
 .confirm__actions {
   display: flex;
-  justify-content: center;
-  gap: var(--space-md);
+  justify-content: flex-end;
+  gap: var(--space-sm);
+
+  padding-top: var(--space-lg);
+
+  border-top: 1px solid var(--color-border-subtle);
 }
 
-.confirm--success {
-  .confirm__icon {
-    background: var(--color-success-soft);
-    color: var(--color-success);
-  }
-}
+/* =========================================================
+   INTENTS
+========================================================= */
 
-.confirm--error,
 .confirm--delete {
   .confirm__icon {
     background: var(--color-error-soft);
@@ -58,10 +98,23 @@
   }
 }
 
-.confirm--update,
-.confirm--create {
+.confirm--update {
   .confirm__icon {
     background: var(--color-primary-soft);
     color: var(--color-primary);
+  }
+}
+
+.confirm--create {
+  .confirm__icon {
+    background: var(--color-success-soft);
+    color: var(--color-success);
+  }
+}
+
+.confirm--default {
+  .confirm__icon {
+    background: var(--color-surface-hover);
+    color: var(--color-text);
   }
 }

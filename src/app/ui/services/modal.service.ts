@@ -1,6 +1,7 @@
 import { computed, Injectable, signal } from '@angular/core';
+import { ModalStackItem } from '@uiModels/modal.model';
+import { AnyModalConfig, ModalResult, ModalType } from '@uiTypes/modal.types';
 import { generateId } from '@utils/modal.util';
-import { ModalConfig, ModalResult, ModalStackItem, ModalType } from '../types/modal.types';
 
 @Injectable({
   providedIn: 'root',
@@ -25,9 +26,55 @@ export class ModalService {
   isOpen = computed(() => this.stack().length > 0);
 
   // =========================================================
+  // Actions
+  // =========================================================
+  open(config: AnyModalConfig): string {
+    console.log('OPENING MODAL');
+    const item: ModalStackItem = {
+      id: generateId(),
+      config,
+    };
+
+    this.stack.set(this.normalizeStack([...this.stack(), item]));
+
+    return item.id;
+  }
+
+  openForResult<T extends ModalType>(config: AnyModalConfig): Promise<ModalResult<T>> {
+    console.log('OPENING MODAL WITH PROMISE');
+    return new Promise((resolve) => {
+      const item: ModalStackItem = {
+        id: generateId(),
+        config,
+        resolver: (result: unknown) => {
+          resolve(result as ModalResult<T>);
+        },
+      };
+
+      this.stack.set(this.normalizeStack([...this.stack(), item]));
+    });
+  }
+
+  close(id?: string): void {
+    console.log('CLOSING MODAL');
+    if (!id) {
+      const updated = this.stack().slice(0, -1);
+      this.stack.set(this.normalizeStack(updated));
+      return;
+    }
+
+    const updated = this.stack().filter((item) => item.id !== id);
+    this.stack.set(this.normalizeStack(updated));
+  }
+
+  closeAll() {
+    this.stack.set([]);
+  }
+
+  // =========================================================
   // Helpers
   // =========================================================
-  resolveCurrent<T extends ModalType>(result: ModalResult<T>): void {
+  resolveCurrent(result: unknown): void {
     const current = this.currentItem();
 
     if (!current) return;
@@ -37,60 +84,11 @@ export class ModalService {
     this.close();
   }
 
-  // =========================================================
-  // Actions
-  // =========================================================
-  open<T extends ModalType>(config: ModalConfig<T>): string {
-    console.log('OPENING MODAL');
-    const level = this.stack().length;
-    const item: ModalStackItem = {
-      id: generateId(),
-      config,
-      zIndex: this.BASE_Z_INDEX + level,
-      isTop: true,
-    };
-
-    const updated = this.stack().map((item) => ({
+  private normalizeStack(stack: ModalStackItem[]): ModalStackItem[] {
+    return stack.map((item, index) => ({
       ...item,
-      isTop: false,
+      zIndex: this.BASE_Z_INDEX + index,
+      isTop: index === stack.length - 1,
     }));
-
-    this.stack.set([...updated, item]);
-
-    return item.id;
-  }
-
-  openForResult<T extends ModalType>(config: ModalConfig<T>): Promise<ModalResult<T>> {
-    return new Promise((resolve) => {
-      const level = this.stack().length;
-      const item: ModalStackItem = {
-        id: generateId(),
-        config,
-        resolver: resolve,
-        zIndex: this.BASE_Z_INDEX + level,
-        isTop: true,
-      };
-
-      const updated = this.stack().map((item) => ({
-        ...item,
-        isTop: false,
-      }));
-
-      this.stack.set([...updated, item]);
-    });
-  }
-
-  close(id?: string): void {
-    console.log('CLOSING MODAL');
-    if (!id) {
-      this.stack.update((stack) => stack.slice(0, -1));
-      return;
-    }
-
-    this.stack.update((stack) => stack.filter((item) => item.id !== id));
-  }
-
-  closeAll() {
-    this.stack.set([]);
   }
 }

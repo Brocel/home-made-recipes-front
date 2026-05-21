@@ -1,5 +1,6 @@
 import { User } from '@models/user';
-import { ConfirmIntent, ConfirmResult, ModalConfig } from '@uiTypes/modal.types';
+import { ModalConfig } from '@uiModels/modal.model';
+import { ConfirmIntent } from '@uiTypes/modal.types';
 import { ButtonVariant } from '@uiTypes/primitive.types';
 
 export function buildLoginConfig(email?: string): ModalConfig<'login'> {
@@ -12,6 +13,7 @@ export function buildLoginConfig(email?: string): ModalConfig<'login'> {
 export function buildRegisterConfig(): ModalConfig<'register'> {
   return {
     type: 'register',
+    data: undefined,
   };
 }
 
@@ -45,9 +47,9 @@ export function buildConfirmConfig(
   };
 }
 
-export function buildConfirmResult(cancelled: boolean, actionData?: any): ConfirmResult {
+export function buildConfirmResult(cancelled: boolean, actionData?: any) {
   return {
-    confirmed: cancelled,
+    cancelled: cancelled,
     actionData,
   };
 }

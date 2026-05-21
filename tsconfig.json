@@ -46,6 +46,7 @@
       "@primitives/*": ["./src/app/ui/primitives/*"],
       "@uiServices/*": ["./src/app/ui/services/*"],
       "@uiTypes/*": ["./src/app/ui/types/*"],
+      "@uiModels/*": ["./src/app/ui/models/*"],
       // Mocks
       "@mocks/*": ["./src/app/mocks/*"],
       // Other
