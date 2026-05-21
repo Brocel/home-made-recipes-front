@@ -6,7 +6,7 @@ import { User } from '@models/user';
 import { TranslateModule } from '@ngx-translate/core';
 import { FloatingSurface } from '@overlays/floating-surface/floating-surface';
 import { MenuService } from '@uiServices/menu.service';
-import { LayerType, Position, Tone } from '@uiTypes/overlay.types';
+import { LayerType, Position } from '@uiTypes/overlay.types';
 
 @Component({
   selector: 'app-profile-menu',
@@ -32,7 +32,6 @@ export class ProfileMenu {
   // =========================================================
   position: Position = 'anchored';
   layer: LayerType = 'dropdown';
-  tone: Tone = 'elevated';
 
   // =========================================================
   // Inputs

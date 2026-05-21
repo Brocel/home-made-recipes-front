@@ -1,6 +1,25 @@
 .login-secondary {
-  display: flex;
-  justify-content: center;
+  position: relative;
 
-  margin-top: var(--space-md);
+  display: flex;
+  flex-direction: column;
+
+  gap: var(--space-lg);
+
+  align-items: center;
+
+  padding-top: var(--space-lg);
+
+  &::before {
+    content: '';
+
+    position: absolute;
+    top: 0;
+    left: 20%;
+    right: 20%;
+
+    height: 1px;
+
+    background: var(--color-border);
+  }
 }

@@ -39,6 +39,7 @@
         variant="primary"
         [disabled]="loading() || form.invalid"
         [loading]="loading()"
+        [fullWidth]="true"
       >
         {{ loading() ? ('login.spinner' | translate) : ('login.button' | translate) }}
       </app-button>
@@ -47,8 +48,12 @@
 
   <!-- SECONDARY ACTION -->
   <div class="login-secondary">
-    <app-button variant="secondary" type="button" (click)="goToRegister()">
-      {{ 'login.register' | translate }}
+    <span class="login-secondary__label">
+      {{ 'feature.signin.login.register' | translate }}
+    </span>
+
+    <app-button type="button" variant="secondary" (click)="goToRegister()">
+      {{ 'feature.signin.register.create' | translate }}
     </app-button>
   </div>
 </app-form-layout>
