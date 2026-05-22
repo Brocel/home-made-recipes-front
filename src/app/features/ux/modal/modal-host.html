@@ -34,7 +34,7 @@
       <div class="modal-host__content">
         @switch (getType(item)) {
           @case ('login') {
-            <app-login [prefillEmail]="item.config.data" (successfulLogin)="onLoginSuccess()" />
+            <app-login [loginData]="getData(item)" (successfulLogin)="onLoginSuccess()" />
           }
 
           @case ('register') {

@@ -1,59 +1,67 @@
 <app-form-layout
-  [title]="'login.title' | translate"
-  [subtitle]="'login.description' | translate"
-  [showActions]="true"
+  [title]="'feature.signin.login.title' | translate"
+  [subtitle]="'feature.signin.login.description' | translate"
 >
-  <form [formGroup]="form" (ngSubmit)="submit()">
+  <form id="login-form" form-content [formGroup]="form" class="login-form" (ngSubmit)="submit()">
     <!-- EMAIL -->
+
     <app-form-section>
       <app-form-field
         [label]="'form.label.email' | translate"
-        [error]="
-          form.controls.email.touched && form.controls.email.invalid
-            ? ('form.validation.email' | translate)
-            : null
-        "
+        [error]="emailError() ? (emailError()! | translate) : null"
       >
-        <app-form-input type="email" formControlName="email" />
+        <app-form-input
+          type="email"
+          name="email"
+          formControlName="email"
+          [placeholder]="'form.placeholder.email' | translate"
+          [fullWidth]="true"
+          class="login-input"
+        />
       </app-form-field>
     </app-form-section>
 
     <!-- PASSWORD -->
+
     <app-form-section>
       <app-form-field
         [label]="'form.label.password' | translate"
-        [error]="
-          form.controls.password.touched && form.controls.password.invalid
-            ? ('form.validation.password' | translate)
-            : null
-        "
+        [error]="passwordError() ? (passwordError()! | translate) : null"
       >
-        <app-form-input type="password" formControlName="password" />
+        <app-form-input
+          type="password"
+          name="password"
+          formControlName="password"
+          [fullWidth]="true"
+          class="login-input"
+        />
       </app-form-field>
     </app-form-section>
-
-    <!-- ACTIONS -->
-    <div form-actions>
-      <app-button
-        type="submit"
-        variant="primary"
-        [disabled]="loading() || form.invalid"
-        [loading]="loading()"
-        [fullWidth]="true"
-      >
-        {{ loading() ? ('login.spinner' | translate) : ('login.button' | translate) }}
-      </app-button>
-    </div>
   </form>
-
-  <!-- SECONDARY ACTION -->
-  <div class="login-secondary">
-    <span class="login-secondary__label">
-      {{ 'feature.signin.login.register' | translate }}
-    </span>
-
-    <app-button type="button" variant="secondary" (click)="goToRegister()">
-      {{ 'feature.signin.register.create' | translate }}
+  <div form-actions>
+    <app-button
+      type="submit"
+      form="login-form"
+      variant="primary"
+      [disabled]="loading()"
+      [loading]="loading()"
+      [fullWidth]="true"
+    >
+      {{
+        loading()
+          ? ('feature.signin.login.spinner' | translate)
+          : ('feature.signin.login.button' | translate)
+      }}
     </app-button>
   </div>
 </app-form-layout>
+
+<div class="login-secondary">
+  <span class="login-secondary__label">
+    {{ 'feature.signin.login.register' | translate }}
+  </span>
+
+  <app-button type="button" variant="secondary" [fullWidth]="true" (click)="goToRegister()">
+    {{ 'feature.signin.register.create' | translate }}
+  </app-button>
+</div>

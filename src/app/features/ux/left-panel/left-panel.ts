@@ -2,8 +2,8 @@ import { Component, computed, inject, signal } from '@angular/core';
 
 import { NavigationService } from '@nav/navigation.service';
 import { RouteContextService } from '@nav/route-context.service';
-import { SideRail } from '../../../ui/overlays/side-rail/side-rail';
-import { SidebarMenu } from '../../../ui/primitives/sidebar-menu/sidebar-menu';
+import { SideRail } from '@overlays/side-rail/side-rail';
+import { SidebarMenu } from '@primitives/sidebar-menu/sidebar-menu';
 
 @Component({
   selector: 'app-left-panel',

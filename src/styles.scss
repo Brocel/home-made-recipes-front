@@ -5,7 +5,7 @@
 @use './styles/variables';
 @use './styles/mixins';
 @use './styles/material-overrides';
-@use './styles/form-base';
+@use './styles/forms/form-control';
 
 /* ======================================================
    Fonts
@@ -152,8 +152,7 @@ button:disabled {
 ====================================================== */
 
 * {
-  scrollbar-width: thin;
-  scrollbar-color: var(--color-border) transparent;
+  scrollbar-width: none;
 }
 
 /* ======================================================

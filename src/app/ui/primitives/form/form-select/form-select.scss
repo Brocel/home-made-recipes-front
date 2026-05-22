@@ -1,0 +1,37 @@
+@use '../../../../../styles/forms/form-control' as control;
+
+.form-select {
+  @include control.control-base;
+
+  appearance: none;
+
+  background-image:
+    linear-gradient(45deg, transparent 50%, currentColor 50%),
+    linear-gradient(135deg, currentColor 50%, transparent 50%);
+
+  background-position:
+    calc(100% - var(--space-lg)) calc(50% - 2px),
+    calc(100% - var(--space-md)) calc(50% - 2px);
+
+  background-size: 6px 6px;
+
+  background-repeat: no-repeat;
+
+  padding-right: calc(var(--space-xl) * 2);
+
+  &--sm {
+    @include control.control-size(sm);
+  }
+
+  &--md {
+    @include control.control-size(md);
+  }
+
+  &--lg {
+    @include control.control-size(lg);
+  }
+
+  &--invalid {
+    @include control.control-invalid;
+  }
+}

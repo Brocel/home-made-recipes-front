@@ -1,0 +1,18 @@
+<label [ngClass]="classes()">
+  <input
+    class="choice__input"
+    type="checkbox"
+    [checked]="_value() ?? false"
+    [disabled]="_disabled()"
+    (change)="onCheckedChange($event)"
+    (blur)="markAsTouched()"
+  />
+
+  <span class="choice__indicator"></span>
+
+  @if (label()) {
+    <span class="choice__label">
+      {{ label() }}
+    </span>
+  }
+</label>

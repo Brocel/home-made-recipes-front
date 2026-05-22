@@ -1,33 +1,30 @@
 import { NgClass } from '@angular/common';
 import { Component, computed, input } from '@angular/core';
-import { Alignment, BaseSize } from '@appTypes/style.type';
-import { Direction } from '@uiTypes/primitive.types';
 
 @Component({
   selector: 'app-form-layout',
+  standalone: true,
   imports: [NgClass],
   templateUrl: './form-layout.html',
   styleUrl: './form-layout.scss',
 })
 export class FormLayout {
   // =========================================================
-  // Inputs
+  // Configuration inputs
   // =========================================================
-  direction = input<Direction>('column');
-  gap = input<BaseSize>('md');
-  align = input<Alignment>('stretch');
+  readonly title = input('');
+  readonly subtitle = input('');
 
-  title = input<string>('');
-  subtitle = input<string>('');
-  showActions = input<boolean>(false);
+  /**
+   * Compact vertical spacing.
+   */
+  readonly compact = input(false);
 
   // =========================================================
   // Classes
   // =========================================================
-  contentClasses = computed(() => ({
-    'form-layout__content': true,
-    [`form-layout__content--${this.direction()}`]: true,
-    [`form-layout__content--gap-${this.gap()}`]: true,
-    [`form-layout__content--align-${this.align()}`]: true,
+  protected readonly classes = computed(() => ({
+    'form-layout': true,
+    'form-layout--compact': this.compact(),
   }));
 }

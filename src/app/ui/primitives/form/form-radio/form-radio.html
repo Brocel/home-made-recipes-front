@@ -1,0 +1,20 @@
+<label [ngClass]="classes()">
+  <input
+    class="radio__input"
+    type="radio"
+    [name]="name()"
+    [value]="value()"
+    [checked]="checked()"
+    [disabled]="_disabled()"
+    (change)="onCheckedChange($event)"
+    (blur)="markAsTouched()"
+  />
+
+  <span class="radio__indicator"></span>
+
+  @if (label()) {
+    <span class="radio__label">
+      {{ label() }}
+    </span>
+  }
+</label>

@@ -1,0 +1,152 @@
+.radio {
+  display: inline-flex;
+  align-items: center;
+
+  gap: var(--space-sm);
+
+  cursor: pointer;
+
+  user-select: none;
+
+  color: var(--color-text);
+
+  transition: opacity var(--transition-fast);
+
+  /* =========================================================
+     Sizes
+  ========================================================= */
+
+  &--sm {
+    font-size: var(--text-xs);
+
+    .radio__indicator {
+      width: var(--control-choice-size-sm);
+      height: var(--control-choice-size-sm);
+    }
+  }
+
+  &--md {
+    font-size: var(--text-sm);
+
+    .radio__indicator {
+      width: var(--control-choice-size-md);
+      height: var(--control-choice-size-md);
+    }
+  }
+
+  &--lg {
+    font-size: var(--text-md);
+
+    .radio__indicator {
+      width: var(--control-choice-size-lg);
+      height: var(--control-choice-size-lg);
+    }
+  }
+
+  /* =========================================================
+     Disabled
+  ========================================================= */
+
+  &--disabled {
+    cursor: not-allowed;
+
+    opacity: var(--opacity-medium);
+  }
+
+  /* =========================================================
+     Invalid
+  ========================================================= */
+
+  &--invalid {
+    .radio__indicator {
+      border-color: var(--color-error);
+    }
+  }
+
+  /* =========================================================
+     Hidden native input
+  ========================================================= */
+
+  &__input {
+    position: absolute;
+
+    opacity: 0;
+
+    pointer-events: none;
+  }
+
+  /* =========================================================
+     Indicator
+  ========================================================= */
+
+  &__indicator {
+    position: relative;
+
+    flex-shrink: 0;
+
+    border: 1px solid var(--color-border);
+
+    border-radius: 50%;
+
+    background: var(--color-surface);
+
+    transition:
+      border-color var(--transition-fast),
+      background-color var(--transition-fast),
+      box-shadow var(--transition-fast);
+
+    &::after {
+      content: '';
+
+      position: absolute;
+
+      inset: 25%;
+
+      border-radius: 50%;
+
+      background: var(--color-text-inverse);
+
+      transform: scale(0);
+
+      transition: transform var(--transition-fast);
+    }
+  }
+
+  /* =========================================================
+     Hover
+  ========================================================= */
+
+  &:hover:not(.radio--disabled) &__indicator {
+    border-color: var(--color-primary);
+  }
+
+  /* =========================================================
+     Focus
+  ========================================================= */
+
+  &__input:focus-visible + &__indicator {
+    box-shadow: 0 0 0 var(--space-xs) var(--color-focus-ring);
+  }
+
+  /* =========================================================
+     Checked
+  ========================================================= */
+
+  &__input:checked + &__indicator {
+    border-color: var(--color-primary);
+
+    background: var(--color-primary);
+
+    &::after {
+      transform: scale(1);
+    }
+  }
+
+  /* =========================================================
+     Label
+  ========================================================= */
+
+  &__label {
+    line-height: var(--leading-normal);
+  }
+}

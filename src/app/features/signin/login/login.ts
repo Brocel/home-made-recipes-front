@@ -1,14 +1,16 @@
 import { CommonModule } from '@angular/common';
-import { Component, effect, inject, input, output, signal } from '@angular/core';
+import { Component, computed, DestroyRef, inject, input, output, signal } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { BaseSize } from '@appTypes/style.type';
 import { AuthService } from '@auth/auth.service';
 import { LoginRequest } from '@auth/login.request';
 import { FormLayout } from '@layouts/form-layout/form-layout';
 import { TranslatePipe } from '@ngx-translate/core';
 import { AppButton } from '@primitives/app-button/app-button';
-import { FormField } from '@primitives/form-field/form-field';
-import { FormInput } from '@primitives/form-input/form-input';
-import { FormSection } from '@primitives/form-section/form-section';
+import { FormField } from '@primitives/form/form-field/form-field';
+import { FormInput } from '@primitives/form/form-input/form-input';
+import { FormSection } from '@primitives/form/form-section/form-section';
 import { NotificationService } from '@services/notification.service';
 
 @Component({
@@ -31,69 +33,97 @@ export class Login {
   // =========================================================
   // Dependencies
   // =========================================================
-  private fb = inject(FormBuilder);
-  private authService = inject(AuthService);
-  private notif = inject(NotificationService);
+  private readonly fb = inject(FormBuilder);
+  private readonly auth = inject(AuthService);
+  private readonly notif = inject(NotificationService);
+  private readonly destroyRef = inject(DestroyRef);
 
   // =========================================================
   // Inputs
   // =========================================================
-  prefillEmail = input<any>('');
+  readonly loginData = input<any>('');
 
   // =========================================================
   // Ouputs
   // =========================================================
-  successfulLogin = output<void>();
-  registerClick = output<void>();
+  readonly successfulLogin = output<void>();
+  readonly registerClick = output<void>();
 
   // =========================================================
   // State
   // =========================================================
-  loading = signal(false);
-  errorKey = signal<string | null>(null);
+  readonly loading = signal(false);
+  readonly inputSize: BaseSize = 'lg';
 
   // =========================================================
   // Form
   // =========================================================
-  form = this.fb.nonNullable.group({
+  readonly form = this.fb.nonNullable.group({
     email: ['', [Validators.required, Validators.email]],
     password: ['', Validators.required],
   });
 
-  constructor() {
-    effect(() => {
-      const email = this.prefillEmail() as string;
+  // =========================================================
+  // Computed validation
+  // =========================================================
+  protected readonly emailError = computed(() => {
+    const control = this.form.controls.email;
 
-      if (email) {
-        this.form.patchValue({
-          email,
-        });
-      }
-    });
+    if (!control.touched || !control.invalid) {
+      return null;
+    }
+
+    return 'form.validation.email';
+  });
+
+  protected readonly passwordError = computed(() => {
+    const control = this.form.controls.password;
+
+    if (!control.touched || !control.invalid) {
+      return null;
+    }
+
+    return 'form.validation.password';
+  });
+
+  constructor() {
+    const data = this.loginData();
+
+    if (data?.email) {
+      this.form.patchValue({
+        email: data.email,
+      });
+    }
   }
 
   // =========================================================
   // Actions
   // =========================================================
   submit(): void {
-    if (this.form.invalid || this.loading()) return;
+    if (this.form.invalid || this.loading()) {
+      this.form.markAllAsTouched();
+
+      return;
+    }
 
     this.loading.set(true);
-    this.errorKey.set(null);
 
     const payload: LoginRequest = this.form.getRawValue();
 
-    this.authService.login(payload).subscribe({
-      next: () => {
-        this.loading.set(false);
-        this.successfulLogin.emit();
-        this.notif.showSuccess('login.success');
-      },
-      error: (err) => {
-        this.loading.set(false);
-        this.errorKey.set(err.errorKey ?? 'UNKNOWN_ERROR');
-      },
-    });
+    this.auth
+      .login(payload)
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: () => {
+          this.loading.set(false);
+          this.successfulLogin.emit();
+          this.notif.showSuccess('feature.signin.login.success');
+        },
+        error: (err) => {
+          this.loading.set(false);
+          this.notif.showError(err.errorKey ?? 'UNKNOWN_ERROR');
+        },
+      });
   }
 
   goToRegister() {

@@ -1,0 +1,9 @@
+<textarea
+  [rows]="rows()"
+  [value]="_value() ?? ''"
+  [placeholder]="placeholder()"
+  [disabled]="_disabled()"
+  [ngClass]="classes()"
+  (input)="onInput($event)"
+  (blur)="markAsTouched()"
+></textarea>

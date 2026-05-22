@@ -8,15 +8,6 @@ export type ButtonSize = 'sm' | 'md' | 'lg';
 
 export type Direction = 'row' | 'column';
 
-export type InputType =
-  | 'text'
-  | 'email'
-  | 'password'
-  | 'search'
-  | 'number'
-  | 'textarea'
-  | 'select'
-  | 'checkbox'
-  | 'radio';
+export type InputType = 'text' | 'email' | 'password' | 'search' | 'number';
 
 export type PrimitiveValue = string | number | boolean;

@@ -23,6 +23,8 @@ export class AppButton {
   iconOnly = input(false);
   fullWidth = input(false);
 
+  form = input<string | null>(null);
+
   // =========================
   // Computed classes
   // =========================

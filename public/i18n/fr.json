@@ -65,7 +65,7 @@
     "signin": {
       "login": {
         "title": "Connexion",
-        "description": "Connectes-toi avec Google pour accéder à tes recettes",
+        "description": "Connectes-toi pour accéder à tes recettes",
         "button": "Se connecter",
         "spinner": "Connexion...",
         "register": "Première visite ?",
@@ -202,6 +202,10 @@
       "username": "Pseudonyme",
       "confirm_password": "Confirmer le mot de passe",
       "birth_date": "Date de naissance"
+    },
+    "placeholder": {
+      "email": "ex.example@domain.com",
+      "birth_date": "JJ/MM/AAAA"
     }
   },
   "common": {

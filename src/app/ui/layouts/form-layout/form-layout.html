@@ -1,25 +1,25 @@
-<form class="form-layout">
-  <header class="form-layout__header">
-    @if (title()) {
-      <h2 class="form-layout__title">
-        {{ title() }}
-      </h2>
-    }
+<section [ngClass]="classes()">
+  @if (title() || subtitle()) {
+    <header class="form-layout__header">
+      @if (title()) {
+        <h2 class="form-layout__title">
+          {{ title() }}
+        </h2>
+      }
 
-    @if (subtitle()) {
-      <p class="form-layout__subtitle">
-        {{ subtitle() }}
-      </p>
-    }
-  </header>
+      @if (subtitle()) {
+        <p class="form-layout__subtitle">
+          {{ subtitle() }}
+        </p>
+      }
+    </header>
+  }
 
-  <div [ngClass]="contentClasses()">
-    <ng-content />
+  <div class="form-layout__content">
+    <ng-content select="[form-content]" />
   </div>
 
-  @if (showActions()) {
-    <footer class="form-layout__actions">
-      <ng-content select="[form-actions]" />
-    </footer>
-  }
-</form>
+  <footer class="form-layout__actions">
+    <ng-content select="[form-actions]" />
+  </footer>
+</section>

@@ -18,5 +18,16 @@ export class NotificationService {
     });
   }
 
-  // TODO Snack-bar -> error toaster
+  showError(key: string): void {
+    const message = this.translate.instant(key);
+
+    this.snack.open(message, undefined, {
+      duration: 5000,
+      panelClass: ['snackbar-success'],
+      horizontalPosition: 'right',
+      verticalPosition: 'bottom',
+    });
+  }
+
+  // TODO: Notification model (msg:string, isError:boolean, etc...) + generic method + handle translate (error.key / success.key)
 }

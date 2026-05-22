@@ -1,0 +1,29 @@
+@mixin control-size-sm {
+  min-height: var(--control-height-sm);
+
+  padding-inline: var(--control-padding-x-sm);
+
+  font-size: var(--control-font-size-sm);
+
+  width: var(--control-width-sm);
+}
+
+@mixin control-size-md {
+  min-height: var(--control-height-md);
+
+  padding-inline: var(--control-padding-x-md);
+
+  font-size: var(--control-font-size-md);
+
+  width: var(--control-width-md);
+}
+
+@mixin control-size-lg {
+  min-height: var(--control-height-lg);
+
+  padding-inline: var(--control-padding-x-lg);
+
+  font-size: var(--control-font-size-lg);
+
+  width: var(--control-width-lg);
+}

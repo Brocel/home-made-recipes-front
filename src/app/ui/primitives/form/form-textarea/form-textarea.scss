@@ -1,0 +1,27 @@
+@use '../../../../../styles/forms/form-control' as control;
+
+.form-textarea {
+  @include control.control-base;
+
+  resize: vertical;
+
+  min-height: calc(var(--control-height-lg) * 3);
+
+  padding-block: var(--space-sm);
+
+  &--sm {
+    @include control.control-size(sm);
+  }
+
+  &--md {
+    @include control.control-size(md);
+  }
+
+  &--lg {
+    @include control.control-size(lg);
+  }
+
+  &--invalid {
+    @include control.control-invalid;
+  }
+}

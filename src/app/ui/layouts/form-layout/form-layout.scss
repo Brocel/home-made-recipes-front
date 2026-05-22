@@ -2,86 +2,70 @@
   display: flex;
   flex-direction: column;
 
+  gap: var(--space-xl);
+
+  padding-bottom: var(--space-lg);
+
   width: 100%;
 
-  gap: var(--space-xl);
-}
-
-.form-layout__header {
-  display: flex;
-  flex-direction: column;
-
-  gap: var(--space-xs);
-}
-
-.form-layout__title {
-  margin: 0;
-
-  font-size: clamp(1.5rem, 2vw, 2rem);
-  font-weight: 700;
-  line-height: 1.1;
-
-  color: var(--color-text);
-}
-
-.form-layout__subtitle {
-  margin: 0;
-
-  color: color-mix(in srgb, var(--color-text) 72%, transparent);
-
-  font-size: var(--text-sm);
-}
-
-.form-layout__content {
-  display: flex;
-  /* =========================================================
-     Direction
-  ========================================================= */
-  &--column {
-    flex-direction: column;
-  }
-
-  &--row {
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-
-  /* =========================================================
-     Gaps
-  ========================================================= */
-  &--gap-sm {
-    gap: var(--space-sm);
-  }
-
-  &--gap-md {
-    gap: var(--space-md);
-  }
-
-  &--gap-lg {
+  &--compact {
     gap: var(--space-lg);
   }
 
   /* =========================================================
-     Alignment
+     Header
   ========================================================= */
-  &--align-start {
-    align-items: flex-start;
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+
+    gap: var(--space-sm);
   }
 
-  &--align-center {
+  &__title {
+    margin: 0;
+
+    color: var(--color-text-strong);
+
+    font-size: clamp(1.5rem, 2vw, 2rem);
+
+    line-height: var(--leading-tight);
+
+    font-weight: 700;
+  }
+
+  &__subtitle {
+    margin: 0;
+
+    color: var(--color-text-muted);
+
+    font-size: var(--text-sm);
+
+    line-height: var(--leading-relaxed);
+  }
+
+  /* =========================================================
+     Content
+  ========================================================= */
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+
+    gap: var(--space-lg);
+  }
+
+  /* =========================================================
+     Actions
+  ========================================================= */
+
+  &__actions {
+    display: flex;
+    flex-direction: column;
+
+    gap: var(--space-sm);
+
     align-items: center;
   }
-
-  &--align-stretch {
-    align-items: stretch;
-  }
-}
-
-.form-layout__actions {
-  display: flex;
-  justify-content: flex-end;
-
-  gap: var(--space-sm);
-
-  padding-top: var(--space-sm);
 }

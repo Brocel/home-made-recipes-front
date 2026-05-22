@@ -1,0 +1,31 @@
+@use '../../../../../styles/forms/form-control' as control;
+
+:host {
+  width: 100%;
+}
+
+.form-input {
+  @include control.control-base;
+
+  width: 100%;
+
+  &--sm {
+    @include control.control-size(sm);
+  }
+
+  &--md {
+    @include control.control-size(md);
+  }
+
+  &--lg {
+    @include control.control-size(lg);
+  }
+
+  &--full {
+    width: 100%;
+  }
+
+  &--invalid {
+    @include control.control-invalid;
+  }
+}

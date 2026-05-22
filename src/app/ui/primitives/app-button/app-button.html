@@ -1,4 +1,9 @@
-<button [type]="type()" [disabled]="disabled() || loading()" [ngClass]="classes()">
+<button
+  [type]="type()"
+  [attr.form]="form()"
+  [disabled]="disabled() || loading()"
+  [ngClass]="classes()"
+>
   @if (loading()) {
     <span class="btn__spinner"></span>
   }

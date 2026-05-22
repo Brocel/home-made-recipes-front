@@ -147,6 +147,33 @@
   --floating-border: 1px solid var(--color-border);
   --floating-shadow: var(--shadow-lg);
   --floating-blur: none;
+
+  // ======================================================
+  // FORM CONTROLS
+  // ======================================================
+  --control-height-sm: calc(var(--space-lg) * 1.75);
+  --control-height-md: calc(var(--space-xl) * 1.75);
+  --control-height-lg: calc(var(--space-xl) * 2.25);
+
+  --control-padding-x-sm: var(--space-sm);
+  --control-padding-x-md: var(--space-md);
+  --control-padding-x-lg: var(--space-lg);
+
+  --control-font-size-sm: var(--text-xs);
+  --control-font-size-md: var(--text-sm);
+  --control-font-size-lg: var(--text-md);
+
+  --control-radius-sm: var(--radius-sm);
+  --control-radius-md: var(--radius-md);
+  --control-radius-lg: var(--radius-lg);
+
+  --control-width-sm: 12rem;
+  --control-width-md: 18rem;
+  --control-width-lg: 24rem;
+
+  --control-choice-size-sm: calc(var(--space-md) + var(--space-xs));
+  --control-choice-size-md: calc(var(--space-lg) + var(--space-xs));
+  --control-choice-size-lg: calc(var(--space-xl) + var(--space-xs));
 }
 
 // ======================================================

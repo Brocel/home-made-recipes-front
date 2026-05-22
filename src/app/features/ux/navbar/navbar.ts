@@ -47,7 +47,7 @@ export class Navbar {
   }
 
   goLogin() {
-    this.modal.open(buildLoginConfig());
+    this.modal.open(buildLoginConfig(''));
   }
 
   goProfile() {
