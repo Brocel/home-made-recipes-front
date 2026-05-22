@@ -1,13 +1,15 @@
-import { Component, inject, OnDestroy, output, signal } from '@angular/core';
+import { Component, DestroyRef, inject, OnDestroy, output, signal } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '@auth/auth.service';
-import { RegisterRequest } from '@auth/register.request';
+import { RegisterForm, RegisterRequest } from '@auth/register.request';
 import { FormLayout } from '@layouts/form-layout/form-layout';
 import { TranslatePipe } from '@ngx-translate/core';
 import { AppButton } from '@primitives/app-button/app-button';
 import { FormField } from '@primitives/form/form-field/form-field';
 import { FormInput } from '@primitives/form/form-input/form-input';
 import { FormSection } from '@primitives/form/form-section/form-section';
+import { NotificationService } from '@services/notification.service';
 import { isoToDDMMYYYY } from '@utils/date.util';
 import { UsernameValidator } from '@validators/username.validator';
 import { Subscription, timer } from 'rxjs';
@@ -31,9 +33,11 @@ export class Register implements OnDestroy {
   // =========================================================
   // Dependencies
   // =========================================================
-  private fb = inject(FormBuilder);
-  private auth = inject(AuthService);
-  private usernameValidator = inject(UsernameValidator);
+  private readonly fb = inject(FormBuilder);
+  private readonly auth = inject(AuthService);
+  private readonly usernameValidator = inject(UsernameValidator);
+  private readonly notif = inject(NotificationService);
+  private readonly destroyRef = inject(DestroyRef);
 
   // =========================================================
   // Ouputs
@@ -43,9 +47,8 @@ export class Register implements OnDestroy {
   // =========================================================
   // State
   // =========================================================
-  loading = signal(false);
-  errorKey = signal<string | null>(null);
-  success = signal(false);
+  readonly loading = signal(false);
+  readonly success = signal(false);
 
   private autoRedirectSub?: Subscription;
 
@@ -66,7 +69,7 @@ export class Register implements OnDestroy {
     password: this.fb.nonNullable.control('', {
       validators: [Validators.required, Validators.minLength(6)],
     }),
-    confirmPassword: this.fb.nonNullable.control('', {
+    confirm_password: this.fb.nonNullable.control('', {
       validators: [Validators.required],
     }),
     birth_date: this.fb.nonNullable.control('', {
@@ -74,46 +77,54 @@ export class Register implements OnDestroy {
     }),
   });
 
+  // =========================================================
+  // Actions
+  // =========================================================
   submit(): void {
-    if (this.form.invalid || this.loading()) return;
-
-    const { first_name, last_name, username, email, password, confirmPassword, birth_date } =
-      this.form.getRawValue();
-
-    if (password !== confirmPassword) {
-      this.errorKey.set('register.password_mismatch');
+    if (this.form.invalid || this.loading()) {
+      this.form.markAllAsTouched();
       return;
     }
 
     this.loading.set(true);
-    this.errorKey.set(null);
+
+    const formValue: RegisterForm = this.form.getRawValue();
+
+    if (formValue.password !== formValue.confirm_password) {
+      this.notif.showError('form.validation.password_mismatch');
+      this.form.markAllAsTouched();
+      return;
+    }
+
+    this.loading.set(true);
 
     const payload: RegisterRequest = {
-      first_name,
-      last_name,
-      username,
-      email,
-      password,
-      birth_date: isoToDDMMYYYY(birth_date)!,
+      first_name: formValue.first_name,
+      last_name: formValue.last_name,
+      username: formValue.username,
+      email: formValue.email,
+      password: formValue.password,
+      birth_date: isoToDDMMYYYY(formValue.birth_date)!,
     };
 
-    this.auth.register(payload).subscribe({
-      next: (res) => {
-        this.loading.set(false);
-        // ici: res.token === null, res.user rempli
-        this.success.set(true);
+    this.auth
+      .register(payload)
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: (res) => {
+          this.loading.set(false);
+          this.success.set(true);
 
-        this.autoRedirectSub?.unsubscribe();
-        this.autoRedirectSub = timer(20000).subscribe(() => {
-          this.successfulRegister.emit(email);
-        });
-      },
-      error: (err) => {
-        this.loading.set(false);
-        // TODO toaster plus tard
-        this.errorKey.set(err.errorKey ?? 'UNKNOWN_ERROR');
-      },
-    });
+          this.autoRedirectSub?.unsubscribe();
+          this.autoRedirectSub = timer(20000).subscribe(() => {
+            this.successfulRegister.emit(formValue.email);
+          });
+        },
+        error: (err) => {
+          this.loading.set(false);
+          this.notif.showError(err.errorKey ?? 'UNKNOWN_ERROR');
+        },
+      });
   }
 
   confirmSuccess(): void {

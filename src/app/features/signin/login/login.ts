@@ -102,7 +102,6 @@ export class Login {
   submit(): void {
     if (this.form.invalid || this.loading()) {
       this.form.markAllAsTouched();
-
       return;
     }
 

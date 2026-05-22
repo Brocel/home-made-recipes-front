@@ -69,12 +69,12 @@
       <app-form-field
         [label]="'form.label.confirm_password' | translate"
         [error]="
-          form.controls.confirmPassword.touched && form.controls.confirmPassword.invalid
+          form.controls.confirm_password.touched && form.controls.confirm_password.invalid
             ? ('form.validation.confirm_password' | translate)
             : null
         "
       >
-        <app-form-input type="password" formControlName="confirmPassword" />
+        <app-form-input type="password" formControlName="confirm_password" />
       </app-form-field>
     </app-form-section>
 
@@ -95,15 +95,6 @@
     </app-form-section>
 
     <!-- =========================
-         GLOBAL ERROR
-    ========================== -->
-    @if (errorKey()) {
-      <div class="form-global-error">
-        {{ errorKey() | translate }}
-      </div>
-    }
-
-    <!-- =========================
          ACTIONS
     ========================== -->
     <div form-actions>
@@ -118,7 +109,7 @@
     </div>
   </form>
 
-  <!-- SUCCESS STATE -->
+  <!-- SUCCESS STATE : TODO: replace with confim Popup-->
   @if (success()) {
     <div class="register-success">
       <h2>{{ 'register.success.title' | translate }}</h2>
