@@ -36,6 +36,7 @@
       "@ux/*": ["./src/app/features/ux/*"],
       // Shared
       "@models/*": ["./src/app/shared/models/*"],
+      "@forms/*": ["./src/app/shared/forms/*"],
       "@services/*": ["./src/app/shared/services/*"],
       "@utils/*": ["./src/app/shared/utils/*"],
       "@appTypes/*": ["./src/app/shared/types/*"],

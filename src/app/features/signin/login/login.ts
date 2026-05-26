@@ -64,7 +64,7 @@ export class Login {
   });
 
   // =========================================================
-  // Computed validation
+  // Validation helpers
   // =========================================================
   protected readonly emailError = computed(() => {
     const control = this.form.controls.email;

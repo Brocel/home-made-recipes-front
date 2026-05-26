@@ -1,8 +1,10 @@
-import { Component, DestroyRef, inject, OnDestroy, output, signal } from '@angular/core';
+import { Component, DestroyRef, inject, output, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '@auth/auth.service';
-import { RegisterForm, RegisterRequest } from '@auth/register.request';
+import { RegisterRequest } from '@auth/register.request';
+import { RegisterForm } from '@forms/models/register-form.model';
+import { REGISTER_VALIDATION_MESSAGES } from '@forms/validations/register.validation';
 import { FormLayout } from '@layouts/form-layout/form-layout';
 import { TranslatePipe } from '@ngx-translate/core';
 import { AppButton } from '@primitives/app-button/app-button';
@@ -11,8 +13,9 @@ import { FormInput } from '@primitives/form/form-input/form-input';
 import { FormSection } from '@primitives/form/form-section/form-section';
 import { NotificationService } from '@services/notification.service';
 import { isoToDDMMYYYY } from '@utils/date.util';
+import { passwordMatchValidator } from '@validators/password-match.validator';
 import { UsernameValidator } from '@validators/username.validator';
-import { Subscription, timer } from 'rxjs';
+import { timer } from 'rxjs';
 
 @Component({
   selector: 'app-register',
@@ -29,15 +32,15 @@ import { Subscription, timer } from 'rxjs';
   templateUrl: './register.html',
   styleUrl: './register.scss',
 })
-export class Register implements OnDestroy {
+export class Register {
   // =========================================================
   // Dependencies
   // =========================================================
   private readonly fb = inject(FormBuilder);
   private readonly auth = inject(AuthService);
-  private readonly usernameValidator = inject(UsernameValidator);
   private readonly notif = inject(NotificationService);
   private readonly destroyRef = inject(DestroyRef);
+  private readonly usernameValidator = inject(UsernameValidator);
 
   // =========================================================
   // Ouputs
@@ -49,38 +52,49 @@ export class Register implements OnDestroy {
   // =========================================================
   readonly loading = signal(false);
   readonly success = signal(false);
-
-  private autoRedirectSub?: Subscription;
+  readonly submitted = signal(false);
 
   // =========================================================
   // Form
   // =========================================================
-  form = this.fb.nonNullable.group({
-    first_name: this.fb.nonNullable.control('', { validators: [Validators.required] }),
-    last_name: this.fb.nonNullable.control('', { validators: [Validators.required] }),
-    username: this.fb.nonNullable.control('', {
-      validators: [Validators.required],
-      asyncValidators: [this.usernameValidator.validate.bind(this.usernameValidator)],
-      updateOn: 'blur',
-    }),
-    email: this.fb.nonNullable.control('', {
-      validators: [Validators.required, Validators.email],
-    }),
-    password: this.fb.nonNullable.control('', {
-      validators: [Validators.required, Validators.minLength(6)],
-    }),
-    confirm_password: this.fb.nonNullable.control('', {
-      validators: [Validators.required],
-    }),
-    birth_date: this.fb.nonNullable.control('', {
-      validators: [Validators.required],
-    }),
-  });
+  form = this.fb.nonNullable.group(
+    {
+      first_name: this.fb.nonNullable.control('', { validators: [Validators.required] }),
+      last_name: this.fb.nonNullable.control('', { validators: [Validators.required] }),
+      username: this.fb.nonNullable.control('', {
+        validators: [Validators.required, Validators.minLength(4)],
+        asyncValidators: [this.usernameValidator.validate.bind(this.usernameValidator)],
+        updateOn: 'blur',
+      }),
+      email: this.fb.nonNullable.control('', {
+        validators: [Validators.required, Validators.email],
+      }),
+      password: this.fb.nonNullable.control('', {
+        validators: [Validators.required, Validators.minLength(6)],
+      }),
+      confirm_password: this.fb.nonNullable.control('', {
+        validators: [Validators.required],
+      }),
+      birth_date: this.fb.nonNullable.control('', {
+        validators: [Validators.required],
+      }),
+    },
+    {
+      validators: [passwordMatchValidator],
+    },
+  );
+
+  // =========================================================
+  // Validation helpers
+  // =========================================================
+  protected readonly messages = REGISTER_VALIDATION_MESSAGES;
 
   // =========================================================
   // Actions
   // =========================================================
-  submit(): void {
+  onSubmit(): void {
+    this.submitted.set(true);
+
     if (this.form.invalid || this.loading()) {
       this.form.markAllAsTouched();
       return;
@@ -89,14 +103,6 @@ export class Register implements OnDestroy {
     this.loading.set(true);
 
     const formValue: RegisterForm = this.form.getRawValue();
-
-    if (formValue.password !== formValue.confirm_password) {
-      this.notif.showError('form.validation.password_mismatch');
-      this.form.markAllAsTouched();
-      return;
-    }
-
-    this.loading.set(true);
 
     const payload: RegisterRequest = {
       first_name: formValue.first_name,
@@ -115,10 +121,11 @@ export class Register implements OnDestroy {
           this.loading.set(false);
           this.success.set(true);
 
-          this.autoRedirectSub?.unsubscribe();
-          this.autoRedirectSub = timer(20000).subscribe(() => {
-            this.successfulRegister.emit(formValue.email);
-          });
+          timer(20000)
+            .pipe(takeUntilDestroyed(this.destroyRef))
+            .subscribe(() => {
+              this.confirmSuccess();
+            });
         },
         error: (err) => {
           this.loading.set(false);
@@ -127,14 +134,9 @@ export class Register implements OnDestroy {
       });
   }
 
+  // TODO: confirm popup
   confirmSuccess(): void {
     const email = this.form.controls.email.value;
-    this.success.set(false);
-    this.autoRedirectSub?.unsubscribe();
     this.successfulRegister.emit(email);
-  }
-
-  ngOnDestroy(): void {
-    this.autoRedirectSub?.unsubscribe();
   }
 }

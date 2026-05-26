@@ -1,96 +1,75 @@
-<app-form-layout [title]="'register.title' | translate">
-  <form [formGroup]="form" (ngSubmit)="submit()">
+<app-form-layout [title]="'feature.signin.register.title' | translate">
+  <form
+    id="register-form"
+    form-content
+    [formGroup]="form"
+    class="register-form"
+    (ngSubmit)="onSubmit()"
+  >
     <!-- =========================
          IDENTITY SECTION
     ========================== -->
-    <app-form-section [title]="'register.section.identity' | translate">
+    <app-form-section [title]="'feature.signin.register.section.identity' | translate">
       <app-form-field
         [label]="'form.label.first_name' | translate"
-        [error]="
-          form.controls.first_name.touched && form.controls.first_name.invalid
-            ? ('form.validation.first_name' | translate)
-            : null
-        "
+        [control]="form.controls.first_name"
+        [messages]="messages.first_name"
+        [submitted]="submitted()"
       >
-        <app-form-input type="text" formControlName="first_name" />
+        <app-form-input
+          type="text"
+          name="first_name"
+          formControlName="first_name"
+          [fullWidth]="true"
+          class="register-input"
+        />
       </app-form-field>
 
-      <app-form-field
-        [label]="'form.label.last_name' | translate"
-        [error]="
-          form.controls.last_name.touched && form.controls.last_name.invalid
-            ? ('form.validation.last_name' | translate)
-            : null
-        "
-      >
-        <app-form-input type="text" formControlName="last_name" />
+      <app-form-field [label]="'form.label.last_name' | translate">
+        <app-form-input
+          type="text"
+          name="last_name"
+          formControlName="last_name"
+          [fullWidth]="true"
+          class="register-input"
+        />
       </app-form-field>
 
-      <app-form-field
-        [label]="'form.label.username' | translate"
-        [error]="
-          form.controls.username.hasError('usernameTaken')
-            ? ('form.validation.username_taken' | translate)
-            : form.controls.username.touched && form.controls.username.invalid
-              ? ('form.validation.username' | translate)
-              : null
-        "
-      >
-        <app-form-input type="text" formControlName="username" />
+      <app-form-field [label]="'form.label.username' | translate">
+        <app-form-input
+          type="text"
+          name="username"
+          formControlName="username"
+          [fullWidth]="true"
+          class="register-input"
+        />
+      </app-form-field>
+
+      <app-form-field [label]="'form.label.birth_date' | translate">
+        <app-form-input name="birth_date" formControlName="birth_date" class="register-input" />
       </app-form-field>
     </app-form-section>
 
     <!-- =========================
          CREDENTIALS SECTION
     ========================== -->
-    <app-form-section [title]="'register.section.credentials' | translate">
-      <app-form-field
-        [label]="'form.label.email' | translate"
-        [error]="
-          form.controls.email.touched && form.controls.email.invalid
-            ? ('form.validation.email' | translate)
-            : null
-        "
-      >
-        <app-form-input type="email" formControlName="email" />
+    <app-form-section [title]="'feature.signin.register.section.credentials' | translate">
+      <app-form-field [label]="'form.label.email' | translate">
+        <app-form-input type="email" formControlName="email" class="register-input" />
       </app-form-field>
 
-      <app-form-field
-        [label]="'form.label.password' | translate"
-        [error]="
-          form.controls.password.touched && form.controls.password.invalid
-            ? ('form.validation.password' | translate)
-            : null
-        "
-      >
-        <app-form-input type="password" formControlName="password" />
+      <app-form-field [label]="'form.label.password' | translate">
+        <app-form-input type="password" formControlName="password" class="register-input" />
       </app-form-field>
 
       <app-form-field
         [label]="'form.label.confirm_password' | translate"
-        [error]="
-          form.controls.confirm_password.touched && form.controls.confirm_password.invalid
-            ? ('form.validation.confirm_password' | translate)
-            : null
-        "
+        [control]="form.controls.confirm_password"
+        [group]="form"
+        [messages]="messages.confirm_password"
+        [submitted]="submitted()"
       >
-        <app-form-input type="password" formControlName="confirm_password" />
-      </app-form-field>
-    </app-form-section>
-
-    <!-- =========================
-         META SECTION
-    ========================== -->
-    <app-form-section [title]="'register.section.meta' | translate">
-      <app-form-field
-        [label]="'form.label.birth_date' | translate"
-        [error]="
-          form.controls.birth_date.touched && form.controls.birth_date.invalid
-            ? ('form.validation.birth_date' | translate)
-            : null
-        "
-      >
-        <app-form-input formControlName="birth_date" />
+        <app-form-input type="password" formControlName="confirm_password" class="register-input" />
       </app-form-field>
     </app-form-section>
 
@@ -100,23 +79,29 @@
     <div form-actions>
       <app-button
         type="submit"
+        form="register-form"
         variant="primary"
         [disabled]="loading() || form.invalid"
         [loading]="loading()"
-      >
-        {{ loading() ? ('register.spinner' | translate) : ('register.create' | translate) }}
+        [fullWidth]="true"
+        ><!-- TODO: disable when form is invalid (computed signal ?) -->
+        {{
+          loading()
+            ? ('feature.signin.register.spinner' | translate)
+            : ('feature.signin.register.create' | translate)
+        }}
       </app-button>
     </div>
   </form>
 
-  <!-- SUCCESS STATE : TODO: replace with confim Popup-->
+  <!-- SUCCESS STATE : TODO: replace with Confirm Popup later-->
   @if (success()) {
     <div class="register-success">
-      <h2>{{ 'register.success.title' | translate }}</h2>
+      <h2>{{ 'feature.signin.register.success.title' | translate }}</h2>
       <p>{{ 'register.success.message' | translate }}</p>
 
       <app-button variant="primary" (click)="confirmSuccess()">
-        {{ 'register.success.ok' | translate }}
+        {{ 'feature.signin.register.success.ok' | translate }}
       </app-button>
     </div>
   }

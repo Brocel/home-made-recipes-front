@@ -1,9 +1,7 @@
 <div [ngClass]="classes()">
   @if (label()) {
     <label class="form-field__label">
-      <span>
-        {{ label() }}
-      </span>
+      <span>{{ label() }}</span>
 
       @if (required()) {
         <span class="form-field__required">*</span>
@@ -15,15 +13,17 @@
     <ng-content />
   </div>
 
-  @if (hint() && !error()) {
+  @if (hint()) {
     <p class="form-field__hint">
       {{ hint() }}
     </p>
   }
 
-  @if (error()) {
-    <p class="form-field__error">
-      {{ error() }}
-    </p>
-  }
+  <app-validation-message
+    [control]="control()"
+    [group]="group()"
+    [messages]="effectiveMessages()"
+    [submitted]="submitted()"
+    [showWhen]="showWhen()"
+  />
 </div>

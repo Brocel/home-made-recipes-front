@@ -4,6 +4,9 @@ import { AbstractControl, AsyncValidator, ValidationErrors } from '@angular/form
 import { Observable, of, timer } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
 
+/**
+ * Validate username disponibility.
+ */
 @Injectable({ providedIn: 'root' })
 export class UsernameValidator implements AsyncValidator {
   private http = inject(HttpClient);

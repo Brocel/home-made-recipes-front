@@ -79,7 +79,11 @@
         "existingAccount": "Si tu as déjà un compte",
         "success": {
           "title": "Félicitations !",
-          "message": "La création d'un nouveau compte a réussi !"
+          "message": "La création de ton compte est un succès !"
+        },
+        "section": {
+          "identity": "Informations personnelles",
+          "credentials": "Identifiants de connexion"
         }
       }
     },
@@ -190,7 +194,7 @@
       "password_mismatch": "Les mots de passe ne correspondent pas",
       "password_wrong": "Mot de passe incorrect",
       "username_taken": "Ce pseudonyme n'est pas disponible",
-      "username": "Le pseudonyme doit être composé au minimum de 5 lettres",
+      "username_minlength": "Le pseudonyme doit être composé au minimum de 4 lettres",
       "first_name": "Le prénom doit être composé au minimum de X lettres",
       "last_name": "Le nom doit être composé au minimum de X lettres"
     },

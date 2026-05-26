@@ -79,7 +79,11 @@
         "existingAccount": "Você já tem uma conta?",
         "success": {
           "title": "Parabens !",
-          "message": "Você conseguiu a criar uma conta !"
+          "message": "Você conseguiu a criar sua conta !"
+        },
+        "section": {
+          "identity": "Informações pessoais",
+          "credentials": "Dados de login"
         }
       }
     },
@@ -190,7 +194,7 @@
       "password_mismatch": "As senhas não coincidem",
       "password_wrong": "Senha incorreta",
       "username_taken": "Esse username já existe",
-      "username": "O username deve ter pelo menos 5 letras",
+      "username_minlength": "O username deve ter pelo menos 4 letras",
       "first_name": "O nome deve conter pelo menos X letras",
       "last_name": "O sobrenome deve conter pelo menos X letras"
     },

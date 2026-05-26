@@ -1,0 +1,19 @@
+.validation-message {
+  margin: 0;
+  padding-left: var(--space-xs);
+  font-size: var(--text-xs);
+  line-height: 1.4;
+  color: var(--color-error);
+  animation: fadeIn 0.15s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

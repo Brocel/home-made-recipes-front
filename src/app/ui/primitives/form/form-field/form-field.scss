@@ -34,26 +34,18 @@
   }
 
   /* =========================================================
-     Hint / Error
+     Hint
   ========================================================= */
-  &__hint,
-  &__error {
+  &__hint {
     margin: 0;
     padding-left: var(--space-xs);
 
     font-size: var(--text-xs);
+    color: var(--color-text-soft);
 
     line-height: 1.4;
 
     animation: fadeIn 0.15s ease;
-  }
-
-  &__hint {
-    color: var(--color-text-soft);
-  }
-
-  &__error {
-    color: var(--color-danger);
   }
 
   /* =========================================================
