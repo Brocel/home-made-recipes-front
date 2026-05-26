@@ -57,7 +57,7 @@ export class Register {
   // =========================================================
   // Form
   // =========================================================
-  form = this.fb.nonNullable.group(
+  readonly form = this.fb.nonNullable.group(
     {
       first_name: this.fb.nonNullable.control('', { validators: [Validators.required] }),
       last_name: this.fb.nonNullable.control('', { validators: [Validators.required] }),
@@ -121,6 +121,7 @@ export class Register {
           this.loading.set(false);
           this.success.set(true);
 
+          // TODO: put timer on confirm popup
           timer(20000)
             .pipe(takeUntilDestroyed(this.destroyRef))
             .subscribe(() => {
@@ -134,7 +135,7 @@ export class Register {
       });
   }
 
-  // TODO: confirm popup
+  // TODO: confirm popup + secondary action -> go to Login
   confirmSuccess(): void {
     const email = this.form.controls.email.value;
     this.successfulRegister.emit(email);

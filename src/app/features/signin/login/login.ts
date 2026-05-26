@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component, computed, DestroyRef, inject, input, output, signal } from '@angular/core';
+import { Component, DestroyRef, inject, input, output, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { BaseSize } from '@appTypes/style.type';
 import { AuthService } from '@auth/auth.service';
 import { LoginRequest } from '@auth/login.request';
+import { LOGIN_VALIDATION_MESSAGES } from '@forms/validations/login.validation';
 import { FormLayout } from '@layouts/form-layout/form-layout';
 import { TranslatePipe } from '@ngx-translate/core';
 import { AppButton } from '@primitives/app-button/app-button';
@@ -53,7 +53,7 @@ export class Login {
   // State
   // =========================================================
   readonly loading = signal(false);
-  readonly inputSize: BaseSize = 'lg';
+  readonly submitted = signal(false);
 
   // =========================================================
   // Form
@@ -61,29 +61,6 @@ export class Login {
   readonly form = this.fb.nonNullable.group({
     email: ['', [Validators.required, Validators.email]],
     password: ['', Validators.required],
-  });
-
-  // =========================================================
-  // Validation helpers
-  // =========================================================
-  protected readonly emailError = computed(() => {
-    const control = this.form.controls.email;
-
-    if (!control.touched || !control.invalid) {
-      return null;
-    }
-
-    return 'form.validation.email';
-  });
-
-  protected readonly passwordError = computed(() => {
-    const control = this.form.controls.password;
-
-    if (!control.touched || !control.invalid) {
-      return null;
-    }
-
-    return 'form.validation.password';
   });
 
   constructor() {
@@ -97,9 +74,16 @@ export class Login {
   }
 
   // =========================================================
+  // Validation helpers
+  // =========================================================
+  protected readonly messages = LOGIN_VALIDATION_MESSAGES;
+
+  // =========================================================
   // Actions
   // =========================================================
   submit(): void {
+    this.submitted.set(true);
+
     if (this.form.invalid || this.loading()) {
       this.form.markAllAsTouched();
       return;

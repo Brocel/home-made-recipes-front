@@ -18,7 +18,7 @@ export const REGISTER_VALIDATION_MESSAGES = {
 
   email: {
     required: 'form.validation.email_required',
-    email: 'form.validation.email_invalid',
+    email: 'form.validation.email',
   },
 
   password: {

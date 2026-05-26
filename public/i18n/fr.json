@@ -190,7 +190,8 @@
   "form": {
     "validation": {
       "email": "Email non-valide",
-      "password": "Mot de passe obligatoire",
+      "email_required": "Email obligatoire",
+      "password_required": "Mot de passe obligatoire",
       "password_mismatch": "Les mots de passe ne correspondent pas",
       "password_wrong": "Mot de passe incorrect",
       "username_taken": "Ce pseudonyme n'est pas disponible",

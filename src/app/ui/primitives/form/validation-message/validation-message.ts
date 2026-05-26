@@ -7,12 +7,14 @@ import {
 } from '@forms/types/validation.type';
 import { resolveValidationMessage } from '@forms/utils/validation.utils';
 import { DEFAULT_VALIDATION_PRIORITY } from '@forms/validations/validation.constants';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-validation-message',
   standalone: true,
   templateUrl: './validation-message.html',
   styleUrl: './validation-message.scss',
+  imports: [TranslatePipe],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ValidationMessage {

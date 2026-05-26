@@ -8,7 +8,9 @@
     <app-form-section>
       <app-form-field
         [label]="'form.label.email' | translate"
-        [error]="emailError() ? (emailError()! | translate) : null"
+        [control]="form.controls.email"
+        [messages]="messages.email"
+        [submitted]="submitted()"
       >
         <app-form-input
           type="email"
@@ -26,7 +28,9 @@
     <app-form-section>
       <app-form-field
         [label]="'form.label.password' | translate"
-        [error]="passwordError() ? (passwordError()! | translate) : null"
+        [control]="form.controls.password"
+        [messages]="messages.password"
+        [submitted]="submitted()"
       >
         <app-form-input
           type="password"

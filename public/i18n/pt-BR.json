@@ -190,7 +190,8 @@
   "form": {
     "validation": {
       "email": "Email inválido",
-      "password": "Senha obrigatória",
+      "email_required": "Email obrigatório",
+      "password_required": "Senha obrigatória",
       "password_mismatch": "As senhas não coincidem",
       "password_wrong": "Senha incorreta",
       "username_taken": "Esse username já existe",
