@@ -4,7 +4,7 @@ import { AuthService } from '@auth/auth.service';
 import { PageTitleService } from '@translation/page-title.service';
 import { Footer } from '@ux/footer/footer';
 import { LeftPanel } from '@ux/left-panel/left-panel';
-import { ModalHost } from '@ux/modal/modal-host';
+import { ModalHost } from '@ux/modal-host/modal-host';
 import { Navbar } from '@ux/navbar/navbar';
 import { RightPanel } from '@ux/right-panel/right-panel';
 import { PageLayout } from './ui/layouts/page-layout/page-layout';
