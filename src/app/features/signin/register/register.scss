@@ -1,12 +1,36 @@
+@use '../../../../styles/forms/form-global-style' as form;
+
 .register-form {
-  display: flex;
-  flex-direction: column;
+  @include form.base-form;
 
-  gap: var(--space-xl);
+  & {
+    gap: var(--space-lg);
+  }
 
+  &__error {
+    font-size: var(--text-lg);
+  }
+}
+
+.secondary {
+  @include form.secondary-actions;
+
+  // Customization
+  & {
+    gap: var(--space-md);
+    padding-top: var(--space-xl);
+  }
+
+  &__label {
+    font-size: var(--text-lg);
+  }
+}
+
+.register-input {
   width: 100%;
 }
 
+// TODO: delete following after ConfirmPopup implementation
 .register-success {
   display: flex;
   flex-direction: column;
@@ -40,8 +64,4 @@
 
     max-width: 40ch;
   }
-}
-
-.register-input {
-  width: 100%;
 }

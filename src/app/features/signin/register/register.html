@@ -55,11 +55,23 @@
     ========================== -->
     <app-form-section [title]="'feature.signin.register.section.credentials' | translate">
       <app-form-field [label]="'form.label.email' | translate">
-        <app-form-input type="email" formControlName="email" class="register-input" />
+        <app-form-input
+          type="email"
+          name="email"
+          formControlName="email"
+          class="register-input"
+          [fullWidth]="true"
+        />
       </app-form-field>
 
       <app-form-field [label]="'form.label.password' | translate">
-        <app-form-input type="password" formControlName="password" class="register-input" />
+        <app-form-input
+          type="password"
+          name="password"
+          formControlName="password"
+          class="register-input"
+          [fullWidth]="true"
+        />
       </app-form-field>
 
       <app-form-field
@@ -69,7 +81,13 @@
         [messages]="messages.confirm_password"
         [submitted]="submitted()"
       >
-        <app-form-input type="password" formControlName="confirm_password" class="register-input" />
+        <app-form-input
+          type="password"
+          name="confirm_password"
+          formControlName="confirm_password"
+          class="register-input"
+          [fullWidth]="true"
+        />
       </app-form-field>
     </app-form-section>
 
@@ -84,7 +102,7 @@
         [disabled]="loading() || form.invalid"
         [loading]="loading()"
         [fullWidth]="true"
-        ><!-- TODO: disable when form is invalid (computed signal ?) -->
+      >
         {{
           loading()
             ? ('feature.signin.register.spinner' | translate)
@@ -106,3 +124,13 @@
     </div>
   }
 </app-form-layout>
+
+<div class="secondary">
+  <span class="secondary__label">
+    {{ 'feature.signin.login.register' | translate }}
+  </span>
+
+  <app-button type="button" variant="secondary" [fullWidth]="true" (click)="goToLogin()">
+    {{ 'feature.signin.register.create' | translate }}
+  </app-button>
+</div>

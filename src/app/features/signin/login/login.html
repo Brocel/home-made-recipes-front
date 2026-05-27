@@ -2,7 +2,7 @@
   [title]="'feature.signin.login.title' | translate"
   [subtitle]="'feature.signin.login.description' | translate"
 >
-  <form id="login-form" form-content [formGroup]="form" class="login-form" (ngSubmit)="submit()">
+  <form id="login-form" form-content [formGroup]="form" class="login-form" (ngSubmit)="onSubmit()">
     <!-- EMAIL -->
 
     <app-form-section>
@@ -47,7 +47,7 @@
       type="submit"
       form="login-form"
       variant="primary"
-      [disabled]="loading()"
+      [disabled]="loading() || form.invalid"
       [loading]="loading()"
       [fullWidth]="true"
     >
@@ -60,8 +60,8 @@
   </div>
 </app-form-layout>
 
-<div class="login-secondary">
-  <span class="login-secondary__label">
+<div class="secondary">
+  <span class="secondary__label">
     {{ 'feature.signin.login.register' | translate }}
   </span>
 

@@ -140,4 +140,8 @@ export class Register {
     const email = this.form.controls.email.value;
     this.successfulRegister.emit(email);
   }
+
+  goToLogin() {
+    // TODO
+  }
 }

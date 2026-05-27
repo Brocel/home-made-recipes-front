@@ -81,7 +81,7 @@ export class Login {
   // =========================================================
   // Actions
   // =========================================================
-  submit(): void {
+  onSubmit(): void {
     this.submitted.set(true);
 
     if (this.form.invalid || this.loading()) {
