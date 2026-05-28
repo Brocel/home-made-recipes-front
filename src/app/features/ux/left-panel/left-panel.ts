@@ -37,7 +37,6 @@ export class LeftPanel {
   }
 
   navigate(path: string[]) {
-    console.log('path :: ' + path);
     this.nav.goToFeature(path);
   }
 }

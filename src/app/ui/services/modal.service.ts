@@ -29,7 +29,6 @@ export class ModalService {
   // Actions
   // =========================================================
   open(config: AnyModalConfig): string {
-    console.log('OPENING MODAL');
     const item: ModalStackItem = {
       id: generateId(),
       config,
@@ -41,7 +40,6 @@ export class ModalService {
   }
 
   openForResult<T extends ModalType>(config: AnyModalConfig): Promise<ModalResult<T>> {
-    console.log('OPENING MODAL WITH PROMISE');
     return new Promise((resolve) => {
       const item: ModalStackItem = {
         id: generateId(),
@@ -56,7 +54,6 @@ export class ModalService {
   }
 
   close(id?: string): void {
-    console.log('CLOSING MODAL');
     if (!id) {
       const updated = this.stack().slice(0, -1);
       this.stack.set(this.normalizeStack(updated));
