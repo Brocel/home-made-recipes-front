@@ -52,7 +52,10 @@
     },
     "products": {
       "title": "Produtos",
-      "description": "Lista dos produtos"
+      "description": "Lista dos produtos",
+      "product-autocomplete": {
+        "label": "Produtos"
+      }
     },
     "dashboard": {
       "title": "Dashboard",
@@ -92,29 +95,19 @@
         "searchPlaceholder": "Pesquisa rápida",
         "langLabel": "Idioma"
       },
-      "menu": {
-        "label": "Menu",
-        "left": {
-          "home": "Início",
-          "addRecipe": "Adicionar uma receita",
-          "search": "Pesquisa avançada"
+      "profile-menu": {
+        "label": "Perfil",
+        "profileAlt": "Avatar",
+        "guest": {
+          "label": "Menu de convidado",
+          "login": "Conectar-se",
+          "register": "Inscrever-se"
         },
-        "profile": {
-          "label": "Perfil",
-          "profileAlt": "Avatar",
-          "guest": {
-            "label": "Menu de convidado",
-            "login": "Conectar-se",
-            "register": "Inscrever-se"
-          },
-          "user": {
-            "label": "Meu perfil",
-            "dashboard": "Dashboard",
-            "logout": "Desconectar-se"
-          }
-        },
-        "home": "Início",
-        "searchPlaceholder": "Pesquisa rápida"
+        "user": {
+          "label": "Meu perfil",
+          "dashboard": "Dashboard",
+          "logout": "Desconectar-se"
+        }
       }
     }
   },

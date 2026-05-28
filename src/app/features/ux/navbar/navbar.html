@@ -1,11 +1,11 @@
 <nav class="navbar">
-  <section class="navbar__brand" (click)="goHome()">
-    <img [src]="logoUrl" alt="Logo" class="navbar__logo" />
+  <button type="button" class="navbar__brand" (click)="goHome()">
+    <img [src]="logoUrl" alt="" class="navbar__logo" />
     <div class="navbar__titles">
       <h1 class="navbar__title">{{ 'feature.home.title' | translate }}</h1>
       <p class="navbar__lead">{{ 'feature.home.lead' | translate }}</p>
     </div>
-  </section>
+  </button>
 
   <section class="navbar__actions">
     <div class="lang-switch">

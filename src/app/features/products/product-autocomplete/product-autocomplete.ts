@@ -14,6 +14,7 @@ import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs';
 
 import { ProductApi } from '@api/product.api';
 import { Product } from '@models/recipes/ingredient';
+import { TranslatePipe } from '@ngx-translate/core';
 import { AddProduct } from '../add-product/add-product';
 
 @Component({
@@ -25,6 +26,7 @@ import { AddProduct } from '../add-product/add-product';
     MatInputModule,
     MatAutocompleteModule, // TODO: refacto with autocomplete primitive
     MatIconModule,
+    TranslatePipe,
   ],
   providers: [
     {
@@ -37,7 +39,7 @@ import { AddProduct } from '../add-product/add-product';
   styleUrls: ['./product-autocomplete.scss'],
 })
 export class ProductAutocomplete implements ControlValueAccessor {
-  @Input() label = 'Produit';
+  @Input() label = 'feature.products.product-autocomplete.label';
 
   private dialog = inject(MatDialog);
   private productService = inject(ProductApi);

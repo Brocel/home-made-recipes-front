@@ -4,9 +4,19 @@
   <!-- ===================================================== -->
   <button floatingTrigger class="profile-trigger" type="button" (click)="toggle()">
     @if (user()?.picture) {
-      <img [src]="user()?.picture" [alt]="user()?.username || 'User'" class="avatar" />
+      <img
+        [src]="user()?.picture"
+        alt=""
+        class="avatar"
+        [aria-label]="'feature.ux.profile-menu.user.label' | translate"
+      />
     } @else {
-      <img src="assets/default_avatar.png" alt="Avatar" class="avatar" />
+      <img
+        src="assets/default_avatar.png"
+        alt=""
+        class="avatar"
+        [aria-label]="'feature.ux.profile-menu.guest.label' | translate"
+      />
     }
   </button>
 
@@ -15,22 +25,38 @@
   <!-- ===================================================== -->
   <div floatingContent class="profile-panel">
     @if (isAuthenticated()) {
-      <button class="profile-item" (click)="onProfile()">
-        {{ 'feature.ux.menu.profile.user.label' | translate }}
+      <button
+        class="profile-item"
+        (click)="onProfile()"
+        [aria-label]="'feature.ux.profile-menu.user.label' | translate"
+      >
+        {{ 'feature.ux.profile-menu.user.label' | translate }}
       </button>
 
-      <button class="profile-item" (click)="onDashboard()">
-        {{ 'feature.ux.menu.profile.user.dashboard' | translate }}
+      <button
+        class="profile-item"
+        (click)="onDashboard()"
+        [aria-label]="'feature.ux.profile-menu.user.dashboard' | translate"
+      >
+        {{ 'feature.ux.profile-menu.user.dashboard' | translate }}
       </button>
 
       <div class="profile-divider"></div>
 
-      <button class="profile-item danger" (click)="onLogout()">
-        {{ 'feature.ux.menu.profile.user.logout' | translate }}
+      <button
+        class="profile-item danger"
+        (click)="onLogout()"
+        [aria-label]="'feature.ux.profile-menu.user.logout' | translate"
+      >
+        {{ 'feature.ux.profile-menu.user.logout' | translate }}
       </button>
     } @else {
-      <button class="profile-item" (click)="onLogin()">
-        {{ 'feature.ux.menu.profile.guest.login' | translate }}
+      <button
+        class="profile-item"
+        (click)="onLogin()"
+        [aria-label]="'feature.ux.profile-menu.guest.login' | translate"
+      >
+        {{ 'feature.ux.profile-menu.guest.login' | translate }}
       </button>
     }
   </div>
