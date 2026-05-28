@@ -193,7 +193,16 @@
       "username_taken": "Esse username já existe",
       "username_minlength": "O username deve ter pelo menos 4 letras",
       "first_name": "O nome deve conter pelo menos X letras",
-      "last_name": "O sobrenome deve conter pelo menos X letras"
+      "last_name": "O sobrenome deve conter pelo menos X letras",
+      "product_name_required": "O nome do produto é obrigatório",
+      "ingredient_type_required": "O tipo do produto é obrigatório",
+      "recipe_title_required": "O nome da receita é obrigatório",
+      "recipe_description_required": "A descrição da receita é obrigatória",
+      "recipe_prep_time_required": "O tempo de preparo é obrigatório",
+      "recipe_prep_time_min": "O tempo de preparo deve ser superior a 0",
+      "recipe_type_required": "O tipo de receita é obrigatório",
+      "recipe_ingredient_list_required": "A lista de ingredientes é obrigatória",
+      "recipe_step_list_required": "A lista de etapas é obrigatória"
     },
     "label": {
       "email": "Email",

@@ -1,33 +1,46 @@
-import { Component, input, output } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, forwardRef, input } from '@angular/core';
+import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { BaseCva } from '../abstractions/base-cva';
 
 @Component({
   selector: 'app-date-picker',
   imports: [FormsModule],
   templateUrl: './date-picker.html',
   styleUrl: './date-picker.scss',
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => DatePicker),
+      multi: true,
+    },
+  ],
 })
-export class DatePicker {
+export class DatePicker extends BaseCva<string> {
   // =========================================================
-  // Inputs
+  // Configuration Inputs
   // =========================================================
-  value = input<string | null>(null);
-  min = input<string | null>(null);
-  max = input<string | null>(null);
-  disabled = input(false);
-  placeholder = input('dd/MM/yyyy');
+  readonly min = input<string | null>(null);
+  readonly max = input<string | null>(null);
+  readonly placeholder = input('dd/MM/yyyy');
 
   // =========================================================
-  // Outputs
+  // ControlValueAccessor Implementation
   // =========================================================
-  valueChange = output<string>();
-
-  // =========================================================
-  // Events
-  // =========================================================
-  onInput(event: Event) {
+  /**
+   * Handle input events from the date field.
+   * Updates the form control value and notifies Angular Forms.
+   */
+  protected onInput(event: Event): void {
     const target = event.target as HTMLInputElement;
 
-    this.valueChange.emit(target.value);
+    this.updateValue(target.value);
+  }
+
+  /**
+   * Handle blur event to mark the control as touched.
+   * Important for showing validation errors on submit.
+   */
+  protected onBlur(): void {
+    this.markAsTouched();
   }
 }

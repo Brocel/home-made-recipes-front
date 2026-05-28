@@ -193,7 +193,16 @@
       "username_taken": "Ce pseudonyme n'est pas disponible",
       "username_minlength": "Le pseudonyme doit être composé au minimum de 4 lettres",
       "first_name": "Le prénom doit être composé au minimum de X lettres",
-      "last_name": "Le nom doit être composé au minimum de X lettres"
+      "last_name": "Le nom doit être composé au minimum de X lettres",
+      "product_name_required": "Le nom du produit est obligatoire",
+      "ingredient_type_required": "Le type du produit est obligatoire",
+      "recipe_title_required": "Le nom de la recette est obligatoire",
+      "recipe_description_required": "La description de la recette est obligatoire",
+      "recipe_prep_time_required": "Le temps de préparation est obligatoire",
+      "recipe_prep_time_min": "Le temps de préparation doit être supérieur à 0",
+      "recipe_type_required": "Le type de recette est obligatoire",
+      "recipe_ingredient_list_required": "La liste des ingrédients est obligatoire",
+      "recipe_step_list_required": "La liste des étapes est obligatoire"
     },
     "label": {
       "email": "Email",
