@@ -1,13 +1,13 @@
-import { Component, inject, Input } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { MatIconModule } from '@angular/material/icon';
 import { TranslatePipe } from '@ngx-translate/core';
 
-import { EnumUtilsService } from '@services/enum-utils.service';
 import { RecipeType, RecipeTypeLabel } from '@models/recipes/recipe-type.enum';
+import { EnumUtilsService } from '@services/enum-utils.service';
 
 @Component({
   selector: 'app-recipe-info',
@@ -24,11 +24,9 @@ import { RecipeType, RecipeTypeLabel } from '@models/recipes/recipe-type.enum';
   styleUrls: ['./recipe-info.scss'],
 })
 export class RecipeInfo {
-  private enumUtils = inject(EnumUtilsService);
+  private readonly enumUtils = inject(EnumUtilsService);
 
-
-  @Input() informations!: FormGroup;
+  informations = input.required<FormGroup>();
 
   recipeTypes = this.enumUtils.enumToList(RecipeType, RecipeTypeLabel);
-
 }

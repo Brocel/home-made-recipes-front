@@ -1,4 +1,4 @@
-import { Injectable, inject } from '@angular/core';
+import { Injectable, inject, signal } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { IngredientType } from '@models/recipes/ingredient-type.enum';
 import { RecipeType } from '@models/recipes/recipe-type.enum';
@@ -7,11 +7,17 @@ import { RecipeFormModel } from '../forms/models/recipe-form.model';
 
 @Injectable({ providedIn: 'root' })
 export class RecipeFormService {
-  private fb = inject(FormBuilder);
-  private form!: FormGroup;
+  private readonly fb = inject(FormBuilder);
 
-  createForm() {
-    this.form = this.fb.group({
+  payload = signal<{ title?: string; recipe_type?: RecipeType } | null>(null);
+
+  // =========================================================
+  // Create form
+  // =========================================================
+
+  // Recipe
+  createForm(): FormGroup {
+    return this.fb.group({
       title: [''],
       description: [''],
       preparation_time: [0],
@@ -19,24 +25,9 @@ export class RecipeFormService {
       ingredient_list: this.fb.array([]),
       step_list: this.fb.array([]),
     });
-
-    return this.form;
-  }
-
-  get recipeForm() {
-    return this.form;
   }
 
   // Ingredients
-
-  addIngredient(): void {
-    this.ingredientsArray.push(this.createIngredient());
-  }
-
-  get ingredientsArray() {
-    return this.form.get('ingredient_list') as FormArray;
-  }
-
   createIngredient(): FormGroup {
     return this.fb.group({
       quantity: [0],
@@ -50,15 +41,6 @@ export class RecipeFormService {
   }
 
   // Steps
-
-  addStep() {
-    this.stepsArray.push(this.createStep(this.stepsArray.length + 1));
-  }
-
-  get stepsArray() {
-    return this.form.get('step_list') as FormArray;
-  }
-
   createStep(order: number) {
     return this.fb.group({
       description: [''],
@@ -66,11 +48,36 @@ export class RecipeFormService {
     });
   }
 
-  toDto(): RecipeFormModel {
-    return this.form.value as RecipeFormModel;
+  // =========================================================
+  // Add elements
+  // =========================================================
+
+  // Ingredients
+  addIngredient(ingredientList: FormArray): void {
+    ingredientList.push(this.createIngredient());
   }
 
-  patchStateValue(state: { title?: string; recipe_type?: RecipeType }): void {
-    this.form.patchValue({ title: state.title ?? '', recipe_type: state.recipe_type ?? null });
+  // Steps
+  addStep(stepList: FormArray): void {
+    stepList.push(this.createStep(stepList.length + 1));
+  }
+
+  // =========================================================
+  // Helpers
+  // =========================================================
+  toDto(form: FormGroup): RecipeFormModel {
+    return form.value as RecipeFormModel;
+  }
+
+  patchStateValue(form: FormGroup, state: { title?: string; recipe_type?: RecipeType }): void {
+    form.patchValue({ title: state.title ?? '', recipe_type: state.recipe_type ?? null });
+  }
+
+  setPayload(data: { title?: string; recipe_type?: RecipeType }) {
+    this.payload.set(data);
+  }
+
+  clearPayload() {
+    this.payload.set(null);
   }
 }

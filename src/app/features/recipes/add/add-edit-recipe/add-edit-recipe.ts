@@ -2,7 +2,6 @@ import { Component, effect, inject, OnInit } from '@angular/core';
 import { FormArray, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatIcon } from '@angular/material/icon';
 import { TranslatePipe } from '@ngx-translate/core';
-import { RecipeCreateBridgeService } from '@services/recipe-create-bridge.service';
 import { RecipeFormService } from '@services/recipe-form.service';
 import { ScrollWrapper } from '../../../../ui/overlays/scroll-wrapper/scroll-wrapper';
 import { RecipeInfo } from './sections/recipe-info/recipe-info';
@@ -24,33 +23,32 @@ import { RecipeSteps } from './sections/recipe-steps/recipe-steps';
   styleUrl: './add-edit-recipe.scss',
 })
 export class AddEditRecipe implements OnInit {
-  private formService = inject(RecipeFormService);
-  private bridge = inject(RecipeCreateBridgeService);
+  private readonly formService = inject(RecipeFormService);
 
   form!: FormGroup;
-
-  bridgeEffect = effect(() => {
-    const payload = this.bridge.payload();
-    if (payload) {
-      this.formService.patchStateValue(payload);
-      this.bridge.clear();
-    }
-  });
-
-  get ingredient_list(): FormArray {
-    return this.formService.ingredientsArray;
-  }
-  get step_list(): FormArray {
-    return this.formService.stepsArray;
-  }
 
   ngOnInit() {
     this.form = this.formService.createForm();
   }
 
+  formServiceEffect = effect(() => {
+    const payload = this.formService.payload();
+    if (payload) {
+      this.formService.patchStateValue(this.form, payload);
+      this.formService.clearPayload();
+    }
+  });
+
+  get ingredient_list(): FormArray {
+    return this.form.get('ingredient_list') as FormArray;
+  }
+  get step_list(): FormArray {
+    return this.form.get('step_list') as FormArray;
+  }
+
   submit() {
     if (this.form.invalid) return;
-    const dto = this.formService.toDto();
+    const dto = this.formService.toDto(this.form);
 
     // TODO: call to api
   }

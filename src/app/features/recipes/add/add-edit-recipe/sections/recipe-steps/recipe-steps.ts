@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { FormArray } from '@angular/forms';
 
 @Component({
@@ -8,6 +8,5 @@ import { FormArray } from '@angular/forms';
   styleUrl: './recipe-steps.scss',
 })
 export class RecipeSteps {
-  @Input() steps!: FormArray;
-
+  steps = input.required<FormArray>();
 }

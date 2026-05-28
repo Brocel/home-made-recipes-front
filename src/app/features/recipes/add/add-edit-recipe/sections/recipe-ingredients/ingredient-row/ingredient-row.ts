@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
+import { Component, inject, input, output } from '@angular/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -28,10 +28,10 @@ import { EnumUtilsService } from '@services/enum-utils.service';
   styleUrls: ['./ingredient-row.scss'],
 })
 export class IngredientRow {
-  @Input({ required: true }) group!: FormGroup;
-  @Output() remove = new EventEmitter<void>();
+  private readonly enumUtils: EnumUtilsService = inject(EnumUtilsService);
 
-  private enumUtils: EnumUtilsService = inject(EnumUtilsService);
+  group = input.required<FormGroup>();
+  remove = output<void>();
 
   unitLabels = this.enumUtils.enumToShortAndLongLabels(Unit, UnitShortLabel, UnitLongLabel);
 }

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { FormArray, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { TranslatePipe } from '@ngx-translate/core';
@@ -14,10 +14,10 @@ import { IngredientRow } from './ingredient-row/ingredient-row';
   styleUrls: ['./recipe-ingredients.scss'],
 })
 export class RecipeIngredients {
-  @Input({ required: true }) ingredients!: FormArray<FormGroup>;
+  ingredients = input.required<FormArray<FormGroup>>();
 
   get ingredientsControls() {
-    return this.ingredients.controls as FormGroup[];
+    return this.ingredients().controls as FormGroup[];
   }
 
   addIngredient() {
@@ -27,10 +27,10 @@ export class RecipeIngredients {
       product: new FormControl(null),
     });
 
-    this.ingredients.push(group);
+    this.ingredients().push(group);
   }
 
   removeIngredient(index: number) {
-    this.ingredients.removeAt(index);
+    this.ingredients().removeAt(index);
   }
 }

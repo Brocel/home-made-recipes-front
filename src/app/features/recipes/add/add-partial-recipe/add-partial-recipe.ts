@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 import { RecipeType, RecipeTypeLabel } from '@models/recipes/recipe-type.enum';
 import { TranslatePipe } from '@ngx-translate/core';
 import { EnumUtilsService } from '@services/enum-utils.service';
-import { RecipeCreateBridgeService } from '@services/recipe-create-bridge.service';
+import { RecipeFormService } from '@services/recipe-form.service';
 
 @Component({
   selector: 'app-mini-add',
@@ -31,10 +31,10 @@ import { RecipeCreateBridgeService } from '@services/recipe-create-bridge.servic
 export class AddPartialRecipe {
   @Output() close = new EventEmitter<void>();
 
-  private fb: FormBuilder = inject(FormBuilder);
-  private enumUtils: EnumUtilsService = inject(EnumUtilsService);
-  private bridge: RecipeCreateBridgeService = inject(RecipeCreateBridgeService);
-  private router = inject(Router);
+  private readonly fb: FormBuilder = inject(FormBuilder);
+  private readonly enumUtils: EnumUtilsService = inject(EnumUtilsService);
+  private readonly formService = inject(RecipeFormService);
+  private readonly router = inject(Router);
 
   recipeTypes = this.enumUtils.enumToList(RecipeType, RecipeTypeLabel);
 
@@ -47,7 +47,7 @@ export class AddPartialRecipe {
     const { title, recipeType } = this.form.value;
     const payload = { title: title || undefined, recipe_type: recipeType || undefined };
 
-    this.bridge.setPayload(payload);
+    this.formService.setPayload(payload);
 
     this.router.navigate(['/recipes/create']);
 
