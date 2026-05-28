@@ -1,10 +1,5 @@
 import { Routes } from '@angular/router';
 import { AuthGuard } from '@guards/auth.guard';
-import { Home } from '@home/home';
-import { AddEditRecipe } from '@recipes/add/add-edit-recipe/add-edit-recipe';
-import { RecipeFull } from '@recipes/recipe-full/recipe-full';
-import { RecipeList } from '@recipes/recipe-list/recipe-list';
-import { SearchRecipe } from '@recipes/search/recipe-search/search-recipe';
 import { HOME_DATA, HOME_MENU_ITEMS } from '@utils/datas/feature-data.util';
 import {
   RECIPE_ADD_DATA,
@@ -30,7 +25,7 @@ export const routes: Routes = [
        */
       {
         path: '',
-        component: Home,
+        loadComponent: () => import('@home/home').then((m) => m.Home),
         data: {
           feature: HOME_DATA,
           menu: HOME_MENU_ITEMS,
@@ -44,7 +39,8 @@ export const routes: Routes = [
         children: [
           {
             path: '',
-            component: RecipeList,
+            loadComponent: () =>
+              import('@recipes/recipe-list/recipe-list').then((m) => m.RecipeList),
             data: {
               feature: RECIPE_LIST_DATA,
               featureType: 'recipes',
@@ -52,7 +48,8 @@ export const routes: Routes = [
           },
           {
             path: 'add',
-            component: AddEditRecipe,
+            loadComponent: () =>
+              import('@recipes/add/add-edit-recipe/add-edit-recipe').then((m) => m.AddEditRecipe),
             data: {
               feature: RECIPE_ADD_DATA,
               featureType: 'recipes',
@@ -61,7 +58,8 @@ export const routes: Routes = [
           },
           {
             path: 'search',
-            component: SearchRecipe,
+            loadComponent: () =>
+              import('@recipes/search/recipe-search/search-recipe').then((m) => m.SearchRecipe),
             data: {
               feature: RECIPE_SEARCH_DATA,
               featureType: 'recipes',
@@ -69,7 +67,8 @@ export const routes: Routes = [
           },
           {
             path: 'see/:id',
-            component: RecipeFull,
+            loadComponent: () =>
+              import('@recipes/recipe-full/recipe-full').then((m) => m.RecipeFull),
             data: {
               feature: RECIPE_SEE_DATA,
               featureType: 'recipes',

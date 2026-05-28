@@ -1,7 +1,9 @@
-import { effect, inject, Injectable } from '@angular/core';
+import { computed, effect, inject, Injectable } from '@angular/core';
+import { toObservable, toSignal } from '@angular/core/rxjs-interop';
 import { Title } from '@angular/platform-browser';
 import { RouteContextService } from '@nav/route-context.service';
 import { TranslateService } from '@ngx-translate/core';
+import { of, switchMap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -11,19 +13,17 @@ export class PageTitleService {
   private translate = inject(TranslateService);
   private context = inject(RouteContextService);
 
+  private readonly featureTitleKey = computed(() => this.context.feature()?.title ?? null);
+  private readonly translatedTitle = toSignal(
+    toObservable(this.featureTitleKey).pipe(
+      switchMap((key) => (key ? this.translate.stream(key) : of('Home Made Recipe'))),
+    ),
+    { initialValue: 'Home Made Recipe' },
+  );
+
   init(): void {
     effect(() => {
-      const feature = this.context.feature();
-
-      if (!feature?.title) {
-        this.title.setTitle('Home Made Recipe');
-
-        return;
-      }
-
-      this.translate.stream(feature.title).subscribe((translated) => {
-        this.title.setTitle(translated);
-      });
+      this.title.setTitle(this.translatedTitle());
     });
   }
 }
