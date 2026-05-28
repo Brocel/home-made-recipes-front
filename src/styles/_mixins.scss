@@ -1,6 +1,11 @@
-@mixin focus-ring($color: var(--color-primary), $alpha: var(--focus-alpha), $offset: 2px) {
-  outline: 2px solid rgba(red($color), green($color), blue($color), $alpha);
+/**
+ * Standardized focus ring for keyboard navigation.
+ * Provides consistent outline styling across all interactive elements.
+ */
+@mixin focus-ring($color: var(--color-primary), $offset: 2px) {
+  outline: 2px solid $color;
   outline-offset: $offset;
+  border-radius: var(--radius-sm);
 }
 
 @mixin card-base {

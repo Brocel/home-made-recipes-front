@@ -32,6 +32,7 @@
 
   // Typography
   --color-text: #{t.$text};
+  --color-text-soft: #{t.$text-soft};
   --color-text-muted: #{t.$text-muted};
   --color-text-strong: #{t.$text-strong};
   --color-text-inverse: #{t.$text-inverse};
@@ -49,6 +50,8 @@
 
   --color-error: #{t.$error};
   --color-error-soft: #{t.$error-soft};
+  --color-danger: #{t.$error};
+  --color-danger-soft: #{t.$error-soft};
 
   --color-info: #{t.$info};
   --color-info-soft: #{t.$info-soft};
@@ -58,8 +61,8 @@
   --color-disabled-text: #{t.$disabled-text};
 
   --color-overlay: #{t.$overlay};
-  --color-focus-ring: #{t.$focus-ring};
-
+  --color-focus-ring-dark: #{t.$focus-ring-dark};
+  --color-focus-ring-light: #{t.$focus-ring-light};
   // ======================================================
   // TYPOGRAPHY
   // ======================================================
@@ -88,6 +91,13 @@
   --space-md: #{t.$space-md};
   --space-lg: #{t.$space-lg};
   --space-xl: #{t.$space-xl};
+
+  // ======================================================
+  // SIZES
+  // ======================================================
+  --size-sm: #{t.$size-sm};
+  --size-md: #{t.$size-md};
+  --size-lg: #{t.$size-lg};
 
   // ======================================================
   // RADIUS
@@ -174,6 +184,43 @@
   --control-choice-size-sm: calc(var(--space-md) + var(--space-xs));
   --control-choice-size-md: calc(var(--space-lg) + var(--space-xs));
   --control-choice-size-lg: calc(var(--space-xl) + var(--space-xs));
+
+  // ======================================================
+  // ACCESSIBILITY
+  // ======================================================
+  --focus-alpha: 0.22;
+
+  // ======================================================
+  // BLUR
+  // ======================================================
+  --blur-sm: #{t.$blur-sm};
+  --blur-md: #{t.$blur-md};
+  --blur-lg: #{t.$blur-lg};
+
+  // ======================================================
+  // MOTION OFFSETS
+  // ======================================================
+  --motion-offset-xs: #{t.$motion-offset-xs};
+  --motion-offset-sm: #{t.$motion-offset-sm};
+  --motion-offset-md: #{t.$motion-offset-md};
+  --motion-offset-center: #{t.$motion-offset-center};
+
+  // ======================================================
+  // PANEL & MODAL WIDTHS
+  // ======================================================
+  --panel-width-sm: #{t.$panel-width-sm};
+  --panel-width-md: #{t.$panel-width-md};
+  --modal-width-sm: #{t.$modal-width-sm};
+  --modal-width-md: #{t.$modal-width-md};
+  --content-max-width-md: #{t.$content-max-width-md};
+
+  // ======================================================
+  // RESPONSIVE BREAKPOINTS
+  // ======================================================
+  --breakpoint-mobile: #{t.$breakpoint-mobile};
+  --breakpoint-tablet: #{t.$breakpoint-tablet};
+  --breakpoint-desktop: #{t.$breakpoint-desktop};
+  --breakpoint-wide: #{t.$breakpoint-wide};
 }
 
 // ======================================================

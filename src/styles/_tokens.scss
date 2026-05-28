@@ -37,6 +37,7 @@ $opacity-transparent: 0.32;
 // Typography
 // -----------------------------
 $text: #2f2a24;
+$text-soft: #a8a09a;
 $text-muted: #6f6a63;
 $text-strong: #181512;
 $text-inverse: #ffffff;
@@ -69,7 +70,8 @@ $disabled-bg: #d8d2ca;
 $disabled-text: #8c857d;
 
 $overlay: rgba(24, 21, 18, 0.45);
-$focus-ring: rgba(201, 106, 75, 0.22);
+$focus-ring-dark: rgba(201, 106, 75, 0.22);
+$focus-ring-light: #ebe5dc;
 
 // ======================================================
 // TYPOGRAPHY
@@ -102,6 +104,13 @@ $space-sm: 8px;
 $space-md: 16px;
 $space-lg: 24px;
 $space-xl: 32px;
+
+// ======================================================
+// SIZES
+// ======================================================
+$size-sm: 32px;
+$size-md: 40px;
+$size-lg: 48px;
 
 // ======================================================
 // RADIUS
@@ -152,3 +161,39 @@ $header-height: 72px;
 $navbar-height: 65px;
 
 $search-max-width: clamp(220px, 45vw, 520px);
+
+// ======================================================
+// BLUR INTENSITIES
+// ======================================================
+
+$blur-sm: 2px;
+$blur-md: 4px;
+$blur-lg: 18px;
+
+// ======================================================
+// MOTION OFFSETS
+// ======================================================
+
+$motion-offset-xs: -1px;
+$motion-offset-sm: -4px;
+$motion-offset-md: 12px;
+$motion-offset-center: -50%;
+
+// ======================================================
+// PANEL & MODAL WIDTHS
+// ======================================================
+
+$panel-width-sm: 240px;
+$panel-width-md: 340px;
+$modal-width-sm: 420px;
+$modal-width-md: 480px;
+$content-max-width-md: 900px;
+
+// ======================================================
+// RESPONSIVE BREAKPOINTS
+// ======================================================
+
+$breakpoint-mobile: 640px;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1024px;
+$breakpoint-wide: 1200px;

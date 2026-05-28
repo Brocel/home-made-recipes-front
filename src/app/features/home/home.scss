@@ -19,13 +19,13 @@
   margin-bottom: 0;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: var(--breakpoint-desktop)) {
   .home-container {
     gap: var(--space-md);
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: var(--breakpoint-tablet)) {
   .home-container {
     flex-direction: column;
   }

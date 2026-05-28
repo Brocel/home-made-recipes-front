@@ -1,3 +1,5 @@
+@use '../../../../styles/mixins' as *;
+
 .navbar {
   position: sticky;
   top: 0;
@@ -37,9 +39,7 @@
 }
 
 .navbar__brand:focus-visible {
-  outline: 2px solid var(--color-surface-elevated);
-  outline-offset: 4px;
-  border-radius: 8px;
+  @include focus-ring(var(--color-surface-elevated));
 }
 
 .navbar__titles {
@@ -50,8 +50,8 @@
 }
 
 .navbar__logo {
-  width: 36px;
-  height: 36px;
+  width: var(--size-md);
+  height: var(--size-md);
 
   object-fit: contain;
 
@@ -94,7 +94,7 @@
 
   padding: 0.2rem;
 
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
 
   background: color-mix(in srgb, var(--color-surface-elevated) 85%, transparent);
 
@@ -111,7 +111,7 @@
 
   padding: 0.45rem 0.9rem;
 
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
 
   font-size: var(--text-sm);
   font-weight: 600;

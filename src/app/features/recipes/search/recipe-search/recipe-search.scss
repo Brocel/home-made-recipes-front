@@ -1,10 +1,9 @@
+@use '../../../../../styles/forms/form-search' as *;
+
 .advanced-search {
   display: flex;
   gap: var(--space-sm);
   input {
-    flex: 1;
-    padding: 10px;
-    border-radius: 8px;
-    border: 1px solid var(--color-border);
+    @include search-input;
   }
 }

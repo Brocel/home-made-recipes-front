@@ -1,0 +1,14 @@
+// ======================================================
+// Search Input Mixin
+// ======================================================
+
+/**
+ * Standardized search input styles for recipe and quick search.
+ * Provides consistent padding, border-radius, and border styling.
+ */
+@mixin search-input {
+  flex: 1;
+  padding: var(--space-sm);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+}

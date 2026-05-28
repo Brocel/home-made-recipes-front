@@ -30,7 +30,7 @@
   &:focus {
     border-color: var(--color-primary);
 
-    box-shadow: 0 0 0 var(--space-xs) var(--color-focus-ring);
+    box-shadow: 0 0 0 var(--space-xs) var(--color-focus-ring-dark);
   }
 
   &:disabled {

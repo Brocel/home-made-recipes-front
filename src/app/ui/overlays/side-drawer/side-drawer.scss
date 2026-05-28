@@ -26,7 +26,7 @@
     transform: translateX(0);
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: var(--breakpoint-tablet)) {
     width: 90vw !important;
   }
 }
