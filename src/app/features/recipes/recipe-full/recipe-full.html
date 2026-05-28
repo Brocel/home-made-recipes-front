@@ -2,22 +2,22 @@
   <app-scroll-wrapper gap="sm" padding="md">
     <!-- HEADER -->
     <header class="header">
-      <h1 class="title">{{ recipe.title }}</h1>
+      <h1 class="title">{{ recipe().title }}</h1>
 
       <div class="meta">
         <span class="meta-item">
           <mat-icon>restaurant_menu</mat-icon>
-          {{ recipeTypeLabel[recipe.recipe_type] | translate }}
+          {{ recipeTypeLabel[recipe().recipe_type] | translate }}
         </span>
 
         <span class="meta-item">
           <mat-icon>schedule</mat-icon>
-          {{ recipe.preparation_time }} min
+          {{ recipe().preparation_time }} min
         </span>
 
         <span class="meta-item">
           <mat-icon>person</mat-icon>
-          {{ recipe.author.username }}
+          {{ recipe().author.username }}
         </span>
       </div>
     </header>
@@ -26,14 +26,14 @@
 
     <section class="information-body">
       <div class="description">
-        {{ recipe.description }}
+        {{ recipe().description }}
       </div>
 
       <div class="ingredients">
         <h2>{{ 'glossary.recipe.ingredients' | translate }}</h2>
 
         <ul>
-          @for (ing of recipe.ingredient_list; track ing.id) {
+          @for (ing of recipe().ingredient_list; track ing.id) {
             <li>
               <span
                 class="product"

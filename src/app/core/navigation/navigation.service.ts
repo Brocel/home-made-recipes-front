@@ -1,16 +1,16 @@
 import { Location } from '@angular/common';
 import { computed, inject, Injectable } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { NavigationEnd, Router } from '@angular/router';
+import { NavigationEnd, NavigationExtras, Router } from '@angular/router';
 import { FEATURE_ROUTES } from '@utils/datas/feature-data.util';
 import { filter, map } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class NavigationService {
-  private router = inject(Router);
+  private readonly router = inject(Router);
 
   // URL helpers
-  private url = toSignal(
+  private readonly url = toSignal(
     this.router.events.pipe(
       filter((e) => e instanceof NavigationEnd),
       map(() => this.router.url),
@@ -25,7 +25,7 @@ export class NavigationService {
   });
 
   // Navigation methods
-  go(commands: any[], extras?: any) {
+  go(commands: unknown[], extras?: NavigationExtras) {
     return this.safeNavigate(commands, extras);
   }
 
@@ -43,12 +43,12 @@ export class NavigationService {
     return this.safeNavigate(['/']);
   }
 
-  navigate(commands: any[], extras?: any): Promise<boolean> {
+  navigate(commands: unknown[], extras?: NavigationExtras): Promise<boolean> {
     return this.safeNavigate(commands, extras);
   }
 
   // internal helper
-  private async safeNavigate(commands: any[], extras?: any): Promise<boolean> {
+  private async safeNavigate(commands: unknown[], extras?: NavigationExtras): Promise<boolean> {
     try {
       return await this.router.navigate(commands, extras);
     } catch (err) {
@@ -59,16 +59,16 @@ export class NavigationService {
 
   // navigation avec state utile pour préremplir formulaires
   // TODO: refacto
-  goToRecipeList(prefill?: any): Promise<boolean> {
+  goToRecipeList(prefill?: { [k: string]: any }): Promise<boolean> {
     return this.safeNavigate(['/recipes'], { state: prefill });
   }
-  goToAddRecipeFull(prefill?: any): Promise<boolean> {
+  goToAddRecipeFull(prefill?: { [k: string]: any }): Promise<boolean> {
     return this.safeNavigate(['/recipes/create'], { state: prefill });
   }
-  goToRecipeFull(prefill?: any): Promise<boolean> {
+  goToRecipeFull(prefill?: { [k: string]: any }): Promise<boolean> {
     return this.safeNavigate(['/recipes/see'], { state: prefill });
   }
-  goToAdvancedSearch(prefill?: any): Promise<boolean> {
+  goToAdvancedSearch(prefill?: { [k: string]: any }): Promise<boolean> {
     return this.safeNavigate(['/recipes/search'], { state: prefill });
   }
 

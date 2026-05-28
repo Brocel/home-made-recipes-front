@@ -2,6 +2,6 @@
 
 @if (loading()) {
   <mat-spinner aria-label="{{ 'common.loading' | translate }}"> </mat-spinner>
-} @else {
-  <app-recipe-full [recipe]="dailyRecipe()"> </app-recipe-full>
+} @else if (dailyRecipe()) {
+  <app-recipe-full [recipe]="dailyRecipe()!"> </app-recipe-full>
 }

@@ -85,7 +85,7 @@ export class ModalHost {
   }
 
   // Confirm Modal
-  onConfirm(actionData: any) {
+  onConfirm(actionData: unknown) {
     this.modalService.resolveCurrent({ confirmed: true, actionData });
   }
 

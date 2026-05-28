@@ -59,7 +59,7 @@ export const routes: Routes = [
           {
             path: 'search',
             loadComponent: () =>
-              import('@recipes/search/recipe-search/search-recipe').then((m) => m.SearchRecipe),
+              import('@recipes/search/recipe-search/recipe-search').then((m) => m.RecipeSearch),
             data: {
               feature: RECIPE_SEARCH_DATA,
               featureType: 'recipes',

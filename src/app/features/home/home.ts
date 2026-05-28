@@ -20,20 +20,20 @@ import { RecipeFull } from '../recipes/recipe-full/recipe-full';
   styleUrls: ['./home.scss'],
 })
 export class Home implements OnInit {
-  private api = inject(RecipesApi);
-  private lang = inject(LanguageService);
-  private authStore = inject(AuthStore);
+  private readonly api = inject(RecipesApi);
+  private readonly lang = inject(LanguageService);
+  private readonly authStore = inject(AuthStore);
 
   // Signals
-  dailyRecipe = signal<Recipe | any>(null);
-  loading = signal(false);
-  auth = this.authStore.isAuthenticated;
-  errorMessage = signal<string | null>(null);
+  readonly dailyRecipe = signal<Recipe | null>(null);
+  readonly loading = signal(false);
+  readonly auth = this.authStore.isAuthenticated;
+  readonly errorMessage = signal<string | null>(null);
 
   ngOnInit(): void {
     this.fetchDailyRecipe();
     if (!this.dailyRecipe()) {
-      this.dailyRecipe.set(MOCK_RECIPES);
+      this.dailyRecipe.set((MOCK_RECIPES[0] as Recipe) ?? null);
     }
   }
 
@@ -48,7 +48,7 @@ export class Home implements OnInit {
         }),
         catchError(() => {
           this.lang.setMsg('errors.recipe.fetchingDaily', undefined);
-          this.errorMessage = this.lang.getMessageSignal();
+          this.errorMessage.set(this.lang.getMessageSignal()());
           return of(null);
         }),
         finalize(() => {
@@ -57,10 +57,4 @@ export class Home implements OnInit {
       )
       .subscribe();
   }
-
-  onAdvancedSearch(payload: any) {
-    console.log('advanced search', payload);
-  }
-
-  protected readonly console = console;
 }

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, signal } from '@angular/core';
+import { Component, input, signal } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -30,7 +30,7 @@ import { UnitLongLabel, UnitShortLabel } from '@models/recipes/unit.enum';
   styleUrl: './recipe-full.scss',
 })
 export class RecipeFull {
-  @Input() recipe!: Recipe;
+  recipe = input.required<Recipe>();
 
   recipeTypeLabel = RecipeTypeLabel;
   unitShort = UnitShortLabel;
@@ -45,6 +45,6 @@ export class RecipeFull {
   }
 
   get sortedSteps() {
-    return [...this.recipe.step_list].sort((a, b) => a.order - b.order);
+    return this.recipe ? [...this.recipe().step_list].sort((a, b) => a.order - b.order) : [];
   }
 }
