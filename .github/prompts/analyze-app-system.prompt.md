@@ -1,5 +1,6 @@
 ---
 agent: 'agent'
+name: 'analyze-app-system'
 description: 'Analyze a full app or a scoped system and suggest optimizations, refactors, and architectural improvements'
 ---
 
