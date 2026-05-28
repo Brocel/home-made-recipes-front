@@ -59,3 +59,21 @@ export interface ModalDefinitionMap {
     result: { confirmed: boolean; actionData?: any };
   };
 }
+
+export interface ConfirmConfigOptions {
+  variant: ButtonVariant;
+  intent: ConfirmIntent;
+  title: string;
+  message: string;
+  confirmLabel?: string;
+  cancelLabel?: string;
+  actionData?: unknown;
+}
+
+/**
+ * Event emitted when a modal closes.
+ */
+export interface ModalCloseEvent {
+  id: string;
+  type: ModalType;
+}

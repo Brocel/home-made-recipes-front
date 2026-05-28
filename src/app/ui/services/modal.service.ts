@@ -1,13 +1,21 @@
 import { computed, Injectable, signal } from '@angular/core';
-import { ModalStackItem } from '@uiModels/modal.model';
+import { ModalCloseEvent, ModalStackItem } from '@uiModels/modal.model';
 import { AnyModalConfig, ModalResult, ModalType } from '@uiTypes/modal.types';
 import { generateId } from '@utils/modal.util';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ModalService {
   private readonly BASE_Z_INDEX = 1000;
+
+  // =========================================================
+  // Events
+  // =========================================================
+  private readonly closeSubject = new Subject<ModalCloseEvent>();
+  readonly close$ = this.closeSubject.asObservable();
+
   // =========================================================
   // State
   // =========================================================
@@ -55,9 +63,21 @@ export class ModalService {
 
   close(id?: string): void {
     if (!id) {
+      // Emit event for the top modal before removing it
+      const current = this.currentItem();
+      if (current) {
+        this.closeSubject.next({ id: current.id, type: current.config.type });
+      }
+
       const updated = this.stack().slice(0, -1);
       this.stack.set(this.normalizeStack(updated));
       return;
+    }
+
+    // Emit event for the specific modal before removing it
+    const item = this.stack().find((m) => m.id === id);
+    if (item) {
+      this.closeSubject.next({ id: item.id, type: item.config.type });
     }
 
     const updated = this.stack().filter((item) => item.id !== id);
@@ -65,6 +85,11 @@ export class ModalService {
   }
 
   closeAll() {
+    // Emit close events for all modals before clearing
+    this.stack().forEach((item) => {
+      this.closeSubject.next({ id: item.id, type: item.config.type });
+    });
+
     this.stack.set([]);
   }
 

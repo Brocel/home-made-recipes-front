@@ -108,6 +108,9 @@
           "dashboard": "Dashboard",
           "logout": "Desconectar-se"
         }
+      },
+      "modal-host": {
+        "closeLabel": "Fechar a popup"
       }
     }
   },

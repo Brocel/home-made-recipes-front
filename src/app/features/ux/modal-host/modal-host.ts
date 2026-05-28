@@ -1,20 +1,20 @@
 import { NgClass } from '@angular/common';
-import { Component, inject } from '@angular/core';
-import { NavigationService } from '@nav/navigation.service';
+import { Component, computed, inject } from '@angular/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { FloatingSurface } from '@overlays/floating-surface/floating-surface';
 import { ConfirmPopup } from '@primitives/confirm-popup/confirm-popup';
 import { Login } from '@signin/login/login';
 import { Register } from '@signin/register/register';
 import { ModalDefinitionMap, ModalStackItem } from '@uiModels/modal.model';
+import { ModalOrchestratorService } from '@uiServices/modal-orchestrator.service';
 import { ModalService } from '@uiServices/modal.service';
 import { ModalType } from '@uiTypes/modal.types';
-import { LayerType, Placement, Position, Tone, Variant } from '@uiTypes/overlay.types';
+import { LayerType, Placement, Position } from '@uiTypes/overlay.types';
 import { Profile } from '@user/profile/profile';
-import { buildLoginConfig, buildRegisterConfig } from '@utils/modal.util';
 
 @Component({
   selector: 'app-modal',
-  imports: [FloatingSurface, Login, Register, Profile, ConfirmPopup, NgClass],
+  imports: [FloatingSurface, Login, Register, Profile, ConfirmPopup, NgClass, TranslatePipe],
   templateUrl: './modal-host.html',
   styleUrl: './modal-host.scss',
 })
@@ -23,7 +23,7 @@ export class ModalHost {
   // Dependencies
   // =========================================================
   private modalService = inject(ModalService);
-  private nav = inject(NavigationService);
+  private orchestrator = inject(ModalOrchestratorService);
 
   // =========================================================
   // Porperties
@@ -36,26 +36,34 @@ export class ModalHost {
   // State
   // =========================================================
   modals = this.modalService.modals;
+  currentItem = computed(() => this.modalService.currentItem());
 
   // =========================================================
   // Helpers
   // =========================================================
-  getVariant(item: ModalStackItem): Variant {
-    return item.config.variant ?? 'surface';
+  /**
+   * Compute CSS classes and properties for a modal item.
+   * Used in template loop to apply consistent styling and positioning.
+   */
+  getItemClasses(item: ModalStackItem): Record<string, boolean> {
+    const variant = item.config.variant ?? 'surface';
+    const tone = item.config.tone ?? 'glass';
+    const type = item.config.type;
+    const isTop = item === this.currentItem();
+
+    return {
+      [`modal--variant-${variant}`]: true,
+      [`modal--tone-${tone}`]: true,
+      [`modal-host--${type}`]: true,
+      'is-top': isTop,
+      'is-background': !isTop,
+    };
   }
 
-  getTone(item: ModalStackItem): Tone {
-    return item.config.tone ?? 'glass';
-  }
-
-  getIsTop(item: ModalStackItem): string {
-    return item.isTop ? 'is-top' : 'is-background';
-  }
-
-  getType(item: ModalStackItem): ModalType {
-    return item.config.type;
-  }
-
+  /**
+   * Extract typed data from modal configuration.
+   * Provides type-safe access to modal-specific data payloads.
+   */
   getData<T extends ModalType>(item: ModalStackItem): ModalDefinitionMap[T]['data'] {
     return item.config.data;
   }
@@ -67,28 +75,43 @@ export class ModalHost {
     this.modalService.close(id);
   }
 
-  // Login Modal
+  /**
+   * Handle login modal success.
+   * Delegates to orchestrator for auth/navigation workflow.
+   */
   onLoginSuccess() {
-    this.close();
-    this.nav.goHome();
+    this.orchestrator.handleLoginSuccess();
   }
 
+  /**
+   * Handle user clicking "Register" link in login modal.
+   * Delegates to orchestrator for modal chain workflow.
+   */
   onRegisterClick() {
-    this.close();
-    this.modalService.open(buildRegisterConfig());
+    this.orchestrator.handleRegisterClick();
   }
 
-  // Register Modal
+  /**
+   * Handle register modal success.
+   * Delegates to orchestrator for auth/modal chain workflow.
+   * @param email The email address used in registration, passed to login modal.
+   */
   onRegisterSuccess(email: string) {
-    this.close();
-    this.modalService.open(buildLoginConfig(email));
+    this.orchestrator.handleRegisterSuccess(email);
   }
 
-  // Confirm Modal
+  /**
+   * Handle confirm modal action.
+   * Generic handler for confirm modals (not auth-specific).
+   */
   onConfirm(actionData: unknown) {
     this.modalService.resolveCurrent({ confirmed: true, actionData });
   }
 
+  /**
+   * Handle confirm modal cancellation.
+   * Generic handler for confirm modals (not auth-specific).
+   */
   onCancel() {
     this.modalService.resolveCurrent({ confirmed: false });
   }

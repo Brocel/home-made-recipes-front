@@ -9,12 +9,9 @@
     <div
       floatingContent
       class="modal-host"
-      [ngClass]="[
-        'modal--variant-' + getVariant(item),
-        'modal--tone-' + getTone(item),
-        'modal-host--' + getType(item),
-        getIsTop(item),
-      ]"
+      role="dialog"
+      aria-modal="true"
+      [ngClass]="getItemClasses(item)"
     >
       <!-- ============================================= -->
       <!-- Close button -->
@@ -22,17 +19,17 @@
       <button
         class="modal-host__close"
         type="button"
-        aria-label="Close modal"
+        [aria-label]="'features.ux.modal-host.closeLabel' | translate"
         (click)="close(item.id)"
       >
-        ✕
+        <span aria-hidden="true">✕</span>
       </button>
 
       <!-- ============================================= -->
       <!-- Modal content -->
       <!-- ============================================= -->
       <div class="modal-host__content">
-        @switch (getType(item)) {
+        @switch (item.config.type) {
           @case ('login') {
             <app-login [loginData]="getData(item)" (successfulLogin)="onLoginSuccess()" />
           }

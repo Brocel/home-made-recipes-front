@@ -60,14 +60,14 @@ export class Navbar {
 
   async signOut() {
     const result = await this.modal.openForResult<'confirm'>(
-      buildConfirmConfig(
-        'danger',
-        'default',
-        'common.logout.title',
-        'common.logout.message',
-        'common.ok',
-        'common.cancel',
-      ),
+      buildConfirmConfig({
+        variant: 'danger',
+        intent: 'default',
+        title: 'common.logout.title',
+        message: 'common.logout.message',
+        confirmLabel: 'common.ok',
+        cancelLabel: 'common.cancel',
+      }),
     );
 
     if (!result.confirmed) {
