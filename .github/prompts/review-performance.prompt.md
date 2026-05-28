@@ -6,9 +6,10 @@ description: Review Angular UI code for performance risks
 
 Review the provided Angular code for performance issues.
 
-Context:
+Requirements:
 
-${input:context:Paste the code or describe the screen}
+- Use the file in the current chat context as the primary source.
+- If the context is insufficient, say exactly what is missing before proposing changes.
 
 Check:
 

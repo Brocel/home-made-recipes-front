@@ -8,7 +8,6 @@ Refactor SCSS of a component using the repository styling system.
 
 Context:
 
-- Component name: ${input:component:Component name}
 - Component type: ${input:type:Smart, dumb, layout, form, modal, card, etc.}
 - Visual states: ${input:states:Default, hover, focus, active, disabled, loading, error, etc.}
 - Responsive rules: ${input:responsive:Any responsive behavior?}
@@ -16,6 +15,8 @@ Context:
 
 Requirements:
 
+- Use the file in the current chat context as the primary source.
+- If the context is insufficient, say exactly what is missing before proposing changes.
 - Use the existing styling system (src/styles and src/styles.scss) and conventions
 - Identify and reuse existing variables, mixins, and tokens
 - Create new variables or mixins only if necessary and follow the existing naming conventions

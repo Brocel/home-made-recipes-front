@@ -6,7 +6,13 @@ description: Review Angular UI code for accessibility issues
 
 Review the provided Angular code for accessibility issues.
 
+Requirements:
+
+- Use the file in the current chat context as the primary source.
+- If the context is insufficient, say exactly what is missing before proposing changes.
+
 Check:
+
 - semantic HTML
 - labels and accessible names
 - keyboard navigation
@@ -14,10 +20,8 @@ Check:
 - form error messaging
 - icon-only controls
 
-Context:
-${input:context:Paste the code or describe the screen}
-
 Return:
+
 - issues found
 - severity
 - concrete fixes

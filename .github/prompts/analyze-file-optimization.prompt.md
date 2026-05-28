@@ -8,19 +8,21 @@ Analyze the target file and propose improvements.
 
 Context:
 
-- File path or selection: ${input:file:Paste the file path or selected code}
 - Goal: ${input:goal:What do you want to improve?}
-- Constraints: ${input:constraints:Any architecture, performance, or style constraints?}
+- Constraints: ${input:constraints:Any architecture, performance, style, or migration constraints?}
+- Focus: ${input:focus:What should be prioritized? (performance, readability, structure, typing, reusability, accessibility, tests)}
 
 Requirements:
 
-- Explain what the file does
-- Identify code smells, duplication, unnecessary complexity, and risky patterns
-- Separate high-impact changes from low-impact changes
-- Respect the repository architecture and conventions
-- Do not recommend changes that would fight the existing stack
-- If the file is already good, say so explicitly
-- Use most recent Angular best practices to guide the optimization argumentation
+- Use the file in the current chat context as the primary source.
+- If the context is insufficient, say exactly what is missing before proposing changes.
+- Explain what the file does.
+- Identify code smells, duplication, unnecessary complexity, and risky patterns.
+- Rank findings by impact.
+- Respect the repository architecture and conventions.
+- Do not recommend changes that would fight the existing stack.
+- Use current Angular best practices when evaluating improvements.
+- Keep refactors incremental and practical.
 
 Output:
 
