@@ -1,0 +1,11 @@
+<div class="toast" [ngClass]="'toast--' + toast().type">
+  <span class="toast__message">{{ message() }}</span>
+  <button
+    type="button"
+    class="toast__dismiss"
+    (click)="onDismiss()"
+    aria-label="Dismiss notification"
+  >
+    ×
+  </button>
+</div>

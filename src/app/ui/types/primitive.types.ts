@@ -10,4 +10,6 @@ export type Direction = 'row' | 'column';
 
 export type InputType = 'text' | 'email' | 'password' | 'search' | 'number';
 
+export type ToastType = 'success' | 'error' | 'warning' | 'info';
+
 export type PrimitiveValue = string | number | boolean;

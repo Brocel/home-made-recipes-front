@@ -14,7 +14,7 @@ import { FormInput } from '@primitives/form/form-input/form-input';
 import { FormSection } from '@primitives/form/form-section/form-section';
 import { FormSelect } from '@primitives/form/form-select/form-select';
 import { EnumUtilsService } from '@services/enum-utils.service';
-import { NotificationService } from '@services/notification.service';
+import { ToasterService } from '@uiServices/toaster.service';
 
 @Component({
   selector: 'app-add-product',
@@ -38,7 +38,7 @@ export class AddProduct {
   // =========================================================
   private readonly fb = inject(FormBuilder);
   private readonly productService = inject(ProductApi);
-  private readonly notif = inject(NotificationService);
+  private readonly toast = inject(ToasterService);
   private readonly destroyRef = inject(DestroyRef);
   private readonly enumUtils = inject(EnumUtilsService);
 
@@ -95,11 +95,11 @@ export class AddProduct {
         next: (product: Product) => {
           this.loading.set(false);
           this.productCreated.emit(product);
-          this.notif.showSuccess('product.created_successfully');
+          this.toast.show('success', 'product.created_successfully');
         },
         error: (err) => {
           this.loading.set(false);
-          this.notif.showError(err.errorKey ?? 'UNKNOWN_ERROR');
+          this.toast.show('error', err.errorKey ?? 'UNKNOWN_ERROR');
         },
       });
   }

@@ -6,25 +6,21 @@
 .modal-host {
   position: relative;
 
+  z-index: var(--z-toast);
+
   display: flex;
   flex-direction: column;
 
   width: min(100vw - var(--space-md), var(--modal-width-md));
-
   max-height: min(90vh, var(--content-max-width-md));
 
   overflow: hidden;
 
   border-radius: var(--radius-lg);
-
   background: var(--modal-bg);
-
   color: var(--modal-color);
-
   border: var(--modal-border);
-
   box-shadow: var(--modal-shadow);
-
   backdrop-filter: var(--modal-blur);
 
   animation: modal-enter var(--transition-base);
@@ -70,7 +66,7 @@
 
   cursor: pointer;
 
-  z-index: 2;
+  z-index: calc(var(--z-toast) + 2);
 
   transition:
     background-color var(--transition-fast),

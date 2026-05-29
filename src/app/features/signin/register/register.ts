@@ -11,7 +11,7 @@ import { AppButton } from '@primitives/app-button/app-button';
 import { FormField } from '@primitives/form/form-field/form-field';
 import { FormInput } from '@primitives/form/form-input/form-input';
 import { FormSection } from '@primitives/form/form-section/form-section';
-import { NotificationService } from '@services/notification.service';
+import { ToasterService } from '@uiServices/toaster.service';
 import { isoToDDMMYYYY } from '@utils/date.util';
 import { passwordMatchValidator } from '@validators/password-match.validator';
 import { UsernameValidator } from '@validators/username.validator';
@@ -38,7 +38,7 @@ export class Register {
   // =========================================================
   private readonly fb = inject(FormBuilder);
   private readonly auth = inject(AuthService);
-  private readonly notif = inject(NotificationService);
+  private readonly toast = inject(ToasterService);
   private readonly destroyRef = inject(DestroyRef);
   private readonly usernameValidator = inject(UsernameValidator);
 
@@ -120,7 +120,7 @@ export class Register {
         next: (res) => {
           this.loading.set(false);
           this.success.set(true);
-
+          this.toast.show('success', 'feature.signin.register.success');
           // TODO: put timer on confirm popup
           timer(20000)
             .pipe(takeUntilDestroyed(this.destroyRef))
@@ -130,7 +130,7 @@ export class Register {
         },
         error: (err) => {
           this.loading.set(false);
-          this.notif.showError(err.errorKey ?? 'UNKNOWN_ERROR');
+          this.toast.show('error', err.errorKey ?? 'UNKNOWN_ERROR');
         },
       });
   }

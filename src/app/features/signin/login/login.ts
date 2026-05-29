@@ -11,7 +11,7 @@ import { AppButton } from '@primitives/app-button/app-button';
 import { FormField } from '@primitives/form/form-field/form-field';
 import { FormInput } from '@primitives/form/form-input/form-input';
 import { FormSection } from '@primitives/form/form-section/form-section';
-import { NotificationService } from '@services/notification.service';
+import { ToasterService } from '@uiServices/toaster.service';
 
 @Component({
   selector: 'app-login',
@@ -35,7 +35,7 @@ export class Login {
   // =========================================================
   private readonly fb = inject(FormBuilder);
   private readonly auth = inject(AuthService);
-  private readonly notif = inject(NotificationService);
+  private readonly toast = inject(ToasterService);
   private readonly destroyRef = inject(DestroyRef);
 
   // =========================================================
@@ -90,11 +90,11 @@ export class Login {
         next: () => {
           this.loading.set(false);
           this.successfulLogin.emit();
-          this.notif.showSuccess('feature.signin.login.success');
+          this.toast.show('success', 'feature.signin.login.success');
         },
         error: (err) => {
           this.loading.set(false);
-          this.notif.showError(err.errorKey ?? 'UNKNOWN_ERROR');
+          this.toast.show('error', err.errorKey ?? 'UNKNOWN_ERROR');
         },
       });
   }

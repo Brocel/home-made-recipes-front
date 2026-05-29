@@ -9,7 +9,6 @@ import {
 import { provideRouter } from '@angular/router';
 
 import { HttpClient, provideHttpClient, withInterceptors } from '@angular/common/http';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AuthInterceptor } from '@interceptors/auth.interceptor';
 import { MockHttpInterceptor } from '@interceptors/mock-http.interceptor';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
@@ -34,7 +33,6 @@ export const appConfig: ApplicationConfig = {
       TranslateModule.forRoot({
         loader: { provide: TranslateLoader, useClass: HttpTranslateLoader },
       }),
-      MatSnackBarModule,
     ),
   ],
 };

@@ -4,11 +4,11 @@ import { FormArray, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { RecipesApi } from '@api/recipes.api';
 import { FormLayout } from '@layouts/form-layout/form-layout';
 import { TranslatePipe } from '@ngx-translate/core';
+import { ScrollWrapper } from '@overlays/scroll-wrapper/scroll-wrapper';
 import { AppButton } from '@primitives/app-button/app-button';
 import { FormSection } from '@primitives/form/form-section/form-section';
-import { NotificationService } from '@services/notification.service';
 import { RecipeFormService } from '@services/recipe-form.service';
-import { ScrollWrapper } from '../../../../ui/overlays/scroll-wrapper/scroll-wrapper';
+import { ToasterService } from '@uiServices/toaster.service';
 import { RecipeInfo } from './sections/recipe-info/recipe-info';
 import { RecipeIngredients } from './sections/recipe-ingredients/recipe-ingredients';
 import { RecipeSteps } from './sections/recipe-steps/recipe-steps';
@@ -36,7 +36,7 @@ export class AddEditRecipe implements OnInit {
   // =========================================================
   private readonly formService = inject(RecipeFormService);
   private readonly recipesApi = inject(RecipesApi);
-  private readonly notif = inject(NotificationService);
+  private readonly toast = inject(ToasterService);
   private readonly destroyRef = inject(DestroyRef);
 
   // =========================================================
@@ -117,13 +117,13 @@ export class AddEditRecipe implements OnInit {
       .subscribe({
         next: () => {
           this.loading.set(false);
-          this.notif.showSuccess('recipe.created_successfully');
+          this.toast.show('success', 'recipe.created_successfully');
           this.form.reset();
           this.submitted.set(false);
         },
         error: (err) => {
           this.loading.set(false);
-          this.notif.showError(err.message ?? 'UNKNOWN_ERROR');
+          this.toast.show('error', err.message ?? 'UNKNOWN_ERROR');
         },
       });
   }
