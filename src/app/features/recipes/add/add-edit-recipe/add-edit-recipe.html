@@ -1,69 +1,55 @@
-<div class="add-edit-recipe">
-  <div class="form-container">
-    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form">
-      <app-scroll-wrapper gap="md" padding="md">
-        <!-- RECIPE INFO SECTION -->
-        <app-recipe-info
-          [informations]="informations"
+<app-form-layout [title]="'feature.signin.register.title' | translate">
+  <form
+    id="add-edit-recipe-form"
+    form-content
+    [formGroup]="form"
+    (ngSubmit)="onSubmit()"
+    class="form"
+  >
+    <app-scroll-wrapper gap="md" padding="md">
+      <!-- RECIPE INFO SECTION -->
+      <app-recipe-info [informations]="informations" [submitted]="submitted()" />
+
+      <!-- INGREDIENTS SECTION -->
+      <app-form-section [title]="'recipe.ingredients.title' | translate">
+        <app-button type="button" variant="secondary" icon="plus" (click)="onAddIngredient()">
+          {{ 'recipe.ingredients.add' | translate }}
+        </app-button>
+
+        <app-recipe-ingredients
+          [ingredients]="ingredient_list"
           [submitted]="submitted()"
+          (removeIngredient)="onRemoveIngredient($event)"
+          (addIngredient)="onAddIngredient()"
         />
+      </app-form-section>
 
-        <!-- INGREDIENTS SECTION -->
-        <div class="section">
-          <div class="section-header">
-            <h2 class="section-title">{{ 'recipe.ingredients.title' | translate }}</h2>
-            <app-button
-              type="button"
-              variant="secondary"
-              icon="plus"
-              (click)="onAddIngredient()"
-            >
-              {{ 'recipe.ingredients.add' | translate }}
-            </app-button>
-          </div>
+      <!-- STEPS SECTION -->
+      <app-form-section [title]="'recipe.steps.title' | translate">
+        <app-button type="button" variant="secondary" icon="plus" (click)="onAddStep()">
+          {{ 'recipe.steps.add' | translate }}
+        </app-button>
 
-          <app-recipe-ingredients
-            [ingredients]="ingredient_list"
-            [submitted]="submitted()"
-            (removeIngredient)="onRemoveIngredient($event)"
-            (addIngredient)="onAddIngredient()"
-          />
-        </div>
+        <app-recipe-steps
+          [steps]="step_list"
+          [submitted]="submitted()"
+          (removeStep)="onRemoveStep($event)"
+        />
+      </app-form-section>
 
-        <!-- STEPS SECTION -->
-        <div class="section">
-          <div class="section-header">
-            <h2 class="section-title">{{ 'recipe.steps.title' | translate }}</h2>
-            <app-button
-              type="button"
-              variant="secondary"
-              icon="plus"
-              (click)="onAddStep()"
-            >
-              {{ 'recipe.steps.add' | translate }}
-            </app-button>
-          </div>
-
-          <app-recipe-steps
-            [steps]="step_list"
-            [submitted]="submitted()"
-            (removeStep)="onRemoveStep($event)"
-          />
-        </div>
-
-        <!-- ACTIONS -->
-        <div class="form-actions">
-          <app-button
-            type="submit"
-            variant="primary"
-            [disabled]="loading() || form.invalid"
-            [loading]="loading()"
-            [fullWidth]="true"
-          >
-            {{ 'common.save' | translate }}
-          </app-button>
-        </div>
-      </app-scroll-wrapper>
-    </form>
-  </div>
-</div>
+      <!-- ACTIONS -->
+      <div class="form-actions">
+        <app-button
+          type="submit"
+          form="add-edit-recipe-form"
+          variant="primary"
+          [disabled]="loading() || form.invalid"
+          [loading]="loading()"
+          [fullWidth]="true"
+        >
+          {{ 'common.save' | translate }}
+        </app-button>
+      </div>
+    </app-scroll-wrapper>
+  </form>
+</app-form-layout>

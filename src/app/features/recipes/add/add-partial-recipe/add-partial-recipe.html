@@ -1,35 +1,57 @@
-<div class="mini-form">
-  <h3 class="title">
-    <mat-icon>add_box</mat-icon>
-    {{ 'feature.recipes.add.mini.title' | translate }}
-  </h3>
-  <form (ngSubmit)="submit()" [formGroup]="form" class="form">
-    <!-- Nom de recette -->
-    <mat-form-field appearance="outline" class="field">
-      <mat-label>{{ 'glossary.recipe.title' | translate }}</mat-label>
-      <mat-icon matPrefix>create</mat-icon>
-      <input
-        matInput
-        formControlName="title"
-        placeholder="{{ 'add.mini.namePlaceHolder' | translate }}"
-      />
-    </mat-form-field>
+<app-form-layout [title]="'feature.recipes.add.mini.title' | translate">
+  <form
+    id="add-recipe-form"
+    form-content
+    [formGroup]="form"
+    (ngSubmit)="onSubmit()"
+    class="partial-recipe-form"
+  >
+    <!-- RECIPE TITLE -->
+    <app-form-section>
+      <app-form-field
+        [label]="'glossary.recipe.title' | translate"
+        [control]="form.controls.title"
+        [messages]="messages.title"
+        [submitted]="submitted()"
+      >
+        <app-form-input
+          type="text"
+          name="title"
+          formControlName="title"
+          [placeholder]="'add.mini.namePlaceHolder' | translate"
+          [fullWidth]="true"
+        />
+      </app-form-field>
+    </app-form-section>
 
-    <!-- Type de recette -->
-    <mat-form-field appearance="outline" class="field">
-      <mat-label>{{ 'glossary.recipe.type' | translate }}</mat-label>
-      <mat-icon matPrefix>restaurant_menu</mat-icon>
-      <mat-select formControlName="recipeType">
-        <ng-container>
-          @for (t of recipeTypes; track t.value) {
-            <mat-option [value]="t.value"> {{ t.label | translate }} </mat-option>
-          }
-        </ng-container>
-      </mat-select>
-    </mat-form-field>
-
-    <button mat-raised-button class="submit">
-      {{ 'add.create' | translate }}
-    </button>
+    <!-- RECIPE TYPE -->
+    <app-form-section>
+      <app-form-field
+        [label]="'glossary.recipe.type' | translate"
+        [control]="form.controls.recipeType"
+        [messages]="messages.recipe_type"
+        [submitted]="submitted()"
+      >
+        <app-form-select
+          name="recipeType"
+          formControlName="recipeType"
+          [options]="recipeTypes()"
+          [placeholder]="'glossary.recipe.type' | translate"
+        />
+      </app-form-field>
+    </app-form-section>
   </form>
-</div>
+
+  <div form-actions>
+    <app-button
+      type="submit"
+      form="add-recipe-form"
+      variant="primary"
+      [disabled]="loading() || form.invalid"
+      [loading]="loading()"
+      [fullWidth]="true"
+    >
+      {{ 'add.create' | translate }}
+    </app-button>
+  </div>
+</app-form-layout>

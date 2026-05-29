@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, inject } from '@angular/core';
+import { Component, inject, output } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -8,6 +8,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { TranslatePipe } from '@ngx-translate/core';
 import { EnumUtilsService } from '@services/enum-utils.service';
 
+import { RecipeSearchFormModel } from '@forms/models/recipe-form.model';
 import { IngredientType, IngredientTypeLabel } from '@models/recipes/ingredient-type.enum';
 import { RecipeType, RecipeTypeLabel } from '@models/recipes/recipe-type.enum';
 
@@ -27,20 +28,20 @@ import { RecipeType, RecipeTypeLabel } from '@models/recipes/recipe-type.enum';
   styleUrls: ['./mini-search.scss'],
 })
 export class MiniSearch {
-  @Output() search = new EventEmitter<any>();
-  @Output() close = new EventEmitter<void>();
+  search = output<Partial<RecipeSearchFormModel>>();
+  close = output<void>();
 
   private fb: FormBuilder = inject(FormBuilder);
   private enumUtils: EnumUtilsService = inject(EnumUtilsService);
 
-  recipeTypes = this.enumUtils.mapEnumLabelsToSelectOption(RecipeType, RecipeTypeLabel);
-  ingredientTypes = this.enumUtils.mapEnumLabelsToSelectOption(IngredientType, IngredientTypeLabel);
+  recipeTypes = this.enumUtils.mapEnumLabelsToSelectOption(RecipeTypeLabel);
+  ingredientTypes = this.enumUtils.mapEnumLabelsToSelectOption(IngredientTypeLabel);
 
   form = this.fb.nonNullable.group({
-    name: this.fb.control<string>(''),
-    recipeType: this.fb.control<RecipeType[] | []>([]),
-    maxTime: this.fb.control<number | null>(null),
-    ingredientType: this.fb.control<IngredientType[] | []>([]),
+    title: this.fb.control<string>(''),
+    recipe_type: this.fb.control<RecipeType[] | []>([]),
+    max_prep_time: this.fb.control<number | null>(null),
+    ingredient_type: this.fb.control<IngredientType[] | []>([]),
   });
 
   submit() {

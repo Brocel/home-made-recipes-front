@@ -1,0 +1,13 @@
+@use '../../../../../styles/forms/form-global-style' as form;
+
+.partial-recipe-form {
+  @include form.base-form;
+
+  & {
+    gap: var(--space-lg);
+  }
+
+  &__error {
+    font-size: var(--text-lg);
+  }
+}

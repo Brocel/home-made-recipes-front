@@ -212,7 +212,10 @@
       "username": "Pseudonyme",
       "confirm_password": "Confirmer le mot de passe",
       "birth_date": "Date de naissance",
-      "ingredient_type": "Type d'ingrédient"
+      "ingredient_type": "Type d'ingrédient",
+      "ingredient_quantity": "Quantité",
+      "ingredient_unit": "Unité",
+      "product": "Produit"
     },
     "placeholder": {
       "email": "ex.example@domain.com",

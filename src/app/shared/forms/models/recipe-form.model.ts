@@ -13,6 +13,13 @@ import { Unit } from '@models/recipes/unit.enum';
  */
 export type RecipeFormModel = Omit<RecipeDTO, 'author'>;
 
+export interface RecipeSearchFormModel {
+  title: string | null;
+  recipe_type: RecipeType[] | [] | null;
+  max_prep_time: number | null;
+  ingredient_type: IngredientType[] | [] | null;
+}
+
 // =========================================================
 // FormGroup Interfaces (for type-safe FormBuilder.group())
 // =========================================================

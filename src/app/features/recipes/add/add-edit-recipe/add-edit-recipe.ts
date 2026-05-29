@@ -2,8 +2,10 @@ import { Component, DestroyRef, effect, inject, OnInit, signal } from '@angular/
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormArray, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { RecipesApi } from '@api/recipes.api';
+import { FormLayout } from '@layouts/form-layout/form-layout';
 import { TranslatePipe } from '@ngx-translate/core';
 import { AppButton } from '@primitives/app-button/app-button';
+import { FormSection } from '@primitives/form/form-section/form-section';
 import { NotificationService } from '@services/notification.service';
 import { RecipeFormService } from '@services/recipe-form.service';
 import { ScrollWrapper } from '../../../../ui/overlays/scroll-wrapper/scroll-wrapper';
@@ -22,6 +24,8 @@ import { RecipeSteps } from './sections/recipe-steps/recipe-steps';
     RecipeInfo,
     RecipeIngredients,
     RecipeSteps,
+    FormLayout,
+    FormSection,
   ],
   templateUrl: './add-edit-recipe.html',
   styleUrl: './add-edit-recipe.scss',
@@ -50,13 +54,15 @@ export class AddEditRecipe implements OnInit {
     this.form = this.formService.createForm();
   }
 
-  formServiceEffect = effect(() => {
-    const payload = this.formService.payload();
-    if (payload) {
-      this.formService.patchStateValue(this.form, payload);
-      this.formService.clearPayload();
-    }
-  });
+  constructor() {
+    effect(() => {
+      const payload = this.formService.payload();
+      if (payload) {
+        this.formService.patchStateValue(this.form, payload);
+        this.formService.clearPayload();
+      }
+    });
+  }
 
   // =========================================================
   // Helpers

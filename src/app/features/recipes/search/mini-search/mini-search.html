@@ -22,7 +22,7 @@
       <mat-icon matPrefix>restaurant_menu</mat-icon>
       <mat-select formControlName="recipeType" multiple>
         <ng-container>
-          @for (t of recipeTypes; track t.value) {
+          @for (t of recipeTypes(); track t.value) {
             <mat-option [value]="t.value"> {{ t.label | translate }} </mat-option>
           }
         </ng-container>
@@ -42,7 +42,7 @@
       <mat-icon matPrefix>category</mat-icon>
       <mat-select formControlName="ingredientType" multiple>
         <ng-container>
-          @for (t of ingredientTypes; track t.value) {
+          @for (t of ingredientTypes(); track t.value) {
             <mat-option [value]="t.value"> {{ t.label | translate }} </mat-option>
           }
         </ng-container>

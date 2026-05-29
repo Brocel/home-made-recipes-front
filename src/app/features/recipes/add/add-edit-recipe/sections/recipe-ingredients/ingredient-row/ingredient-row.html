@@ -1,7 +1,7 @@
 <div class="ingredient-row" [formGroup]="group()">
   <!-- QUANTITY -->
   <app-form-field
-    [label]="'ingredient.quantity' | translate"
+    [label]="'form.label.ingredient_quantity' | translate"
     [control]="group().controls['quantity']"
     [messages]="messages.quantity"
     [submitted]="submitted()"
@@ -11,13 +11,13 @@
       type="number"
       name="quantity"
       formControlName="quantity"
-      [placeholder]="'ingredient.quantity' | translate"
+      [placeholder]="'form.placeholder.ingredient_quantity' | translate"
     />
   </app-form-field>
 
   <!-- UNIT -->
   <app-form-field
-    [label]="'ingredient.unit' | translate"
+    [label]="'form.label.ingredient_unit' | translate"
     [control]="group().controls['unit']"
     [messages]="messages.unit"
     [submitted]="submitted()"
@@ -27,7 +27,7 @@
       name="unit"
       formControlName="unit"
       [options]="unitLabels()"
-      [placeholder]="'ingredient.unit' | translate"
+      [placeholder]="'form.placeholder.ingredient_unit' | translate"
     />
   </app-form-field>
 
@@ -35,7 +35,7 @@
   <app-product-autocomplete
     class="product-field"
     formControlName="product"
-    [label]="'ingredient.product' | translate"
+    [label]="'form.label.product' | translate"
   />
 
   <!-- DELETE BUTTON -->
