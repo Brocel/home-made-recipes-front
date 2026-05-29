@@ -1,13 +1,13 @@
-import { Component, inject, input, output } from '@angular/core';
+import { Component, computed, inject, input, output } from '@angular/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
 import { TranslatePipe } from '@ngx-translate/core';
 
-import { Unit, UnitLongLabel, UnitShortLabel } from '@models/recipes/unit.enum';
+import { INGREDIENT_VALIDATION_MESSAGES } from '@forms/validations/recipe.validation';
+import { UnitLongLabel, UnitShortLabel } from '@models/recipes/unit.enum';
+import { AppButton } from '@primitives/app-button/app-button';
+import { FormField } from '@primitives/form/form-field/form-field';
+import { FormInput } from '@primitives/form/form-input/form-input';
+import { FormSelect } from '@primitives/form/form-select/form-select';
 import { ProductAutocomplete } from '@products/product-autocomplete/product-autocomplete';
 import { EnumUtilsService } from '@services/enum-utils.service';
 
@@ -16,22 +16,42 @@ import { EnumUtilsService } from '@services/enum-utils.service';
   standalone: true,
   imports: [
     ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
-    MatIconModule,
-    MatButtonModule,
-    ProductAutocomplete,
     TranslatePipe,
+    FormField,
+    FormInput,
+    FormSelect,
+    AppButton,
+    ProductAutocomplete,
   ],
   templateUrl: './ingredient-row.html',
   styleUrls: ['./ingredient-row.scss'],
 })
 export class IngredientRow {
-  private readonly enumUtils: EnumUtilsService = inject(EnumUtilsService);
+  // =========================================================
+  // Dependencies
+  // =========================================================
+  private readonly enumUtils = inject(EnumUtilsService);
 
-  group = input.required<FormGroup>();
-  remove = output<void>();
+  // =========================================================
+  // Inputs
+  // =========================================================
+  readonly group = input.required<FormGroup>();
+  readonly submitted = input(false);
 
-  unitLabels = this.enumUtils.enumToShortAndLongLabels(Unit, UnitShortLabel, UnitLongLabel);
+  // =========================================================
+  // Outputs
+  // =========================================================
+  readonly remove = output<void>();
+
+  // Transform UnitComposition to SelectOption for form-select
+  readonly unitLabels = computed(() =>
+    this.enumUtils
+      .mapUnit(UnitShortLabel, UnitLongLabel)()
+      .map((u) => ({
+        value: u.value,
+        label: `${u.short} (${u.long})`,
+      })),
+  );
+
+  protected readonly messages = INGREDIENT_VALIDATION_MESSAGES;
 }

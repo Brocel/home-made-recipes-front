@@ -5,8 +5,14 @@
   (change)="onChangeValue($event)"
   (blur)="markAsTouched()"
 >
+  @if (placeholder()) {
+    <option value="" disabled selected>
+      {{ placeholder() }}
+    </option>
+  }
+
   @for (option of options(); track option.value) {
-    <option [value]="option.value">
+    <option [value]="option.value" [aria-label]="option.label">
       {{ option.label }}
     </option>
   }

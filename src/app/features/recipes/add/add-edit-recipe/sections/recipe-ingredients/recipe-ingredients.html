@@ -1,9 +1,13 @@
 <div class="ingredients">
-  @for (group of ingredientsControls; let i = $index; track i) {
-    <app-ingredient-row [group]="group" (remove)="removeIngredient(i)" />
+  @if (ingredientsControls.length === 0) {
+    <p class="empty-state">{{ 'recipe.ingredients.empty' | translate }}</p>
+  } @else {
+    @for (group of ingredientsControls; let i = $index; track i) {
+      <app-ingredient-row
+        [group]="group"
+        [submitted]="submitted()"
+        (remove)="removeIngredient.emit(i)"
+      />
+    }
   }
-
-  <button mat-stroked-button type="button" (click)="addIngredient()">
-    {{ 'glossary.recipe.ingredients.add' | translate }}
-  </button>
 </div>

@@ -1,59 +1,110 @@
-import { Component, inject } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
-import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
+import { Component, DestroyRef, inject, input, output, signal } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TranslatePipe } from '@ngx-translate/core';
 
 import { ProductApi } from '@api/product.api';
+import { PRODUCT_VALIDATION_MESSAGES } from '@forms/validations/product.validation';
+import { FormLayout } from '@layouts/form-layout/form-layout';
 import { Product, ProductDTO } from '@models/recipes/ingredient';
-import { IngredientType } from '@models/recipes/ingredient-type.enum';
+import { IngredientType, IngredientTypeLabel } from '@models/recipes/ingredient-type.enum';
+import { AppButton } from '@primitives/app-button/app-button';
+import { FormField } from '@primitives/form/form-field/form-field';
+import { FormInput } from '@primitives/form/form-input/form-input';
+import { FormSection } from '@primitives/form/form-section/form-section';
+import { FormSelect } from '@primitives/form/form-select/form-select';
+import { EnumUtilsService } from '@services/enum-utils.service';
+import { NotificationService } from '@services/notification.service';
 
 @Component({
   selector: 'app-add-product',
   standalone: true,
   imports: [
-    MatDialogModule,
     ReactiveFormsModule,
-    MatFormFieldModule, // TODO: refacto
-    MatInputModule,
-    MatSelectModule,
-    MatButtonModule,
     TranslatePipe,
+    FormLayout,
+    FormSection,
+    FormField,
+    FormInput,
+    FormSelect,
+    AppButton,
   ],
   templateUrl: './add-product.html',
-  styleUrls: ['./add-product.scss'],
+  styleUrl: './add-product.scss',
 })
 export class AddProduct {
-  private dialogRef = inject(MatDialogRef<AddProduct>);
-  private data = inject<{ name: string }>(MAT_DIALOG_DATA);
-  private productService = inject(ProductApi);
+  // =========================================================
+  // Dependencies
+  // =========================================================
+  private readonly fb = inject(FormBuilder);
+  private readonly productService = inject(ProductApi);
+  private readonly notif = inject(NotificationService);
+  private readonly destroyRef = inject(DestroyRef);
+  private readonly enumUtils = inject(EnumUtilsService);
 
-  ingredientTypes = Object.values(IngredientType);
+  // =========================================================
+  // Inputs
+  // =========================================================
+  readonly addProductData = input<any>('');
 
-  form = new FormGroup({
-    name: new FormControl<string>(this.data.name ?? '', {
-      nonNullable: true,
-      validators: [Validators.required],
-    }),
-    ingredient_type: new FormControl<IngredientType | null>(null, {
-      validators: [Validators.required],
-    }),
+  // =========================================================
+  // Outputs
+  // =========================================================
+  readonly productCreated = output<Product>();
+  readonly cancelled = output<void>();
+
+  // =========================================================
+  // State
+  // =========================================================
+  readonly loading = signal(false);
+  readonly submitted = signal(false);
+  readonly ingredientTypes = this.enumUtils.mapEnumLabelsToSelectOption(IngredientTypeLabel);
+
+  // =========================================================
+  // Form
+  // =========================================================
+  readonly form = this.fb.nonNullable.group({
+    name: [this.addProductData()?.name ?? '', Validators.required],
+    ingredient_type: [null as IngredientType | null, Validators.required],
   });
 
-  submit() {
-    if (this.form.invalid) return;
+  // =========================================================
+  // Validation helpers
+  // =========================================================
+  protected readonly messages = PRODUCT_VALIDATION_MESSAGES;
+
+  // =========================================================
+  // Actions
+  // =========================================================
+  onSubmit(): void {
+    this.submitted.set(true);
+
+    if (this.form.invalid || this.loading()) {
+      this.form.markAllAsTouched();
+      return;
+    }
+
+    this.loading.set(true);
 
     const dto: ProductDTO = this.form.getRawValue() as ProductDTO;
 
-    this.productService.createProduct(dto).subscribe((product: Product) => {
-      this.dialogRef.close(product);
-    });
+    this.productService
+      .createProduct(dto)
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: (product: Product) => {
+          this.loading.set(false);
+          this.productCreated.emit(product);
+          this.notif.showSuccess('product.created_successfully');
+        },
+        error: (err) => {
+          this.loading.set(false);
+          this.notif.showError(err.errorKey ?? 'UNKNOWN_ERROR');
+        },
+      });
   }
 
-  cancel() {
-    this.dialogRef.close(null);
+  onCancel(): void {
+    this.cancelled.emit();
   }
 }

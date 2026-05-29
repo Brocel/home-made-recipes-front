@@ -59,19 +59,9 @@ export class Login {
   // Form
   // =========================================================
   readonly form = this.fb.nonNullable.group({
-    email: ['', [Validators.required, Validators.email]],
+    email: [this.loginData()?.email ?? '', [Validators.required, Validators.email]],
     password: ['', Validators.required],
   });
-
-  constructor() {
-    const data = this.loginData();
-
-    if (data?.email) {
-      this.form.patchValue({
-        email: data.email,
-      });
-    }
-  }
 
   // =========================================================
   // Validation helpers

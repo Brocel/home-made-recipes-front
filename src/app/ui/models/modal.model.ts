@@ -1,3 +1,4 @@
+import { Product } from '@models/recipes/ingredient';
 import { User } from '@models/user';
 import { AnyModalConfig, ConfirmIntent, ModalType } from '@uiTypes/modal.types';
 import { Tone, Variant } from '@uiTypes/overlay.types';
@@ -57,6 +58,15 @@ export interface ModalDefinitionMap {
   confirm: {
     data: ConfirmData;
     result: { confirmed: boolean; actionData?: any };
+  };
+
+  'add-product': {
+    data: {
+      initialName?: string;
+    };
+    result: {
+      product: Product;
+    } | null;
   };
 }
 

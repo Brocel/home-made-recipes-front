@@ -36,7 +36,7 @@ export class AddPartialRecipe {
   private readonly formService = inject(RecipeFormService);
   private readonly router = inject(Router);
 
-  recipeTypes = this.enumUtils.enumToList(RecipeType, RecipeTypeLabel);
+  recipeTypes = this.enumUtils.mapEnumLabelsToSelectOption(RecipeType, RecipeTypeLabel);
 
   form = this.fb.nonNullable.group({
     title: this.fb.control<string>(''),

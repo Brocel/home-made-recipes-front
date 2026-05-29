@@ -1,35 +1,69 @@
-<div [formGroup]="informations()" class="sub-form">
-  <h3 class="title">
-    <mat-icon>library_books</mat-icon>
-    {{ 'add.info.title' | translate }}
-  </h3>
+<div [formGroup]="informations()" class="recipe-info">
+  <!-- TITLE -->
+  <app-form-section>
+    <app-form-field
+      [label]="'glossary.recipe.title' | translate"
+      [control]="informations().controls['title']"
+      [messages]="messages.title"
+      [submitted]="submitted()"
+    >
+      <app-form-input
+        type="text"
+        name="title"
+        formControlName="title"
+        [placeholder]="'glossary.recipe.title' | translate"
+      />
+    </app-form-field>
+  </app-form-section>
 
-  <mat-form-field appearance="outline" class="field">
-    <mat-label>{{ 'glossary.recipe.title' | translate }}</mat-label>
-    <mat-icon matPrefix>create</mat-icon>
-    <input matInput formControlName="title" />
-  </mat-form-field>
+  <!-- DESCRIPTION -->
+  <app-form-section>
+    <app-form-field
+      [label]="'recipe.description' | translate"
+      [control]="informations().controls['description']"
+      [messages]="messages.description"
+      [submitted]="submitted()"
+    >
+      <app-form-textarea
+        name="description"
+        formControlName="description"
+        [placeholder]="'recipe.description' | translate"
+        [rows]="4"
+      />
+    </app-form-field>
+  </app-form-section>
 
-  <mat-form-field appearance="outline" class="field">
-    <mat-label>{{ 'recipe.description' | translate }}</mat-label>
-    <mat-icon matPrefix>create</mat-icon>
-    <textarea matInput formControlName="description"></textarea>
-  </mat-form-field>
+  <!-- PREPARATION TIME -->
+  <app-form-section>
+    <app-form-field
+      [label]="'glossary.recipe.prepTimeMin' | translate"
+      [control]="informations().controls['preparation_time']"
+      [messages]="messages.preparation_time"
+      [submitted]="submitted()"
+    >
+      <app-form-input
+        type="number"
+        name="preparation_time"
+        formControlName="preparation_time"
+        [placeholder]="'glossary.recipe.prepTimeMin' | translate"
+      />
+    </app-form-field>
+  </app-form-section>
 
-  <mat-form-field appearance="outline" class="field">
-    <mat-label>{{ 'glossary.recipe.prepTimeMin' | translate }}</mat-label>
-    <mat-icon matPrefix>access_time</mat-icon>
-    <input matInput type="number" formControlName="preparation_time" />
-  </mat-form-field>
-
-  <mat-form-field appearance="outline" class="field">
-    <mat-label>{{ 'glossary.recipe.type' | translate }}</mat-label>
-    <mat-select formControlName="recipe_type">
-      @for (t of recipeTypes; track t.value) {
-        <mat-option [value]="t.value">
-          {{ t.label | translate }}
-        </mat-option>
-      }
-    </mat-select>
-  </mat-form-field>
+  <!-- RECIPE TYPE -->
+  <app-form-section>
+    <app-form-field
+      [label]="'glossary.recipe.type' | translate"
+      [control]="informations().controls['recipe_type']"
+      [messages]="messages.recipe_type"
+      [submitted]="submitted()"
+    >
+      <app-form-select
+        name="recipe_type"
+        formControlName="recipe_type"
+        [options]="recipeTypes()"
+        [placeholder]="'glossary.recipe.type' | translate"
+      />
+    </app-form-field>
+  </app-form-section>
 </div>

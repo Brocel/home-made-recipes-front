@@ -6,12 +6,7 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { BaseCva } from '../abstractions/base-cva';
 
 import { BaseSize } from '@appTypes/style.type';
-
-export interface SelectOption {
-  label: string;
-
-  value: string;
-}
+import { SelectOption } from '@uiModels/form.model';
 
 @Component({
   selector: 'app-form-select',
@@ -29,9 +24,10 @@ export interface SelectOption {
 })
 export class FormSelect extends BaseCva<string> {
   // =========================================================
-  // Configuration inputs
+  // Inputs
   // =========================================================
   readonly options = input<SelectOption[]>([]);
+  readonly placeholder = input<string>('');
   readonly invalid = input(false);
   readonly size = input<BaseSize>('md');
 

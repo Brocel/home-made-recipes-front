@@ -1,20 +1,68 @@
-<div class="full-add">
-  <h1 class="title">
-    <mat-icon>add_box</mat-icon>
-    {{ 'add.full.title' | translate }}
-  </h1>
-  <div class="mini-form">
-    <form [formGroup]="form" (ngSubmit)="submit()" class="form full-form">
-      <app-scroll-wrapper gap="sm" padding="xs">
-        <app-recipe-info [informations]="form"></app-recipe-info>
+<div class="add-edit-recipe">
+  <div class="form-container">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form">
+      <app-scroll-wrapper gap="md" padding="md">
+        <!-- RECIPE INFO SECTION -->
+        <app-recipe-info
+          [informations]="informations"
+          [submitted]="submitted()"
+        />
 
-        <app-recipe-ingredients [ingredients]="ingredient_list"></app-recipe-ingredients>
+        <!-- INGREDIENTS SECTION -->
+        <div class="section">
+          <div class="section-header">
+            <h2 class="section-title">{{ 'recipe.ingredients.title' | translate }}</h2>
+            <app-button
+              type="button"
+              variant="secondary"
+              icon="plus"
+              (click)="onAddIngredient()"
+            >
+              {{ 'recipe.ingredients.add' | translate }}
+            </app-button>
+          </div>
 
-        <app-recipe-steps [steps]="step_list"></app-recipe-steps>
+          <app-recipe-ingredients
+            [ingredients]="ingredient_list"
+            [submitted]="submitted()"
+            (removeIngredient)="onRemoveIngredient($event)"
+            (addIngredient)="onAddIngredient()"
+          />
+        </div>
 
-        <button mat-raised-button class="submit">
-          {{ 'common.save' | translate }}
-        </button>
+        <!-- STEPS SECTION -->
+        <div class="section">
+          <div class="section-header">
+            <h2 class="section-title">{{ 'recipe.steps.title' | translate }}</h2>
+            <app-button
+              type="button"
+              variant="secondary"
+              icon="plus"
+              (click)="onAddStep()"
+            >
+              {{ 'recipe.steps.add' | translate }}
+            </app-button>
+          </div>
+
+          <app-recipe-steps
+            [steps]="step_list"
+            [submitted]="submitted()"
+            (removeStep)="onRemoveStep($event)"
+          />
+        </div>
+
+        <!-- ACTIONS -->
+        <div class="form-actions">
+          <app-button
+            type="submit"
+            variant="primary"
+            [disabled]="loading() || form.invalid"
+            [loading]="loading()"
+            [fullWidth]="true"
+          >
+            {{ 'common.save' | translate }}
+          </app-button>
+        </div>
       </app-scroll-wrapper>
     </form>
   </div>

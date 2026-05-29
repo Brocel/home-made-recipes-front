@@ -3,6 +3,7 @@ import { Component, computed, inject } from '@angular/core';
 import { TranslatePipe } from '@ngx-translate/core';
 import { FloatingSurface } from '@overlays/floating-surface/floating-surface';
 import { ConfirmPopup } from '@primitives/confirm-popup/confirm-popup';
+import { AddProduct } from '@products/add-product/add-product';
 import { Login } from '@signin/login/login';
 import { Register } from '@signin/register/register';
 import { ModalDefinitionMap, ModalStackItem } from '@uiModels/modal.model';
@@ -14,7 +15,16 @@ import { Profile } from '@user/profile/profile';
 
 @Component({
   selector: 'app-modal',
-  imports: [FloatingSurface, Login, Register, Profile, ConfirmPopup, NgClass, TranslatePipe],
+  imports: [
+    FloatingSurface,
+    Login,
+    Register,
+    Profile,
+    AddProduct,
+    ConfirmPopup,
+    NgClass,
+    TranslatePipe,
+  ],
   templateUrl: './modal-host.html',
   styleUrl: './modal-host.scss',
 })
@@ -114,5 +124,13 @@ export class ModalHost {
    */
   onCancel() {
     this.modalService.resolveCurrent({ confirmed: false });
+  }
+
+  /**
+   * Handle product creation from add-product modal.
+   * Closes the modal and resolves with the created product.
+   */
+  onProductCreated(product: any) {
+    this.modalService.resolveCurrent({ product });
   }
 }

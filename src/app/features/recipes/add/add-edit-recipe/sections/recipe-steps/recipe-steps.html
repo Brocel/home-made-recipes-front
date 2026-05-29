@@ -1,1 +1,51 @@
-<p>recipe-steps works!</p>
+<div class="recipe-steps">
+  @if (steps().length === 0) {
+    <p class="empty-state">{{ 'recipe.steps.empty' | translate }}</p>
+  } @else {
+    @for (step of stepsControls; track $index) {
+      <div class="step-row" [formGroup]="step">
+        <!-- ORDER -->
+        <app-form-field
+          [label]="'recipe.step.order' | translate"
+          [control]="step.controls['order']"
+          [messages]="messages.order"
+          [submitted]="submitted()"
+          class="order-field"
+        >
+          <app-form-input
+            type="number"
+            name="order"
+            formControlName="order"
+            [placeholder]="'recipe.step.order' | translate"
+          />
+        </app-form-field>
+
+        <!-- DESCRIPTION -->
+        <app-form-field
+          [label]="'recipe.step.description' | translate"
+          [control]="step.controls['description']"
+          [messages]="messages.description"
+          [submitted]="submitted()"
+          class="description-field"
+        >
+          <app-form-textarea
+            name="description"
+            formControlName="description"
+            [placeholder]="'recipe.step.description' | translate"
+            [rows]="3"
+          />
+        </app-form-field>
+
+        <!-- DELETE BUTTON -->
+        <app-button
+          type="button"
+          variant="ghost"
+          icon="trash-2"
+          [ariaLabel]="'common.delete' | translate"
+          (click)="onRemoveStep($index)"
+          class="delete-button"
+        />
+      </div>
+    }
+  }
+</div>

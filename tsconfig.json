@@ -48,6 +48,7 @@
       "@uiServices/*": ["./src/app/ui/services/*"],
       "@uiTypes/*": ["./src/app/ui/types/*"],
       "@uiModels/*": ["./src/app/ui/models/*"],
+      "@uiUtils/*": ["./src/app/ui/utils/*"],
       // Mocks
       "@mocks/*": ["./src/app/mocks/*"],
       // Other

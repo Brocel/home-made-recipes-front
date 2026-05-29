@@ -1,12 +1,14 @@
 import { Component, inject, input } from '@angular/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
 import { TranslatePipe } from '@ngx-translate/core';
 
-import { RecipeType, RecipeTypeLabel } from '@models/recipes/recipe-type.enum';
+import { RECIPE_VALIDATION_MESSAGES } from '@forms/validations/recipe.validation';
+import { RecipeTypeLabel } from '@models/recipes/recipe-type.enum';
+import { FormField } from '@primitives/form/form-field/form-field';
+import { FormInput } from '@primitives/form/form-input/form-input';
+import { FormSection } from '@primitives/form/form-section/form-section';
+import { FormSelect } from '@primitives/form/form-select/form-select';
+import { FormTextarea } from '@primitives/form/form-textarea/form-textarea';
 import { EnumUtilsService } from '@services/enum-utils.service';
 
 @Component({
@@ -14,19 +16,30 @@ import { EnumUtilsService } from '@services/enum-utils.service';
   standalone: true,
   imports: [
     ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
-    MatIconModule,
     TranslatePipe,
+    FormSection,
+    FormField,
+    FormInput,
+    FormSelect,
+    FormTextarea,
   ],
   templateUrl: './recipe-info.html',
   styleUrls: ['./recipe-info.scss'],
 })
 export class RecipeInfo {
+  // =========================================================
+  // Dependencies
+  // =========================================================
   private readonly enumUtils = inject(EnumUtilsService);
 
-  informations = input.required<FormGroup>();
+  // =========================================================
+  // Inputs
+  // =========================================================
+  readonly informations = input.required<FormGroup>();
+  readonly submitted = input(false);
 
-  recipeTypes = this.enumUtils.enumToList(RecipeType, RecipeTypeLabel);
+  // Transform RecipeType enum to SelectOption for form-select
+  readonly recipeTypes = this.enumUtils.mapEnumLabelsToSelectOption(RecipeTypeLabel);
+
+  protected readonly messages = RECIPE_VALIDATION_MESSAGES;
 }

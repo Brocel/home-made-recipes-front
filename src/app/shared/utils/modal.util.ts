@@ -37,6 +37,17 @@ export function buildConfirmConfig(options: ConfirmConfigOptions): ModalConfig<'
   };
 }
 
+/**
+ * Build a modal config for adding a new product.
+ * @param initialName Optional pre-filled product name
+ */
+export function buildAddProductConfig(initialName?: string): ModalConfig<'add-product'> {
+  return {
+    type: 'add-product',
+    data: { initialName },
+  };
+}
+
 export function buildConfirmResult(cancelled: boolean, actionData?: any) {
   return {
     cancelled: cancelled,

@@ -25,7 +25,12 @@
         />
       </app-form-field>
 
-      <app-form-field [label]="'form.label.last_name' | translate">
+      <app-form-field
+        [label]="'form.label.last_name' | translate"
+        [control]="form.controls.last_name"
+        [messages]="messages.last_name"
+        [submitted]="submitted()"
+      >
         <app-form-input
           type="text"
           name="last_name"
@@ -54,7 +59,12 @@
          CREDENTIALS SECTION
     ========================== -->
     <app-form-section [title]="'feature.signin.register.section.credentials' | translate">
-      <app-form-field [label]="'form.label.email' | translate">
+      <app-form-field
+        [label]="'form.label.email' | translate"
+        [control]="form.controls.email"
+        [messages]="messages.email"
+        [submitted]="submitted()"
+      >
         <app-form-input
           type="email"
           name="email"
@@ -64,7 +74,12 @@
         />
       </app-form-field>
 
-      <app-form-field [label]="'form.label.password' | translate">
+      <app-form-field
+        [label]="'form.label.password' | translate"
+        [control]="form.controls.password"
+        [messages]="messages.password"
+        [submitted]="submitted()"
+      >
         <app-form-input
           type="password"
           name="password"

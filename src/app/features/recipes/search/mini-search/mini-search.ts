@@ -33,8 +33,8 @@ export class MiniSearch {
   private fb: FormBuilder = inject(FormBuilder);
   private enumUtils: EnumUtilsService = inject(EnumUtilsService);
 
-  recipeTypes = this.enumUtils.enumToList(RecipeType, RecipeTypeLabel);
-  ingredientTypes = this.enumUtils.enumToList(IngredientType, IngredientTypeLabel);
+  recipeTypes = this.enumUtils.mapEnumLabelsToSelectOption(RecipeType, RecipeTypeLabel);
+  ingredientTypes = this.enumUtils.mapEnumLabelsToSelectOption(IngredientType, IngredientTypeLabel);
 
   form = this.fb.nonNullable.group({
     name: this.fb.control<string>(''),

@@ -211,7 +211,8 @@
       "last_name": "Sobrenome",
       "username": "Username",
       "confirm_password": "Confirma senha",
-      "birth_date": "Data de nascimento"
+      "birth_date": "Data de nascimento",
+      "ingredient_type": "Tipo de ingrediente"
     },
     "placeholder": {
       "email": "ex.example@domain.com",
