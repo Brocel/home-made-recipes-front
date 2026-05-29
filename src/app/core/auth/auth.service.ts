@@ -38,7 +38,7 @@ export class AuthService {
 
   logout() {
     this.clearSession();
-    this.nav.goHome();
+    void this.nav.goHome();
   }
 
   // ---- Session management ----

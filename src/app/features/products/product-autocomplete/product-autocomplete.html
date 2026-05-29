@@ -1,5 +1,5 @@
 <mat-form-field appearance="outline" class="field">
-  <mat-label>{{ label | translate }}</mat-label>
+  <mat-label>{{ label() | translate }}</mat-label>
   <mat-icon matPrefix>search</mat-icon>
 
   <input matInput type="text" [formControl]="control" [matAutocomplete]="auto" />

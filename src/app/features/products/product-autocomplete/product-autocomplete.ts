@@ -1,4 +1,4 @@
-import { Component, computed, forwardRef, inject, Input, signal } from '@angular/core';
+import { Component, computed, forwardRef, inject, input, signal } from '@angular/core';
 import {
   ControlValueAccessor,
   FormControl,
@@ -39,10 +39,14 @@ import { AddProduct } from '../add-product/add-product';
   styleUrls: ['./product-autocomplete.scss'],
 })
 export class ProductAutocomplete implements ControlValueAccessor {
-  @Input() label = 'feature.products.product-autocomplete.label';
+  // TODO: refacto with autocomplete primitive and move logic to a service if needed
+  // TODO: handle better Observable with toSignal or async pipe when it's supported in template for autocomplete
+  // TODO: remove Mat libraries
 
   private dialog = inject(MatDialog);
   private productService = inject(ProductApi);
+
+  readonly label = input('feature.products.product-autocomplete.label');
 
   control = new FormControl<string>('');
 

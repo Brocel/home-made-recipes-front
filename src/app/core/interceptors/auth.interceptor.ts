@@ -37,7 +37,8 @@ export const AuthInterceptor: HttpInterceptorFn = (req, next) => {
     catchError((err) => {
       if (err.status === 401) {
         auth.logout();
-        modal.open(buildLoginConfig());
+        // Defer modal opening to next tick to avoid interrupting current flow
+        setTimeout(() => modal.open(buildLoginConfig()), 0);
       }
       return throwError(() => err);
     }),

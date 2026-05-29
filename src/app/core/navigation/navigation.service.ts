@@ -125,7 +125,7 @@ export class NavigationService {
     if (window.history.length > 1) {
       window.history.back();
     } else {
-      this.router.navigateByUrl(fallback);
+      void this.router.navigateByUrl(fallback);
     }
   }
 
@@ -140,7 +140,7 @@ export class NavigationService {
     if (canGoBack) {
       location.back();
     } else {
-      this.goHome();
+      void this.goHome();
     }
   }
 }
