@@ -12,13 +12,15 @@ Context:
 - Feature / issue: ${input:feature:Feature name or problem statement}
 - Constraints: ${input:constraints:Business, technical, time, or architecture constraints}
 - Current state: ${input:state:What is already known or implemented?}
+- Folders to explore: ${input:folders:Which folders should be analyzed? Separate paths with commas}
 
 Roles:
 
-1. Project Manager
-2. Product Owner
-3. Senior Fullstack Software Engineer / Tech Lead
-4. Confirmed Fullstack Software Engineer
+1. Client (Business perspective)
+2. Project Manager
+3. Product Owner
+4. Senior Fullstack Software Engineer / Tech Lead
+5. Confirmed Fullstack Software Engineer
 
 Requirements:
 
@@ -27,8 +29,11 @@ Requirements:
 - The Project Manager focuses on planning, scope, and risks
 - The Tech Lead challenges the technical solution and architecture
 - The Fullstack Software Engineer focuses on implementation details and feasibility
-- End with a synthesized plan of action
+- The Client expresses needs and constraints from a business perspective
+- The discussion should be structured and respectful, with each role responding to the others
 - Include assumptions and open questions
+- After the discussion, present questions to each role to clarify their perspective and ensure alignment
+- End with a synthesized plan of action
 - Keep the outcome practical and implementation-oriented
 
 Output:
