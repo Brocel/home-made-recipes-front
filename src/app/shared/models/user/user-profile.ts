@@ -9,5 +9,5 @@ export interface UserProfile {
   last_name: string;
   birth_date: string;
   inscription_date: string;
-  avatar_name?: string;
+  avatar?: string;
 }

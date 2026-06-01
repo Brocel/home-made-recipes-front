@@ -14,33 +14,33 @@ import { FormValidationMessages } from '@forms/types/validation.type';
  * @example
  * {
  *   title: {
- *     required: 'form.validation.recipe_title_required',
+ *     required: 'form.validation.recipeTitleRequired',
  *   },
  *   description: {
- *     required: 'form.validation.recipe_description_required',
+ *     required: 'form.validation.recipeDescriptionRequired',
  *   },
  *   // ... other fields
  * }
  */
 export const RECIPE_VALIDATION_MESSAGES = {
   title: {
-    required: 'form.validation.recipe_title_required',
+    required: 'form.validation.recipeTitleRequired',
   },
   description: {
-    required: 'form.validation.recipe_description_required',
+    required: 'form.validation.recipeDescriptionRequired',
   },
   preparation_time: {
-    required: 'form.validation.recipe_prep_time_required',
-    min: 'form.validation.recipe_prep_time_min',
+    required: 'form.validation.recipePrepTimeRequired',
+    min: 'form.validation.recipePrepTimeMin',
   },
   recipe_type: {
-    required: 'form.validation.recipe_type_required',
+    required: 'form.validation.recipeTypeRequired',
   },
   ingredient_list: {
-    required: 'form.validation.recipe_ingredient_list_required',
+    required: 'form.validation.recipeIngredientListRequired',
   },
   step_list: {
-    required: 'form.validation.recipe_step_list_required',
+    required: 'form.validation.recipeStepListRequired',
   },
 } satisfies FormValidationMessages<RecipeField>;
 
@@ -50,14 +50,14 @@ export const RECIPE_VALIDATION_MESSAGES = {
  */
 export const INGREDIENT_VALIDATION_MESSAGES = {
   quantity: {
-    required: 'form.validation.ingredient_quantity_required',
-    min: 'form.validation.ingredient_quantity_min',
+    required: 'form.validation.ingredientQuantityRequired',
+    min: 'form.validation.ingredientQuantityMin',
   },
   unit: {
-    required: 'form.validation.ingredient_unit_required',
+    required: 'form.validation.ingredientUnitRequired',
   },
   product: {
-    required: 'form.validation.ingredient_product_required',
+    required: 'form.validation.ingredientProductRequired',
   },
 } satisfies FormValidationMessages<IngredientField>;
 
@@ -67,13 +67,13 @@ export const INGREDIENT_VALIDATION_MESSAGES = {
  */
 export const PRODUCT_INGREDIENT_VALIDATION_MESSAGES = {
   id: {
-    required: 'form.validation.product_id_required',
+    required: 'form.validation.productIdRequired',
   },
   name: {
-    required: 'form.validation.product_name_required',
+    required: 'form.validation.productNameRequired',
   },
   ingredient_type: {
-    required: 'form.validation.ingredient_type_required',
+    required: 'form.validation.ingredientTypeRequired',
   },
 } satisfies FormValidationMessages<ProductField>;
 
@@ -83,9 +83,9 @@ export const PRODUCT_INGREDIENT_VALIDATION_MESSAGES = {
  */
 export const STEP_VALIDATION_MESSAGES = {
   description: {
-    required: 'form.validation.step_description_required',
+    required: 'form.validation.stepDescriptionRequired',
   },
   order: {
-    required: 'form.validation.step_order_required',
+    required: 'form.validation.stepOrderRequired',
   },
 } satisfies FormValidationMessages<StepField>;

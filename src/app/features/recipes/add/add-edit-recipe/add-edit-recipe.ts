@@ -117,7 +117,7 @@ export class AddEditRecipe implements OnInit {
       .subscribe({
         next: () => {
           this.loading.set(false);
-          this.toast.show('success', 'recipe.created_successfully');
+          this.toast.show('success', 'messages.success.recipeCreated');
           this.form.reset();
           this.submitted.set(false);
         },

@@ -8,18 +8,18 @@ import { FormValidationMessages } from '@forms/types/validation.type';
  * @example
  * {
  *   name: {
- *     required: 'form.validation.product_name_required',
+ *     required: 'form.validation.productNameRequired',
  *   },
  *   ingredient_type: {
- *     required: 'form.validation.ingredient_type_required',
+ *     required: 'form.validation.ingredientTypeRequired',
  *   },
  * }
  */
 export const PRODUCT_VALIDATION_MESSAGES = {
   name: {
-    required: 'form.validation.product_name_required',
+    required: 'form.validation.productNameRequired',
   },
   ingredient_type: {
-    required: 'form.validation.ingredient_type_required',
+    required: 'form.validation.ingredientTypeRequired',
   },
 } satisfies FormValidationMessages<ProductFormField>;

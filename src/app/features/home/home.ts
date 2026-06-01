@@ -45,7 +45,7 @@ export class Home implements OnInit {
       switchMap(() =>
         this.api.dailyRecipe().pipe(
           catchError(() => {
-            this.lang.setMsg('errors.recipe.fetchingDaily', undefined);
+            this.lang.setMsg('messages.error.recipeFetchingDaily', undefined);
             this.errorMessage.set(this.lang.getMessageSignal()());
             return of(null);
           }),

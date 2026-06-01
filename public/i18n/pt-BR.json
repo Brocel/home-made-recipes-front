@@ -186,40 +186,52 @@
   "form": {
     "validation": {
       "email": "Email inválido",
-      "email_required": "Email obrigatório",
-      "password_required": "Senha obrigatória",
-      "password_mismatch": "As senhas não coincidem",
-      "password_wrong": "Senha incorreta",
-      "username_taken": "Esse username já existe",
-      "username_minlength": "O username deve ter pelo menos 4 letras",
-      "first_name": "O nome deve conter pelo menos X letras",
-      "last_name": "O sobrenome deve conter pelo menos X letras",
-      "product_name_required": "O nome do produto é obrigatório",
-      "ingredient_type_required": "O tipo do produto é obrigatório",
-      "recipe_title_required": "O nome da receita é obrigatório",
-      "recipe_description_required": "A descrição da receita é obrigatória",
-      "recipe_prep_time_required": "O tempo de preparo é obrigatório",
-      "recipe_prep_time_min": "O tempo de preparo deve ser superior a 0",
-      "recipe_type_required": "O tipo de receita é obrigatório",
-      "recipe_ingredient_list_required": "A lista de ingredientes é obrigatória",
-      "recipe_step_list_required": "A lista de etapas é obrigatória"
+      "emailRequired": "Email obrigatório",
+      "passwordRequired": "Senha obrigatória",
+      "passwordMinlength": "A senha deve conter pelo menos X caracteres",
+      "passwordMismatch": "As senhas não coincidem",
+      "passwordWrong": "Senha incorreta",
+      "confirmPasswordRequired": "Confirmação de senha obrigatória",
+      "usernameTaken": "Esse username já existe",
+      "usernameMinlength": "O username deve ter pelo menos 4 letras",
+      "firstName": "O nome deve conter pelo menos X letras",
+      "lastName": "O sobrenome deve conter pelo menos X letras",
+      "birthDate": "Data de nascimento obrigatória",
+      "productNameRequired": "O nome do produto é obrigatório",
+      "ingredientTypeRequired": "O tipo do produto é obrigatório",
+      "ingredientQuantityRequired": "A quantidade é obrigatória",
+      "ingredientQuantityMin": "A quantidade deve ser superior a 0",
+      "ingredientUnitRequired": "A unidade é obrigatória",
+      "ingredientProductRequired": "O produto é obrigatório",
+      "productIdRequired": "O ID do produto é obrigatório",
+      "recipeTitleRequired": "O nome da receita é obrigatório",
+      "recipeDescriptionRequired": "A descrição da receita é obrigatória",
+      "recipePrepTimeRequired": "O tempo de preparo é obrigatório",
+      "recipePrepTimeMin": "O tempo de preparo deve ser superior a 0",
+      "recipeTypeRequired": "O tipo de receita é obrigatório",
+      "recipeIngredientListRequired": "A lista de ingredientes é obrigatória",
+      "recipeStepListRequired": "A lista de etapas é obrigatória",
+      "stepDescriptionRequired": "A descrição da etapa é obrigatória",
+      "stepOrderRequired": "A ordem da etapa é obrigatória"
     },
     "label": {
       "email": "Email",
       "password": "Senha",
-      "first_name": "Nome",
-      "last_name": "Sobrenome",
+      "firstName": "Nome",
+      "lastName": "Sobrenome",
       "username": "Username",
-      "confirm_password": "Confirma senha",
-      "birth_date": "Data de nascimento",
-      "ingredient_type": "Tipo de ingrediente",
-      "ingredient_quantity": "Quantidade",
-      "ingredient_unit": "Unidade",
+      "confirmPassword": "Confirma senha",
+      "birthDate": "Data de nascimento",
+      "ingredientType": "Tipo de ingrediente",
+      "ingredientQuantity": "Quantidade",
+      "ingredientUnit": "Unidade",
       "product": "Produto"
     },
     "placeholder": {
       "email": "ex.example@domain.com",
-      "birth_date": "DD/MM/AAAA"
+      "birthDate": "DD/MM/AAAA",
+      "ingredientQuantity": "Ex: 500",
+      "ingredientUnit": "kg, L, c.d.s., etc."
     }
   },
   "common": {
@@ -227,6 +239,8 @@
     "cancel": "Cancelar",
     "save": "Salvar",
     "ok": "OK",
+    "delete": "Deletar",
+    "saving": "Salvando...",
     "loading": "Carregando...",
     "none": "Nenhum.a",
     "logout": {
@@ -234,9 +248,14 @@
       "message": "Tem certeza de que deseja se desconectar?"
     }
   },
-  "errors": {
-    "recipe": {
-      "fetchingDaily": "Impossível carregar a receita do dia"
+  "messages": {
+    "success": {
+      "productCreated": "Produto criado com sucesso",
+      "recipeCreated": "Receita criada com sucesso",
+      "recipeEdited": "Receita editada com sucesso"
+    },
+    "error": {
+      "recipeFetchingDaily": "Impossível carregar a receita do dia"
     }
   }
 }

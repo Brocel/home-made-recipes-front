@@ -186,40 +186,52 @@
   "form": {
     "validation": {
       "email": "Email non-valide",
-      "email_required": "Email obligatoire",
-      "password_required": "Mot de passe obligatoire",
-      "password_mismatch": "Les mots de passe ne correspondent pas",
-      "password_wrong": "Mot de passe incorrect",
-      "username_taken": "Ce pseudonyme n'est pas disponible",
-      "username_minlength": "Le pseudonyme doit être composé au minimum de 4 lettres",
-      "first_name": "Le prénom doit être composé au minimum de X lettres",
-      "last_name": "Le nom doit être composé au minimum de X lettres",
-      "product_name_required": "Le nom du produit est obligatoire",
-      "ingredient_type_required": "Le type du produit est obligatoire",
-      "recipe_title_required": "Le nom de la recette est obligatoire",
-      "recipe_description_required": "La description de la recette est obligatoire",
-      "recipe_prep_time_required": "Le temps de préparation est obligatoire",
-      "recipe_prep_time_min": "Le temps de préparation doit être supérieur à 0",
-      "recipe_type_required": "Le type de recette est obligatoire",
-      "recipe_ingredient_list_required": "La liste des ingrédients est obligatoire",
-      "recipe_step_list_required": "La liste des étapes est obligatoire"
+      "emailRequired": "Email obligatoire",
+      "passwordRequired": "Mot de passe obligatoire",
+      "passwordMinlength": "Le mot de passe doit contenir au minimum X caractères",
+      "passwordMismatch": "Les mots de passe ne correspondent pas",
+      "passwordWrong": "Mot de passe incorrect",
+      "confirmPasswordRequired": "Confirmation de mot de passe obligatoire",
+      "usernameTaken": "Ce pseudonyme n'est pas disponible",
+      "usernameMinlength": "Le pseudonyme doit être composé au minimum de 4 lettres",
+      "firstName": "Le prénom doit être composé au minimum de X lettres",
+      "lastName": "Le nom doit être composé au minimum de X lettres",
+      "birthDate": "Date de naissance obligatoire",
+      "productNameRequired": "Le nom du produit est obligatoire",
+      "ingredientTypeRequired": "Le type du produit est obligatoire",
+      "ingredientQuantityRequired": "La quantité est obligatoire",
+      "ingredientQuantityMin": "La quantité doit être supérieure à 0",
+      "ingredientUnitRequired": "L'unité est obligatoire",
+      "ingredientProductRequired": "Le produit est obligatoire",
+      "productIdRequired": "L'ID du produit est obligatoire",
+      "recipeTitleRequired": "Le nom de la recette est obligatoire",
+      "recipeDescriptionRequired": "La description de la recette est obligatoire",
+      "recipePrepTimeRequired": "Le temps de préparation est obligatoire",
+      "recipePrepTimeMin": "Le temps de préparation doit être supérieur à 0",
+      "recipeTypeRequired": "Le type de recette est obligatoire",
+      "recipeIngredientListRequired": "La liste des ingrédients est obligatoire",
+      "recipeStepListRequired": "La liste des étapes est obligatoire",
+      "stepDescriptionRequired": "La description de l'étape est obligatoire",
+      "stepOrderRequired": "L'ordre de l'étape est obligatoire"
     },
     "label": {
       "email": "Email",
       "password": "Mot de passe",
-      "first_name": "Prénom",
-      "last_name": "Nom",
+      "firstName": "Prénom",
+      "lastName": "Nom",
       "username": "Pseudonyme",
-      "confirm_password": "Confirmer le mot de passe",
-      "birth_date": "Date de naissance",
-      "ingredient_type": "Type d'ingrédient",
-      "ingredient_quantity": "Quantité",
-      "ingredient_unit": "Unité",
+      "confirmPassword": "Confirmer le mot de passe",
+      "birthDate": "Date de naissance",
+      "ingredientType": "Type d'ingrédient",
+      "ingredientQuantity": "Quantité",
+      "ingredientUnit": "Unité",
       "product": "Produit"
     },
     "placeholder": {
       "email": "ex.example@domain.com",
-      "birth_date": "JJ/MM/AAAA"
+      "birthDate": "JJ/MM/AAAA",
+      "ingredientQuantity": "Ex: 500",
+      "ingredientUnit": "kg, L, c.a.s., etc."
     }
   },
   "common": {
@@ -227,6 +239,8 @@
     "cancel": "Annuler",
     "save": "Enregistrer",
     "ok": "OK",
+    "delete": "Supprimer",
+    "saving": "Enregistrement en cours...",
     "loading": "Chargement...",
     "none": "Aucun.e",
     "logout": {
@@ -234,9 +248,14 @@
       "message": "Êtes-vous sûr de vouloir vous déconnecter ?"
     }
   },
-  "errors": {
-    "recipe": {
-      "fetchingDaily": "Impossible de charger la recette du jour"
+  "messages": {
+    "success": {
+      "productCreated": "Produit créé avec succès",
+      "recipeCreated": "Recette créée avec succès",
+      "recipeEdited": "Recette modifiée avec succès"
+    },
+    "error": {
+      "recipeFetchingDaily": "Impossible de charger la recette du jour"
     }
   }
 }

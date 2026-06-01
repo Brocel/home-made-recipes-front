@@ -95,7 +95,7 @@ export class AddProduct {
         next: (product: Product) => {
           this.loading.set(false);
           this.productCreated.emit(product);
-          this.toast.show('success', 'product.created_successfully');
+          this.toast.show('success', 'messages.success.productCreated');
         },
         error: (err) => {
           this.loading.set(false);

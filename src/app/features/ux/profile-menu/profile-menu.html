@@ -3,9 +3,9 @@
   <!-- Trigger -->
   <!-- ===================================================== -->
   <button floatingTrigger class="profile-trigger" type="button" (click)="toggle()">
-    @if (user()?.picture) {
+    @if (userProfile()?.avatar) {
       <img
-        [src]="user()?.picture"
+        [src]="userProfile()?.avatar"
         alt=""
         class="avatar"
         [aria-label]="'feature.ux.profile-menu.user.label' | translate"

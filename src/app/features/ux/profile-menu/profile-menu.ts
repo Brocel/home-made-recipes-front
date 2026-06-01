@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, inject, input, output } from '@angular/core';
 import { FloatingContentDirective } from '@directives/floating-content.directive';
 import { FloatingTriggerDirective } from '@directives/floating-trigger.directive';
+import { UserProfile } from '@models/user/user-profile';
 import { UserSession } from '@models/user/user-session';
 import { TranslateModule } from '@ngx-translate/core';
 import { FloatingSurface } from '@overlays/floating-surface/floating-surface';
@@ -25,27 +26,28 @@ export class ProfileMenu {
   // =========================================================
   // Dependencies
   // =========================================================
-  private menu = inject(MenuService);
+  private readonly menu = inject(MenuService);
 
   // =========================================================
   // Porperties
   // =========================================================
-  position: Position = 'anchored';
-  layer: LayerType = 'dropdown';
+  readonly position: Position = 'anchored';
+  readonly layer: LayerType = 'dropdown';
 
   // =========================================================
   // Inputs
   // =========================================================
-  user = input<UserSession | null>();
-  isAuthenticated = input<boolean>(false);
+  readonly user = input<UserSession | null>();
+  readonly userProfile = input<UserProfile | null>();
+  readonly isAuthenticated = input<boolean>(false);
 
   // =========================================================
   // Outputs
   // =========================================================
-  login = output<void>();
-  profile = output<void>();
-  dashboard = output<void>();
-  logout = output<void>();
+  readonly login = output<void>();
+  readonly profile = output<void>();
+  readonly dashboard = output<void>();
+  readonly logout = output<void>();
 
   // =========================================================
   // Actions

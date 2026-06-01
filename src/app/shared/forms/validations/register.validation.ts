@@ -3,35 +3,35 @@ import { FormValidationMessages } from '@forms/types/validation.type';
 
 export const REGISTER_VALIDATION_MESSAGES = {
   first_name: {
-    required: 'form.validation.first_name',
+    required: 'form.validation.firstName',
   },
 
   last_name: {
-    required: 'form.validation.last_name',
+    required: 'form.validation.lastName',
   },
 
   username: {
     required: 'form.validation.username',
-    usernameTaken: 'form.validation.username_taken',
-    minlength: 'form.validation.username_minlength',
+    usernameTaken: 'form.validation.usernameTaken',
+    minlength: 'form.validation.usernameMinlength',
   },
 
   email: {
-    required: 'form.validation.email_required',
+    required: 'form.validation.emailRequired',
     email: 'form.validation.email',
   },
 
   password: {
-    required: 'form.validation.password_required',
-    minlength: 'form.validation.password_minlength',
+    required: 'form.validation.passwordRequired',
+    minlength: 'form.validation.passwordMinlength',
   },
 
   confirm_password: {
-    required: 'form.validation.confirm_password_required',
-    passwordMismatch: 'form.validation.password_mismatch',
+    required: 'form.validation.confirmPasswordRequired',
+    passwordMismatch: 'form.validation.passwordMismatch',
   },
 
   birth_date: {
-    required: 'form.validation.birth_date',
+    required: 'form.validation.birthDate',
   },
 } satisfies FormValidationMessages<RegisterField>;
