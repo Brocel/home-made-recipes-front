@@ -18,7 +18,7 @@ export function seedRecipes(): Recipe[] {
       description: 'Une salade simple et rafraîchissante.',
       preparation_time: 10,
       recipe_type: RecipeType.STARTER,
-      author: admin,
+      author: admin.profile,
       ingredients: [
         createIngredient(2, Unit.PIECE, 'Tomate'),
         createIngredient(5, Unit.GRAM, 'Basilic'),
@@ -35,7 +35,7 @@ export function seedRecipes(): Recipe[] {
       description: 'Un velouté onctueux.',
       preparation_time: 20,
       recipe_type: RecipeType.STARTER,
-      author: user1,
+      author: user1.profile,
       ingredients: [
         createIngredient(2, Unit.PIECE, 'Courgette'),
         createIngredient(1, Unit.PIECE, 'Oignon'),
@@ -52,7 +52,7 @@ export function seedRecipes(): Recipe[] {
       description: 'Un poulet tendre.',
       preparation_time: 45,
       recipe_type: RecipeType.MAIN_COURSE,
-      author: admin,
+      author: admin.profile,
       ingredients: [
         createIngredient(1, Unit.PIECE, 'Poulet'),
         createIngredient(5, Unit.GRAM, 'Thym'),
@@ -66,7 +66,7 @@ export function seedRecipes(): Recipe[] {
       description: 'Plat simple et savoureux.',
       preparation_time: 25,
       recipe_type: RecipeType.MAIN_COURSE,
-      author: user2,
+      author: user2.profile,
       ingredients: [
         createIngredient(200, Unit.GRAM, 'Pâtes'),
         createIngredient(1, Unit.PIECE, 'Brocoli'),
@@ -81,7 +81,7 @@ export function seedRecipes(): Recipe[] {
         'Un plat simple, rapide et savoureux, idéal pour un dîner réconfortant. Les champignons sautés se marient parfaitement avec une sauce crémeuse légèrement parfumée à l’ail.',
       preparation_time: 25,
       recipe_type: RecipeType.MAIN_COURSE,
-      author: user1,
+      author: user1.profile,
       ingredients: [
         createIngredient(200, Unit.GRAM, 'Pâtes'),
         createIngredient(150, Unit.GRAM, 'Champignons de Paris'),
@@ -106,7 +106,7 @@ export function seedRecipes(): Recipe[] {
         "Un plat emblématique d'Alsace : chou fermenté mijoté longuement avec des viandes fumées, des saucisses et des pommes de terre. Un plat généreux, rustique et convivial.",
       preparation_time: 150,
       recipe_type: RecipeType.MAIN_COURSE,
-      author: user1,
+      author: user1.profile,
 
       ingredients: [
         // base
@@ -152,7 +152,7 @@ export function seedRecipes(): Recipe[] {
         'Une mousse légère et aérienne au chocolat noir, idéale pour terminer un repas sur une note gourmande et élégante.',
       preparation_time: 20,
       recipe_type: RecipeType.DESSERT,
-      author: admin,
+      author: admin.profile,
       ingredients: [
         createIngredient(200, Unit.GRAM, 'Chocolat noir'),
         createIngredient(3, Unit.PIECE, 'Œuf'),
@@ -174,7 +174,7 @@ export function seedRecipes(): Recipe[] {
         'Une tarte croustillante et parfumée, avec des pommes fondantes légèrement caramélisées au miel.',
       preparation_time: 35,
       recipe_type: RecipeType.DESSERT,
-      author: user1,
+      author: user1.profile,
       ingredients: [
         createIngredient(1, Unit.PIECE, 'Pomme'),
         createIngredient(1, Unit.PIECE, 'Pâte feuilletée'),
@@ -195,7 +195,7 @@ export function seedRecipes(): Recipe[] {
       description: 'Un dessert traditionnel, doux et réconfortant, parfumé à la vanille.',
       preparation_time: 40,
       recipe_type: RecipeType.DESSERT,
-      author: user2,
+      author: user2.profile,
       ingredients: [
         createIngredient(100, Unit.GRAM, 'Riz'),
         createIngredient(500, Unit.MILLILITER, 'Lait'),
@@ -217,7 +217,7 @@ export function seedRecipes(): Recipe[] {
       description: 'Un smoothie exotique, riche et crémeux parfait pour le petit-déjeuner.',
       preparation_time: 5,
       recipe_type: RecipeType.BEVERAGE,
-      author: admin,
+      author: admin.profile,
       ingredients: [
         createIngredient(1, Unit.PIECE, 'Banane'),
         createIngredient(1, Unit.PIECE, 'Mangue'),
@@ -235,7 +235,7 @@ export function seedRecipes(): Recipe[] {
       description: 'Boisson acidulée et désaltérante, idéale en été.',
       preparation_time: 10,
       recipe_type: RecipeType.BEVERAGE,
-      author: user1,
+      author: user1.profile,
       ingredients: [
         createIngredient(2, Unit.PIECE, 'Citron'),
         createIngredient(30, Unit.GRAM, 'Sucre en poudre'),
@@ -253,7 +253,7 @@ export function seedRecipes(): Recipe[] {
       description: 'Un thé glacé léger et aromatique avec une touche de menthe fraîche.',
       preparation_time: 15,
       recipe_type: RecipeType.BEVERAGE,
-      author: user2,
+      author: user2.profile,
       ingredients: [
         createIngredient(2, Unit.PIECE, 'Thé'),
         createIngredient(5, Unit.GRAM, 'Miel'),
@@ -274,7 +274,7 @@ export function seedRecipes(): Recipe[] {
       description: 'Snack rapide, sain et équilibré à base d’avocat écrasé.',
       preparation_time: 10,
       recipe_type: RecipeType.SNACK,
-      author: admin,
+      author: admin.profile,
       ingredients: [
         createIngredient(1, Unit.PIECE, 'Pain'),
         createIngredient(1, Unit.PIECE, 'Avocat'),
@@ -292,7 +292,7 @@ export function seedRecipes(): Recipe[] {
       description: 'Un snack sucré et équilibré parfait pour une pause rapide.',
       preparation_time: 5,
       recipe_type: RecipeType.SNACK,
-      author: user1,
+      author: user1.profile,
       ingredients: [
         createIngredient(1, Unit.PIECE, 'Yaourt nature'),
         createIngredient(30, Unit.GRAM, 'Avoine'),
@@ -306,7 +306,7 @@ export function seedRecipes(): Recipe[] {
       description: 'Snack sucré-salé parfait pour l’apéritif ou le grignotage.',
       preparation_time: 12,
       recipe_type: RecipeType.SNACK,
-      author: user2,
+      author: user2.profile,
       ingredients: [
         createIngredient(50, Unit.GRAM, 'Noix'),
         createIngredient(20, Unit.GRAM, 'Miel'),
@@ -327,7 +327,7 @@ export function seedRecipes(): Recipe[] {
       description: 'Apéritif italien classique simple et frais.',
       preparation_time: 15,
       recipe_type: RecipeType.APPETIZER,
-      author: admin,
+      author: admin.profile,
       ingredients: [
         createIngredient(2, Unit.PIECE, 'Tomate'),
         createIngredient(1, Unit.PIECE, 'Pain'),
@@ -341,7 +341,7 @@ export function seedRecipes(): Recipe[] {
       description: 'Petites brochettes savoureuses et légèrement relevées.',
       preparation_time: 20,
       recipe_type: RecipeType.APPETIZER,
-      author: user1,
+      author: user1.profile,
       ingredients: [
         createIngredient(200, Unit.GRAM, 'Poulet'),
         createIngredient(5, Unit.GRAM, 'Paprika'),
@@ -355,7 +355,7 @@ export function seedRecipes(): Recipe[] {
       description: 'Apéritif rapide et parfumé à l’ail et aux herbes.',
       preparation_time: 12,
       recipe_type: RecipeType.APPETIZER,
-      author: user2,
+      author: user2.profile,
       ingredients: [
         createIngredient(150, Unit.GRAM, 'Crevette'),
         createIngredient(1, Unit.PIECE, "Gousse d'ail"),
@@ -376,7 +376,7 @@ export function seedRecipes(): Recipe[] {
       description: 'Un accompagnement crémeux et réconfortant.',
       preparation_time: 30,
       recipe_type: RecipeType.SIDE_DISH,
-      author: admin,
+      author: admin.profile,
       ingredients: [
         createIngredient(3, Unit.PIECE, 'Pommes de terre'),
         createIngredient(20, Unit.GRAM, 'Beurre'),
@@ -394,7 +394,7 @@ export function seedRecipes(): Recipe[] {
       description: 'Riz légèrement doré avec oignon et épices.',
       preparation_time: 25,
       recipe_type: RecipeType.SIDE_DISH,
-      author: user1,
+      author: user1.profile,
       ingredients: [
         createIngredient(200, Unit.GRAM, 'Riz'),
         createIngredient(1, Unit.PIECE, 'Oignon'),
@@ -412,7 +412,7 @@ export function seedRecipes(): Recipe[] {
       description: 'Mélange de légumes rôtis simples et savoureux.',
       preparation_time: 35,
       recipe_type: RecipeType.SIDE_DISH,
-      author: user2,
+      author: user2.profile,
       ingredients: [
         createIngredient(1, Unit.PIECE, 'Carotte'),
         createIngredient(1, Unit.PIECE, 'Courgette'),

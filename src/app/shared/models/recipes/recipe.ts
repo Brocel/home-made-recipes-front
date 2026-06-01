@@ -1,4 +1,4 @@
-import { User } from '../user/user';
+import { UserProfile } from '@models/user/user-profile';
 import { Ingredient } from './ingredient';
 import { IngredientType } from './ingredient-type.enum';
 import { RecipeType } from './recipe-type.enum';
@@ -12,7 +12,7 @@ export interface Recipe {
   preparation_time: number;
   recipe_type: RecipeType;
   publication_date: string;
-  author: User;
+  author: UserProfile;
   ingredient_list: Ingredient[];
   step_list: Step[];
 }

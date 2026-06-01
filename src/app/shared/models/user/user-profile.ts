@@ -7,7 +7,10 @@ export interface UserProfile {
   id: string;
   first_name: string;
   last_name: string;
+  username: string;
   birth_date: string;
   inscription_date: string;
   avatar?: string;
+  recipes: string[]; // List of recipe IDs created by the user
+  favorite_recipes: string[]; // List of recipe IDs favorited by the user
 }

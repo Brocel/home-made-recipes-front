@@ -56,20 +56,19 @@ export class AuthService {
   // =========================================================
   /**
    * Sets session in store and persists minimal session data to localStorage.
-   * Extracts UserSession (id, username, email, roles) from full User response.
+   * Extracts UserSession (id, email, roles) from full User response.
    * Stores full User as profile in memory (not persisted).
    */
   private setSession(token: string, user: User): void {
     const userSession: UserSession = {
       id: user.id,
-      username: user.username,
       email: user.email,
       roles: user.roles,
     };
 
     this.store.setToken(token);
     this.store.setUser(userSession);
-    this.store.setProfileDetails(user);
+    this.store.setProfileDetails(user.profile);
 
     // Persistence: store only essential session fields to reduce XSS exposure
     this.storage.set(TOKEN_KEY, token);

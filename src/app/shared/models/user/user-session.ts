@@ -9,7 +9,6 @@ import { Role } from '@models/auth/role';
  */
 export interface UserSession {
   id: string;
-  username: string;
   email: string;
   roles: Role[];
 }

@@ -1,13 +1,9 @@
 import { Role } from '../auth/role';
+import { UserProfile } from './user-profile';
 
 export interface User {
   id: string;
-  first_name: string;
-  last_name: string;
-  username: string;
   email: string;
-  birth_date: string;
-  inscription_date: string;
-  picture?: string;
   roles: Role[];
+  profile: UserProfile;
 }

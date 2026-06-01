@@ -6,7 +6,7 @@ import { Recipe } from '@models/recipes/recipe';
 import { RecipeType } from '@models/recipes/recipe-type.enum';
 import { Step } from '@models/recipes/step';
 import { Unit } from '@models/recipes/unit.enum';
-import { User } from '@models/user/user';
+import { UserProfile } from '@models/user/user-profile';
 import { getProductByName } from './seed-resolvers';
 
 // -----------------------
@@ -36,7 +36,7 @@ export function createRecipe(params: {
   description: string;
   preparation_time: number;
   recipe_type: RecipeType;
-  author: User;
+  author: UserProfile;
   ingredients: Ingredient[];
   steps: Step[];
 }): Recipe {

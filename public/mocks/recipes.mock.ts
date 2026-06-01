@@ -20,15 +20,11 @@ export const MOCK_RECIPES: Recipe[] = [
       first_name: 'Maxime',
       last_name: 'Geenens',
       username: 'Brocel',
-      email: 'maxime@example.com',
       birth_date: '1990-05-12',
       inscription_date: '2023-01-01',
-      roles: [
-        {
-          id: 1,
-          name: 'USER',
-        },
-      ],
+      avatar: '',
+      recipes: ['1'],
+      favorite_recipes: [],
     },
 
     ingredient_list: [
