@@ -1,4 +1,3 @@
-import { User } from '@models/user';
 import { ConfirmConfigOptions, ModalConfig } from '@uiModels/modal.model';
 
 export function buildLoginConfig(email?: string): ModalConfig<'login'> {
@@ -15,10 +14,14 @@ export function buildRegisterConfig(): ModalConfig<'register'> {
   };
 }
 
-export function buildProfileConfig(user: User): ModalConfig<'profile'> {
+/**
+ * Build profile modal config.
+ * Profile component will fetch its own data lazily from /auth/me.
+ */
+export function buildProfileConfig(): ModalConfig<'profile'> {
   return {
     type: 'profile',
-    data: { user },
+    data: undefined,
   };
 }
 

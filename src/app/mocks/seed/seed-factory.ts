@@ -6,7 +6,7 @@ import { Recipe } from '@models/recipes/recipe';
 import { RecipeType } from '@models/recipes/recipe-type.enum';
 import { Step } from '@models/recipes/step';
 import { Unit } from '@models/recipes/unit.enum';
-import { User } from '@models/user';
+import { User } from '@models/user/user';
 import { getProductByName } from './seed-resolvers';
 
 // -----------------------

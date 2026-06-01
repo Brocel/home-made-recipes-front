@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, inject, input, output } from '@angular/core';
 import { FloatingContentDirective } from '@directives/floating-content.directive';
 import { FloatingTriggerDirective } from '@directives/floating-trigger.directive';
-import { User } from '@models/user';
+import { UserSession } from '@models/user/user-session';
 import { TranslateModule } from '@ngx-translate/core';
 import { FloatingSurface } from '@overlays/floating-surface/floating-surface';
 import { MenuService } from '@uiServices/menu.service';
@@ -36,7 +36,7 @@ export class ProfileMenu {
   // =========================================================
   // Inputs
   // =========================================================
-  user = input<User | null>();
+  user = input<UserSession | null>();
   isAuthenticated = input<boolean>(false);
 
   // =========================================================

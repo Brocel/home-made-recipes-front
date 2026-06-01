@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { MOCK_USERS } from '@mocks/data/users.mocks';
 import { latency, MOCK_CURRENT_USER_ID } from '@mocks/utils/mock.constant';
-import { User } from '@models/user';
+import { User } from '@models/user/user';
 import { delay, Observable, of, throwError } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })

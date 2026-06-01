@@ -1,6 +1,6 @@
 import { MOCK_PRODUCTS } from '@mocks/data/products.mock';
 import { Product } from '@models/recipes/ingredient';
-import { User } from '@models/user';
+import { User } from '@models/user/user';
 
 export function getProductByName(name: string): Product {
   const product = MOCK_PRODUCTS.find((p) => p.name === name);

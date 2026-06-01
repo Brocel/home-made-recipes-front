@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { MOCK_USERS } from '@mocks/data/users.mocks';
 import { createFakeJwt } from '@mocks/utils/api.util';
 import { latency, TOKEN_EXPIRATION_TIME_S } from '@mocks/utils/mock.constant';
-import { User } from '@models/user';
+import { User } from '@models/user/user';
 import { delay, Observable, of, throwError } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })

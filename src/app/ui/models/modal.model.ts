@@ -1,5 +1,5 @@
 import { Product } from '@models/recipes/ingredient';
-import { User } from '@models/user';
+import { User } from '@models/user/user';
 import { AnyModalConfig, ConfirmIntent, ModalType } from '@uiTypes/modal.types';
 import { Tone, Variant } from '@uiTypes/overlay.types';
 import { ButtonVariant } from '@uiTypes/primitive.types';
@@ -49,9 +49,7 @@ export interface ModalDefinitionMap {
   };
 
   profile: {
-    data: {
-      user: User;
-    };
+    data: undefined;
     result: void;
   };
 

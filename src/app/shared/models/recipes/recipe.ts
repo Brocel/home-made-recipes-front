@@ -1,4 +1,4 @@
-import { User } from '../user';
+import { User } from '../user/user';
 import { Ingredient } from './ingredient';
 import { IngredientType } from './ingredient-type.enum';
 import { RecipeType } from './recipe-type.enum';

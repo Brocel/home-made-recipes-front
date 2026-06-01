@@ -1,0 +1,13 @@
+/**
+ * User profile details for the authenticated user.
+ * Lazy-loaded from /auth/me endpoint when user opens profile modal.
+ * Contains personally identifiable information (not cached in storage).
+ */
+export interface UserProfile {
+  id: string;
+  first_name: string;
+  last_name: string;
+  birth_date: string;
+  inscription_date: string;
+  avatar_name?: string;
+}

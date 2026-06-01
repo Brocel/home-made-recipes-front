@@ -1,17 +1,20 @@
 import { computed, inject, Injectable, signal } from '@angular/core';
 import { TokenService } from '@auth/token.service';
-import { User } from '@models/user';
+import { UserProfile } from '@models/user/user-profile';
+import { UserSession } from '@models/user/user-session';
 
 @Injectable({ providedIn: 'root' })
 export class AuthStore {
   private readonly tokenService = inject(TokenService);
 
   // --- Signals ---
-  private _user = signal<User | null>(null);
+  private _user = signal<UserSession | null>(null);
+  private _profileDetails = signal<UserProfile | null>(null);
   private _token = signal<string | null>(null);
 
   // --- Public readonly signals ---
   user = computed(() => this._user());
+  profileDetails = computed(() => this._profileDetails());
   token = computed(() => this._token());
 
   roles = computed(() => this._user()?.roles ?? []);
@@ -24,8 +27,12 @@ export class AuthStore {
   });
 
   // --- Mutators (appelés par AuthService) ---
-  setUser(user: User | null): void {
+  setUser(user: UserSession | null): void {
     this._user.set(user);
+  }
+
+  setProfileDetails(profileDetails: UserProfile | null): void {
+    this._profileDetails.set(profileDetails);
   }
 
   setToken(token: string | null): void {
@@ -34,6 +41,7 @@ export class AuthStore {
 
   clear(): void {
     this._user.set(null);
+    this._profileDetails.set(null);
     this._token.set(null);
   }
 }

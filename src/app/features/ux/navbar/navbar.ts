@@ -51,7 +51,7 @@ export class Navbar {
   }
 
   goProfile() {
-    this.modal.open(buildProfileConfig(this.authStore.user()!));
+    this.modal.open(buildProfileConfig());
   }
 
   goDashboard() {
