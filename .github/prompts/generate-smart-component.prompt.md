@@ -27,6 +27,7 @@ Requirements:
 - Include loading/error/empty states
 - Preserve accessibility
 - Keep the component small and testable
+- Always ask before modifying or refactoring code.
 
 Output:
 

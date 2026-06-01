@@ -21,6 +21,7 @@ Requirements:
 - Prefer clear Arrange / Act / Assert structure
 - Do not over-mock
 - Update existing tests if needed rather than duplicating them
+- Always ask before modifying or refactoring code.
 
 Output:
 

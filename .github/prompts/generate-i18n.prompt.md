@@ -36,6 +36,7 @@ Requirements:
 - If the current i18n setup is unclear, state the missing information before proposing changes.
 - Preserve accessibility and meaning in translated text.
 - Avoid generating unnecessary keys.
+- Always ask before modifying or refactoring code.
 
 Output:
 

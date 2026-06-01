@@ -10,7 +10,6 @@ Context:
 
 - System name: ${input:systemName:What system should be analyzed? (for example: Modal system, Toaster system, Form Validation system, or the whole app)}
 - Folders to explore: ${input:folders:Which folders should be analyzed? Separate paths with commas}
-- Specific files to inspect: ${input:files:Which exact files should be analyzed in particular? Separate paths with commas}
 - Analysis goal: ${input:goal:What do you want from the analysis? (performance, architecture, maintainability, duplication, accessibility, i18n, testability, etc.)}
 - Constraints: ${input:constraints:Any constraints to respect? (existing architecture, Angular 20 patterns, no new dependencies, etc.)}
 - Output style: ${input:style:Do you want a short summary, a detailed report, or a prioritized action plan?}
@@ -18,9 +17,10 @@ Context:
 Requirements:
 
 - First identify the scope and summarize what the system does.
-- Inspect the requested folders and the specific files in priority order.
+- Inspect the requested folders in priority order.
 - Detect duplication, dead code, unnecessary complexity, weak typing, invalid boundaries, and inconsistent patterns.
 - Check alignment with the repository instructions, especially:
+  - most recent Angular best practices
   - smart / dumb component split
   - standalone components
   - signals and computed state
@@ -42,6 +42,7 @@ Requirements:
 - Do not propose a rewrite of unrelated parts of the app.
 - Do not invent architecture that does not already fit the repository.
 - If relevant context is missing, say exactly what is missing before proposing a solution.
+- Always ask before modifying or refactoring code.
 
 Output:
 

@@ -18,7 +18,7 @@ Roles:
 1. Project Manager
 2. Product Owner
 3. Senior Fullstack Software Engineer / Tech Lead
-4. Confirmed Software Engineer
+4. Confirmed Fullstack Software Engineer
 
 Requirements:
 
@@ -26,7 +26,7 @@ Requirements:
 - The Product Owner focuses on business value and acceptance criteria
 - The Project Manager focuses on planning, scope, and risks
 - The Tech Lead challenges the technical solution and architecture
-- The Software Engineer focuses on implementation details and feasibility
+- The Fullstack Software Engineer focuses on implementation details and feasibility
 - End with a synthesized plan of action
 - Include assumptions and open questions
 - Keep the outcome practical and implementation-oriented
@@ -37,3 +37,7 @@ Output:
 2. Synthesized decision
 3. Action plan
 4. Open questions
+5. Render the action plan in (choice):
+   a. Exportable Kanban board format
+   b. List of tasks with priorities and estimates (markdown file)
+   c. List of tasks with priorities and estimates (PDF file)

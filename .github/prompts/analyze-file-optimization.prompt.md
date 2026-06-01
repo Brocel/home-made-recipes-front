@@ -23,6 +23,7 @@ Requirements:
 - Do not recommend changes that would fight the existing stack.
 - Use current Angular best practices when evaluating improvements.
 - Keep refactors incremental and practical.
+- Always ask before modifying or refactoring code.
 
 Output:
 

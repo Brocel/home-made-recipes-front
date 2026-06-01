@@ -20,6 +20,7 @@ Requirements:
 - Keep accessibility and focus handling intact
 - Include clear open / close behavior
 - Keep template logic simple
+- Always ask before modifying or refactoring code.
 
 Output:
 

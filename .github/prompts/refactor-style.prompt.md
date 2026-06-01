@@ -25,6 +25,7 @@ Requirements:
 - Avoid deep nesting and !important
 - Scope styles to the component
 - Preserve accessibility and focus visibility
+- Always ask before modifying or refactoring code.
 
 Output:
 

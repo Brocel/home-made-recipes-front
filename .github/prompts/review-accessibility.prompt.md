@@ -10,6 +10,7 @@ Requirements:
 
 - Use the file in the current chat context as the primary source.
 - If the context is insufficient, say exactly what is missing before proposing changes.
+- Always ask before modifying or refactoring code.
 
 Check:
 

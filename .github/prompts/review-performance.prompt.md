@@ -18,6 +18,7 @@ Check:
 - Missing track expressions
 - Overly large components
 - Avoidable change detection work
+- Always ask before modifying or refactoring code.
 
 Output:
 

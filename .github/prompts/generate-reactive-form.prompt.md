@@ -33,6 +33,7 @@ Requirements:
 - Keep the secondary actions outside the form-layout
 - Use I18n keys for all text (labels, placeholders, error messages, button text, etc.)
 - Preserve accessibility
+- Always ask before modifying or refactoring code.
 
 Output:
 
