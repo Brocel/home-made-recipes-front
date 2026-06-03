@@ -257,5 +257,33 @@
     "error": {
       "recipeFetchingDaily": "Impossible de charger la recette du jour"
     }
+  },
+  "exception": {
+    "common": {
+      "resourceNotFound": "Ressource non trouvée",
+      "accessDenied": "Accès refusé"
+    },
+    "recipes": {
+      "notFoundById": "Recette (id: {{1}}) non trouvée",
+      "notFoundByName": "Recette '{{1}}' non trouvée",
+      "dailyNotFound": "Recette du jour non trouvée",
+      "authorOnly": "Seul l'auteur de la recette peut la modifier"
+    },
+    "products": {
+      "notFoundById": "Produit (id: {{1}}) non trouvé",
+      "notFoundByName": "Produit '{{1}}' non trouvé"
+    },
+    "planner": {},
+    "user": {
+      "emailNotFound": "Email '{{1}}' non trouvé",
+      "usernameAlreadyExists": "Nom d'utilisateur '{{1}}' existe déjà",
+      "userNotFoundById": "Utilisateur '{{1}}' non trouvé"
+    },
+    "dashboard": {},
+    "auth": {
+      "emailAlreadyExists": "Email '{{1}}' existe déjà",
+      "required": "Authentification requise",
+      "invalidPassword": "Mot de passe invalide"
+    }
   }
 }

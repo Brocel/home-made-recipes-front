@@ -4,20 +4,21 @@
 
 This repository contains the front-end application for the Home Made Recipes platform.
 
-The application helps users browse, search, create, edit, share, and plan recipes. It supports French (FR) and Brazilian Portuguese (BR).
+The application helps users browse, search, create, edit, share recipes and plan weekly menu. It supports French (FR) and Brazilian Portuguese (BR).
 
-Main user groups:
+User groups:
 
 - Guest users can browse, search, and view recipes.
 - Registered users can manage recipes, products, plans, and profile preferences.
 
-Primary features:
+Main features:
 
 - Dashboard: personalized summary, weekly menu, profile shortcuts, and useful insights.
 - Recipes: browse, search, filter, view, create, edit, and share recipes.
 - Products: browse, search, filter, view, and add ingredients that can be used in recipes.
 - Planner: weekly meal planning and shopping list generation.
 - Profile: edit profile data, manage preferences, and navigate to the dashboard.
+- Login/Registration: user authentication and account management.
 
 ## Core Principles
 

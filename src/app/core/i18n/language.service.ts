@@ -1,4 +1,6 @@
 import { computed, effect, Injectable, signal } from '@angular/core';
+import { ApiError } from '@errors/api-error.type';
+import { positionalArgsToNamedParams } from '@errors/error.utils';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 
@@ -6,6 +8,8 @@ const STORAGE_KEY = 'app_lang';
 const SUPPORTED_LANGS = ['fr', 'pt-BR'];
 
 type SupportedLang = (typeof SUPPORTED_LANGS)[number];
+type TranslationTree = Record<string, unknown>;
+type TranslationCache = Partial<Record<SupportedLang, TranslationTree>>;
 
 @Injectable({ providedIn: 'root' })
 export class LanguageService {
@@ -14,6 +18,8 @@ export class LanguageService {
   // =========================================================
   private currentLangSignal = signal<SupportedLang>('fr');
   current = computed(() => this.currentLangSignal());
+
+  private readonly translations = signal<TranslationCache>({});
 
   // =========================================================
   // Message system
@@ -30,6 +36,13 @@ export class LanguageService {
     const browser = this.detectBrowserLang();
 
     const initialLang = (saved ?? browser ?? 'fr') as SupportedLang;
+
+    this.translate.setFallbackLang('fr').subscribe((translations) => {
+      this.translations.update((current) => ({
+        ...current,
+        fr: translations ?? {},
+      }));
+    });
 
     this.use(initialLang);
 
@@ -64,7 +77,12 @@ export class LanguageService {
       ? (lang as SupportedLang)
       : 'fr';
 
-    this.translate.use(normalized);
+    this.translate.use(normalized).subscribe((translations) => {
+      this.translations.update((current) => ({
+        ...current,
+        [normalized]: translations ?? {},
+      }));
+    });
 
     this.currentLangSignal.set(normalized);
 
@@ -75,6 +93,37 @@ export class LanguageService {
 
   instant(key: string | string[], params?: any) {
     return this.translate.instant(key, params);
+  }
+
+  exists(key: string): boolean {
+    const translations = this.translations();
+    const currentLang = this.currentLangSignal();
+
+    return (
+      this.hasTranslationKey(translations[currentLang], key) ||
+      (currentLang !== 'fr' && this.hasTranslationKey(translations['fr'], key))
+    );
+  }
+
+  /**
+   * Translates an API error payload into a user-friendly message.
+   * Uses the errorKey to find a translation, falling back to the backend message or a generic text if needed.
+   *
+   * @param apiError The error payload from the backend.
+   */
+  translateApiError(apiError: ApiError): string {
+    if (!apiError) return 'An error occurred';
+
+    const { errorKey, message, messageArgs } = apiError;
+    const params = positionalArgsToNamedParams(messageArgs);
+
+    if (errorKey && this.exists(errorKey)) {
+      return this.translate.instant(errorKey, { defaultValue: message, ...params });
+    }
+
+    if (message) return message;
+
+    return 'An error occurred';
   }
 
   // =========================================================
@@ -112,6 +161,18 @@ export class LanguageService {
     if (browserLang.startsWith('fr')) return 'fr';
 
     return null;
+  }
+
+  private hasTranslationKey(translations: TranslationTree | undefined, key: string): boolean {
+    if (!translations) return false;
+
+    const resolved = key.split('.').reduce<unknown>((current, segment) => {
+      if (!current || typeof current !== 'object') return undefined;
+
+      return (current as Record<string, unknown>)[segment];
+    }, translations);
+
+    return typeof resolved !== 'undefined';
   }
 
   private setHtmlLangAttr(lang: string) {

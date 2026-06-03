@@ -24,6 +24,7 @@
       "@nav/*": ["./src/app/core/navigation/*"],
       "@store/*": ["./src/app/core/store/*"],
       "@validators/*": ["./src/app/core/validators/*"],
+      "@errors/*": ["./src/app/core/errors/*"],
       // Features
       "@home/*": ["./src/app/features/home/*"],
       "@menu/*": ["./src/app/features/menu/*"],
