@@ -7,9 +7,8 @@ import { RecipesApi } from '@api/recipes.api';
 import { Recipe } from '@models/recipes/recipe';
 import { TranslatePipe } from '@ngx-translate/core';
 import { AuthStore } from '@store/auth.store';
-import { LanguageService } from '@translation/language.service';
-import { finalize, of } from 'rxjs';
-import { catchError, startWith, switchMap, tap } from 'rxjs/operators';
+import { finalize } from 'rxjs';
+import { startWith, switchMap, tap } from 'rxjs/operators';
 import { MOCK_RECIPES } from '../../../../public/mocks/recipes.mock';
 import { RecipeFull } from '../recipes/recipe-full/recipe-full';
 
@@ -25,7 +24,6 @@ export class Home implements OnInit {
   // Dependencies
   // =========================================================
   private readonly api = inject(RecipesApi);
-  private readonly lang = inject(LanguageService);
   private readonly authStore = inject(AuthStore);
 
   // =========================================================
@@ -34,7 +32,6 @@ export class Home implements OnInit {
   private readonly fetchTrigger = signal(0);
   readonly loading = signal(false);
   readonly auth = this.authStore.isAuthenticated;
-  readonly errorMessage = signal<string | null>(null);
 
   // =========================================================
   // Observable Streams
@@ -42,16 +39,7 @@ export class Home implements OnInit {
   readonly dailyRecipe = toSignal(
     toObservable(this.fetchTrigger).pipe(
       tap(() => this.loading.set(true)),
-      switchMap(() =>
-        this.api.dailyRecipe().pipe(
-          catchError(() => {
-            this.lang.setMsg('messages.error.recipeFetchingDaily', undefined);
-            this.errorMessage.set(this.lang.getMessageSignal()());
-            return of(null);
-          }),
-          finalize(() => this.loading.set(false)),
-        ),
-      ),
+      switchMap(() => this.api.dailyRecipe().pipe(finalize(() => this.loading.set(false)))),
       startWith(MOCK_RECIPES[0] as Recipe),
     ),
     { initialValue: (MOCK_RECIPES[0] as Recipe) ?? null },

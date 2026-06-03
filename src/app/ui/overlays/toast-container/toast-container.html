@@ -2,7 +2,7 @@
   @for (toast of toasts(); track toast.id) {
     <app-toast
       [toast]="toast"
-      [message]="translateMessage(toast.messageKey)"
+      [message]="translateMessage(toast.messageKey, toast.messageParams, toast.fallBackMessage)"
       (dismiss)="onDismiss(toast.id)"
     />
   }

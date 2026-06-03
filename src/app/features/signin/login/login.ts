@@ -12,6 +12,7 @@ import { FormField } from '@primitives/form/form-field/form-field';
 import { FormInput } from '@primitives/form/form-input/form-input';
 import { FormSection } from '@primitives/form/form-section/form-section';
 import { ToasterService } from '@uiServices/toaster.service';
+import { finalize } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -85,16 +86,14 @@ export class Login {
 
     this.auth
       .login(payload)
-      .pipe(takeUntilDestroyed(this.destroyRef))
+      .pipe(
+        takeUntilDestroyed(this.destroyRef),
+        finalize(() => this.loading.set(false)),
+      )
       .subscribe({
         next: () => {
-          this.loading.set(false);
           this.successfulLogin.emit();
           this.toast.show('success', 'feature.signin.login.success');
-        },
-        error: (err) => {
-          this.loading.set(false);
-          this.toast.show('error', err.errorKey ?? 'UNKNOWN_ERROR');
         },
       });
   }

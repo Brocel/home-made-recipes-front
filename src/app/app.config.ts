@@ -10,6 +10,7 @@ import { provideRouter } from '@angular/router';
 
 import { HttpClient, provideHttpClient, withInterceptors } from '@angular/common/http';
 import { AuthInterceptor } from '@interceptors/auth.interceptor';
+import { ErrorInterceptor } from '@interceptors/error.interceptor';
 import { MockHttpInterceptor } from '@interceptors/mock-http.interceptor';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
@@ -28,7 +29,7 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideRouter(routes),
-    provideHttpClient(withInterceptors([MockHttpInterceptor, AuthInterceptor])),
+    provideHttpClient(withInterceptors([MockHttpInterceptor, AuthInterceptor, ErrorInterceptor])),
     importProvidersFrom(
       TranslateModule.forRoot({
         loader: { provide: TranslateLoader, useClass: HttpTranslateLoader },

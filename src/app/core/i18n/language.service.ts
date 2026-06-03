@@ -1,6 +1,4 @@
 import { computed, effect, Injectable, signal } from '@angular/core';
-import { ApiError } from '@errors/api-error.type';
-import { positionalArgsToNamedParams } from '@errors/error.utils';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 
@@ -95,37 +93,6 @@ export class LanguageService {
     return this.translate.instant(key, params);
   }
 
-  exists(key: string): boolean {
-    const translations = this.translations();
-    const currentLang = this.currentLangSignal();
-
-    return (
-      this.hasTranslationKey(translations[currentLang], key) ||
-      (currentLang !== 'fr' && this.hasTranslationKey(translations['fr'], key))
-    );
-  }
-
-  /**
-   * Translates an API error payload into a user-friendly message.
-   * Uses the errorKey to find a translation, falling back to the backend message or a generic text if needed.
-   *
-   * @param apiError The error payload from the backend.
-   */
-  translateApiError(apiError: ApiError): string {
-    if (!apiError) return 'An error occurred';
-
-    const { errorKey, message, messageArgs } = apiError;
-    const params = positionalArgsToNamedParams(messageArgs);
-
-    if (errorKey && this.exists(errorKey)) {
-      return this.translate.instant(errorKey, { defaultValue: message, ...params });
-    }
-
-    if (message) return message;
-
-    return 'An error occurred';
-  }
-
   // =========================================================
   // Message helpers
   // =========================================================
@@ -161,18 +128,6 @@ export class LanguageService {
     if (browserLang.startsWith('fr')) return 'fr';
 
     return null;
-  }
-
-  private hasTranslationKey(translations: TranslationTree | undefined, key: string): boolean {
-    if (!translations) return false;
-
-    const resolved = key.split('.').reduce<unknown>((current, segment) => {
-      if (!current || typeof current !== 'object') return undefined;
-
-      return (current as Record<string, unknown>)[segment];
-    }, translations);
-
-    return typeof resolved !== 'undefined';
   }
 
   private setHtmlLangAttr(lang: string) {

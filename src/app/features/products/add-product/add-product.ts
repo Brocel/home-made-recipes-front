@@ -15,6 +15,7 @@ import { FormSection } from '@primitives/form/form-section/form-section';
 import { FormSelect } from '@primitives/form/form-select/form-select';
 import { EnumUtilsService } from '@services/enum-utils.service';
 import { ToasterService } from '@uiServices/toaster.service';
+import { finalize } from 'rxjs';
 
 @Component({
   selector: 'app-add-product',
@@ -90,16 +91,14 @@ export class AddProduct {
 
     this.productService
       .createProduct(dto)
-      .pipe(takeUntilDestroyed(this.destroyRef))
+      .pipe(
+        takeUntilDestroyed(this.destroyRef),
+        finalize(() => this.loading.set(false)),
+      )
       .subscribe({
         next: (product: Product) => {
-          this.loading.set(false);
           this.productCreated.emit(product);
           this.toast.show('success', 'messages.success.productCreated');
-        },
-        error: (err) => {
-          this.loading.set(false);
-          this.toast.show('error', err.errorKey ?? 'UNKNOWN_ERROR');
         },
       });
   }

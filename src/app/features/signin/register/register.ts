@@ -15,7 +15,7 @@ import { ToasterService } from '@uiServices/toaster.service';
 import { isoToDDMMYYYY } from '@utils/date.util';
 import { passwordMatchValidator } from '@validators/password-match.validator';
 import { UsernameValidator } from '@validators/username.validator';
-import { timer } from 'rxjs';
+import { finalize, timer } from 'rxjs';
 
 @Component({
   selector: 'app-register',
@@ -115,10 +115,12 @@ export class Register {
 
     this.auth
       .register(payload)
-      .pipe(takeUntilDestroyed(this.destroyRef))
+      .pipe(
+        takeUntilDestroyed(this.destroyRef),
+        finalize(() => this.loading.set(false)),
+      )
       .subscribe({
-        next: (res) => {
-          this.loading.set(false);
+        next: () => {
           this.success.set(true);
           this.toast.show('success', 'feature.signin.register.success');
           // TODO: put timer on confirm popup
@@ -127,10 +129,6 @@ export class Register {
             .subscribe(() => {
               this.confirmSuccess();
             });
-        },
-        error: (err) => {
-          this.loading.set(false);
-          this.toast.show('error', err.errorKey ?? 'UNKNOWN_ERROR');
         },
       });
   }

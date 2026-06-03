@@ -5,8 +5,7 @@ import { Recipe } from '@models/recipes/recipe';
 import { ListParams } from '@models/request/list-params';
 import { PagedResponse } from '@models/response/paged-response';
 import { Observable } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
-import { handleError } from './api.util';
+import { map } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class RecipesApi {
@@ -48,7 +47,6 @@ export class RecipesApi {
           page: resp.page ?? params?.page ?? 1,
           pageSize: resp.pageSize ?? params?.pageSize ?? (resp.items ? resp.items.length : 0),
         })),
-        catchError((error) => handleError('RecipesApi', error)),
       );
   }
 
@@ -57,9 +55,7 @@ export class RecipesApi {
    * @returns An observable of the daily recipe.
    */
   dailyRecipe(): Observable<Recipe> {
-    return this.http
-      .get<Recipe>(`${this.base}/daily`)
-      .pipe(catchError((error) => handleError('RecipesApi', error)));
+    return this.http.get<Recipe>(`${this.base}/daily`);
   }
 
   /**
@@ -68,9 +64,7 @@ export class RecipesApi {
    * @returns An observable of the recipe.
    */
   get(id: string): Observable<Recipe> {
-    return this.http
-      .get<Recipe>(`${this.base}/${encodeURIComponent(id)}`)
-      .pipe(catchError((error) => handleError('RecipesApi', error)));
+    return this.http.get<Recipe>(`${this.base}/${encodeURIComponent(id)}`);
   }
 
   /**
@@ -79,9 +73,7 @@ export class RecipesApi {
    * @returns An observable of the created recipe.
    */
   create(payload: Partial<Recipe>): Observable<Recipe> {
-    return this.http
-      .post<Recipe>(this.base, payload)
-      .pipe(catchError((error) => handleError('RecipesApi', error)));
+    return this.http.post<Recipe>(this.base, payload);
   }
 
   /**
@@ -91,9 +83,7 @@ export class RecipesApi {
    * @returns An observable of the updated recipe.
    */
   update(id: string, payload: Partial<Recipe>): Observable<Recipe> {
-    return this.http
-      .put<Recipe>(`${this.base}/${encodeURIComponent(id)}`, payload)
-      .pipe(catchError((error) => handleError('RecipesApi', error)));
+    return this.http.put<Recipe>(`${this.base}/${encodeURIComponent(id)}`, payload);
   }
 
   /**
@@ -102,8 +92,6 @@ export class RecipesApi {
    * @returns An observable of void.
    */
   delete(id: string): Observable<void> {
-    return this.http
-      .delete<void>(`${this.base}/${encodeURIComponent(id)}`)
-      .pipe(catchError((error) => handleError('RecipesApi', error)));
+    return this.http.delete<void>(`${this.base}/${encodeURIComponent(id)}`);
   }
 }

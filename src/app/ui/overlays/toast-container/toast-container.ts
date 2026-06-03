@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
 import { Toast } from '@primitives/toast/toast';
+import { LanguageService } from '@translation/language.service';
 import { ToasterService } from '@uiServices/toaster.service';
 
 @Component({
@@ -15,7 +15,7 @@ export class ToastContainer {
   // Dependencies
   // =========================================================
   private readonly toasterService = inject(ToasterService);
-  private readonly translate = inject(TranslateService);
+  private readonly langService = inject(LanguageService);
 
   // =========================================================
   // State
@@ -25,8 +25,15 @@ export class ToastContainer {
   // =========================================================
   // Actions
   // =========================================================
-  translateMessage(messageKey: string): string {
-    return this.translate.instant(messageKey);
+  translateMessage(
+    messageKey: string,
+    messageParams?: Record<string, any>,
+    fallBackMessage?: string,
+  ): string {
+    return this.langService.instant(messageKey, {
+      defaultValue: fallBackMessage,
+      ...messageParams,
+    });
   }
 
   onDismiss(id: string): void {

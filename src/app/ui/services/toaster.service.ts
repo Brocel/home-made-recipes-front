@@ -22,11 +22,18 @@ export class ToasterService {
   // =========================================================
   // Public API
   // =========================================================
-  show(type: ToastType, messageKey: string): void {
+  show(
+    type: ToastType,
+    messageKey: string,
+    fallBackMessage?: string,
+    messageParams?: Record<string, any>,
+  ): void {
     const toast: Toast = {
       id: this.generateId(),
       type,
       messageKey,
+      fallBackMessage,
+      messageParams,
     };
 
     this.toastStack.set([...this.toastStack(), toast]);
