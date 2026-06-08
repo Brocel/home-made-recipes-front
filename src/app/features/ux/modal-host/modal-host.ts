@@ -102,6 +102,14 @@ export class ModalHost {
   }
 
   /**
+   * Handle user clicking "Login" link in register modal.
+   * Delegates to orchestrator for modal chain workflow.
+   */
+  onLoginClick() {
+    this.orchestrator.handleLoginClick();
+  }
+
+  /**
    * Handle register modal success.
    * Delegates to orchestrator for auth/modal chain workflow.
    * @param email The email address used in registration, passed to login modal.

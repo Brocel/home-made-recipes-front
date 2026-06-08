@@ -11,7 +11,7 @@
     ========================== -->
     <app-form-section [title]="'feature.signin.register.section.identity' | translate">
       <app-form-field
-        [label]="'form.label.first_name' | translate"
+        [label]="'form.label.firstName' | translate"
         [control]="form.controls.first_name"
         [messages]="messages.first_name"
         [submitted]="submitted()"
@@ -26,7 +26,7 @@
       </app-form-field>
 
       <app-form-field
-        [label]="'form.label.last_name' | translate"
+        [label]="'form.label.lastName' | translate"
         [control]="form.controls.last_name"
         [messages]="messages.last_name"
         [submitted]="submitted()"
@@ -50,7 +50,7 @@
         />
       </app-form-field>
 
-      <app-form-field [label]="'form.label.birth_date' | translate">
+      <app-form-field [label]="'form.label.birthDate' | translate">
         <app-form-input name="birth_date" formControlName="birth_date" class="register-input" />
       </app-form-field>
     </app-form-section>
@@ -90,7 +90,7 @@
       </app-form-field>
 
       <app-form-field
-        [label]="'form.label.confirm_password' | translate"
+        [label]="'form.label.confirmPassword' | translate"
         [control]="form.controls.confirm_password"
         [group]="form"
         [messages]="messages.confirm_password"
@@ -105,27 +105,26 @@
         />
       </app-form-field>
     </app-form-section>
-
-    <!-- =========================
+  </form>
+  <!-- =========================
          ACTIONS
     ========================== -->
-    <div form-actions>
-      <app-button
-        type="submit"
-        form="register-form"
-        variant="primary"
-        [disabled]="loading() || form.invalid"
-        [loading]="loading()"
-        [fullWidth]="true"
-      >
-        {{
-          loading()
-            ? ('feature.signin.register.spinner' | translate)
-            : ('feature.signin.register.create' | translate)
-        }}
-      </app-button>
-    </div>
-  </form>
+  <div form-actions>
+    <app-button
+      type="submit"
+      form="register-form"
+      variant="primary"
+      [disabled]="loading() || form.invalid"
+      [loading]="loading()"
+      [fullWidth]="true"
+    >
+      {{
+        loading()
+          ? ('feature.signin.register.spinner' | translate)
+          : ('feature.signin.register.create' | translate)
+      }}
+    </app-button>
+  </div>
 
   <!-- SUCCESS STATE : TODO: replace with Confirm Popup later-->
   @if (success()) {
@@ -142,10 +141,10 @@
 
 <div class="secondary">
   <span class="secondary__label">
-    {{ 'feature.signin.login.register' | translate }}
+    {{ 'feature.signin.register.login' | translate }}
   </span>
 
   <app-button type="button" variant="secondary" [fullWidth]="true" (click)="goToLogin()">
-    {{ 'feature.signin.register.create' | translate }}
+    {{ 'feature.signin.login.title' | translate }}
   </app-button>
 </div>

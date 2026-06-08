@@ -45,7 +45,8 @@ export class Register {
   // =========================================================
   // Ouputs
   // =========================================================
-  successfulRegister = output<string>();
+  readonly successfulRegister = output<string>();
+  readonly loginClick = output<void>();
 
   // =========================================================
   // State
@@ -133,13 +134,13 @@ export class Register {
       });
   }
 
-  // TODO: confirm popup + secondary action -> go to Login
+  // TODO: confirm popup
   confirmSuccess(): void {
     const email = this.form.controls.email.value;
     this.successfulRegister.emit(email);
   }
 
   goToLogin() {
-    // TODO
+    this.loginClick.emit();
   }
 }

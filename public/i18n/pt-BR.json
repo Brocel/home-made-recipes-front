@@ -80,6 +80,7 @@
         "title": "Inscrição",
         "description": "Registre-se rapidamente com sua conta do Google para começar a adicionar suas receitas",
         "existingAccount": "Você já tem uma conta?",
+        "login": "Você já tem uma conta ?",
         "success": {
           "title": "Parabens !",
           "message": "Você conseguiu a criar sua conta !"

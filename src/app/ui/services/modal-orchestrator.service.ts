@@ -36,6 +36,15 @@ export class ModalOrchestratorService {
   }
 
   /**
+   * Handle user clicking "Login" link in register modal.
+   * Closes register modal and opens login modal.
+   */
+  handleLoginClick() {
+    this.modal.close();
+    this.modal.open(buildLoginConfig());
+  }
+
+  /**
    * Handle successful registration completion.
    * Closes register modal and opens login modal with registered email prefilled.
    */

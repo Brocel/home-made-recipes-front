@@ -39,7 +39,10 @@
           }
 
           @case ('register') {
-            <app-register (successfulRegister)="onRegisterSuccess($event)" />
+            <app-register
+              (successfulRegister)="onRegisterSuccess($event)"
+              (loginClick)="onLoginClick()"
+            />
           }
 
           @case ('profile') {

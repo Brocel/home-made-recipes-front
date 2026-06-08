@@ -80,6 +80,7 @@
         "title": "Inscription",
         "description": "Inscris-toi rapidement avec ton compte Google pour commencer à ajouter tes recettes",
         "existingAccount": "Si tu as déjà un compte",
+        "login": "Tu as déjà un compte ?",
         "success": {
           "title": "Félicitations !",
           "message": "La création de ton compte est un succès !"
