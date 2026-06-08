@@ -31,7 +31,11 @@
       <div class="modal-host__content">
         @switch (item.config.type) {
           @case ('login') {
-            <app-login [loginData]="getData(item)" (successfulLogin)="onLoginSuccess()" />
+            <app-login
+              [loginData]="getData(item)"
+              (successfulLogin)="onLoginSuccess()"
+              (registerClick)="onRegisterClick()"
+            />
           }
 
           @case ('register') {
