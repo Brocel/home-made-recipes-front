@@ -7,6 +7,9 @@ import { filter, map } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class NavigationService {
+  // =========================================================
+  // Dependencies
+  // =========================================================
   private readonly router = inject(Router);
 
   // =========================================================

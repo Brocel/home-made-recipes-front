@@ -9,10 +9,16 @@ import { of, switchMap } from 'rxjs';
   providedIn: 'root',
 })
 export class PageTitleService {
-  private title = inject(Title);
-  private translate = inject(TranslateService);
-  private context = inject(RouteContextService);
+  // =========================================================
+  // Dependencies
+  // =========================================================
+  private readonly title = inject(Title);
+  private readonly translate = inject(TranslateService);
+  private readonly context = inject(RouteContextService);
 
+  // =========================================================
+  // Reactive page title management
+  // =========================================================
   private readonly featureTitleKey = computed(() => this.context.feature()?.title ?? null);
   private readonly translatedTitle = toSignal(
     toObservable(this.featureTitleKey).pipe(
@@ -21,7 +27,7 @@ export class PageTitleService {
     { initialValue: 'Home Made Recipe' },
   );
 
-  init(): void {
+  constructor() {
     effect(() => {
       this.title.setTitle(this.translatedTitle());
     });
