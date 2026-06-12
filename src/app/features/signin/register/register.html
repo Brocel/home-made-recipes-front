@@ -125,18 +125,6 @@
       }}
     </app-button>
   </div>
-
-  <!-- SUCCESS STATE : TODO: replace with Confirm Popup later-->
-  @if (success()) {
-    <div class="register-success">
-      <h2>{{ 'feature.signin.register.success.title' | translate }}</h2>
-      <p>{{ 'feature.signin.register.success.message' | translate }}</p>
-
-      <app-button variant="primary" (click)="confirmSuccess()">
-        {{ 'common.ok' | translate }}
-      </app-button>
-    </div>
-  }
 </app-form-layout>
 
 <div class="secondary">

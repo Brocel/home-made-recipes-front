@@ -33,39 +33,3 @@
 .register-input {
   width: 100%;
 }
-
-// TODO: delete following after ConfirmPopup implementation
-.register-success {
-  display: flex;
-  flex-direction: column;
-
-  align-items: center;
-
-  gap: var(--space-lg);
-
-  text-align: center;
-
-  padding: var(--space-xl);
-
-  width: 100%;
-
-  &__title {
-    margin: 0;
-
-    color: var(--color-text-strong);
-
-    font-size: var(--text-xl);
-
-    line-height: var(--leading-tight);
-  }
-
-  &__message {
-    margin: 0;
-
-    color: var(--color-text-muted);
-
-    line-height: var(--leading-relaxed);
-
-    max-width: 40ch;
-  }
-}

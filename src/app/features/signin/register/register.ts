@@ -15,7 +15,7 @@ import { ToasterService } from '@uiServices/toaster.service';
 import { isoToDDMMYYYY } from '@utils/date.util';
 import { passwordMatchValidator } from '@validators/password-match.validator';
 import { UsernameValidator } from '@validators/username.validator';
-import { finalize, timer } from 'rxjs';
+import { finalize } from 'rxjs';
 
 @Component({
   selector: 'app-register',
@@ -52,7 +52,6 @@ export class Register {
   // State
   // =========================================================
   readonly loading = signal(false);
-  readonly success = signal(false);
   readonly submitted = signal(false);
 
   // =========================================================
@@ -122,14 +121,9 @@ export class Register {
       )
       .subscribe({
         next: () => {
-          this.success.set(true);
+          const email = this.form.controls.email.value;
+          this.successfulRegister.emit(email);
           this.toast.show('success', 'feature.signin.register.success');
-          // TODO: put timer on confirm popup
-          timer(20000)
-            .pipe(takeUntilDestroyed(this.destroyRef))
-            .subscribe(() => {
-              this.confirmSuccess();
-            });
         },
       });
   }
